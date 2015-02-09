@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    // Added to allow access to parse database created for GNAR
+    [Parse setApplicationId:@"edM3ZgRhFNDpw2KyVaUcvmGBn6O8DsifkZsSJ1hr"
+                  clientKey:@"tDWtQucoKGDKM0rOIkBiMkKq0skhCbgDA2ME4ctU"];
+
+    // To track statistics around application opens
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
     return YES;
 }
 
