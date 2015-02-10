@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface AppDelegate ()
 
@@ -22,6 +24,8 @@
     // Added to allow access to parse database created for GNAR
     [Parse setApplicationId:@"edM3ZgRhFNDpw2KyVaUcvmGBn6O8DsifkZsSJ1hr"
                   clientKey:@"tDWtQucoKGDKM0rOIkBiMkKq0skhCbgDA2ME4ctU"];
+
+    [PFFacebookUtils initializeFacebook];
 
     // To track statistics around application opens
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
@@ -45,10 +49,24 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    // Logs 'install' and 'app activate' App Events.
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+//Does Facebook call using Parse' Facebook utilities
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                        withSession:[PFFacebookUtils session]];
 }
 
 @end

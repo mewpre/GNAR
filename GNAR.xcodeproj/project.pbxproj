@@ -22,15 +22,20 @@
 		0F61D55B1A89445700FF96F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55A1A89445700FF96F0 /* SystemConfiguration.framework */; };
 		0F61D55D1A89446200FF96F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55C1A89446200FF96F0 /* libz.dylib */; };
 		0F61D55F1A89446D00FF96F0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */; };
-		0F61D5621A898FDE00FF96F0 /* GamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5611A898FDE00FF96F0 /* GamesViewController.m */; };
-		0F61D5651A89922C00FF96F0 /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5641A89922C00FF96F0 /* AddGameViewController.m */; };
+		0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */; };
+		0F61D56B1A89C79700FF96F0 /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D56A1A89C79700FF96F0 /* AchievementViewController.m */; };
+		0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */; };
+		0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */; };
+		0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5771A89CABC00FF96F0 /* LoginViewController.m */; };
 		606B716E1A894047004DDAB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B716D1A894047004DDAB1 /* main.m */; };
 		606B71711A894047004DDAB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71701A894047004DDAB1 /* AppDelegate.m */; };
-		606B71741A894047004DDAB1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71731A894047004DDAB1 /* ViewController.m */; };
 		606B71771A894047004DDAB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606B71751A894047004DDAB1 /* Main.storyboard */; };
 		606B71791A894048004DDAB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606B71781A894048004DDAB1 /* Images.xcassets */; };
 		606B717C1A894048004DDAB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606B717A1A894048004DDAB1 /* LaunchScreen.xib */; };
 		606B71881A894048004DDAB1 /* GNARTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71871A894048004DDAB1 /* GNARTests.m */; };
+		606B71921A894F19004DDAB1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606B71911A894F19004DDAB1 /* FacebookSDK.framework */; };
+		60EA882D1A896003004B6BF7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */; };
+		60EA88301A8990B6004B6BF7 /* Comms.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA882F1A8990B5004B6BF7 /* Comms.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,23 +64,31 @@
 		0F61D55A1A89445700FF96F0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0F61D55C1A89446200FF96F0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		0F61D5601A898FDE00FF96F0 /* GamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesViewController.h; sourceTree = "<group>"; };
-		0F61D5611A898FDE00FF96F0 /* GamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesViewController.m; sourceTree = "<group>"; };
-		0F61D5631A89922C00FF96F0 /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
-		0F61D5641A89922C00FF96F0 /* AddGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameViewController.m; sourceTree = "<group>"; };
+		0F61D5661A89C52B00FF96F0 /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
+		0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameViewController.m; sourceTree = "<group>"; };
+		0F61D5691A89C79700FF96F0 /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementViewController.h; path = ../AchievementViewController.h; sourceTree = "<group>"; };
+		0F61D56A1A89C79700FF96F0 /* AchievementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AchievementViewController.m; path = ../AchievementViewController.m; sourceTree = "<group>"; };
+		0F61D56C1A89C7A600FF96F0 /* GamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesViewController.h; sourceTree = "<group>"; };
+		0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesViewController.m; sourceTree = "<group>"; };
+		0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardViewController.h; sourceTree = "<group>"; };
+		0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardViewController.m; sourceTree = "<group>"; };
+		0F61D5761A89CABC00FF96F0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0F61D5771A89CABC00FF96F0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		606B71681A894047004DDAB1 /* GNAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GNAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606B716C1A894047004DDAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606B716D1A894047004DDAB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		606B716F1A894047004DDAB1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		606B71701A894047004DDAB1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		606B71721A894047004DDAB1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		606B71731A894047004DDAB1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		606B71761A894047004DDAB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		606B71781A894048004DDAB1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		606B717B1A894048004DDAB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		606B71811A894048004DDAB1 /* GNARTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GNARTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		606B71861A894048004DDAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606B71871A894048004DDAB1 /* GNARTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNARTests.m; sourceTree = "<group>"; };
+		606B71911A894F19004DDAB1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		60EA882E1A8990B5004B6BF7 /* Comms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comms.h; sourceTree = "<group>"; };
+		60EA882F1A8990B5004B6BF7 /* Comms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comms.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +101,7 @@
 				0F61D55B1A89445700FF96F0 /* SystemConfiguration.framework in Frameworks */,
 				0F61D5591A89444F00FF96F0 /* StoreKit.framework in Frameworks */,
 				0F61D5571A89444900FF96F0 /* Social.framework in Frameworks */,
+				60EA882D1A896003004B6BF7 /* ParseFacebookUtils.framework in Frameworks */,
 				0F61D5551A89444500FF96F0 /* Security.framework in Frameworks */,
 				0F61D5531A89443C00FF96F0 /* QuartzCore.framework in Frameworks */,
 				0F61D5511A89443700FF96F0 /* MobileCoreServices.framework in Frameworks */,
@@ -96,6 +110,7 @@
 				0F61D54B1A89441800FF96F0 /* CFNetwork.framework in Frameworks */,
 				0F61D5491A89441100FF96F0 /* AudioToolbox.framework in Frameworks */,
 				0F61D5471A89440800FF96F0 /* Accounts.framework in Frameworks */,
+				606B71921A894F19004DDAB1 /* FacebookSDK.framework in Frameworks */,
 				0F61D5441A8943BE00FF96F0 /* Parse.framework in Frameworks */,
 				0F61D5431A8943BE00FF96F0 /* Bolts.framework in Frameworks */,
 			);
@@ -122,6 +137,8 @@
 		0F61D5451A8943C400FF96F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */,
+				606B71911A894F19004DDAB1 /* FacebookSDK.framework */,
 				0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */,
 				0F61D55C1A89446200FF96F0 /* libz.dylib */,
 				0F61D55A1A89445700FF96F0 /* SystemConfiguration.framework */,
@@ -139,6 +156,58 @@
 				0F61D5421A8943BE00FF96F0 /* Parse.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0F61D56F1A89C7B700FF96F0 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				0F61D56C1A89C7A600FF96F0 /* GamesViewController.h */,
+				0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */,
+				0F61D5661A89C52B00FF96F0 /* AddGameViewController.h */,
+				0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */,
+				0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */,
+				0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */,
+			);
+			name = Games;
+			sourceTree = "<group>";
+		};
+		0F61D5701A89C7D100FF96F0 /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				0F61D5691A89C79700FF96F0 /* AchievementViewController.h */,
+				0F61D56A1A89C79700FF96F0 /* AchievementViewController.m */,
+			);
+			name = Achievements;
+			sourceTree = "<group>";
+		};
+		0F61D5711A89C7F000FF96F0 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				606B716F1A894047004DDAB1 /* AppDelegate.h */,
+				606B71701A894047004DDAB1 /* AppDelegate.m */,
+				60EA882E1A8990B5004B6BF7 /* Comms.h */,
+				60EA882F1A8990B5004B6BF7 /* Comms.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		0F61D5791A89CAD500FF96F0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0F61D5761A89CABC00FF96F0 /* LoginViewController.h */,
+				0F61D5771A89CABC00FF96F0 /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		0F61D57A1A89CB0A00FF96F0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0F61D5791A89CAD500FF96F0 /* Login */,
+				0F61D56F1A89C7B700FF96F0 /* Games */,
+				0F61D5701A89C7D100FF96F0 /* Achievements */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		606B715F1A894047004DDAB1 = {
@@ -163,15 +232,9 @@
 		606B716A1A894047004DDAB1 /* GNAR */ = {
 			isa = PBXGroup;
 			children = (
-				606B716F1A894047004DDAB1 /* AppDelegate.h */,
-				606B71701A894047004DDAB1 /* AppDelegate.m */,
-				606B71721A894047004DDAB1 /* ViewController.h */,
-				606B71731A894047004DDAB1 /* ViewController.m */,
-				0F61D5601A898FDE00FF96F0 /* GamesViewController.h */,
-				0F61D5611A898FDE00FF96F0 /* GamesViewController.m */,
-				0F61D5631A89922C00FF96F0 /* AddGameViewController.h */,
-				0F61D5641A89922C00FF96F0 /* AddGameViewController.m */,
 				0F61D5401A89434000FF96F0 /* Storyboard */,
+				0F61D57A1A89CB0A00FF96F0 /* Controllers */,
+				0F61D5711A89C7F000FF96F0 /* Other */,
 				606B71781A894048004DDAB1 /* Images.xcassets */,
 				606B717A1A894048004DDAB1 /* LaunchScreen.xib */,
 				606B716B1A894047004DDAB1 /* Supporting Files */,
@@ -305,10 +368,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F61D5621A898FDE00FF96F0 /* GamesViewController.m in Sources */,
-				606B71741A894047004DDAB1 /* ViewController.m in Sources */,
+				0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */,
+				60EA88301A8990B6004B6BF7 /* Comms.m in Sources */,
+				0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
-				0F61D5651A89922C00FF96F0 /* AddGameViewController.m in Sources */,
+				0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */,
+				0F61D56B1A89C79700FF96F0 /* AchievementViewController.m in Sources */,
+				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
