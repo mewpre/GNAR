@@ -63,16 +63,15 @@
 {
     if (![self.usernameTextField.text isEqualToString:@""])
     {
-        // Do the login
-        [Comms login:self];
+        // Do the signup
+        [Comms signup:self withUsername:self.usernameTextField.text];
     }
 }
 
-//Facebook signup and login use same method
-- (void) commsDidLogin:(BOOL)loggedIn
+- (void) commsDidSignUp:(BOOL)signedUp
 {
     // Did we login successfully ?
-    if (loggedIn)
+    if (signedUp)
     {
         NSLog(@"Logged in with Facebook!");
         FBRequest *request = [FBRequest requestForMe];
@@ -98,6 +97,22 @@
                           cancelButtonTitle:@"Ok"
                           otherButtonTitles:nil] show];
     }
+}
+
+- (void)showAlertController
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Account already created"
+                                  message:@"There's already a GNAR account associated with your Facebook. Logging in to your GNAR account."
+                                  preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                               }];
+    [alert addAction:ok];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

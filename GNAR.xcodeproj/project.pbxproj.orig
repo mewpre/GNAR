@@ -22,11 +22,21 @@
 		0F61D55B1A89445700FF96F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55A1A89445700FF96F0 /* SystemConfiguration.framework */; };
 		0F61D55D1A89446200FF96F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55C1A89446200FF96F0 /* libz.dylib */; };
 		0F61D55F1A89446D00FF96F0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */; };
-		0F61D5621A898FDE00FF96F0 /* GamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5611A898FDE00FF96F0 /* GamesViewController.m */; };
-		0F61D5651A89922C00FF96F0 /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5641A89922C00FF96F0 /* AddGameViewController.m */; };
+		0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */; };
+		0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */; };
+		0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */; };
+		0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5771A89CABC00FF96F0 /* LoginViewController.m */; };
+		0F61D57D1A89CE9700FF96F0 /* UserAchievementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D57C1A89CE9700FF96F0 /* UserAchievementsViewController.m */; };
+		0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */; };
+		0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5821A89D12200FF96F0 /* HomeViewController.m */; };
+		0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */; };
+		0FEFE89A1A8A7B810062123D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8991A8A7B810062123D /* User.m */; };
+		0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE89D1A8A7C460062123D /* AchievementViewController.m */; };
+		0FEFE8A11A8A7DB50062123D /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A01A8A7DB50062123D /* Achievement.m */; };
+		0FEFE8A41A8A7ED20062123D /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A31A8A7ED20062123D /* Game.m */; };
+		0FEFE8A71A8A897E0062123D /* AddGameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */; };
 		606B716E1A894047004DDAB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B716D1A894047004DDAB1 /* main.m */; };
 		606B71711A894047004DDAB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71701A894047004DDAB1 /* AppDelegate.m */; };
-		606B71741A894047004DDAB1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71731A894047004DDAB1 /* ViewController.m */; };
 		606B71771A894047004DDAB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606B71751A894047004DDAB1 /* Main.storyboard */; };
 		606B71791A894048004DDAB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606B71781A894048004DDAB1 /* Images.xcassets */; };
 		606B717C1A894048004DDAB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606B717A1A894048004DDAB1 /* LaunchScreen.xib */; };
@@ -34,6 +44,8 @@
 		606B71921A894F19004DDAB1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606B71911A894F19004DDAB1 /* FacebookSDK.framework */; };
 		60EA882D1A896003004B6BF7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */; };
 		60EA88301A8990B6004B6BF7 /* Comms.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA882F1A8990B5004B6BF7 /* Comms.m */; };
+		60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA88321A89E66C004B6BF7 /* SignUpViewController.m */; };
+		60EA88361A8A7C3E004B6BF7 /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA88351A8A7C3E004B6BF7 /* AchievementViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,17 +74,37 @@
 		0F61D55A1A89445700FF96F0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0F61D55C1A89446200FF96F0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		0F61D5601A898FDE00FF96F0 /* GamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesViewController.h; sourceTree = "<group>"; };
-		0F61D5611A898FDE00FF96F0 /* GamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesViewController.m; sourceTree = "<group>"; };
-		0F61D5631A89922C00FF96F0 /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
-		0F61D5641A89922C00FF96F0 /* AddGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameViewController.m; sourceTree = "<group>"; };
+		0F61D5661A89C52B00FF96F0 /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
+		0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameViewController.m; sourceTree = "<group>"; };
+		0F61D56C1A89C7A600FF96F0 /* GamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesViewController.h; sourceTree = "<group>"; };
+		0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesViewController.m; sourceTree = "<group>"; };
+		0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardViewController.h; sourceTree = "<group>"; };
+		0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardViewController.m; sourceTree = "<group>"; };
+		0F61D5761A89CABC00FF96F0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0F61D5771A89CABC00FF96F0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0F61D57B1A89CE9700FF96F0 /* UserAchievementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAchievementsViewController.h; sourceTree = "<group>"; };
+		0F61D57C1A89CE9700FF96F0 /* UserAchievementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAchievementsViewController.m; sourceTree = "<group>"; };
+		0F61D57E1A89D04E00FF96F0 /* AchievementDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementDetailViewController.h; sourceTree = "<group>"; };
+		0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementDetailViewController.m; sourceTree = "<group>"; };
+		0F61D5811A89D12200FF96F0 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		0F61D5821A89D12200FF96F0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		0F61D5851A89DBA800FF96F0 /* AddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsViewController.h; sourceTree = "<group>"; };
+		0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsViewController.m; sourceTree = "<group>"; };
+		0FEFE8981A8A7B810062123D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		0FEFE8991A8A7B810062123D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		0FEFE89C1A8A7C460062123D /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementViewController.h; sourceTree = "<group>"; };
+		0FEFE89D1A8A7C460062123D /* AchievementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementViewController.m; sourceTree = "<group>"; };
+		0FEFE89F1A8A7DB50062123D /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
+		0FEFE8A01A8A7DB50062123D /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
+		0FEFE8A21A8A7ED20062123D /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		0FEFE8A31A8A7ED20062123D /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		0FEFE8A51A8A897E0062123D /* AddGameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameTableViewController.h; sourceTree = "<group>"; };
+		0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameTableViewController.m; sourceTree = "<group>"; };
 		606B71681A894047004DDAB1 /* GNAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GNAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606B716C1A894047004DDAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606B716D1A894047004DDAB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		606B716F1A894047004DDAB1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		606B71701A894047004DDAB1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		606B71721A894047004DDAB1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		606B71731A894047004DDAB1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		606B71761A894047004DDAB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		606B71781A894048004DDAB1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		606B717B1A894048004DDAB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -83,6 +115,10 @@
 		60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		60EA882E1A8990B5004B6BF7 /* Comms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comms.h; sourceTree = "<group>"; };
 		60EA882F1A8990B5004B6BF7 /* Comms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comms.m; sourceTree = "<group>"; };
+		60EA88311A89E66C004B6BF7 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		60EA88321A89E66C004B6BF7 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		60EA88341A8A7C3E004B6BF7 /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementViewController.h; sourceTree = "<group>"; };
+		60EA88351A8A7C3E004B6BF7 /* AchievementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +188,96 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0F61D56F1A89C7B700FF96F0 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				0F61D56C1A89C7A600FF96F0 /* GamesViewController.h */,
+				0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */,
+				0F61D5661A89C52B00FF96F0 /* AddGameViewController.h */,
+				0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */,
+				0F61D5851A89DBA800FF96F0 /* AddFriendsViewController.h */,
+				0FEFE8A51A8A897E0062123D /* AddGameTableViewController.h */,
+				0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */,
+				0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */,
+				0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */,
+				0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */,
+				0F61D57B1A89CE9700FF96F0 /* UserAchievementsViewController.h */,
+				0F61D57C1A89CE9700FF96F0 /* UserAchievementsViewController.m */,
+			);
+			name = Games;
+			sourceTree = "<group>";
+		};
+		0F61D5701A89C7D100FF96F0 /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+<<<<<<< HEAD
+				0FEFE89C1A8A7C460062123D /* AchievementViewController.h */,
+				0FEFE89D1A8A7C460062123D /* AchievementViewController.m */,
+=======
+				60EA88341A8A7C3E004B6BF7 /* AchievementViewController.h */,
+				60EA88351A8A7C3E004B6BF7 /* AchievementViewController.m */,
+>>>>>>> ff57d0fc43b4c193bc68c4eafed71b58931bec86
+				0F61D57E1A89D04E00FF96F0 /* AchievementDetailViewController.h */,
+				0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */,
+			);
+			name = Achievements;
+			sourceTree = "<group>";
+		};
+		0F61D5711A89C7F000FF96F0 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				606B716F1A894047004DDAB1 /* AppDelegate.h */,
+				606B71701A894047004DDAB1 /* AppDelegate.m */,
+				60EA882E1A8990B5004B6BF7 /* Comms.h */,
+				60EA882F1A8990B5004B6BF7 /* Comms.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		0F61D5791A89CAD500FF96F0 /* Sign Up/Login */ = {
+			isa = PBXGroup;
+			children = (
+				0F61D5761A89CABC00FF96F0 /* LoginViewController.h */,
+				0F61D5771A89CABC00FF96F0 /* LoginViewController.m */,
+				60EA88311A89E66C004B6BF7 /* SignUpViewController.h */,
+				60EA88321A89E66C004B6BF7 /* SignUpViewController.m */,
+			);
+			name = "Sign Up/Login";
+			sourceTree = "<group>";
+		};
+		0F61D57A1A89CB0A00FF96F0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0F61D5841A89D12600FF96F0 /* Home */,
+				0F61D5791A89CAD500FF96F0 /* Sign Up/Login */,
+				0F61D56F1A89C7B700FF96F0 /* Games */,
+				0F61D5701A89C7D100FF96F0 /* Achievements */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0F61D5841A89D12600FF96F0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0F61D5811A89D12200FF96F0 /* HomeViewController.h */,
+				0F61D5821A89D12200FF96F0 /* HomeViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		0FEFE89B1A8A7B8C0062123D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0FEFE8981A8A7B810062123D /* User.h */,
+				0FEFE8991A8A7B810062123D /* User.m */,
+				0FEFE89F1A8A7DB50062123D /* Achievement.h */,
+				0FEFE8A01A8A7DB50062123D /* Achievement.m */,
+				0FEFE8A21A8A7ED20062123D /* Game.h */,
+				0FEFE8A31A8A7ED20062123D /* Game.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		606B715F1A894047004DDAB1 = {
 			isa = PBXGroup;
 			children = (
@@ -174,20 +300,10 @@
 		606B716A1A894047004DDAB1 /* GNAR */ = {
 			isa = PBXGroup;
 			children = (
-				606B716F1A894047004DDAB1 /* AppDelegate.h */,
-				606B71701A894047004DDAB1 /* AppDelegate.m */,
-				606B71721A894047004DDAB1 /* ViewController.h */,
-				606B71731A894047004DDAB1 /* ViewController.m */,
-<<<<<<< HEAD
-				0F61D5601A898FDE00FF96F0 /* GamesViewController.h */,
-				0F61D5611A898FDE00FF96F0 /* GamesViewController.m */,
-				0F61D5631A89922C00FF96F0 /* AddGameViewController.h */,
-				0F61D5641A89922C00FF96F0 /* AddGameViewController.m */,
-=======
-				60EA882E1A8990B5004B6BF7 /* Comms.h */,
-				60EA882F1A8990B5004B6BF7 /* Comms.m */,
->>>>>>> 8847f66c3e3f0a3bfcd764cac092271092e1c4aa
 				0F61D5401A89434000FF96F0 /* Storyboard */,
+				0F61D57A1A89CB0A00FF96F0 /* Controllers */,
+				0FEFE89B1A8A7B8C0062123D /* Models */,
+				0F61D5711A89C7F000FF96F0 /* Other */,
 				606B71781A894048004DDAB1 /* Images.xcassets */,
 				606B717A1A894048004DDAB1 /* LaunchScreen.xib */,
 				606B716B1A894047004DDAB1 /* Supporting Files */,
@@ -321,11 +437,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F61D5621A898FDE00FF96F0 /* GamesViewController.m in Sources */,
-				606B71741A894047004DDAB1 /* ViewController.m in Sources */,
+				0FEFE8A41A8A7ED20062123D /* Game.m in Sources */,
+				0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */,
+				0FEFE8A11A8A7DB50062123D /* Achievement.m in Sources */,
 				60EA88301A8990B6004B6BF7 /* Comms.m in Sources */,
+				0F61D57D1A89CE9700FF96F0 /* UserAchievementsViewController.m in Sources */,
+				60EA88361A8A7C3E004B6BF7 /* AchievementViewController.m in Sources */,
+				0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */,
+				0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */,
+				0FEFE89A1A8A7B810062123D /* User.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
-				0F61D5651A89922C00FF96F0 /* AddGameViewController.m in Sources */,
+				0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */,
+				0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */,
+				0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */,
+<<<<<<< HEAD
+				0FEFE8A71A8A897E0062123D /* AddGameTableViewController.m in Sources */,
+=======
+>>>>>>> ff57d0fc43b4c193bc68c4eafed71b58931bec86
+				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
+				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
+				0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

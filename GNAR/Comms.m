@@ -41,46 +41,69 @@
                     [[PFUser currentUser] setObject:me.objectID forKey:@"fbId"];
                     if (user.isNew)
                     {
-                        //Alert view to set username
+                        [user deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            [PFUser logOut];
+                            [delegate showAlertController];
+                        }];
                     }
-                    [[PFUser currentUser] saveInBackground];
+                    else
+                    {
+                        [[PFUser currentUser] saveInBackground];
+                        
+                        // Callback - login successful
+                        if ([delegate respondsToSelector:@selector(commsDidLogin:)]) {
+                            [delegate commsDidLogin:YES];
+                        }
+                    }
                 }
-
-                // Callback - login successful
-                if ([delegate respondsToSelector:@selector(commsDidLogin:)]) {
-                    [delegate commsDidLogin:YES];
-                }
-
             }];
         }
     }];
 }
 
-- (void)showUsernameAlertController
++ (void) signup:(id<CommsDelegate>)delegate withUsername: (NSString *)username
 {
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"Create an account?"
-                                  message:@"It looks like you are trying to log in with Facebook, but there's no GNAR account associated with your Facebook Account. If you want to create a new account, please input a username you'd like to use."
-                                  preferredStyle:UIAlertControllerStyleAlert];
+    // Set permissions required from the facebook user account
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
 
-    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                               handler:^(UIAlertAction * action) {
-                                                   //Do Some action here
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        // Was signup successful ?
+        if (!user) {
+            if (!error) {
+                NSLog(@"The user cancelled the Facebook signup.");
+            } else {
+                NSLog(@"An error occurred: %@", error.localizedDescription);
+            }
 
-                                               }];
-    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction * action) {
-                                                       [alert dismissViewControllerAnimated:YES completion:nil];
-                                                   }];
+            // Callback - signup failed
+            if ([delegate respondsToSelector:@selector(commsDidLogin:)]) {
+                [delegate commsDidLogin:NO];
+            }
+        }
+        else
+        {
+            // Callback - signup successful
+            [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error)
+             {
+                 if (!error) {
+                     NSDictionary<FBGraphUser> *me = (NSDictionary<FBGraphUser> *)result;
+                     // Store the Facebook Id
+                     [[PFUser currentUser] setObject:me.objectID forKey:@"fbId"];
+                     if (user.isNew)
+                     {
+                         [PFUser currentUser].username = username;
+                         [[PFUser currentUser] saveInBackground];
 
-    [alert addAction:ok];
-    [alert addAction:cancel];
-
-    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"Username";
+                         [delegate commsDidSignUp:YES];
+                     }
+                     else
+                     {
+                         [delegate showAlertController];
+                     }
+                 }
+             }];
+        }
     }];
-
-//    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

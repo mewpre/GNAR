@@ -11,9 +11,11 @@
 @protocol CommsDelegate <NSObject>
 @optional
 - (void) commsDidLogin:(BOOL)loggedIn;
-- (void) commsDidSignup:(BOOL)signedUp;
+- (void) commsDidSignUp:(BOOL)signedUp;
+- (void)showAlertController;
 @end
 
 @interface Comms : NSObject
 + (void) login:(id<CommsDelegate>)delegate;
++ (void) signup:(id<CommsDelegate>)delegate withUsername: (NSString *)username;
 @end
