@@ -1,20 +1,21 @@
 //
-//  AddGameViewController.m
+//  AddFriendsViewController.m
 //  GNAR
 //
 //  Created by Chris Giersch on 2/9/15.
 //  Copyright (c) 2015 Yi-Chin Sun. All rights reserved.
 //
 
-#import "AddGameViewController.h"
+#import "AddFriendsViewController.h"
 
-@interface AddGameViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AddFriendsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
-@implementation AddGameViewController
+@implementation AddFriendsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,32 +23,30 @@
 }
 
 
-//----------------------------------------    Done Button    ----------------------------------------------------
-#pragma mark - Done Button
+//----------------------------------------    Actions    ----------------------------------------------------
+#pragma mark - Actions
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
 {
     
 }
 
+- (IBAction)onSegmentPressed:(UISegmentedControl *)sender
+{
+
+}
+
+
 //----------------------------------------    Table View    ----------------------------------------------------
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.text = @"Friends";
     return cell;
 }
-
-
-
-
-
-
-
 
 
 

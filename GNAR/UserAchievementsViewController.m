@@ -8,7 +8,8 @@
 
 #import "UserAchievementsViewController.h"
 
-@interface UserAchievementsViewController ()
+@interface UserAchievementsViewController () <UITableViewDataSource, UITableViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -19,6 +20,28 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+
+//----------------------------------------    Table View    ----------------------------------------------------
+#pragma mark - Table View
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    return cell;
+}
+
+
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

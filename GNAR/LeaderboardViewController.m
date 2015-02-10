@@ -8,7 +8,7 @@
 
 #import "LeaderboardViewController.h"
 
-@interface LeaderboardViewController ()
+@interface LeaderboardViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -21,6 +21,8 @@
     // Do any additional setup after loading the view.
 }
 
+//----------------------------------------    Table View    ----------------------------------------------------
+#pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
