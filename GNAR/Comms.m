@@ -13,9 +13,10 @@
 
 + (void) login:(id<CommsDelegate>)delegate
 {
-    // Basic User information and your friends are part of the standard permissions
-    // so there is no reason to ask for additional permissions
-    [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
+    // Set permissions required from the facebook user account
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         // Was login successful ?
         if (!user) {
             if (!error) {
@@ -36,9 +37,20 @@
             }
 
             // Callback - login successful
-            if ([delegate respondsToSelector:@selector(commsDidLogin:)]) {
-                [delegate commsDidLogin:YES];
-            }
+            [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error)
+            {
+                if (!error) {
+                    NSDictionary<FBGraphUser> *me = (NSDictionary<FBGraphUser> *)result;
+                    // Store the Facebook Id
+                    [[PFUser currentUser] setObject:me.objectID forKey:@"fbId"];
+                    [[PFUser currentUser] saveInBackground];
+                }
+
+                // Callback - login successful
+                if ([delegate respondsToSelector:@selector(commsDidLogin:)]) {
+                    [delegate commsDidLogin:YES];
+                }
+            }];
         }
     }];
 }
