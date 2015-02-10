@@ -29,6 +29,9 @@
 		606B71791A894048004DDAB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606B71781A894048004DDAB1 /* Images.xcassets */; };
 		606B717C1A894048004DDAB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606B717A1A894048004DDAB1 /* LaunchScreen.xib */; };
 		606B71881A894048004DDAB1 /* GNARTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71871A894048004DDAB1 /* GNARTests.m */; };
+		606B71921A894F19004DDAB1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606B71911A894F19004DDAB1 /* FacebookSDK.framework */; };
+		60EA882D1A896003004B6BF7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */; };
+		60EA88301A8990B6004B6BF7 /* Comms.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA882F1A8990B5004B6BF7 /* Comms.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,10 @@
 		606B71811A894048004DDAB1 /* GNARTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GNARTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		606B71861A894048004DDAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606B71871A894048004DDAB1 /* GNARTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNARTests.m; sourceTree = "<group>"; };
+		606B71911A894F19004DDAB1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		60EA882E1A8990B5004B6BF7 /* Comms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comms.h; sourceTree = "<group>"; };
+		60EA882F1A8990B5004B6BF7 /* Comms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comms.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +89,7 @@
 				0F61D55B1A89445700FF96F0 /* SystemConfiguration.framework in Frameworks */,
 				0F61D5591A89444F00FF96F0 /* StoreKit.framework in Frameworks */,
 				0F61D5571A89444900FF96F0 /* Social.framework in Frameworks */,
+				60EA882D1A896003004B6BF7 /* ParseFacebookUtils.framework in Frameworks */,
 				0F61D5551A89444500FF96F0 /* Security.framework in Frameworks */,
 				0F61D5531A89443C00FF96F0 /* QuartzCore.framework in Frameworks */,
 				0F61D5511A89443700FF96F0 /* MobileCoreServices.framework in Frameworks */,
@@ -90,6 +98,7 @@
 				0F61D54B1A89441800FF96F0 /* CFNetwork.framework in Frameworks */,
 				0F61D5491A89441100FF96F0 /* AudioToolbox.framework in Frameworks */,
 				0F61D5471A89440800FF96F0 /* Accounts.framework in Frameworks */,
+				606B71921A894F19004DDAB1 /* FacebookSDK.framework in Frameworks */,
 				0F61D5441A8943BE00FF96F0 /* Parse.framework in Frameworks */,
 				0F61D5431A8943BE00FF96F0 /* Bolts.framework in Frameworks */,
 			);
@@ -116,6 +125,8 @@
 		0F61D5451A8943C400FF96F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */,
+				606B71911A894F19004DDAB1 /* FacebookSDK.framework */,
 				0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */,
 				0F61D55C1A89446200FF96F0 /* libz.dylib */,
 				0F61D55A1A89445700FF96F0 /* SystemConfiguration.framework */,
@@ -161,6 +172,8 @@
 				606B71701A894047004DDAB1 /* AppDelegate.m */,
 				606B71721A894047004DDAB1 /* ViewController.h */,
 				606B71731A894047004DDAB1 /* ViewController.m */,
+				60EA882E1A8990B5004B6BF7 /* Comms.h */,
+				60EA882F1A8990B5004B6BF7 /* Comms.m */,
 				0F61D5401A89434000FF96F0 /* Storyboard */,
 				606B71781A894048004DDAB1 /* Images.xcassets */,
 				606B717A1A894048004DDAB1 /* LaunchScreen.xib */,
@@ -296,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				606B71741A894047004DDAB1 /* ViewController.m in Sources */,
+				60EA88301A8990B6004B6BF7 /* Comms.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,
 			);
