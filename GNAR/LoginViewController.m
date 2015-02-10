@@ -81,5 +81,21 @@
     }
 }
 
+- (void)showAlertController
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Account not found"
+                                  message:@"There's no GNAR account associated with your Facebook. Please sign up first."
+                                  preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    [alert addAction:ok];
+
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 
 @end
