@@ -17,6 +17,13 @@
 @dynamic isAvailable;
 @dynamic isCustom;
 @dynamic type;
+@dynamic snowLevel;
+//@dynamic timeLimiter;
+@dynamic description;
+@dynamic difficulty;
+@dynamic heroFactor;
+@dynamic funFactor;
+
 @dynamic completedAt;
 
 

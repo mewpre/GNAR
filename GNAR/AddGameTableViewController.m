@@ -54,8 +54,8 @@
 #define kDateKey        @"date"    // key for obtaining the data source item's date value
 
 // keep track of which rows have date cells
-#define kDateStartRow   2
-#define kDateEndRow     3
+#define kDateStartRow   1
+#define kDateEndRow     2
 
 static NSString *kDateCellID = @"dateCell";     // the cells with the start or end date
 static NSString *kDatePickerID = @"datePicker"; // the cell containing the date picker
