@@ -37,26 +37,40 @@
 #pragma mark - Actions
 - (IBAction)onSignUpButtonPressed:(UIButton *)sender
 {
-    PFUser *user = [PFUser user];
-    user.username = self.usernameTextField.text;
-    user.password = self.passwordTextField.text;
-    user.email = self.emailTextField.text;
-
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+    if ([self.usernameTextField.text isEqualToString:@""])
     {
-        if (!error)
-        {
-            // Hooray! Let them use the app now.
-            NSLog(@"Signed up as %@", [PFUser currentUser].username);
-        }
-        else
-        {
-            NSString *errorString = [error userInfo][@"error"];
-            NSLog(@"%@", errorString);
-            // Show the errorString somewhere and let the user try again.
-        }
-    }];
+        [self showSignUpErrorAlertController:@"Error: Username Required" withMessage:@"Please enter a username."];
+    }
+    else if([self.passwordTextField.text isEqualToString:@""])
+    {
+        [self showSignUpErrorAlertController:@"Error: Password missing" withMessage:@"Please enter a password."];
+    }
+    else if ([self.emailTextField.text isEqualToString:@""])
+    {
+        [self showSignUpErrorAlertController:@"Error: Email missing" withMessage:@"Please enter a email."];
 
+    }
+    else
+    {
+        PFUser *user = [PFUser user];
+        user.username = self.usernameTextField.text;
+        user.password = self.passwordTextField.text;
+        user.email = self.emailTextField.text;
+
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+             if (!error)
+             {
+                 // Hooray! Let them use the app now.
+                 NSLog(@"Signed up as %@", [PFUser currentUser].username);
+             }
+             else
+             {
+                 NSString *errorString = [error userInfo][@"error"];
+                 [self showSignUpErrorAlertController:@"Error" withMessage:errorString];
+             }
+         }];
+    }
 }
 
 - (IBAction)onFacebookButtonPressed:(UIButton *)sender
@@ -66,11 +80,15 @@
         // Do the signup
         [Comms signup:self withUsername:self.usernameTextField.text];
     }
+    else
+    {
+        [self showSignUpErrorAlertController:@"Error: Username Required" withMessage:@"Please enter a username."];
+    }
 }
 
 - (void) commsDidSignUp:(BOOL)signedUp
 {
-    // Did we login successfully ?
+    // Did we signup successfully ?
     if (signedUp)
     {
         NSLog(@"Logged in with Facebook!");
@@ -80,9 +98,7 @@
                 // result is a dictionary with the user's Facebook data
                 NSDictionary *userData = (NSDictionary *)result;
                 NSLog(@"%@", userData);
-                [[PFUser currentUser] setUsername:self.usernameTextField.text];
-                NSLog(@"%@",[PFUser currentUser].objectId);
-                NSLog(@"%@",[PFUser currentUser].username);
+                [[PFUser currentUser] setEmail:userData[@"email"]];
                 [[PFUser currentUser] saveInBackground];
 
             }
@@ -101,9 +117,14 @@
 
 - (void)showAlertController
 {
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"Account already created"
-                                  message:@"There's already a GNAR account associated with your Facebook. Logging in to your GNAR account."
+    [self showSignUpErrorAlertController:@"Account already created" withMessage:@"There's already a GNAR account associated with your Facebook. Logging in to your GNAR account."];
+}
+
+- (void)showSignUpErrorAlertController: (NSString *)errorTitle withMessage: (NSString*)errorMessage
+{
+    UIAlertController * alert= [UIAlertController
+                                  alertControllerWithTitle:errorTitle
+                                  message:errorMessage
                                   preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault

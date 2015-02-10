@@ -98,6 +98,8 @@
                      }
                      else
                      {
+                         //User already exists in Parse. Log in instead.
+                         [[PFUser currentUser] saveInBackground];
                          [delegate showAlertController];
                      }
                  }

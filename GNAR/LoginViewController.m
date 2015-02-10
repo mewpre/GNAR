@@ -36,10 +36,30 @@
 #pragma mark - Actions
 - (IBAction)onLoginButtonPressed:(UIButton *)sender
 {
-    [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error)
+    if ([self.usernameTextField.text isEqualToString:@""])
     {
-        NSLog(@"Logged in as %@", [PFUser currentUser]);
-    }];
+        [self showLoginErrorAlertController: @"Error: Username missing" withMessage:@"Please enter a username."];
+    }
+    else if([self.passwordTextField.text isEqualToString:@""])
+    {
+        [self showLoginErrorAlertController: @"Error: Password missing" withMessage:@"Please enter a password."];
+    }
+    else
+    {
+        [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error)
+         {
+             if (!error)
+             {
+                 NSLog(@"Logged in as %@", [PFUser currentUser].username);
+             }
+             else
+             {
+                 NSString *errorString = [error userInfo][@"error"];
+                 NSLog(@"%@", errorString);
+                 [self showLoginErrorAlertController:@"Error" withMessage:errorString];
+             }
+         }];
+    }
 }
 
 - (IBAction)onFacebookButtonPressed:(UIButton *)sender
@@ -83,15 +103,20 @@
 
 - (void)showAlertController
 {
-    UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"Account not found"
-                                  message:@"There's no GNAR account associated with your Facebook. Please sign up first."
-                                  preferredStyle:UIAlertControllerStyleAlert];
+    [self showLoginErrorAlertController:@"Account not found" withMessage:@"There's no GNAR account associated with your Facebook. Please sign up first."];
+}
+
+- (void)showLoginErrorAlertController: (NSString *)errorTitle withMessage: (NSString*)errorMessage
+{
+    UIAlertController * alert= [UIAlertController
+                                alertControllerWithTitle:errorTitle
+                                message:errorMessage
+                                preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction * action) {
-                                                       [alert dismissViewControllerAnimated:YES completion:nil];
-                                                   }];
+                                               handler:^(UIAlertAction * action) {
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                               }];
     [alert addAction:ok];
 
     [self presentViewController:alert animated:YES completion:nil];
