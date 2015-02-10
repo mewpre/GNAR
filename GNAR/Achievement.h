@@ -17,14 +17,6 @@
 @property BOOL isAvailable;
 @property BOOL isCustom;
 @property (retain) NSString *type;
-@property (retain) NSString *snowLevel;
-//@property double timeLimiter;
-@property (retain) NSString *description;
-@property (retain) NSString *difficulty;
-@property (retain) NSString *heroFactor;
-@property (retain) NSString *funFactor;
-
-
 @property (retain) NSDate *completedAt;
 
 
