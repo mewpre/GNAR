@@ -56,4 +56,31 @@
     }];
 }
 
+- (void)showUsernameAlertController
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Create an account?"
+                                  message:@"It looks like you are trying to log in with Facebook, but there's no GNAR account associated with your Facebook Account. If you want to create a new account, please input a username you'd like to use."
+                                  preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                                   //Do Some action here
+
+                                               }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+
+    [alert addAction:ok];
+    [alert addAction:cancel];
+
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Username";
+    }];
+
+//    [self presentViewController:alert animated:YES completion:nil];
+}
+
 @end
