@@ -8,7 +8,8 @@
 
 #import "GamesViewController.h"
 
-@interface GamesViewController ()
+@interface GamesViewController () <UITableViewDataSource, UITableViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
@@ -34,6 +35,26 @@
     cell.textLabel.text = @"My First Game";
     return cell;
 }
+
+
+//-------------------------------------    Prepare for Segue    ----------------------------------------------------
+#pragma mark - Table View
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"AddGameSegue"])
+    {
+        
+    }
+    else
+    {
+
+    }
+}
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
