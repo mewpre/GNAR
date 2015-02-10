@@ -7,19 +7,33 @@
 //
 
 #import "GamesViewController.h"
+#import "ParseFetcher.h"
 
 @interface GamesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
+@property NSArray *gamesArray;
+
 @end
 
 @implementation GamesViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [ParseFetcher getCurrentUserGamesWithCompletion:^(NSArray *array) {
+        self.gamesArray = array;
+        [self.tableView reloadData];
+    }];
 }
 
 
@@ -27,12 +41,17 @@
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.gamesArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.text = @"My First Game";
+
+    // Get game object for current cell
+    PFObject *game = self.gamesArray[indexPath.row];
+
+    // Set cell title to game's mountain
+    cell.textLabel.text = [game objectForKey:@"mountain"];
     return cell;
 }
 
