@@ -7,18 +7,23 @@
 //
 
 #import "AddGameViewController.h"
+#import <Parse/Parse.h>
 
 @interface AddGameViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property NSArray *addGameArray;
+
 @end
 
 @implementation AddGameViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    self.addGameArray = [[NSArray alloc] initWithObjects:@"Friends", @"Mountains", @"Start Date", @"End Date", nil];
 }
 
 
@@ -26,19 +31,41 @@
 #pragma mark - Done Button
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
 {
-    
+    // Create default game for testing
+    PFObject *game = [PFObject objectWithClassName:@"Game"];
+    game[@"name"] = @"My First Game";
+    game[@"mountain"] = @"Vail";
+    game[@"startDate"] = [NSDate new];
+    game[@"endDate"] = [NSDate new];
+
+    [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [[PFUser currentUser] addObject:game forKey:@"games"];
+
+
+
+        // Fix relationship and call
+
+
+
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            // unwind segue to previous view controller
+            [self.navigationController popViewControllerAnimated:YES];
+
+        }];
+    }];
+
 }
 
 //----------------------------------------    Table View    ----------------------------------------------------
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.addGameArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.text = @"Friends";
+    cell.textLabel.text = self.addGameArray[indexPath.row];
     return cell;
 }
 
