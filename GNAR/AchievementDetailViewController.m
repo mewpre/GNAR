@@ -1,20 +1,20 @@
 //
-//  AchievementViewController.m
+//  AchievementDetailViewController.m
 //  GNAR
 //
 //  Created by Chris Giersch on 2/9/15.
 //  Copyright (c) 2015 Yi-Chin Sun. All rights reserved.
 //
 
-#import "AchievementViewController.h"
+#import "AchievementDetailViewController.h"
 
-@interface AchievementViewController ()
+@interface AchievementDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation AchievementViewController
+@implementation AchievementDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +32,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     return cell;
 }
+
+
 
 
 
