@@ -11,6 +11,7 @@
 @protocol CommsDelegate <NSObject>
 @optional
 - (void) commsDidLogin:(BOOL)loggedIn;
+- (void) commsDidSignup:(BOOL)signedUp;
 @end
 
 @interface Comms : NSObject
