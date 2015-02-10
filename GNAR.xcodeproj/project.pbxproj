@@ -23,7 +23,6 @@
 		0F61D55D1A89446200FF96F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55C1A89446200FF96F0 /* libz.dylib */; };
 		0F61D55F1A89446D00FF96F0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */; };
 		0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */; };
-		0F61D56B1A89C79700FF96F0 /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D56A1A89C79700FF96F0 /* AchievementViewController.m */; };
 		0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */; };
 		0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */; };
 		0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5771A89CABC00FF96F0 /* LoginViewController.m */; };
@@ -42,6 +41,7 @@
 		60EA882D1A896003004B6BF7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */; };
 		60EA88301A8990B6004B6BF7 /* Comms.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA882F1A8990B5004B6BF7 /* Comms.m */; };
 		60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA88321A89E66C004B6BF7 /* SignUpViewController.m */; };
+		60EA88361A8A7C3E004B6BF7 /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA88351A8A7C3E004B6BF7 /* AchievementViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +72,6 @@
 		0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0F61D5661A89C52B00FF96F0 /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
 		0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameViewController.m; sourceTree = "<group>"; };
-		0F61D5691A89C79700FF96F0 /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementViewController.h; path = ../AchievementViewController.h; sourceTree = "<group>"; };
-		0F61D56A1A89C79700FF96F0 /* AchievementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AchievementViewController.m; path = ../AchievementViewController.m; sourceTree = "<group>"; };
 		0F61D56C1A89C7A600FF96F0 /* GamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesViewController.h; sourceTree = "<group>"; };
 		0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesViewController.m; sourceTree = "<group>"; };
 		0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardViewController.h; sourceTree = "<group>"; };
@@ -107,6 +105,8 @@
 		60EA882F1A8990B5004B6BF7 /* Comms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comms.m; sourceTree = "<group>"; };
 		60EA88311A89E66C004B6BF7 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		60EA88321A89E66C004B6BF7 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		60EA88341A8A7C3E004B6BF7 /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementViewController.h; sourceTree = "<group>"; };
+		60EA88351A8A7C3E004B6BF7 /* AchievementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,8 +196,8 @@
 		0F61D5701A89C7D100FF96F0 /* Achievements */ = {
 			isa = PBXGroup;
 			children = (
-				0F61D5691A89C79700FF96F0 /* AchievementViewController.h */,
-				0F61D56A1A89C79700FF96F0 /* AchievementViewController.m */,
+				60EA88341A8A7C3E004B6BF7 /* AchievementViewController.h */,
+				60EA88351A8A7C3E004B6BF7 /* AchievementViewController.m */,
 				0F61D57E1A89D04E00FF96F0 /* AchievementDetailViewController.h */,
 				0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */,
 			);
@@ -409,6 +409,7 @@
 				0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */,
 				60EA88301A8990B6004B6BF7 /* Comms.m in Sources */,
 				0F61D57D1A89CE9700FF96F0 /* UserAchievementsViewController.m in Sources */,
+				60EA88361A8A7C3E004B6BF7 /* AchievementViewController.m in Sources */,
 				0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */,
 				0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
@@ -416,7 +417,6 @@
 				0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */,
 				0F6C0A5A1A89E62C009F4D17 /* ParseFetcher.m in Sources */,
 				0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */,
-				0F61D56B1A89C79700FF96F0 /* AchievementViewController.m in Sources */,
 				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
 				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,
