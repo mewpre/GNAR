@@ -40,6 +40,7 @@
 		606B71921A894F19004DDAB1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606B71911A894F19004DDAB1 /* FacebookSDK.framework */; };
 		60EA882D1A896003004B6BF7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */; };
 		60EA88301A8990B6004B6BF7 /* Comms.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA882F1A8990B5004B6BF7 /* Comms.m */; };
+		60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA88321A89E66C004B6BF7 /* SignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		60EA882E1A8990B5004B6BF7 /* Comms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comms.h; sourceTree = "<group>"; };
 		60EA882F1A8990B5004B6BF7 /* Comms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comms.m; sourceTree = "<group>"; };
+		60EA88311A89E66C004B6BF7 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		60EA88321A89E66C004B6BF7 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,20 +212,22 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
-		0F61D5791A89CAD500FF96F0 /* Login */ = {
+		0F61D5791A89CAD500FF96F0 /* Sign Up/Login */ = {
 			isa = PBXGroup;
 			children = (
 				0F61D5761A89CABC00FF96F0 /* LoginViewController.h */,
 				0F61D5771A89CABC00FF96F0 /* LoginViewController.m */,
+				60EA88311A89E66C004B6BF7 /* SignUpViewController.h */,
+				60EA88321A89E66C004B6BF7 /* SignUpViewController.m */,
 			);
-			name = Login;
+			name = "Sign Up/Login";
 			sourceTree = "<group>";
 		};
 		0F61D57A1A89CB0A00FF96F0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				0F61D5841A89D12600FF96F0 /* Home */,
-				0F61D5791A89CAD500FF96F0 /* Login */,
+				0F61D5791A89CAD500FF96F0 /* Sign Up/Login */,
 				0F61D56F1A89C7B700FF96F0 /* Games */,
 				0F61D5701A89C7D100FF96F0 /* Achievements */,
 			);
@@ -407,6 +412,7 @@
 				0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */,
 				0F61D56B1A89C79700FF96F0 /* AchievementViewController.m in Sources */,
 				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
+				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

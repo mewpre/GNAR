@@ -29,13 +29,9 @@
             if ([delegate respondsToSelector:@selector(commsDidLogin:)]) {
                 [delegate commsDidLogin:NO];
             }
-        } else {
-            if (user.isNew) {
-                NSLog(@"User signed up and logged in through Facebook!");
-            } else {
-                NSLog(@"User logged in through Facebook!");
-            }
-
+        }
+        else
+        {
             // Callback - login successful
             [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error)
             {
@@ -43,6 +39,10 @@
                     NSDictionary<FBGraphUser> *me = (NSDictionary<FBGraphUser> *)result;
                     // Store the Facebook Id
                     [[PFUser currentUser] setObject:me.objectID forKey:@"fbId"];
+                    if (user.isNew)
+                    {
+                        //Alert view to set username
+                    }
                     [[PFUser currentUser] saveInBackground];
                 }
 
@@ -50,6 +50,7 @@
                 if ([delegate respondsToSelector:@selector(commsDidLogin:)]) {
                     [delegate commsDidLogin:YES];
                 }
+
             }];
         }
     }];
