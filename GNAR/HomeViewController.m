@@ -1,39 +1,23 @@
 //
-//  AchievementViewController.m
+//  HomeViewController.m
 //  GNAR
 //
 //  Created by Chris Giersch on 2/9/15.
 //  Copyright (c) 2015 Yi-Chin Sun. All rights reserved.
 //
 
-#import "AchievementViewController.h"
+#import "HomeViewController.h"
 
-@interface AchievementViewController ()
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface HomeViewController ()
 
 @end
 
-@implementation AchievementViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-
-//----------------------------------------    Table View    ----------------------------------------------------
-#pragma mark - Table View
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 0;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    return cell;
-}
-
-
 
 
 
