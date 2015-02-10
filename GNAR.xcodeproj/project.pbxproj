@@ -23,7 +23,6 @@
 		0F61D55D1A89446200FF96F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55C1A89446200FF96F0 /* libz.dylib */; };
 		0F61D55F1A89446D00FF96F0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */; };
 		0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */; };
-		0F61D56B1A89C79700FF96F0 /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D56A1A89C79700FF96F0 /* AchievementViewController.m */; };
 		0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */; };
 		0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */; };
 		0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5771A89CABC00FF96F0 /* LoginViewController.m */; };
@@ -31,7 +30,11 @@
 		0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */; };
 		0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5821A89D12200FF96F0 /* HomeViewController.m */; };
 		0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */; };
-		0F6C0A5A1A89E62C009F4D17 /* ParseFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C0A591A89E62C009F4D17 /* ParseFetcher.m */; };
+		0FEFE89A1A8A7B810062123D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8991A8A7B810062123D /* User.m */; };
+		0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE89D1A8A7C460062123D /* AchievementViewController.m */; };
+		0FEFE8A11A8A7DB50062123D /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A01A8A7DB50062123D /* Achievement.m */; };
+		0FEFE8A41A8A7ED20062123D /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A31A8A7ED20062123D /* Game.m */; };
+		0FEFE8A71A8A897E0062123D /* AddGameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */; };
 		606B716E1A894047004DDAB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B716D1A894047004DDAB1 /* main.m */; };
 		606B71711A894047004DDAB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71701A894047004DDAB1 /* AppDelegate.m */; };
 		606B71771A894047004DDAB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606B71751A894047004DDAB1 /* Main.storyboard */; };
@@ -72,8 +75,6 @@
 		0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0F61D5661A89C52B00FF96F0 /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
 		0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameViewController.m; sourceTree = "<group>"; };
-		0F61D5691A89C79700FF96F0 /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementViewController.h; path = ../AchievementViewController.h; sourceTree = "<group>"; };
-		0F61D56A1A89C79700FF96F0 /* AchievementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AchievementViewController.m; path = ../AchievementViewController.m; sourceTree = "<group>"; };
 		0F61D56C1A89C7A600FF96F0 /* GamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesViewController.h; sourceTree = "<group>"; };
 		0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesViewController.m; sourceTree = "<group>"; };
 		0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardViewController.h; sourceTree = "<group>"; };
@@ -88,8 +89,16 @@
 		0F61D5821A89D12200FF96F0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0F61D5851A89DBA800FF96F0 /* AddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsViewController.h; sourceTree = "<group>"; };
 		0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsViewController.m; sourceTree = "<group>"; };
-		0F6C0A581A89E62C009F4D17 /* ParseFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseFetcher.h; sourceTree = "<group>"; };
-		0F6C0A591A89E62C009F4D17 /* ParseFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseFetcher.m; sourceTree = "<group>"; };
+		0FEFE8981A8A7B810062123D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		0FEFE8991A8A7B810062123D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		0FEFE89C1A8A7C460062123D /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementViewController.h; sourceTree = "<group>"; };
+		0FEFE89D1A8A7C460062123D /* AchievementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementViewController.m; sourceTree = "<group>"; };
+		0FEFE89F1A8A7DB50062123D /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
+		0FEFE8A01A8A7DB50062123D /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
+		0FEFE8A21A8A7ED20062123D /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		0FEFE8A31A8A7ED20062123D /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		0FEFE8A51A8A897E0062123D /* AddGameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameTableViewController.h; sourceTree = "<group>"; };
+		0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameTableViewController.m; sourceTree = "<group>"; };
 		606B71681A894047004DDAB1 /* GNAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GNAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606B716C1A894047004DDAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606B716D1A894047004DDAB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -184,6 +193,8 @@
 				0F61D5661A89C52B00FF96F0 /* AddGameViewController.h */,
 				0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */,
 				0F61D5851A89DBA800FF96F0 /* AddFriendsViewController.h */,
+				0FEFE8A51A8A897E0062123D /* AddGameTableViewController.h */,
+				0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */,
 				0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */,
 				0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */,
 				0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */,
@@ -196,8 +207,8 @@
 		0F61D5701A89C7D100FF96F0 /* Achievements */ = {
 			isa = PBXGroup;
 			children = (
-				0F61D5691A89C79700FF96F0 /* AchievementViewController.h */,
-				0F61D56A1A89C79700FF96F0 /* AchievementViewController.m */,
+				0FEFE89C1A8A7C460062123D /* AchievementViewController.h */,
+				0FEFE89D1A8A7C460062123D /* AchievementViewController.m */,
 				0F61D57E1A89D04E00FF96F0 /* AchievementDetailViewController.h */,
 				0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */,
 			);
@@ -211,8 +222,6 @@
 				606B71701A894047004DDAB1 /* AppDelegate.m */,
 				60EA882E1A8990B5004B6BF7 /* Comms.h */,
 				60EA882F1A8990B5004B6BF7 /* Comms.m */,
-				0F6C0A581A89E62C009F4D17 /* ParseFetcher.h */,
-				0F6C0A591A89E62C009F4D17 /* ParseFetcher.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -248,6 +257,19 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		0FEFE89B1A8A7B8C0062123D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0FEFE8981A8A7B810062123D /* User.h */,
+				0FEFE8991A8A7B810062123D /* User.m */,
+				0FEFE89F1A8A7DB50062123D /* Achievement.h */,
+				0FEFE8A01A8A7DB50062123D /* Achievement.m */,
+				0FEFE8A21A8A7ED20062123D /* Game.h */,
+				0FEFE8A31A8A7ED20062123D /* Game.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		606B715F1A894047004DDAB1 = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +294,7 @@
 			children = (
 				0F61D5401A89434000FF96F0 /* Storyboard */,
 				0F61D57A1A89CB0A00FF96F0 /* Controllers */,
+				0FEFE89B1A8A7B8C0062123D /* Models */,
 				0F61D5711A89C7F000FF96F0 /* Other */,
 				606B71781A894048004DDAB1 /* Images.xcassets */,
 				606B717A1A894048004DDAB1 /* LaunchScreen.xib */,
@@ -406,19 +429,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEFE8A41A8A7ED20062123D /* Game.m in Sources */,
 				0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */,
+				0FEFE8A11A8A7DB50062123D /* Achievement.m in Sources */,
 				60EA88301A8990B6004B6BF7 /* Comms.m in Sources */,
 				0F61D57D1A89CE9700FF96F0 /* UserAchievementsViewController.m in Sources */,
 				0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */,
 				0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */,
+				0FEFE89A1A8A7B810062123D /* User.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
 				0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */,
 				0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */,
-				0F6C0A5A1A89E62C009F4D17 /* ParseFetcher.m in Sources */,
 				0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */,
-				0F61D56B1A89C79700FF96F0 /* AchievementViewController.m in Sources */,
+				0FEFE8A71A8A897E0062123D /* AddGameTableViewController.m in Sources */,
 				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
 				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
+				0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

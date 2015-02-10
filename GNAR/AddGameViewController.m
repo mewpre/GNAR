@@ -8,6 +8,7 @@
 
 #import "AddGameViewController.h"
 #import <Parse/Parse.h>
+#import "Game.h"
 
 @interface AddGameViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -31,28 +32,34 @@
 #pragma mark - Done Button
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
 {
-    // Create default game for testing
-    PFObject *game = [PFObject objectWithClassName:@"Game"];
-    game[@"name"] = @"My First Game";
-    game[@"mountain"] = @"Vail";
-    game[@"startDate"] = [NSDate new];
-    game[@"endDate"] = [NSDate new];
 
-    [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [[PFUser currentUser] addObject:game forKey:@"games"];
+//    // Create default game for testing
+//    Game *game = [Game new];
+//    game[@"name"] = @"My First Game";
+//    game[@"mountain"] = @"Vail";
+//    game[@"startDate"] = [NSDate new];
+//    game[@"endDate"] = [NSDate new];
+//
+//    PFRelation *playersRelation = [game relationForKey:@"players"];
+//    [playersRelation addObject:[PFUser currentUser]];
+//    PFRelation *creatorRelation = [game relationForKey:@"creator"];
+//    [creatorRelation addObject:[PFUser currentUser]];
+//
+//    [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//    {
+//        PFRelation *gamesRelation = [[PFUser currentUser] relationForKey:@"games"];
+//        [gamesRelation addObject:game];
+//        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//        {
+//            // unwind segue to previous view controller
+//            [self.navigationController popViewControllerAnimated:YES];
+//
+//        }];
+//    }];
 
 
+//    [self.navigationController popViewControllerAnimated:YES];
 
-        // Fix relationship and call
-
-
-
-        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            // unwind segue to previous view controller
-            [self.navigationController popViewControllerAnimated:YES];
-
-        }];
-    }];
 
 }
 

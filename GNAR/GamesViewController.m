@@ -7,7 +7,7 @@
 //
 
 #import "GamesViewController.h"
-#import "ParseFetcher.h"
+#import "User.h"
 
 @interface GamesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -30,7 +30,7 @@
 {
     [super viewWillAppear:animated];
 
-    [ParseFetcher getCurrentUserGamesWithCompletion:^(NSArray *array) {
+    [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
         self.gamesArray = array;
         [self.tableView reloadData];
     }];
