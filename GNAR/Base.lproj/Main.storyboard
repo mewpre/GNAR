@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="41l-PE-IwK">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Games View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="GamesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,13 +16,146 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ine-pw-Ooi">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <segments>
+                                    <segment title="My Games"/>
+                                    <segment title="Friends"/>
+                                    <segment title="All"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5tg-0i-Vof">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="D7R-gK-mxd">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D7R-gK-mxd" id="pzb-4T-HkL">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="0QD-Tc-ZIX"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="5Nl-Wr-oDM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ine-pw-Ooi" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="8aN-aF-IJi"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5tg-0i-Vof" secondAttribute="bottom" id="M2M-jH-zKo"/>
+                            <constraint firstItem="5tg-0i-Vof" firstAttribute="top" secondItem="ine-pw-Ooi" secondAttribute="bottom" constant="8" id="RB5-Tp-Ywj"/>
+                            <constraint firstAttribute="trailing" secondItem="5tg-0i-Vof" secondAttribute="trailing" id="XH5-mb-xxa"/>
+                            <constraint firstItem="ine-pw-Ooi" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="dle-8H-UdO"/>
+                            <constraint firstItem="5tg-0i-Vof" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="mk4-GK-wEA"/>
+                            <constraint firstItem="ine-pw-Ooi" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="zPD-8C-mFg"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ine-pw-Ooi"/>
+                                <exclude reference="5tg-0i-Vof"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8aN-aF-IJi"/>
+                                <exclude reference="dle-8H-UdO"/>
+                                <exclude reference="zPD-8C-mFg"/>
+                                <exclude reference="RB5-Tp-Ywj"/>
+                                <exclude reference="XH5-mb-xxa"/>
+                                <exclude reference="mk4-GK-wEA"/>
+                                <exclude reference="M2M-jH-zKo"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ine-pw-Ooi"/>
+                                <include reference="5tg-0i-Vof"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8aN-aF-IJi"/>
+                                <include reference="dle-8H-UdO"/>
+                                <include reference="zPD-8C-mFg"/>
+                                <include reference="RB5-Tp-Ywj"/>
+                                <include reference="XH5-mb-xxa"/>
+                                <include reference="mk4-GK-wEA"/>
+                                <include reference="M2M-jH-zKo"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="XbL-fi-P9R"/>
+                    <navigationItem key="navigationItem" id="XbL-fi-P9R">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Mvn-6d-KLZ">
+                            <connections>
+                                <segue destination="ygG-yd-CM4" kind="show" id="rbg-VH-h6C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="ine-pw-Ooi" id="DvE-Ml-dFp"/>
+                        <outlet property="tableView" destination="5tg-0i-Vof" id="zOa-GZ-m1n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1398" y="465.75"/>
+            <point key="canvasLocation" x="3601.5" y="465.75"/>
+        </scene>
+        <!--Add Game View Controller-->
+        <scene sceneID="iON-W7-5vl">
+            <objects>
+                <viewController id="ygG-yd-CM4" customClass="AddGameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tPJ-gW-ycl"/>
+                        <viewControllerLayoutGuide type="bottom" id="60I-eS-eRI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lbj-N1-pmx">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fYt-Tp-zdd">
+                        <barButtonItem key="rightBarButtonItem" title="Add Friends" id="5kF-DM-fT2"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lvt-Ns-Dia" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4407" y="465.75"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="vc9-2V-aas">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="41l-PE-IwK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="FLT-r5-eSh">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="aRT-BI-5hW" kind="relationship" relationship="viewControllers" id="Ge2-EJ-npm"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AvY-Sv-Pgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1905" y="465.75"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="lsd-oW-IAu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aRT-BI-5hW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="jgS-Bb-4kI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hv3-H6-FF4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="7s6-n8-S0s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xnn-gY-j6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2752.5" y="465.75"/>
         </scene>
     </scenes>
 </document>

@@ -15,9 +15,22 @@
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // [self createTestUser];
+
+}
+
+
+
+
+
+
+
+// method to create an initial user just as a test
+- (void)createTestUser {
     PFUser *user = [PFUser user];
     user.username = @"my name";
     user.password = @"my pass";
