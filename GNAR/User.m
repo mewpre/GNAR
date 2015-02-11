@@ -45,18 +45,14 @@
         if (!error)
         {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu scores.", objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects)
-            {
-                NSLog(@"%@", object.objectId);
-            }
+            NSLog(@"Successfully retrieved %lu achievements.", objects.count);
         }
         else
         {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        complete(objects);
     }];
 }
 
