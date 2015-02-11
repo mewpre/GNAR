@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Achievement;
 
 @interface AchievementDetailViewController : UIViewController
+
+@property Achievement *selectedAchievement;
 
 @end
