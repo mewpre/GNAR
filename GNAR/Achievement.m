@@ -19,7 +19,7 @@
 @dynamic type;
 //@dynamic timeLimiter;
 @dynamic description;
-@dynamic area;
+@dynamic group;
 @dynamic difficulty;
 @dynamic heroFactor;
 @dynamic funFactor;
