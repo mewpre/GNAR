@@ -220,6 +220,9 @@
                                             <date key="date" timeIntervalSinceReferenceDate="393205466.33293098">
                                                 <!--2013-06-17 23:44:26 +0000-->
                                             </date>
+                                            <connections>
+                                                <action selector="dateAction:" destination="HAj-w5-o7i" eventType="valueChanged" id="j9M-fh-42l"/>
+                                            </connections>
                                         </datePicker>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -244,12 +247,15 @@
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sOU-S2-NQO">
                                             <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ImX-us-J8f" kind="show" identifier="FriendsSegue" id="Hbi-VW-gbb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -257,6 +263,17 @@
                             <outlet property="delegate" destination="HAj-w5-o7i" id="Uww-3e-zMA"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="9Ef-1a-yr8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ZWy-kh-50j">
+                            <connections>
+                                <action selector="onDoneAndSaveButtonPressed:" destination="HAj-w5-o7i" id="beZ-QF-ZL4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="fdP-I6-m4b" id="SmJ-Hb-Xmh"/>
+                        <outlet property="pickerView" destination="j3O-dL-vTi" id="jan-8m-vop"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGg-7s-gKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="j3O-dL-vTi">
@@ -265,8 +282,15 @@
                     <date key="date" timeIntervalSinceReferenceDate="377204788.09288597">
                         <!--2012-12-14 19:06:28 +0000-->
                     </date>
+                    <connections>
+                        <action selector="dateAction:" destination="HAj-w5-o7i" eventType="valueChanged" id="ail-7s-Oei"/>
+                    </connections>
                 </datePicker>
-                <barButtonItem title="Done" style="done" id="fdP-I6-m4b" userLabel="Done Button"/>
+                <barButtonItem title="Done" style="done" id="fdP-I6-m4b" userLabel="Done Button">
+                    <connections>
+                        <action selector="doneAction:" destination="HAj-w5-o7i" id="mIE-Tn-mZn"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="4710" y="-240.75"/>
         </scene>
@@ -690,6 +714,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mDR-t4-JHh"/>
+        <segue reference="bzH-oB-45a"/>
     </inferredMetricsTieBreakers>
 </document>

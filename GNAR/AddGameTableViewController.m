@@ -46,6 +46,7 @@
  */
 
 #import "AddGameTableViewController.h"
+#import "Game.h"
 
 #define kPickerAnimationDuration    0.40   // duration for the animation to slide the date picker into view
 #define kDatePickerTag              99     // view tag identifiying the date picker view
@@ -74,6 +75,11 @@ static NSString *kOtherCell = @"otherCell";     // the remaining cells at the en
 
 @property (assign) NSInteger pickerCellRowHeight;
 
+@property NSDate *startDate;
+@property NSDate *endDate;
+@property PFUser *currentUser;
+
+
 @property (nonatomic, strong) IBOutlet UIDatePicker *pickerView;
 
 // this button appears only when the date picker is shown (iOS 6.1.x or earlier)
@@ -91,6 +97,12 @@ static NSString *kOtherCell = @"otherCell";     // the remaining cells at the en
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.currentUser = [PFUser currentUser];
+
+    // setup variables to save user selections to save new game
+    self.startDate = [NSDate new];
+    self.endDate = [NSDate new];
     
     // setup our data source
     NSMutableDictionary *itemOne = [@{ kTitleKey : @"Tap a cell to change its date:" } mutableCopy];
@@ -98,8 +110,8 @@ static NSString *kOtherCell = @"otherCell";     // the remaining cells at the en
                                        kDateKey : [NSDate date] } mutableCopy];
     NSMutableDictionary *itemThree = [@{ kTitleKey : @"End Date",
                                         kDateKey : [NSDate date] } mutableCopy];
-    NSMutableDictionary *itemFour = [@{ kTitleKey : @"(other item1)" } mutableCopy];
-    NSMutableDictionary *itemFive = [@{ kTitleKey : @"(other item2)" } mutableCopy];
+    NSMutableDictionary *itemFour = [@{ kTitleKey : @"Friends" } mutableCopy];
+    NSMutableDictionary *itemFive = [@{ kTitleKey : @"Mountains" } mutableCopy];
     self.dataArray = @[itemOne, itemTwo, itemThree, itemFour, itemFive];
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
@@ -461,6 +473,15 @@ NSUInteger DeviceSystemMajorVersion()
     
     // update the cell's date string
     cell.detailTextLabel.text = [self.dateFormatter stringFromDate:targetedDatePicker.date];
+
+    if ([cell.textLabel.text isEqualToString:@"End Date"])
+    {
+        self.endDate = targetedDatePicker.date;
+    }
+    else if ([cell.textLabel.text isEqualToString:@"Start Date"])
+    {
+        self.startDate = targetedDatePicker.date;
+    }
 }
 
 
@@ -487,6 +508,89 @@ NSUInteger DeviceSystemMajorVersion()
 	NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+
+- (IBAction)onDoneAndSaveButtonPressed:(UIBarButtonItem *)sender
+{
+    // Create test game
+    PFObject *game = [PFObject objectWithClassName:@"Game"];
+    game[@"name"] = @"First game";
+    game[@"mountain"] = @"Squaw Valley";
+    game[@"startAt"] = self.startDate;
+    game[@"endAt"] = self.endDate;
+
+    // save game object
+    [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            NSLog(@"Saved GAME without errors");
+        }
+
+//        PFObject *savedGame = [PFObject objectWithoutDataWithClassName:@"Game" objectId:[game objectId]];
+
+        // make current player the creator of the game
+        PFRelation *creatorRelation = [game relationForKey:@"creator"];
+        [creatorRelation addObject:self.currentUser];                   // ***** breaking here *****
+
+        // make current user a player in the game
+        PFRelation *playerRelation = [game relationForKey:@"players"];
+        [playerRelation addObject:self.currentUser];                    // ***** breaking here *****
+
+
+        // add game to current users games
+        PFRelation *gamesRelation = [[PFUser currentUser] relationForKey:@"games"];
+        [gamesRelation addObject:game];
+        // add game to current users created games
+        PFRelation *createdGamesRelation = [[PFUser currentUser] relationForKey:@"createdGames"];
+        [createdGamesRelation addObject:game];
+
+        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error)
+            {
+                NSLog(@"%@", error);
+            }
+            else
+            {
+                NSLog(@"Saved USER without errors");
+            }
+            // unwind to previous view controller
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }];
+}
+
+#pragma mark - Prepare for Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if (sender)
+    {
+
+    }
+    if ([segue.identifier isEqualToString:@"FriendsSegue"])
+    {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
 
