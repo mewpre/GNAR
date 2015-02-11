@@ -10,11 +10,19 @@
 #import "AchievementDetailViewController.h"
 #import "Achievement.h"
 #import "User.h"
+#import "ParentTableView.h"
+#import "ParentTableViewCell.h"
+#import "SubTableView.h"
+#import "SubTableViewCell.h"
 
-@interface AchievementViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface AchievementViewController () <SubTableViewDataSource, SubTableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet ParentTableView *tableView;
 @property NSArray *achievementsArray;
+@property NSArray *typesArray;
+@property NSDictionary *dataDictionary;
+
 
 @end
 
@@ -24,38 +32,81 @@
 {
     [super viewDidLoad];
 
-        // Create achievements for testing
+    self.typesArray = [[NSArray alloc] initWithObjects:@"Line Worths", @"ECPs", @"Penalties", @"Trick Bonuses", nil];
+    self.dataDictionary = @{ self.typesArray[0] : @[@"Cornice II Bowl", @"Eagle's Nest", @"Enchanted Forest", @"Fingers", @"Light Towers/Headwall", @"Mainline Pocket", @"Olympic Lady", @"The Nose", @"The Palisades", @"West Side KT22"],
+                             self.typesArray[1] : @[@"Daily", @"Yearly", @"Unlimited"],
+                             self.typesArray[2] : @[@"Clothing", @"Falling", @"Other"],
+                             self.typesArray[3] : @[@"Grabs", @"Inverted", @"Spins", @"Tricks"]
+                             };
 
-    [User getAchievementsWithCompletion:^(NSArray *array)
-    {
-        self.achievementsArray = array;
-        [self.tableView reloadData];
-    }];
-    
+    [self.tableView setDataSourceDelegate:self];
+    [self.tableView setTableViewDelegate:self];
+
+    // Create achievements for testing
+
+//    [User getAchievementsWithCompletion:^(NSArray *array)
+//    {
+//        self.achievementsArray = array;
+//        [self.tableView reloadData];
+//    }];
+
 }
 
-//----------------------------------------    Table View    ----------------------------------------------------
-#pragma mark - Table View
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//-----------------------------------    SUB Table View Data Source    ----------------------------------------------------
+#pragma mark - Sub Table View Data Source - Parent
+// @required
+- (NSInteger)numberOfParentCells
 {
-    return self.achievementsArray.count;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-
-    // Get game object for current cell
-    PFObject *achievement = self.achievementsArray[indexPath.row];
-
-    // Set cell title to game's mountain
-    cell.textLabel.text = [achievement objectForKey:@"name"];
-    return cell;
+    return self.typesArray.count;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender
+- (NSInteger)heightForParentRows
 {
-    AchievementDetailViewController *avc = segue.destinationViewController;
-    avc.selectedAchievement = [self.achievementsArray objectAtIndex:[[self.tableView indexPathForCell:sender] row]];
+    return 75;
+}
+
+// @optional
+- (NSString *)titleLabelForParentCellAtIndex:(NSInteger)parentIndex
+{
+    return self.typesArray[parentIndex];
+}
+
+- (NSString *)subtitleLabelForParentCellAtIndex:(NSInteger)parentIndex
+{
+    return @"";
+}
+
+
+
+#pragma mark - Sub Table View Data Source - Child
+// @required
+- (NSInteger)numberOfChildCellsUnderParentIndex:(NSInteger)parentIndex
+{
+    return [self.dataDictionary[self.typesArray[parentIndex]] count];
+}
+
+- (NSInteger)heightForChildRows
+{
+    return 55;
+}
+
+// @optional
+- (NSString *)titleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
+{
+    return [self.dataDictionary[self.typesArray[parentIndex]] objectAtIndex:childIndex];
+}
+
+- (NSString *)subtitleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
+{
+    return @"";
+}
+
+//-----------------------------------    SUB Table View Delegate    ----------------------------------------------------
+#pragma mark - Sub Table View Delegate
+// @optional
+- (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
+{
+
 }
 
 @end

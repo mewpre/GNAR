@@ -29,6 +29,11 @@
 		0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */; };
 		0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5821A89D12200FF96F0 /* HomeViewController.m */; };
 		0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */; };
+		0FCF8ADB1A8BD276006224BB /* ParentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AD81A8BD276006224BB /* ParentTableViewCell.m */; };
+		0FCF8ADC1A8BD276006224BB /* ParentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8ADA1A8BD276006224BB /* ParentTableView.m */; };
+		0FCF8AE11A8BD298006224BB /* ExpandedContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8ADE1A8BD298006224BB /* ExpandedContainer.m */; };
+		0FCF8AE21A8BD298006224BB /* SubTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AE01A8BD298006224BB /* SubTableView.m */; };
+		0FCF8AE71A8BD2EE006224BB /* SubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AE61A8BD2EE006224BB /* SubTableViewCell.m */; };
 		0FEFE89A1A8A7B810062123D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8991A8A7B810062123D /* User.m */; };
 		0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE89D1A8A7C460062123D /* AchievementViewController.m */; };
 		0FEFE8A11A8A7DB50062123D /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A01A8A7DB50062123D /* Achievement.m */; };
@@ -87,6 +92,16 @@
 		0F61D5821A89D12200FF96F0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0F61D5851A89DBA800FF96F0 /* AddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsViewController.h; sourceTree = "<group>"; };
 		0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsViewController.m; sourceTree = "<group>"; };
+		0FCF8AD71A8BD276006224BB /* ParentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParentTableViewCell.h; path = SubTable/ParentCell/ParentTableViewCell.h; sourceTree = "<group>"; };
+		0FCF8AD81A8BD276006224BB /* ParentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParentTableViewCell.m; path = SubTable/ParentCell/ParentTableViewCell.m; sourceTree = "<group>"; };
+		0FCF8AD91A8BD276006224BB /* ParentTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParentTableView.h; path = SubTable/ParentTableView.h; sourceTree = "<group>"; };
+		0FCF8ADA1A8BD276006224BB /* ParentTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParentTableView.m; path = SubTable/ParentTableView.m; sourceTree = "<group>"; };
+		0FCF8ADD1A8BD298006224BB /* ExpandedContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandedContainer.h; path = SubTable/SubRow/ExpandedContainer.h; sourceTree = "<group>"; };
+		0FCF8ADE1A8BD298006224BB /* ExpandedContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandedContainer.m; path = SubTable/SubRow/ExpandedContainer.m; sourceTree = "<group>"; };
+		0FCF8ADF1A8BD298006224BB /* SubTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTableView.h; path = SubTable/SubRow/SubTableView.h; sourceTree = "<group>"; };
+		0FCF8AE01A8BD298006224BB /* SubTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTableView.m; path = SubTable/SubRow/SubTableView.m; sourceTree = "<group>"; };
+		0FCF8AE51A8BD2EE006224BB /* SubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTableViewCell.h; path = SubTable/SubRow/ChildCell/SubTableViewCell.h; sourceTree = "<group>"; };
+		0FCF8AE61A8BD2EE006224BB /* SubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTableViewCell.m; path = SubTable/SubRow/ChildCell/SubTableViewCell.m; sourceTree = "<group>"; };
 		0FEFE8981A8A7B810062123D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		0FEFE8991A8A7B810062123D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		0FEFE89C1A8A7C460062123D /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementViewController.h; sourceTree = "<group>"; };
@@ -216,6 +231,7 @@
 		0F61D5711A89C7F000FF96F0 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				0FCF8AE91A8BD313006224BB /* SubTable */,
 				606B716F1A894047004DDAB1 /* AppDelegate.h */,
 				606B71701A894047004DDAB1 /* AppDelegate.m */,
 				60EA882E1A8990B5004B6BF7 /* Comms.h */,
@@ -253,6 +269,47 @@
 				0F61D5821A89D12200FF96F0 /* HomeViewController.m */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		0FCF8AE31A8BD2A1006224BB /* SubRow */ = {
+			isa = PBXGroup;
+			children = (
+				0FCF8AE81A8BD2F3006224BB /* ChildCell */,
+				0FCF8ADD1A8BD298006224BB /* ExpandedContainer.h */,
+				0FCF8ADE1A8BD298006224BB /* ExpandedContainer.m */,
+				0FCF8ADF1A8BD298006224BB /* SubTableView.h */,
+				0FCF8AE01A8BD298006224BB /* SubTableView.m */,
+			);
+			name = SubRow;
+			sourceTree = "<group>";
+		};
+		0FCF8AE41A8BD2B1006224BB /* ParentCell */ = {
+			isa = PBXGroup;
+			children = (
+				0FCF8AD71A8BD276006224BB /* ParentTableViewCell.h */,
+				0FCF8AD81A8BD276006224BB /* ParentTableViewCell.m */,
+			);
+			name = ParentCell;
+			sourceTree = "<group>";
+		};
+		0FCF8AE81A8BD2F3006224BB /* ChildCell */ = {
+			isa = PBXGroup;
+			children = (
+				0FCF8AE51A8BD2EE006224BB /* SubTableViewCell.h */,
+				0FCF8AE61A8BD2EE006224BB /* SubTableViewCell.m */,
+			);
+			name = ChildCell;
+			sourceTree = "<group>";
+		};
+		0FCF8AE91A8BD313006224BB /* SubTable */ = {
+			isa = PBXGroup;
+			children = (
+				0FCF8AE41A8BD2B1006224BB /* ParentCell */,
+				0FCF8AD91A8BD276006224BB /* ParentTableView.h */,
+				0FCF8ADA1A8BD276006224BB /* ParentTableView.m */,
+				0FCF8AE31A8BD2A1006224BB /* SubRow */,
+			);
+			name = SubTable;
 			sourceTree = "<group>";
 		};
 		0FEFE89B1A8A7B8C0062123D /* Models */ = {
@@ -432,15 +489,20 @@
 				0FEFE8A41A8A7ED20062123D /* Game.m in Sources */,
 				0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */,
 				0FEFE8A11A8A7DB50062123D /* Achievement.m in Sources */,
+				0FCF8ADB1A8BD276006224BB /* ParentTableViewCell.m in Sources */,
 				60EA88301A8990B6004B6BF7 /* Comms.m in Sources */,
 				0F61D57D1A89CE9700FF96F0 /* UserAchievementsViewController.m in Sources */,
 				0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */,
 				0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */,
 				0FEFE8AC1A8AC7460062123D /* Score.m in Sources */,
+				0FCF8AE21A8BD298006224BB /* SubTableView.m in Sources */,
 				0FEFE89A1A8A7B810062123D /* User.m in Sources */,
+				0FCF8AE11A8BD298006224BB /* ExpandedContainer.m in Sources */,
+				0FCF8ADC1A8BD276006224BB /* ParentTableView.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
 				0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */,
 				0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */,
+				0FCF8AE71A8BD2EE006224BB /* SubTableViewCell.m in Sources */,
 				0FEFE8A71A8A897E0062123D /* AddGameTableViewController.m in Sources */,
 				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
 				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
