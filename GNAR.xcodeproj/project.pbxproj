@@ -22,7 +22,6 @@
 		0F61D55B1A89445700FF96F0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55A1A89445700FF96F0 /* SystemConfiguration.framework */; };
 		0F61D55D1A89446200FF96F0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55C1A89446200FF96F0 /* libz.dylib */; };
 		0F61D55F1A89446D00FF96F0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */; };
-		0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */; };
 		0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */; };
 		0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */; };
 		0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5771A89CABC00FF96F0 /* LoginViewController.m */; };
@@ -36,6 +35,7 @@
 		0FEFE8A41A8A7ED20062123D /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A31A8A7ED20062123D /* Game.m */; };
 		0FEFE8A71A8A897E0062123D /* AddGameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */; };
 		0FEFE8A91A8A9F210062123D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A81A8A9F210062123D /* Main.storyboard */; };
+		0FEFE8AC1A8AC7460062123D /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8AB1A8AC7460062123D /* Score.m */; };
 		606B716E1A894047004DDAB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B716D1A894047004DDAB1 /* main.m */; };
 		606B71711A894047004DDAB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71701A894047004DDAB1 /* AppDelegate.m */; };
 		606B71791A894048004DDAB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606B71781A894048004DDAB1 /* Images.xcassets */; };
@@ -73,8 +73,6 @@
 		0F61D55A1A89445700FF96F0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0F61D55C1A89446200FF96F0 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		0F61D5661A89C52B00FF96F0 /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
-		0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameViewController.m; sourceTree = "<group>"; };
 		0F61D56C1A89C7A600FF96F0 /* GamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamesViewController.h; sourceTree = "<group>"; };
 		0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamesViewController.m; sourceTree = "<group>"; };
 		0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardViewController.h; sourceTree = "<group>"; };
@@ -100,6 +98,8 @@
 		0FEFE8A51A8A897E0062123D /* AddGameTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameTableViewController.h; sourceTree = "<group>"; };
 		0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameTableViewController.m; sourceTree = "<group>"; };
 		0FEFE8A81A8A9F210062123D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0FEFE8AA1A8AC7460062123D /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
+		0FEFE8AB1A8AC7460062123D /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
 		606B71681A894047004DDAB1 /* GNAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GNAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606B716C1A894047004DDAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606B716D1A894047004DDAB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -190,8 +190,6 @@
 			children = (
 				0F61D56C1A89C7A600FF96F0 /* GamesViewController.h */,
 				0F61D56D1A89C7A600FF96F0 /* GamesViewController.m */,
-				0F61D5661A89C52B00FF96F0 /* AddGameViewController.h */,
-				0F61D5671A89C52B00FF96F0 /* AddGameViewController.m */,
 				0FEFE8A51A8A897E0062123D /* AddGameTableViewController.h */,
 				0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */,
 				0F61D5851A89DBA800FF96F0 /* AddFriendsViewController.h */,
@@ -266,6 +264,8 @@
 				0FEFE8A01A8A7DB50062123D /* Achievement.m */,
 				0FEFE8A21A8A7ED20062123D /* Game.h */,
 				0FEFE8A31A8A7ED20062123D /* Game.m */,
+				0FEFE8AA1A8AC7460062123D /* Score.h */,
+				0FEFE8AB1A8AC7460062123D /* Score.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -436,11 +436,11 @@
 				0F61D57D1A89CE9700FF96F0 /* UserAchievementsViewController.m in Sources */,
 				0F61D5751A89C96300FF96F0 /* LeaderboardViewController.m in Sources */,
 				0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */,
+				0FEFE8AC1A8AC7460062123D /* Score.m in Sources */,
 				0FEFE89A1A8A7B810062123D /* User.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
 				0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */,
 				0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */,
-				0F61D5681A89C52B00FF96F0 /* AddGameViewController.m in Sources */,
 				0FEFE8A71A8A897E0062123D /* AddGameTableViewController.m in Sources */,
 				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
 				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
