@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>E3137BB5-4DE9-4D44-959E-BA2ED15E06C8</string>
+	<string>2A0A4481-C247-4794-904E-D15F9BF6DEF9</string>
 	<key>IDESourceControlProjectName</key>
 	<string>GNAR</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -28,14 +28,6 @@
 	<string>6C8EC023D1FAE432524A3DBB12A28CBF2CA000B8</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>6C8EC023D1FAE432524A3DBB12A28CBF2CA000B8</string>
-			<key>IDESourceControlWCCName</key>
-			<string>GNAR</string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
