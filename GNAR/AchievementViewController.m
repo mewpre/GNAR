@@ -25,57 +25,6 @@
 
         // Create achievements for testing
 
-    Achievement *dailyECP = [Achievement new];
-    dailyECP[@"name"] = @"Mom Line";
-    dailyECP[@"abbreviation"] = @"ML";
-    dailyECP[@"description"] = @"Talking to your mother on a cell phone (without headset), stick line worth 500 or greater.";
-    dailyECP[@"pointValues"] = @[@7000];
-
-    [dailyECP saveInBackground];
-
-    Achievement *unlimitedECP = [Achievement new];
-    unlimitedECP[@"name"] = @"Ego Claim";
-    unlimitedECP[@"abbreviation"] = @"EG";
-    unlimitedECP[@"description"] = @"After skiing a designated line, go over to a group of strangers who were watching and claim, \"I'm the best skier on the mountain!\"";
-    unlimitedECP[@"pointValues"] = @[@500];
-    [unlimitedECP saveInBackground];
-
-    Achievement *yearlyECP = [Achievement new];
-    yearlyECP[@"name"] = @"Cushing Pond";
-    yearlyECP[@"abbreviation"] = @"CP";
-    yearlyECP[@"description"] = @"Cross meltin Cushing Pond";
-    yearlyECP[@"pointValues"] = @[@8000];
-    [yearlyECP saveInBackground];
-
-   // Achievement *lineWorth = [Achievement new];
-
-    
-
-    //    Game *game = [Game new];
-    //    game[@"name"] = @"My First Game";
-    //    game[@"mountain"] = @"Vail";
-    //    game[@"startDate"] = [NSDate new];
-    //    game[@"endDate"] = [NSDate new];
-    //
-    //    PFRelation *playersRelation = [game relationForKey:@"players"];
-    //    [playersRelation addObject:[PFUser currentUser]];
-    //    PFRelation *creatorRelation = [game relationForKey:@"creator"];
-    //    [creatorRelation addObject:[PFUser currentUser]];
-    //
-    //    [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-    //    {
-    //        PFRelation *gamesRelation = [[PFUser currentUser] relationForKey:@"games"];
-    //        [gamesRelation addObject:game];
-    //        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-    //        {
-    //            // unwind segue to previous view controller
-    //            [self.navigationController popViewControllerAnimated:YES];
-    //
-    //        }];
-    //    }];
-    
-    
-    //    [self.navigationController popViewControllerAnimated:YES];
     [User getAchievementsWithCompletion:^(NSArray *array)
     {
         self.achievementsArray = array;
@@ -101,11 +50,6 @@
     cell.textLabel.text = [achievement objectForKey:@"name"];
     return cell;
 }
-
-
-
-
-
 
 
 
