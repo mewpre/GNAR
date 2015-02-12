@@ -825,24 +825,38 @@
                                     <action selector="onLogoutButtonPressed:" destination="EL6-vs-COo" eventType="touchUpInside" id="hfn-jz-sHI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9Q-TR-gJd">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="81" y="239" width="238" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="eQy-Av-3Jy"/>
+                                <exclude reference="N9Q-TR-gJd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="eQy-Av-3Jy"/>
+                                <include reference="N9Q-TR-gJd"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="1vU-sj-Xxb"/>
+                    <connections>
+                        <outlet property="usernameLabel" destination="N9Q-TR-gJd" id="eak-Kc-6iT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dY0-Mh-GGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2752.5" y="-240.74999999999997"/>
+            <point key="canvasLocation" x="2752.5" y="-240.75"/>
         </scene>
         <!--Achievements-->
         <scene sceneID="0XU-gf-v9V">

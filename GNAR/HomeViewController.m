@@ -12,6 +12,7 @@
 
 
 @interface HomeViewController ()<LoginViewControllerDelegate>
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @end
 
@@ -20,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [PFUser currentUser].username];
 }
 
 
