@@ -10,12 +10,6 @@
 
 @interface Achievement : PFObject <PFSubclassing>
 
-typedef NS_ENUM(NSInteger, AchievementType) {
-    LineWorth,
-    ECP,
-    TrickBonus,
-    Penalty
-};
 
 @property (retain) NSString *name;
 @property (retain) NSString *abbreviation;
@@ -23,7 +17,7 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 //@property (retain) CLLocation *location;
 @property BOOL isAvailable;
 @property BOOL isCustom;
-@property AchievementType type;
+@property NSInteger type;
 //@property double timeLimiter;
 @property (retain) NSString *description;
 @property (retain) NSString *group;
@@ -31,7 +25,7 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 @property (retain) NSString *heroFactor;
 @property (retain) NSString *funFactor;
 
-
++ (void)getAchievementsOfType:(NSInteger)type inGroup:(NSString *)group withCompletion:(void(^)(NSArray *array))complete;
 + (NSString *)parseClassName;
 
 @end

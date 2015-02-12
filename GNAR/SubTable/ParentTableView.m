@@ -358,10 +358,7 @@
     UITableViewCell *selectedCell = [self cellForRowAtIndexPath:indexPath];
     if ([selectedCell isKindOfClass:[ParentTableViewCell class]]) {
         
-        // ParentTableViewCell * pCell = (ParentTableViewCell *)selectedCell;
-        
-        // Insert code here to detect and handle child cell selection
-        // ...
+        [self.tableViewDelegate tableView:self didSelectCellAtChildIndex:childIndex withInParentCellIndex:parentIndex];
     }
 }
 - (NSString *)titleLabelForChildIndex:(NSInteger)childIndex underParentIndex:(NSInteger)parentIndex {

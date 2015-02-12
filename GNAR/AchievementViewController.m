@@ -23,6 +23,8 @@
 @property NSArray *typesArray;
 @property NSDictionary *dataDictionary;
 
+@property NSInteger selectedParentIndex;
+
 
 @end
 
@@ -76,8 +78,6 @@
     return @"";
 }
 
-
-
 #pragma mark - Sub Table View Data Source - Child
 // @required
 - (NSInteger)numberOfChildCellsUnderParentIndex:(NSInteger)parentIndex
@@ -106,7 +106,46 @@
 // @optional
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
 {
-
+    NSDictionary *pathDictionary = @{@"Parent Index": [NSNumber numberWithInteger:parentIndex],
+                                     @"Child Index": [NSNumber numberWithInteger:childIndex]};
+    [self performSegueWithIdentifier:@"AchievementDetailSegue" sender:pathDictionary];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([sender isKindOfClass:[NSDictionary class]])
+    {
+        NSInteger parent = [sender[@"Parent Index"] integerValue];
+        NSInteger child = [sender[@"Child Index"]integerValue];
+
+        NSLog(@"Parent: %@", sender[@"Parent Index"]);
+        NSLog(@"Child: %@", [self.dataDictionary objectForKey:self.typesArray[parent]][child]);
+
+
+        AchievementDetailViewController *detailVC = segue.destinationViewController;
+        detailVC.type = parent;
+        detailVC.group = [self.dataDictionary objectForKey:self.typesArray[parent]][child];
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

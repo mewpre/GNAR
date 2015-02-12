@@ -168,6 +168,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // must be implemented by concrete subclasses
+    [self.delegate didSelectRowAtChildIndex:indexPath.row underParentIndex:self.parentIndex];
 }
 
 @end
