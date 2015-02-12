@@ -34,9 +34,6 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 {
     [super viewDidLoad];
 
-
-    self.childrenArray = @[@"BLARGH"];
-
     [Achievement getAchievementsOfType:self.type inGroup:self.group withCompletion:^(NSArray *array) {
         self.achievementsArray = array;
 

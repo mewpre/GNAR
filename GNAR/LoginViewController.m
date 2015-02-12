@@ -51,6 +51,7 @@
              if (!error)
              {
                  NSLog(@"Logged in as %@", [PFUser currentUser].username);
+                 [self dismissViewControllerAnimated:NO completion:nil];
              }
              else
              {
@@ -68,12 +69,6 @@
     [Comms login:self];
 }
 
-- (IBAction)onLogOutButtonPressed:(id)sender
-{
-    [PFUser logOut];
-    NSLog(@"Logged Out");
-}
-
 - (void) commsDidLogin:(BOOL)loggedIn
 {
     // Did we login successfully ?
@@ -87,6 +82,7 @@
                 NSDictionary *userData = (NSDictionary *)result;
                 NSLog(@"%@", userData);
                 NSLog(@"%@",[PFUser currentUser].username);
+                [self dismissViewControllerAnimated:NO completion:nil];
             }
         }];
     }
