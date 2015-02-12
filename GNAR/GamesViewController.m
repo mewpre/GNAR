@@ -23,13 +23,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"%@", [PFUser currentUser].username);
 
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    NSLog(@"%@", [PFUser currentUser].username);
     [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
         self.gamesArray = array;
         [self.tableView reloadData];

@@ -10,7 +10,7 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 
-@interface CustomTabBarController ()
+@interface CustomTabBarController () <LoginViewControllerDelegate>
 
 @end
 
@@ -19,18 +19,36 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    if (![PFUser currentUser])
-//    {
-//        LoginViewController *lvc = [LoginViewController new];
-//        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:lvc];
-//
-//        lvc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//        [navController presentViewController:lvc animated:NO completion:nil];
-//    }
-//    else
-//    {
-//        NSLog(@"Already logged in");
-//    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (![PFUser currentUser])
+    {
+        LoginViewController *vcObj = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        vcObj.delegate = self;
+        UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:vcObj];
+
+        navCon.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+
+        [self presentViewController:navCon animated:NO completion:nil];
+    }
+    else
+    {
+        NSLog(@"Already logged in");
+        [self setSelectedIndex:1];
+        
+    }
+}
+
+- (void)didDismissPresentedViewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"logged in as: %@", [PFUser currentUser].username);
+    [self setSelectedIndex:1];
+
 }
 
 @end

@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 
 
-@interface HomeViewController ()
+@interface HomeViewController ()<LoginViewControllerDelegate>
 
 @end
 
@@ -30,12 +30,20 @@
     [PFUser logOut];
     NSLog(@"Logged Out");
 
-//    LoginViewController *lvc = [LoginViewController new];
-//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:lvc];
-//
-//    navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    [navController presentViewController:lvc animated:NO completion:nil];
-//    [self presentViewController:lvc animated:NO completion:nil];
+    LoginViewController *vcObj = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    vcObj.delegate = self;
+    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:vcObj];
+
+    navCon.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+
+    [self presentViewController:navCon animated:NO completion:nil];
+}
+
+- (void)didDismissPresentedViewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"logged in as: %@", [PFUser currentUser].username);
+    self.tabBarController.selectedIndex = 1;
 }
 
 
