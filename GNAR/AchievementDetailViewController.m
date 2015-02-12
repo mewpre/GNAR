@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger, AchievementType) {
     [Achievement getAchievementsOfType:self.type inGroup:self.group withCompletion:^(NSArray *array) {
         self.achievementsArray = array;
 
+        // *** Must set delegates AFTER you set the tables data source (array)
         [self.tableView setDataSourceDelegate:self];
         [self.tableView setTableViewDelegate:self];
         [self.tableView reloadData];
