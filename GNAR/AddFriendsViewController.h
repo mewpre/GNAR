@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Game.h"
 
 @interface AddFriendsViewController : UIViewController
+
+@property NSMutableArray *playersArray;
 
 @end

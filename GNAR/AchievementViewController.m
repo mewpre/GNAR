@@ -36,7 +36,7 @@
 
     self.typesArray = [[NSArray alloc] initWithObjects:@"Line Worths", @"ECPs", @"Penalties", @"Trick Bonuses", nil];
     self.dataDictionary = @{ self.typesArray[0] : @[@"Cornice II Bowl", @"Eagle's Nest", @"Enchanted Forest", @"Fingers", @"Light Towers/Headwall", @"Mainline Pocket", @"Olympic Lady", @"The Nose", @"The Palisades", @"West Side KT22"],
-                             self.typesArray[1] : @[@"Daily", @"Yearly", @"Unlimited"],
+                             self.typesArray[1] : @[@"Daily ECPs", @"Yearly ECPs", @"Unlimited ECPs"],
                              self.typesArray[2] : @[@"Clothing", @"Falling", @"Other"],
                              self.typesArray[3] : @[@"Grabs", @"Inverted", @"Spins", @"Tricks"]
                              };

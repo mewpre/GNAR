@@ -47,6 +47,7 @@
 
 #import "AddGameTableViewController.h"
 #import "Game.h"
+#import "AddFriendsViewController.h"
 
 #define kPickerAnimationDuration    0.40   // duration for the animation to slide the date picker into view
 #define kDatePickerTag              99     // view tag identifiying the date picker view
@@ -78,6 +79,7 @@ static NSString *kOtherCell = @"otherCell";     // the remaining cells at the en
 @property NSDate *startDate;
 @property NSDate *endDate;
 @property PFUser *currentUser;
+@property NSMutableArray *friendsArray;
 
 
 @property (nonatomic, strong) IBOutlet UIDatePicker *pickerView;
@@ -103,6 +105,7 @@ static NSString *kOtherCell = @"otherCell";     // the remaining cells at the en
     // setup variables to save user selections to save new game
     self.startDate = [NSDate new];
     self.endDate = [NSDate new];
+    self.friendsArray = [NSMutableArray new];
     
     // setup our data source
     NSMutableDictionary *itemOne = [@{ kTitleKey : @"Tap a cell to change its date:" } mutableCopy];
@@ -519,26 +522,27 @@ NSUInteger DeviceSystemMajorVersion()
     game[@"startAt"] = self.startDate;
     game[@"endAt"] = self.endDate;
 
+    [game saveEventually];
     // save game object
-    [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error)
-        {
-            NSLog(@"%@", error);
-        }
-        else
-        {
-            NSLog(@"Saved GAME without errors");
-        }
+//    [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (error)
+//        {
+//            NSLog(@"%@", error);
+//        }
+//        else
+//        {
+//            NSLog(@"Saved GAME without errors");
+//        }
 
 //        PFObject *savedGame = [PFObject objectWithoutDataWithClassName:@"Game" objectId:[game objectId]];
 
         // make current player the creator of the game
         PFRelation *creatorRelation = [game relationForKey:@"creator"];
-        [creatorRelation addObject:self.currentUser];                   // ***** breaking here *****
+        [creatorRelation addObject:self.currentUser];
 
         // make current user a player in the game
         PFRelation *playerRelation = [game relationForKey:@"players"];
-        [playerRelation addObject:self.currentUser];                    // ***** breaking here *****
+        [playerRelation addObject:self.currentUser];
 
 
         // add game to current users games
@@ -548,32 +552,35 @@ NSUInteger DeviceSystemMajorVersion()
         PFRelation *createdGamesRelation = [[PFUser currentUser] relationForKey:@"createdGames"];
         [createdGamesRelation addObject:game];
 
-        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (error)
-            {
-                NSLog(@"%@", error);
-            }
-            else
-            {
-                NSLog(@"Saved USER without errors");
-            }
+        [self.currentUser saveEventually];                                                          // *** BREAKS HERE ***
+
+//        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if (error)
+//            {
+//                NSLog(@"%@", error);
+//            }
+//            else
+//            {
+//                NSLog(@"Saved USER without errors");
+//            }
             // unwind to previous view controller
             [self.navigationController popViewControllerAnimated:YES];
-        }];
-    }];
+//        }];
+//    }];
 }
 
+//-------------------------------------    Prepare for Segue    ----------------------------------------------------
 #pragma mark - Prepare for Segue
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if (sender)
     {
-
+        
     }
     if ([segue.identifier isEqualToString:@"FriendsSegue"])
     {
-
+        AddFriendsViewController *addFriendsVC = segue.destinationViewController;
+        addFriendsVC.playersArray = self.friendsArray;
     }
 }
 

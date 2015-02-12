@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 @interface User : PFUser <PFSubclassing>
 
@@ -21,6 +22,10 @@
 @property (retain) UIImage *profileImage;
 
 + (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *array))complete;
++ (void)getCurrentUserFriendsWithCompletion:(void(^)(NSArray *array))complete;
++ (void)getAllUsers:(void(^)(NSArray *array))complete;
++ (void)getAllFacebookUsers:(void(^)(NSArray *array))complete;
+
 + (void)getAchievementsWithCompletion:(void(^)(NSArray *array))complete;
 
 + (NSString *)parseClassName;
