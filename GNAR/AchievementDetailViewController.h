@@ -11,6 +11,7 @@
 
 @interface AchievementDetailViewController : UIViewController
 
-@property Achievement *selectedAchievement;
+@property NSInteger type;
+@property NSString *group;
 
 @end

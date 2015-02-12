@@ -11,19 +11,39 @@
 #import "ParentTableViewCell.h"
 #import "SubTableView.h"
 #import "SubTableViewCell.h"
+#import "Achievement.h"
 
 @interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-//@property NSArray 
+@property (weak, nonatomic) IBOutlet ParentTableView *tableView;
+@property NSArray *achievementsArray;
+@property NSArray *childrenArray;
+
+typedef NS_ENUM(NSInteger, AchievementType) {
+    LineWorth,
+    ECP,
+    TrickBonus,
+    Penalty
+};
 
 @end
 
 @implementation AchievementDetailViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+
+    self.childrenArray = @[@"BLARGH"];
+
+    [Achievement getAchievementsOfType:self.type inGroup:self.group withCompletion:^(NSArray *array) {
+        self.achievementsArray = array;
+
+        [self.tableView setDataSourceDelegate:self];
+        [self.tableView setTableViewDelegate:self];
+        [self.tableView reloadData];
+    }];
 }
 
 
@@ -32,46 +52,48 @@
 // @required
 - (NSInteger)numberOfParentCells
 {
-    return 0;
+    return self.achievementsArray.count;
 }
 
 - (NSInteger)heightForParentRows
 {
-    return 0;
+    return 75;
 }
 
 // @optional
 - (NSString *)titleLabelForParentCellAtIndex:(NSInteger)parentIndex
 {
-    return nil;
+    return [self.achievementsArray[parentIndex] name];
 }
 
 - (NSString *)subtitleLabelForParentCellAtIndex:(NSInteger)parentIndex
 {
-    return nil;
+    return @"";
 }
+
+
 
 #pragma mark - Sub Table View Data Source - Child
 // @required
 - (NSInteger)numberOfChildCellsUnderParentIndex:(NSInteger)parentIndex
 {
-    return 0;
+    return self.childrenArray.count;
 }
 
 - (NSInteger)heightForChildRows
 {
-    return 0;
+    return 55;
 }
 
 // @optional
 - (NSString *)titleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
 {
-    return nil;
+    return @"Child Label";
 }
 
 - (NSString *)subtitleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
 {
-    return nil;
+    return @"";
 }
 
 //-----------------------------------    SUB Table View Delegate    ----------------------------------------------------
@@ -79,32 +101,8 @@
 // @optional
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
 {
-
+    
 }
-
-
-
-
-//----------------------------------------    Table View    ----------------------------------------------------
-#pragma mark - Table View
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 0;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    return cell;
-}
-
-
-
-
-
-
-
-
-
 
 
 - (void)didReceiveMemoryWarning {

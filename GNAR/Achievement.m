@@ -25,6 +25,26 @@
 @dynamic funFactor;
 
 
++ (void)getAchievementsOfType:(NSInteger)type inGroup:(NSString *)group withCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Achievement"];
+    [query whereKey:@"type" equalTo: [NSNumber numberWithInteger: type]];
+    [query whereKey:@"group" equalTo:group];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu achievements.", objects.count);
+        }
+        else
+        {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        complete(objects);
+    }];
+}
+
 
 
 + (void)load {
