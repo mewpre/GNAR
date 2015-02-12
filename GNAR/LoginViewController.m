@@ -51,7 +51,7 @@
              if (!error)
              {
                  NSLog(@"Logged in as %@", [PFUser currentUser].username);
-                 [self dismissViewControllerAnimated:NO completion:nil];
+                 [self.delegate didDismissPresentedViewController];
              }
              else
              {
@@ -82,7 +82,7 @@
                 NSDictionary *userData = (NSDictionary *)result;
                 NSLog(@"%@", userData);
                 NSLog(@"%@",[PFUser currentUser].username);
-                [self dismissViewControllerAnimated:NO completion:nil];
+                [self.delegate didDismissPresentedViewController];
             }
         }];
     }
