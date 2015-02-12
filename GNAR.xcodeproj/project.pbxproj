@@ -47,6 +47,7 @@
 		606B717C1A894048004DDAB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 606B717A1A894048004DDAB1 /* LaunchScreen.xib */; };
 		606B71881A894048004DDAB1 /* GNARTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71871A894048004DDAB1 /* GNARTests.m */; };
 		606B71921A894F19004DDAB1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606B71911A894F19004DDAB1 /* FacebookSDK.framework */; };
+		60A1E8D21A8D19E900CD2587 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A1E8D11A8D19E800CD2587 /* CustomTabBarController.m */; };
 		60EA882D1A896003004B6BF7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */; };
 		60EA88301A8990B6004B6BF7 /* Comms.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA882F1A8990B5004B6BF7 /* Comms.m */; };
 		60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA88321A89E66C004B6BF7 /* SignUpViewController.m */; };
@@ -126,6 +127,8 @@
 		606B71861A894048004DDAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606B71871A894048004DDAB1 /* GNARTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNARTests.m; sourceTree = "<group>"; };
 		606B71911A894F19004DDAB1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		60A1E8D01A8D19E800CD2587 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
+		60A1E8D11A8D19E800CD2587 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		60EA882E1A8990B5004B6BF7 /* Comms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comms.h; sourceTree = "<group>"; };
 		60EA882F1A8990B5004B6BF7 /* Comms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comms.m; sourceTree = "<group>"; };
@@ -254,6 +257,7 @@
 		0F61D57A1A89CB0A00FF96F0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				60A1E8D31A8D1A9000CD2587 /* Tab Bar Controller */,
 				0F61D5841A89D12600FF96F0 /* Home */,
 				0F61D5791A89CAD500FF96F0 /* Sign Up/Login */,
 				0F61D56F1A89C7B700FF96F0 /* Games */,
@@ -386,6 +390,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		60A1E8D31A8D1A9000CD2587 /* Tab Bar Controller */ = {
+			isa = PBXGroup;
+			children = (
+				60A1E8D01A8D19E800CD2587 /* CustomTabBarController.h */,
+				60A1E8D11A8D19E800CD2587 /* CustomTabBarController.m */,
+			);
+			name = "Tab Bar Controller";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -500,6 +513,7 @@
 				0FCF8AE11A8BD298006224BB /* ExpandedContainer.m in Sources */,
 				0FCF8ADC1A8BD276006224BB /* ParentTableView.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
+				60A1E8D21A8D19E900CD2587 /* CustomTabBarController.m in Sources */,
 				0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */,
 				0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */,
 				0FCF8AE71A8BD2EE006224BB /* SubTableViewCell.m in Sources */,

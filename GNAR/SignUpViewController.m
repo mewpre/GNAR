@@ -63,6 +63,7 @@
              {
                  // Hooray! Let them use the app now.
                  NSLog(@"Signed up as %@", [PFUser currentUser].username);
+                 [self dismissViewControllerAnimated:NO completion:nil];
              }
              else
              {
@@ -100,6 +101,7 @@
                 NSLog(@"%@", userData);
                 [[PFUser currentUser] setEmail:userData[@"email"]];
                 [[PFUser currentUser] saveInBackground];
+                [self dismissViewControllerAnimated:NO completion:nil];
 
             }
         }];

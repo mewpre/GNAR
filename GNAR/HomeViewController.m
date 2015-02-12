@@ -7,6 +7,9 @@
 //
 
 #import "HomeViewController.h"
+#import "LoginViewController.h"
+#import <Parse/Parse.h>
+
 
 @interface HomeViewController ()
 
@@ -22,6 +25,18 @@
 
 
 
+- (IBAction)onLogoutButtonPressed:(id)sender
+{
+    [PFUser logOut];
+    NSLog(@"Logged Out");
+
+//    LoginViewController *lvc = [LoginViewController new];
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:lvc];
+//
+//    navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    [navController presentViewController:lvc animated:NO completion:nil];
+//    [self presentViewController:lvc animated:NO completion:nil];
+}
 
 
 

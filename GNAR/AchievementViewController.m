@@ -45,12 +45,43 @@
     [self.tableView setTableViewDelegate:self];
 
     // Create achievements for testing
+//    Achievement *ML = [Achievement new];
+//    ML[@"name"] = @"The Loft";
+//    //    ML[@"description"] = @"Make headband or hat out of Priority Mail tape from Olympic Valley Post Office. Get signed by \"Postman Larry\" and ski with it on for 3 full days.";
+//    ML[@"type"] = @0;
+//    ML[@"group"] = @"The Palisades";
+//    [ML saveInBackground];
+//
+//    Achievement *BT = [Achievement new];
+//    BT[@"name"] = @"The Tube";
+//    //    BT[@"description"] = @"Make your own sticker out of \"I SKI SQUAW\" or \"I SNOWBOARD SQUAW\" stickers and place it on your car for the season.";
+//    BT[@"type"] = @0;
+//    BT[@"group"] = @"The Palisades";
+//    [BT saveInBackground];
+//
+//    Achievement *CB = [Achievement new];
+//    CB[@"name"] = @"Bigger Balls";
+//    //    CB[@"description"] = @"Get your season pass signed (permanent marker) by Tom Day.";
+//    CB[@"type"] = @0;
+//    CB[@"group"] = @"West Side KT22";
+//    [CB saveInBackground];
+//
+//    Achievement *BN = [Achievement new];
+//    BN[@"name"] = @"Cartwheel";
+//    //    BN[@"description"] = @"Go monoskiing all day long.";
+//    BN[@"type"] = @0;
+//    BN[@"group"] = @"West Side KT22";
+//    [BN saveInBackground];
+//
+//    Achievement *XT = [Achievement new];
+//    XT[@"name"] = @"The Portal";
+//    //    XT[@"description"] = @"Obtain a totally ridiculous season pass picture. 3 or more friends must say, \"How did they let you do that?\" or equivalent.";
+//    XT[@"type"] = @0;
+//    XT[@"group"] = @"West Side KT22";
+//    [XT saveInBackground];
+//
+//    NSLog(@"Saved achievements");
 
-//    [User getAchievementsWithCompletion:^(NSArray *array)
-//    {
-//        self.achievementsArray = array;
-//        [self.tableView reloadData];
-//    }];
 
 }
 
