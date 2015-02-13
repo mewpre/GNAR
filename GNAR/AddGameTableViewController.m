@@ -83,6 +83,7 @@ static NSString *kMountainsCell = @"mountainsCell";     // the cell containing t
 @property PFUser *currentUser;
 @property NSMutableArray *friendsArray;
 @property NSString *mountainString;
+@property NSString *titleString;
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 
@@ -126,6 +127,9 @@ static NSString *kMountainsCell = @"mountainsCell";     // the cell containing t
     [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];    // show short-style date format
     [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
 
+    self.titleString = [NSString stringWithFormat:@"Squaw Valley - %@", [self.dateFormatter stringFromDate:[NSDate date]]];
+    self.textField.text = self.titleString;
+
     // obtain the picker view cell's height, works because the cell was pre-defined in our storyboard
     UITableViewCell *pickerViewCellToCheck = [self.tableView dequeueReusableCellWithIdentifier:kDatePickerID];
     self.pickerCellRowHeight = CGRectGetHeight(pickerViewCellToCheck.frame);
@@ -137,6 +141,14 @@ static NSString *kMountainsCell = @"mountainsCell";     // the cell containing t
                                              selector:@selector(localeChanged:)
                                                  name:NSCurrentLocaleDidChangeNotification
                                                object:nil];
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.tableView addGestureRecognizer:gestureRecognizer];
+    gestureRecognizer.cancelsTouchesInView = NO;
+}
+
+- (void)hideKeyboard
+{
+    [self.textField resignFirstResponder];
 }
 
 - (void)dealloc
@@ -515,6 +527,7 @@ NSUInteger DeviceSystemMajorVersion()
     else if ([cell.textLabel.text isEqualToString:@"Start Date"])
     {
         self.startDate = targetedDatePicker.date;
+
         // if enddate is before start date: make end date = start date
         if (self.endDate < self.startDate)
         {
@@ -584,17 +597,16 @@ NSUInteger DeviceSystemMajorVersion()
         [playerRelation addObject:user];
     }
 
+    [self.textField resignFirstResponder];
+
     [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // add game to current users games
         PFRelation *gamesRelation = [[PFUser currentUser] relationForKey:@"games"];
         [gamesRelation addObject:game];
 
-        //    [[PFUser currentUser] saveEventually];
-
         // add game to current users created games
         PFRelation *createdGamesRelation = [[PFUser currentUser] relationForKey:@"createdGames"];
         [createdGamesRelation addObject:game];
-        //    [game saveEventually];
 
         [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             // unwind to previous view controller
@@ -602,6 +614,7 @@ NSUInteger DeviceSystemMajorVersion()
         }];
     }];
 }
+
 
 //-------------------------------------    Prepare for Segue    ----------------------------------------------------
 #pragma mark - Prepare for Segue

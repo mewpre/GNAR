@@ -15,7 +15,10 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
+@property NSArray *tableViewArray;
 @property NSArray *usersArray;
+@property NSMutableArray *searchResultsArray;
+@property BOOL isSearching;
 
 @end
 
@@ -25,10 +28,47 @@
 {
     [super viewDidLoad];
 
+    self.tableViewArray = [NSArray new];
+    self.searchResultsArray = [NSMutableArray new];
+
     [User getAllUsers:^(NSArray *array) {
         self.usersArray = array;
+        self.tableViewArray = self.usersArray;
         [self.tableView reloadData];
     }];
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.tableView addGestureRecognizer:gestureRecognizer];
+    gestureRecognizer.cancelsTouchesInView = NO;
+}
+
+- (void)hideKeyboard
+{
+    [self.searchBar resignFirstResponder];
+}
+
+//--------------------------------------    Search Bar    ----------------------------------------------------
+#pragma mark - Search Bar
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    NSMutableArray *tempSearchArray = [NSMutableArray new];
+    if ([searchText isEqualToString:@""])
+    {
+        self.isSearching = FALSE;
+        self.tableViewArray = self.usersArray;
+    }
+    else
+    {
+        self.isSearching = TRUE;
+        for (PFUser *user in self.usersArray)
+        {
+            if ([[user.username lowercaseString] containsString:[searchText lowercaseString]])
+            {
+                [tempSearchArray addObject:user];
+            }
+        }
+        self.tableViewArray = tempSearchArray;
+    }
+    [self.tableView reloadData];
 }
 
 
@@ -44,11 +84,14 @@
 
 - (IBAction)onSegmentPressed:(UISegmentedControl *)sender
 {
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
     if (sender.selectedSegmentIndex == 0)
     {
         // Search for my crew
         [User getCurrentUserFriendsWithCompletion:^(NSArray *array) {
             self.usersArray = array;
+            self.tableViewArray = self.usersArray;
             [self.tableView reloadData];
         }];
     }
@@ -57,6 +100,7 @@
         // Search for my facebook friends
         [User getAllFacebookUsers:^(NSArray *array) {
             self.usersArray = array;
+            self.tableViewArray = self.usersArray;
             [self.tableView reloadData];
         }];
     }
@@ -65,6 +109,7 @@
         // Search for all GNAR users
         [User getAllUsers:^(NSArray *array) {
             self.usersArray = array;
+            self.tableViewArray = self.usersArray;
             [self.tableView reloadData];
         }];
     }
@@ -75,12 +120,12 @@
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.usersArray.count;
+    return self.tableViewArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    User *currentUser = self.usersArray[indexPath.row];
+    User *currentUser = self.tableViewArray[indexPath.row];
     cell.textLabel.text = currentUser.username;
 
     // apply checkmark to users who have already been selected
@@ -101,13 +146,14 @@
     if ([tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryNone)
     {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.selectedUsersArray addObject:self.usersArray[indexPath.row]];
+        [self.selectedUsersArray addObject:self.tableViewArray[indexPath.row]];
     }
     else
     {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        [self.selectedUsersArray removeObject:self.usersArray[indexPath.row]];
+        [self.selectedUsersArray removeObject:self.tableViewArray[indexPath.row]];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

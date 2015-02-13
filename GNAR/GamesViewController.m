@@ -23,8 +23,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%@", [PFUser currentUser].username);
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
