@@ -93,7 +93,7 @@
             </objects>
             <point key="canvasLocation" x="4233" y="469.5"/>
         </scene>
-        <!--Leaderboard-->
+        <!--Current Game Players-->
         <scene sceneID="Mzl-4I-r70">
             <objects>
                 <viewController id="W0l-NK-axe" customClass="LeaderboardViewController" sceneMemberID="viewController">
@@ -136,7 +136,7 @@
                             <constraint firstAttribute="bottom" secondItem="4mJ-c3-qnI" secondAttribute="bottom" id="ryW-t4-ZKe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Leaderboard" id="bhU-Dj-Jcj"/>
+                    <navigationItem key="navigationItem" title="Current Game Players" id="bhU-Dj-Jcj"/>
                     <connections>
                         <outlet property="tableView" destination="4mJ-c3-qnI" id="CuY-o2-9KN"/>
                     </connections>
@@ -145,7 +145,7 @@
             </objects>
             <point key="canvasLocation" x="5116.5" y="465"/>
         </scene>
-        <!--User Achievements-->
+        <!--User Scores-->
         <scene sceneID="0UB-Ki-f6u">
             <objects>
                 <viewController id="mc3-Gu-ZmD" customClass="UserAchievementsViewController" sceneMemberID="viewController">
@@ -186,7 +186,7 @@
                             <constraint firstItem="rZy-fA-O0k" firstAttribute="top" secondItem="Ybb-Na-SEa" secondAttribute="top" id="xx2-0P-B3N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="User Achievements" id="EgV-B7-mTQ"/>
+                    <navigationItem key="navigationItem" title="User Scores" id="EgV-B7-mTQ"/>
                     <connections>
                         <outlet property="tableView" destination="rZy-fA-O0k" id="5p3-wp-xWh"/>
                     </connections>

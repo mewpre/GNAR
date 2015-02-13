@@ -100,6 +100,7 @@
             // findObjects will return a list of PFUsers that are friends
             // with the current user
             [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                NSLog(@"Successfully retrieved %lu Facebook friends.", (unsigned long)objects.count);
                 complete(objects);
             }];
         }

@@ -15,8 +15,13 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
-@property NSArray *tableViewArray;
-@property NSArray *usersArray;
+@property NSArray *displayedUsersArray;
+@property NSArray *currentArray;
+
+@property NSArray *allUsersArray;
+@property NSArray *facebookUsersArray;
+@property NSArray *myCrewUsersArray;
+
 @property NSMutableArray *searchResultsArray;
 @property BOOL isSearching;
 
@@ -28,14 +33,28 @@
 {
     [super viewDidLoad];
 
-    self.tableViewArray = [NSArray new];
+    self.displayedUsersArray = [NSArray new];
     self.searchResultsArray = [NSMutableArray new];
 
+
+    [User getCurrentUserFriendsWithCompletion:^(NSArray *array) {
+        self.myCrewUsersArray = array;
+    }];
+    // Search for my facebook friends
+    [User getAllFacebookUsers:^(NSArray *array) {
+        self.facebookUsersArray = array;
+    }];
+    // Search for all GNAR users
     [User getAllUsers:^(NSArray *array) {
-        self.usersArray = array;
-        self.tableViewArray = self.usersArray;
+        self.allUsersArray = array;
+        self.displayedUsersArray = self.allUsersArray;
+        self.currentArray = self.allUsersArray;
         [self.tableView reloadData];
     }];
+
+
+
+
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.tableView addGestureRecognizer:gestureRecognizer];
     gestureRecognizer.cancelsTouchesInView = NO;
@@ -54,19 +73,20 @@
     if ([searchText isEqualToString:@""])
     {
         self.isSearching = FALSE;
-        self.tableViewArray = self.usersArray;
+        self.displayedUsersArray = self.currentArray;
     }
     else
     {
         self.isSearching = TRUE;
-        for (PFUser *user in self.usersArray)
+        for (PFUser *user in self.currentArray)
         {
+            
             if ([[user.username lowercaseString] containsString:[searchText lowercaseString]])
             {
                 [tempSearchArray addObject:user];
             }
         }
-        self.tableViewArray = tempSearchArray;
+        self.displayedUsersArray = tempSearchArray;
     }
     [self.tableView reloadData];
 }
@@ -88,30 +108,24 @@
     [self.searchBar resignFirstResponder];
     if (sender.selectedSegmentIndex == 0)
     {
-        // Search for my crew
-        [User getCurrentUserFriendsWithCompletion:^(NSArray *array) {
-            self.usersArray = array;
-            self.tableViewArray = self.usersArray;
-            [self.tableView reloadData];
-        }];
+        // Display my crew
+        self.displayedUsersArray = self.myCrewUsersArray;
+        self.currentArray = self.myCrewUsersArray;
+        [self.tableView reloadData];
     }
     else if (sender.selectedSegmentIndex == 1)
     {
-        // Search for my facebook friends
-        [User getAllFacebookUsers:^(NSArray *array) {
-            self.usersArray = array;
-            self.tableViewArray = self.usersArray;
-            [self.tableView reloadData];
-        }];
+        // Display my facebook friends
+        self.displayedUsersArray = self.facebookUsersArray;
+        self.currentArray = self.facebookUsersArray;
+        [self.tableView reloadData];
     }
     else
     {
         // Search for all GNAR users
-        [User getAllUsers:^(NSArray *array) {
-            self.usersArray = array;
-            self.tableViewArray = self.usersArray;
-            [self.tableView reloadData];
-        }];
+        self.displayedUsersArray = self.allUsersArray;
+        self.currentArray = self.allUsersArray;
+        [self.tableView reloadData];
     }
 }
 
@@ -120,12 +134,12 @@
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.tableViewArray.count;
+    return self.displayedUsersArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    User *currentUser = self.tableViewArray[indexPath.row];
+    User *currentUser = self.displayedUsersArray[indexPath.row];
     cell.textLabel.text = currentUser.username;
 
     // apply checkmark to users who have already been selected
@@ -134,44 +148,44 @@
         if ([currentUser.objectId isEqualToString:user.objectId])
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            break;
+        }
+        else
+        {
+//            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
-
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryNone)
+    if ([self.selectedUsersArray containsObject:self.displayedUsersArray[indexPath.row]])
     {
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.selectedUsersArray addObject:self.tableViewArray[indexPath.row]];
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        [self.selectedUsersArray removeObject:self.displayedUsersArray[indexPath.row]];
     }
     else
     {
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        [self.selectedUsersArray removeObject:self.tableViewArray[indexPath.row]];
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.selectedUsersArray addObject:self.displayedUsersArray[indexPath.row]];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
-//----------------------------------------    Other    ----------------------------------------------------
-#pragma mark - Other
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
- #pragma mark - Navigation
 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

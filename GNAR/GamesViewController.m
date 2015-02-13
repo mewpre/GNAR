@@ -25,15 +25,6 @@
     [super viewDidLoad];
 }
 
-//Helper method for refresh control
-- (void)getCurrentUserGames
-{
-    [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
-        self.gamesArray = array;
-        [self.tableView reloadData];
-    }];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -43,6 +34,16 @@
     [self getCurrentUserGames];
 }
 
+//Helper method for refresh control
+- (void)getCurrentUserGames
+{
+    [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
+        self.gamesArray = array;
+        [self.tableView reloadData];
+    }];
+}
+
+
 
 //----------------------------------------    Table View    ----------------------------------------------------
 #pragma mark - Table View
@@ -50,6 +51,8 @@
 {
     return self.gamesArray.count;
 }
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -70,7 +73,7 @@
 #pragma mark - Table View
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"AddGameSegue"])
+    if ([segue.identifier isEqualToString:@"EditGameSegue"])
     {
         
     }
