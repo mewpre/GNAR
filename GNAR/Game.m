@@ -15,6 +15,17 @@
 @dynamic startAt;
 @dynamic endAt;
 
+- (instancetype)initWithName:(NSString *)name mountain:(NSString *)mountain
+{
+    self = [super init];
+    if (self)
+    {
+        self.name = name;
+        self.mountain = mountain;
+    }
+    return self;
+}
+
 
 + (void)load {
     [self registerSubclass];

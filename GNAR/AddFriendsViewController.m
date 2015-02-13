@@ -29,7 +29,6 @@
         self.usersArray = array;
         [self.tableView reloadData];
     }];
-
 }
 
 
@@ -37,6 +36,7 @@
 #pragma mark - Actions
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
 {
+    [self.delegate addFriendsSaveButtonPressed:self.selectedUsersArray];
     // unwind to previous view controller
     [self.navigationController popViewControllerAnimated:YES];
 
@@ -47,7 +47,10 @@
     if (sender.selectedSegmentIndex == 0)
     {
         // Search for my crew
-
+        [User getCurrentUserFriendsWithCompletion:^(NSArray *array) {
+            self.usersArray = array;
+            [self.tableView reloadData];
+        }];
     }
     else if (sender.selectedSegmentIndex == 1)
     {
@@ -79,6 +82,17 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     User *currentUser = self.usersArray[indexPath.row];
     cell.textLabel.text = currentUser.username;
+
+    // apply checkmark to users who have already been selected
+    for (PFUser *user in self.selectedUsersArray)
+    {
+        if ([currentUser.objectId isEqualToString:user.objectId])
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            break;
+        }
+    }
+
     return cell;
 }
 
@@ -87,12 +101,12 @@
     if ([tableView cellForRowAtIndexPath:indexPath].accessoryType == UITableViewCellAccessoryNone)
     {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.playersArray addObject:self.usersArray[indexPath.row]];
+        [self.selectedUsersArray addObject:self.usersArray[indexPath.row]];
     }
     else
     {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        [self.playersArray removeObject:self.usersArray[indexPath.row]];
+        [self.selectedUsersArray removeObject:self.usersArray[indexPath.row]];
     }
 }
 
@@ -105,13 +119,13 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

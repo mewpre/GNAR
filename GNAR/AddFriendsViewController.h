@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "Game.h"
 
+@protocol AddFriendsDelegate <NSObject>
+
+- (void)addFriendsSaveButtonPressed:(NSArray *)selectedUsersArray;
+
+@end
+
 @interface AddFriendsViewController : UIViewController
 
-@property NSMutableArray *playersArray;
+@property (nonatomic, weak) id <AddFriendsDelegate> delegate;
+
+@property NSMutableArray *selectedUsersArray;
 
 @end

@@ -15,7 +15,7 @@
 @property (retain) NSDate *startAt;
 @property (retain) NSDate *endAt;
 
-
+- (instancetype)initWithName:(NSString *)name mountain:(NSString *)mountain;
 
 + (NSString *)parseClassName;
 

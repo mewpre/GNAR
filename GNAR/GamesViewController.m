@@ -30,7 +30,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
     NSLog(@"%@", [PFUser currentUser].username);
+    
     [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
         self.gamesArray = array;
         [self.tableView reloadData];
@@ -53,6 +55,9 @@
 
     // Set cell title to game's mountain
     cell.textLabel.text = [game objectForKey:@"mountain"];
+    // Set users in game
+    NSString *mountain = [NSString stringWithFormat:@"%@", game[@"mountain"]];
+    cell.detailTextLabel.text = mountain;
     return cell;
 }
 
