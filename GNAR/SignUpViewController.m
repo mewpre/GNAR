@@ -29,6 +29,17 @@
     {
         NSLog(@"Already logged in as %@", [PFUser currentUser].username);
     }
+
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.view addGestureRecognizer:gestureRecognizer];
+    gestureRecognizer.cancelsTouchesInView = NO;
+}
+
+- (void)hideKeyboard
+{
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self.emailTextField resignFirstResponder];
 }
 
 
@@ -100,6 +111,7 @@
                 NSDictionary *userData = (NSDictionary *)result;
                 NSLog(@"%@", userData);
                 [[PFUser currentUser] setEmail:userData[@"email"]];
+                [[PFUser currentUser] setObject:userData[@"gender"] forKey:@"gender"];
                 [[PFUser currentUser] saveInBackground];
                 [self dismissViewControllerAnimated:NO completion:nil];
 

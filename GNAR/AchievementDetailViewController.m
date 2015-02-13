@@ -109,6 +109,7 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 
 - (void)tableView:(UITableView *)tableView didSelectParentCellAtIndex:(NSInteger)parentIndex
 {
+    //Only used for testing
     Achievement *selectedAchievement = [self.achievementsArray objectAtIndex:parentIndex];
     [self saveScoresFromAchievement:selectedAchievement toUsers:@[[PFUser currentUser]]];
 }
@@ -123,13 +124,16 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 #warning        //Implement logic to get modifiers from custom table view cell
         NSArray *modifiersArray = @[];
         Score *score = [[Score alloc]initScoreWithAchievement:achievement withModifiers:modifiersArray];
-        PFRelation *scoresRelation = [[PFUser currentUser] relationForKey:@"scores"];
-        [scoresRelation addObject:score];
-        [score saveInBackground];
-
-    PFRelation *scorerRelation = [score relationForKey:@"scorer"];
-    [scorerRelation addObject:[PFUser currentUser]];
-        [user saveInBackground];
+            PFRelation *scorerRelation = [score relationForKey:@"scorer"];
+            [scorerRelation addObject:[PFUser currentUser]];
+            [score saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+             {
+                 PFRelation *scoresRelation = [[PFUser currentUser] relationForKey:@"scores"];
+                 [scoresRelation addObject:score];
+                 [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                  {
+                  }];
+            }];
     }
 }
 

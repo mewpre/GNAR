@@ -51,6 +51,7 @@ typedef NS_ENUM(NSInteger, AchievementType) {
         {
             case LineWorth:
 #warning                //do logic to get score based on snow level
+                self.score = achievement.pointValues.firstObject;
                 //note: a score of 0 means it's not rated
                 break;
 

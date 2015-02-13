@@ -25,16 +25,22 @@
     [super viewDidLoad];
 }
 
+//Helper method for refresh control
+- (void)getCurrentUserGames
+{
+    [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
+        self.gamesArray = array;
+        [self.tableView reloadData];
+    }];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
     NSLog(@"%@", [PFUser currentUser].username);
     
-    [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
-        self.gamesArray = array;
-        [self.tableView reloadData];
-    }];
+    [self getCurrentUserGames];
 }
 
 
