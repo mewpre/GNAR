@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Game.h"
 
 @interface LeaderboardViewController : UIViewController
+
+@property Game *currentGame;
 
 @end

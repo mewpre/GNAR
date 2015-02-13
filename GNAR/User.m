@@ -24,7 +24,7 @@
 + (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *array))complete
 {
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"games"];
-
+    [relation.query includeKey:@"friends"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {

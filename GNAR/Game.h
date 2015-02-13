@@ -16,7 +16,7 @@
 @property (retain) NSDate *endAt;
 
 - (instancetype)initWithName:(NSString *)name mountain:(NSString *)mountain;
-
+- (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *array))complete;
 + (NSString *)parseClassName;
 
 @end

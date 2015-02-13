@@ -212,10 +212,6 @@
 				0FEFE8A61A8A897E0062123D /* AddGameTableViewController.m */,
 				0F61D5851A89DBA800FF96F0 /* AddFriendsViewController.h */,
 				0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */,
-				0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */,
-				0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */,
-				0F61D57B1A89CE9700FF96F0 /* UserAchievementsViewController.h */,
-				0F61D57C1A89CE9700FF96F0 /* UserAchievementsViewController.m */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -261,6 +257,7 @@
 				0F61D5841A89D12600FF96F0 /* Home */,
 				0F61D5791A89CAD500FF96F0 /* Sign Up/Login */,
 				0F61D56F1A89C7B700FF96F0 /* Games */,
+				0FCAA4351A8EA386002430F7 /* Scores */,
 				0F61D5701A89C7D100FF96F0 /* Achievements */,
 			);
 			name = Controllers;
@@ -273,6 +270,17 @@
 				0F61D5821A89D12200FF96F0 /* HomeViewController.m */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		0FCAA4351A8EA386002430F7 /* Scores */ = {
+			isa = PBXGroup;
+			children = (
+				0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */,
+				0F61D5741A89C96300FF96F0 /* LeaderboardViewController.m */,
+				0F61D57B1A89CE9700FF96F0 /* UserAchievementsViewController.h */,
+				0F61D57C1A89CE9700FF96F0 /* UserAchievementsViewController.m */,
+			);
+			name = Scores;
 			sourceTree = "<group>";
 		};
 		0FCF8AE31A8BD2A1006224BB /* SubRow */ = {

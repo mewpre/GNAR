@@ -7,6 +7,7 @@
 //
 
 #import "GamesViewController.h"
+#import "LeaderboardViewController.h"
 #import "User.h"
 
 @interface GamesViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -36,9 +37,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
-    NSLog(@"%@", [PFUser currentUser].username);
-    
+//    NSLog(@"%@", [PFUser currentUser].username);
     [self getCurrentUserGames];
 }
 
@@ -70,7 +69,7 @@
     PFObject *game = self.gamesArray[indexPath.row];
 
     // Set cell title to game's mountain
-    cell.textLabel.text = [game objectForKey:@"mountain"];
+    cell.textLabel.text = [game objectForKey:@"name"];
     // Set users in game
     NSString *mountain = [NSString stringWithFormat:@"%@", game[@"mountain"]];
     cell.detailTextLabel.text = mountain;
@@ -82,9 +81,11 @@
 #pragma mark - Table View
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"EditGameSegue"])
+    if ([segue.identifier isEqualToString:@"ViewGameSegue"])
     {
-        
+        LeaderboardViewController *leaderVC = segue.destinationViewController;
+        Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
+        leaderVC.currentGame = selectedGame;
     }
     else
     {

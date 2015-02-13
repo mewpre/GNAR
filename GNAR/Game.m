@@ -26,6 +26,27 @@
     return self;
 }
 
+- (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *array))complete
+{
+    PFRelation *relation = [self relationForKey:@"players"];
+    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            NSLog(@"Fetched %lu players from game.", (unsigned long)objects.count);
+        }
+        complete(objects);
+    }];
+}
+
+
+
+
+
+
 
 + (void)load {
     [self registerSubclass];

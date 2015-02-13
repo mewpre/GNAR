@@ -56,7 +56,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="W0l-NK-axe" kind="show" id="4Xs-Kp-ywX"/>
+                                            <segue destination="W0l-NK-axe" kind="show" identifier="ViewGameSegue" id="4Xs-Kp-ywX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -838,7 +838,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Achievements Detail" id="zdM-W9-qhc">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="beT-uY-5mY"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="beT-uY-5mY">
+                            <connections>
+                                <action selector="onSaveButtonPressed:" destination="kwd-si-2ci" id="CrO-PB-vA6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Nd7-4M-3FD" id="IxJ-AV-OIk"/>

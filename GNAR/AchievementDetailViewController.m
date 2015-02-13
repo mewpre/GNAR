@@ -136,10 +136,12 @@ typedef NS_ENUM(NSInteger, AchievementType) {
             }];
     }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//-------------------------------------    Actions    ----------------------------------------------------
+#pragma mark - Actions
+- (IBAction)onSaveButtonPressed:(UIBarButtonItem *)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 @end
