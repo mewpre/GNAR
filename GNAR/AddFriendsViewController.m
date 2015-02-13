@@ -80,21 +80,9 @@
     else
     {
         self.isSearching = TRUE;
-<<<<<<< HEAD
-        for (PFUser *user in self.currentArray)
-        {
-            
-            if ([[user.username lowercaseString] containsString:[searchText lowercaseString]])
-            {
-                [tempSearchArray addObject:user];
-            }
-        }
-        self.displayedUsersArray = tempSearchArray;
-=======
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.username contains[c] %@",searchText];
-        tempSearchArray = [NSMutableArray arrayWithArray:[self.usersArray filteredArrayUsingPredicate:predicate]];
-        self.tableViewArray = tempSearchArray;
->>>>>>> 48d0366f454851655f5bb2e7abf27b251aa2f42a
+        tempSearchArray = [NSMutableArray arrayWithArray:[self.currentArray filteredArrayUsingPredicate:predicate]];
+        self.displayedUsersArray = tempSearchArray;
     }
     [self.tableView reloadData];
 }
@@ -149,17 +137,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     User *currentUser = self.displayedUsersArray[indexPath.row];
     cell.textLabel.text = currentUser.username;
-
+    cell.accessoryType = UITableViewCellAccessoryNone;
     // apply checkmark to users who have already been selected
     for (PFUser *user in self.selectedUsersArray)
     {
         if ([currentUser.objectId isEqualToString:user.objectId])
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        else
-        {
-//            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
     return cell;
