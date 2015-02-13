@@ -39,6 +39,8 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.tableView addGestureRecognizer:gestureRecognizer];
     gestureRecognizer.cancelsTouchesInView = NO;
+
+    self.navigationController.navigationBar.topItem.title = @"Cancel";
 }
 
 - (void)hideKeyboard
