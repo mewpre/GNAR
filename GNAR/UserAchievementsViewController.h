@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Score.h"
 
 @interface UserAchievementsViewController : UIViewController
+
+@property NSArray *scoresArray;
 
 @end

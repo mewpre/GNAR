@@ -7,6 +7,7 @@
 //
 
 #import "LeaderboardViewController.h"
+#import "UserAchievementsViewController.h"
 
 @interface LeaderboardViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,6 +25,7 @@
 
     [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *array) {
         self.playersArray = array;
+        [self.tableView reloadData];
     }];
 
     // refresh control used for pull-down to refresh functionality
@@ -46,8 +48,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.text = [self.playersArray[indexPath.row] name];
+
+    cell.textLabel.text = [self.playersArray[indexPath.row] username];
     return cell;
+}
+
+
+
+
+
+//----------------------------------------    Prepare for Segue    ----------------------------------------------------
+#pragma mark - Prepare for Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ViewGameSegue"])
+    {
+        LeaderboardViewController *leaderVC = segue.destinationViewController;
+//        Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
+//        leaderVC.currentGame = selectedGame;
+    }
+    else
+    {
+
+    }
 }
 
 
@@ -59,10 +82,10 @@
 
 
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//}
-
-
-@end
+    
+    
+    
+    
+    
+    
+    @end
