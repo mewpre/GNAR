@@ -16,6 +16,8 @@
 
 @property NSArray *gamesArray;
 
+@property UIRefreshControl *refreshControl;
+
 @end
 
 @implementation GamesViewController
@@ -23,6 +25,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getCurrentUserGames) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
 }
 
 //Helper method for refresh control
@@ -31,6 +36,7 @@
     [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
         self.gamesArray = array;
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     }];
 }
 
