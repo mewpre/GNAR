@@ -87,7 +87,8 @@
             NSArray *friendObjects = [result objectForKey:@"data"];
             NSMutableArray *friendIds = [NSMutableArray arrayWithCapacity:friendObjects.count];
             // Create a list of friends' Facebook IDs
-            for (NSDictionary *friendObject in friendObjects) {
+            for (NSDictionary *friendObject in friendObjects)
+            {
                 [friendIds addObject:[friendObject objectForKey:@"id"]];
             }
 
@@ -98,28 +99,11 @@
 
             // findObjects will return a list of PFUsers that are friends
             // with the current user
-            NSArray *friendUsers = [friendQuery findObjects];
-            complete(friendUsers);
+            [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                complete(objects);
+            }];
         }
     }];
-
-
-//    PFRelation *relation = [PFRelation ]
-//    PFQuery *query = [PFUser query];
-//
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error)
-//        {
-//            // The find succeeded.
-//            NSLog(@"Successfully retrieved %lu Users.", objects.count);
-//        }
-//        else
-//        {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//        complete(objects);
-//    }];
 }
 
 + (void)getAchievementsWithCompletion:(void(^)(NSArray *array))complete
