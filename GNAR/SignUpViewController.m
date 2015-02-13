@@ -100,6 +100,7 @@
                 NSDictionary *userData = (NSDictionary *)result;
                 NSLog(@"%@", userData);
                 [[PFUser currentUser] setEmail:userData[@"email"]];
+                [[PFUser currentUser] setObject:userData[@"gender"] forKey:@"gender"];
                 [[PFUser currentUser] saveInBackground];
                 [self dismissViewControllerAnimated:NO completion:nil];
 
