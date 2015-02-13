@@ -34,6 +34,8 @@
     // To track statistics around application opens
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.5 blue:138.0/255/0 alpha:1.0]];
+    [[UITableView appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
 
     return YES;
 }
