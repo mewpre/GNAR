@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Score.h"
+#import "User.h"
 
 @interface UserAchievementsViewController : UIViewController
 
-@property NSArray *scoresArray;
+//@property NSArray *scoresArray;
+@property User *currentPlayer;
 
 @end

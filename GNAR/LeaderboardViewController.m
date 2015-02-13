@@ -61,13 +61,14 @@
 #pragma mark - Prepare for Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"ViewGameSegue"])
+//    if ([segue.identifier isEqualToString:@""])
     {
-        LeaderboardViewController *leaderVC = segue.destinationViewController;
-//        Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
-//        leaderVC.currentGame = selectedGame;
+        UserAchievementsViewController *userAchieveVC = segue.destinationViewController;
+
+//        userAchieveVC.scoresArray = self.playersArray[[self.tableView indexPathForSelectedRow].row][@"scores"];
+        userAchieveVC.currentPlayer = self.playersArray[[self.tableView indexPathForSelectedRow].row];
     }
-    else
+//    else
     {
 
     }

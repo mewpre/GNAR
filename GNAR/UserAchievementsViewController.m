@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property UIRefreshControl *refreshControl;
+@property NSArray *scoresArray;
 
 @end
 
@@ -20,6 +21,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [User getUserScoresWithCompletion:^(NSArray *array) {
+        self.scoresArray = array;
+        [self.tableView reloadData];
+    }];
+
+
+
     // Do any additional setup after loading the view.
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
@@ -35,11 +44,13 @@
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.scoresArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    Score *score = self.scoresArray[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", score.score];
     return cell;
 }
 

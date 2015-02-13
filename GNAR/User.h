@@ -21,6 +21,7 @@
 @property (retain) NSNumber *ability;
 @property (retain) UIImage *profileImage;
 
++ (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete;
 + (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *array))complete;
 + (void)getCurrentUserFriendsWithCompletion:(void(^)(NSArray *array))complete;
 + (void)getAllUsers:(void(^)(NSArray *array))complete;
