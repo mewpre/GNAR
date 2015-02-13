@@ -12,12 +12,17 @@
 #import "SubTableView.h"
 #import "SubTableViewCell.h"
 #import "Achievement.h"
+#import "Score.h"
 
 @interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet ParentTableView *tableView;
 @property NSArray *achievementsArray;
 @property NSArray *childrenArray;
+
+@property NSMutableArray *scoresArray;
+
+
 
 typedef NS_ENUM(NSInteger, AchievementType) {
     LineWorth,
@@ -102,20 +107,35 @@ typedef NS_ENUM(NSInteger, AchievementType) {
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectParentCellAtIndex:(NSInteger)parentIndex
+{
+    Achievement *selectedAchievement = [self.achievementsArray objectAtIndex:parentIndex];
+    [self saveScoresFromAchievement:selectedAchievement toUsers:@[[PFUser currentUser]]];
+}
+
+
+
+//
+- (void)saveScoresFromAchievement: (Achievement *) achievement toUsers:(NSArray *)usersArray
+{
+    for (PFUser *user in usersArray)
+    {
+#warning        //Implement logic to get modifiers from custom table view cell
+        NSArray *modifiersArray = @[];
+        Score *score = [[Score alloc]initScoreWithAchievement:achievement withModifiers:modifiersArray];
+        PFRelation *scoresRelation = [[PFUser currentUser] relationForKey:@"scores"];
+        [scoresRelation addObject:score];
+        [score saveInBackground];
+
+    PFRelation *scorerRelation = [score relationForKey:@"scorer"];
+    [scorerRelation addObject:[PFUser currentUser]];
+        [user saveInBackground];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

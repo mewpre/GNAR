@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+@class Achievement;
 
 @interface Score : PFObject <PFSubclassing>
 
@@ -15,5 +16,8 @@
 @property (retain) NSDate *completedAt;
 
 + (NSString *)parseClassName;
+
+- (instancetype)initScoreWithAchievement:(Achievement *)achievement withModifiers: (NSArray *)modifiers;
+
 
 @end
