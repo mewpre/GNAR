@@ -58,6 +58,8 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.tableView addGestureRecognizer:gestureRecognizer];
     gestureRecognizer.cancelsTouchesInView = NO;
+
+    self.navigationController.navigationBar.topItem.title = @"Cancel";
 }
 
 - (void)hideKeyboard
@@ -78,6 +80,7 @@
     else
     {
         self.isSearching = TRUE;
+<<<<<<< HEAD
         for (PFUser *user in self.currentArray)
         {
             
@@ -87,6 +90,11 @@
             }
         }
         self.displayedUsersArray = tempSearchArray;
+=======
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.username contains[c] %@",searchText];
+        tempSearchArray = [NSMutableArray arrayWithArray:[self.usersArray filteredArrayUsingPredicate:predicate]];
+        self.tableViewArray = tempSearchArray;
+>>>>>>> 48d0366f454851655f5bb2e7abf27b251aa2f42a
     }
     [self.tableView reloadData];
 }
