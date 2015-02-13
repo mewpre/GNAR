@@ -107,20 +107,21 @@ typedef NS_ENUM(NSInteger, AchievementType) {
     
 }
 
+//Only used for testing for now
 - (void)tableView:(UITableView *)tableView didSelectParentCellAtIndex:(NSInteger)parentIndex
 {
-    //Only used for testing
     Achievement *selectedAchievement = [self.achievementsArray objectAtIndex:parentIndex];
     [self saveScoresFromAchievement:selectedAchievement toUsers:@[[PFUser currentUser]]];
 }
 
 
 
-//
+// Helper method to save single achievement into Parse
 - (void)saveScoresFromAchievement: (Achievement *) achievement toUsers:(NSArray *)usersArray
 {
     for (PFUser *user in usersArray)
     {
+        // TODO: Implement logic to get modifiers from custom table view cell
 #warning        //Implement logic to get modifiers from custom table view cell
         NSArray *modifiersArray = @[];
         Score *score = [[Score alloc]initScoreWithAchievement:achievement withModifiers:modifiersArray];

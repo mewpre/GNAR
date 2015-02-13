@@ -137,17 +137,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     User *currentUser = self.displayedUsersArray[indexPath.row];
     cell.textLabel.text = currentUser.username;
-
+    cell.accessoryType = UITableViewCellAccessoryNone;
     // apply checkmark to users who have already been selected
     for (PFUser *user in self.selectedUsersArray)
     {
         if ([currentUser.objectId isEqualToString:user.objectId])
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        else
-        {
-//            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
     return cell;
