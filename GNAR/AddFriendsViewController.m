@@ -61,13 +61,8 @@
     else
     {
         self.isSearching = TRUE;
-        for (PFUser *user in self.usersArray)
-        {
-            if ([[user.username lowercaseString] containsString:[searchText lowercaseString]])
-            {
-                [tempSearchArray addObject:user];
-            }
-        }
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.username contains[c] %@",searchText];
+        tempSearchArray = [NSMutableArray arrayWithArray:[self.usersArray filteredArrayUsingPredicate:predicate]];
         self.tableViewArray = tempSearchArray;
     }
     [self.tableView reloadData];
