@@ -19,5 +19,10 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)onAddPlayersButtonPressed:(id)sender
+{
+    NSLog(@"Adding Players!");
+    [self.delegate didPressAddPlayersButton];
+}
 
 @end

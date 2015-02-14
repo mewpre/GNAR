@@ -19,5 +19,10 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)onAddModifiersButtonPressed:(UIButton *)sender
+{
+    NSLog(@"Add Modifier button tapped!");
+    [self.delegate didPressAddModifiersButton];
+}
 
 @end

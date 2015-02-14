@@ -8,10 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol InfoTableViewCellDelegate <NSObject>
+
+- (void)didPressAddButton;
+
+@end
+
 @interface InfoTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *funLabel;
 @property (weak, nonatomic) IBOutlet UILabel *heroLabel;
 @property (weak, nonatomic) IBOutlet UILabel *difficultyLabel;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+@property (weak, nonatomic) id <InfoTableViewCellDelegate> delegate;
 
 @end

@@ -19,5 +19,10 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)onSegmentSelected:(UISegmentedControl *)sender
+{
+    NSLog(@"Changed selection!!");
+    [self.delegate didChangeSegment:sender.selectedSegmentIndex];
+}
 
 @end

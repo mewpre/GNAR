@@ -11,7 +11,7 @@
 #import "Score.h"
 #import "Enum.h"
 
-@interface AddAchievementViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AddAchievementViewController () <UITableViewDataSource, UITableViewDelegate, InfoTableViewCellDelegate, SnowTableViewCellDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate>
 
 @end
 
@@ -82,8 +82,11 @@
         if (indexPath.section == LWInfoCell)
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+            infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
-            infoCell.descriptionTextView.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
+            infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
+
+
             //        infoCell.funLabel.attributedText = [NSAttributedString stringWithFormat:@"Fun Factor: ", self.selectedAchievement.funFactor];
             //        infoCell.heroLabel.attributedText = [NSAttributedString stringWithFormat:@"Hero Factor: ", self.selectedAchievement.heroFactor];
             //        infoCell.difficultyLabel.attributedText = [NSAttributedString stringWithFormat:@"Difficulty: ", self.selectedAchievement.difficulty];
@@ -93,6 +96,25 @@
         else if (indexPath.section == LWSnowCell)
         {
             SnowTableViewCell *snowCell = [tableView dequeueReusableCellWithIdentifier:@"SnowCell"];
+            snowCell.delegate = self;
+            snowCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
+            NSMutableArray *pointValues = [NSMutableArray new];
+            for (NSNumber *score in self.achievement.pointValues)
+            {
+                if ([score integerValue] == 0)
+                {
+                    [pointValues addObject:@"NR"];
+                    [snowCell.segmentedControl setEnabled:NO forSegmentAtIndex:[self.achievement.pointValues indexOfObject:score]];
+                }
+                else
+                {
+                    [pointValues addObject:[NSString stringWithFormat:@"%@", score]];
+                }
+            }
+            snowCell.lowSnowScoreLabel.text = pointValues[0];
+            snowCell.medSnowScoreLabel.text = pointValues[1];
+            snowCell.highSnowScoreLabel.text = pointValues[2];
+
             return snowCell;
         }
         else if (indexPath.section == LWModifierCell)
@@ -109,6 +131,8 @@
         else if (indexPath.section == LWAddModifierCell)
         {
             ModifierTableViewCell *modifierCell = [tableView dequeueReusableCellWithIdentifier:@"AddModifierCell"];
+            modifierCell.delegate = self;
+            modifierCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return modifierCell;
         }
         else if (indexPath.section == LWPlayerCell)
@@ -120,6 +144,8 @@
         else
         {
             PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"AddPlayerCell"];
+            playerCell.delegate = self;
+            playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
         }
     }
@@ -127,9 +153,11 @@
     {
         if (indexPath.section == InfoCell)
         {
+            //TODO: modify InfoCell to display abbreviation and description instead of all the stuff LineWorths have
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+            infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
-            infoCell.descriptionTextView.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
+            infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
             //        infoCell.funLabel.attributedText = [NSAttributedString stringWithFormat:@"Fun Factor: ", self.selectedAchievement.funFactor];
             //        infoCell.heroLabel.attributedText = [NSAttributedString stringWithFormat:@"Hero Factor: ", self.selectedAchievement.heroFactor];
             //        infoCell.difficultyLabel.attributedText = [NSAttributedString stringWithFormat:@"Difficulty: ", self.selectedAchievement.difficulty];
@@ -145,54 +173,60 @@
         else // AddPlayerCell
         {
             PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"AddPlayerCell"];
+            playerCell.delegate = self;
+            playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
         }
     }
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        //TODO: Make height dynamic based on height of description text view
+        return 150.0;
+    }
+    else if (self.achievement.type == LineWorth)
+    {
+        if (indexPath.section == LWAddModifierCell || indexPath.section == LWAddPlayerCell)
+        {
+            return 50.0;
+        }
+        else if (indexPath.section == LWSnowCell)
+        {
+            return 75.0;
+        }
+    }
+    else if (indexPath.section == AddPlayerCell)
+    {
+        return 50.0;
+    }
+    return 45.0;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+//--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
+#pragma mark - Custom Cell Delegate Methods
+
+-(void)didPressAddButton
+{
+    NSLog(@"Add Button delegate called");
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+-(void)didPressAddModifiersButton
+{
+    NSLog(@"Add Modifiers Button delegate called");
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+-(void)didPressAddPlayersButton
+{
+    NSLog(@"Add Players Button delegate called");
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)didChangeSegment:(NSInteger)selectedSegment
+{
+    NSLog(@"Change Segment delegate called");
 }
-*/
 
 @end

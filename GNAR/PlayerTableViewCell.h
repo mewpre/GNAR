@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PlayerTableViewCellDelegate <NSObject>
+
+- (void)didPressAddPlayersButton;
+
+@end
+
 @interface PlayerTableViewCell : UITableViewCell
+
+@property (weak, nonatomic) id <PlayerTableViewCellDelegate> delegate;
 
 @end
