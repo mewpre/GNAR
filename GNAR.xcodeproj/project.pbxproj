@@ -48,6 +48,7 @@
 		606B71881A894048004DDAB1 /* GNARTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71871A894048004DDAB1 /* GNARTests.m */; };
 		606B71921A894F19004DDAB1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606B71911A894F19004DDAB1 /* FacebookSDK.framework */; };
 		60A1E8D21A8D19E900CD2587 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A1E8D11A8D19E800CD2587 /* CustomTabBarController.m */; };
+		60E5617E1A8EFA7200D81C48 /* AchievementDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E5617D1A8EFA7200D81C48 /* AchievementDetailTableView.m */; };
 		60EA882D1A896003004B6BF7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */; };
 		60EA88301A8990B6004B6BF7 /* Comms.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA882F1A8990B5004B6BF7 /* Comms.m */; };
 		60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60EA88321A89E66C004B6BF7 /* SignUpViewController.m */; };
@@ -129,6 +130,8 @@
 		606B71911A894F19004DDAB1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		60A1E8D01A8D19E800CD2587 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		60A1E8D11A8D19E800CD2587 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
+		60E5617C1A8EFA7200D81C48 /* AchievementDetailTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementDetailTableView.h; sourceTree = "<group>"; };
+		60E5617D1A8EFA7200D81C48 /* AchievementDetailTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementDetailTableView.m; sourceTree = "<group>"; };
 		60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		60EA882E1A8990B5004B6BF7 /* Comms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comms.h; sourceTree = "<group>"; };
 		60EA882F1A8990B5004B6BF7 /* Comms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comms.m; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				0FCF8ADE1A8BD298006224BB /* ExpandedContainer.m */,
 				0FCF8ADF1A8BD298006224BB /* SubTableView.h */,
 				0FCF8AE01A8BD298006224BB /* SubTableView.m */,
+				60E5617C1A8EFA7200D81C48 /* AchievementDetailTableView.h */,
+				60E5617D1A8EFA7200D81C48 /* AchievementDetailTableView.m */,
 			);
 			name = SubRow;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
 				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
 				0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */,
+				60E5617E1A8EFA7200D81C48 /* AchievementDetailTableView.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
