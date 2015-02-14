@@ -668,7 +668,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPp-mN-r24" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3544" y="-479"/>
+            <point key="canvasLocation" x="3614" y="-479"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="I93-jG-1zg">
@@ -750,7 +750,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qN7-IB-rdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4029" y="-479"/>
+            <point key="canvasLocation" x="4242" y="-479"/>
         </scene>
         <!--Achievement View Controller-->
         <scene sceneID="q7D-Cy-gry">
@@ -819,11 +819,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChildCell" rowHeight="189" id="0bC-hu-lMX" customClass="SubTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChildCell" rowHeight="250" id="0bC-hu-lMX" customClass="SubTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0bC-hu-lMX" id="OJT-9R-EyT">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffY-Z0-MSW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -837,6 +843,7 @@
                             <constraint firstItem="Nd7-4M-3FD" firstAttribute="top" secondItem="KCD-Ht-55C" secondAttribute="top" id="pjf-jG-1wy"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Achievements Detail" id="zdM-W9-qhc">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="beT-uY-5mY">
                             <connections>
@@ -844,13 +851,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Nd7-4M-3FD" id="IxJ-AV-OIk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snL-FK-86a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5392.5" y="1366.5"/>
+            <point key="canvasLocation" x="5392" y="1366"/>
         </scene>
         <!--Home-->
         <scene sceneID="pZ1-t0-6s2">
