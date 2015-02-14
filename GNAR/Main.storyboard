@@ -1365,6 +1365,7 @@
                                                     </variation>
                                                     <connections>
                                                         <action selector="onAddPlayersButtonPressed:" destination="Sjs-SD-uur" eventType="touchUpInside" id="ejg-zk-yQ7"/>
+                                                        <segue destination="qIj-iX-6LF" kind="show" id="Waf-MF-Ahy"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1433,10 +1434,90 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="8do-fT-gdA" id="PAN-wH-Mc7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5vh-em-ZgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6228" y="1362"/>
+        </scene>
+        <!--Add Players View Controller-->
+        <scene sceneID="ifC-iM-gHa">
+            <objects>
+                <viewController id="qIj-iX-6LF" customClass="AddPlayersViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EJW-cF-Dxy"/>
+                        <viewControllerLayoutGuide type="bottom" id="KlD-Qr-MSo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gt3-Uc-hwU">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OnR-e6-zUy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="cN1-8k-cwe" customClass="Cell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cN1-8k-cwe" id="LIh-2E-UvB">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qIj-iX-6LF" id="6fX-LO-VES"/>
+                                    <outlet property="delegate" destination="qIj-iX-6LF" id="AQe-oG-WPa"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="OnR-e6-zUy" secondAttribute="bottom" id="Be7-5V-LDa"/>
+                            <constraint firstItem="OnR-e6-zUy" firstAttribute="leading" secondItem="gt3-Uc-hwU" secondAttribute="leading" id="Cqj-3N-WSW"/>
+                            <constraint firstAttribute="trailing" secondItem="OnR-e6-zUy" secondAttribute="trailing" id="HKs-t1-ynf"/>
+                            <constraint firstItem="OnR-e6-zUy" firstAttribute="top" secondItem="gt3-Uc-hwU" secondAttribute="top" id="jg3-rd-5K8"/>
+                            <constraint firstItem="OnR-e6-zUy" firstAttribute="top" secondItem="EJW-cF-Dxy" secondAttribute="bottom" id="rfo-tC-0bD"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="OnR-e6-zUy"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Be7-5V-LDa"/>
+                                <exclude reference="Cqj-3N-WSW"/>
+                                <exclude reference="HKs-t1-ynf"/>
+                                <exclude reference="jg3-rd-5K8"/>
+                                <exclude reference="rfo-tC-0bD"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="OnR-e6-zUy"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Be7-5V-LDa"/>
+                                <include reference="Cqj-3N-WSW"/>
+                                <include reference="HKs-t1-ynf"/>
+                                <exclude reference="jg3-rd-5K8"/>
+                                <include reference="rfo-tC-0bD"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Pa-qa-8XO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Dek-yK-tpy">
+                            <connections>
+                                <action selector="onDoneButtonPressed:" destination="qIj-iX-6LF" id="z2g-VN-at1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="OnR-e6-zUy" id="3HQ-Nv-s1a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NCs-tP-XJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6970.5" y="1362"/>
         </scene>
         <!--Home-->
         <scene sceneID="pZ1-t0-6s2">

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F2EC8771A8F5D8E0013A6B2 /* AddPlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EC8761A8F5D8E0013A6B2 /* AddPlayersViewController.m */; };
 		0F61D5431A8943BE00FF96F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D5411A8943BE00FF96F0 /* Bolts.framework */; };
 		0F61D5441A8943BE00FF96F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D5421A8943BE00FF96F0 /* Parse.framework */; };
 		0F61D5471A89440800FF96F0 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D5461A89440800FF96F0 /* Accounts.framework */; };
@@ -71,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F2EC8751A8F5D8E0013A6B2 /* AddPlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPlayersViewController.h; sourceTree = "<group>"; };
+		0F2EC8761A8F5D8E0013A6B2 /* AddPlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPlayersViewController.m; sourceTree = "<group>"; };
 		0F61D5411A8943BE00FF96F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		0F61D5421A8943BE00FF96F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		0F61D5461A89440800FF96F0 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -246,6 +249,8 @@
 				0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */,
 				0FA3EDF11A8F089F00FDF764 /* AddAchievementViewController.h */,
 				0FA3EDF21A8F089F00FDF764 /* AddAchievementViewController.m */,
+				0F2EC8751A8F5D8E0013A6B2 /* AddPlayersViewController.h */,
+				0F2EC8761A8F5D8E0013A6B2 /* AddPlayersViewController.m */,
 			);
 			name = Achievements;
 			sourceTree = "<group>";
@@ -575,6 +580,7 @@
 				0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */,
 				0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */,
 				0FCF8AE71A8BD2EE006224BB /* SubTableViewCell.m in Sources */,
+				0F2EC8771A8F5D8E0013A6B2 /* AddPlayersViewController.m in Sources */,
 				0FEFE8A71A8A897E0062123D /* AddGameTableViewController.m in Sources */,
 				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
 				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
