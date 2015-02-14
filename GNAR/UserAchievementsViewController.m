@@ -50,6 +50,10 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     Score *score = self.scoresArray[indexPath.row];
+//    NSLog(@"%@", score);
+    NSArray *modifiersArray = [score objectForKey:@"modifiers"];
+//    Score *modifier = ;
+    cell.textLabel.text = @"10,000";
     cell.textLabel.text = [NSString stringWithFormat:@"%@", score.score];
     return cell;
 }

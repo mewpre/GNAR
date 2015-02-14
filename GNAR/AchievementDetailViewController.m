@@ -7,12 +7,14 @@
 //
 
 #import "AchievementDetailViewController.h"
+#import "AddAchievementViewController.h"
 #import "ParentTableView.h"
 #import "ParentTableViewCell.h"
 #import "SubTableView.h"
 #import "SubTableViewCell.h"
 #import "Achievement.h"
 #import "Score.h"
+#import "Enum.h"
 
 @interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate>
 
@@ -21,15 +23,6 @@
 @property NSArray *childrenArray;
 
 @property NSMutableArray *scoresArray;
-
-
-
-typedef NS_ENUM(NSInteger, AchievementType) {
-    LineWorth,
-    ECP,
-    TrickBonus,
-    Penalty
-};
 
 @end
 
@@ -110,8 +103,10 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 //Only used for testing for now
 - (void)tableView:(UITableView *)tableView didSelectParentCellAtIndex:(NSInteger)parentIndex
 {
-    Achievement *selectedAchievement = [self.achievementsArray objectAtIndex:parentIndex];
-    [self saveScoresFromAchievement:selectedAchievement toUsers:@[[PFUser currentUser]]];
+//    Achievement *selectedAchievement = [self.achievementsArray objectAtIndex:parentIndex];
+//    [self saveScoresFromAchievement:selectedAchievement toUsers:@[[PFUser currentUser]]];
+    NSLog(@"Pressed cell");
+    [self performSegueWithIdentifier:@"AddAchievementSegue" sender:self.achievementsArray[parentIndex]];
 }
 
 
@@ -143,6 +138,28 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+//-------------------------------------    Prepare For Segue    ----------------------------------------------------
+#pragma mark - Prepare for Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    AddAchievementViewController *addVC = segue.destinationViewController;
+    addVC.achievement = sender;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

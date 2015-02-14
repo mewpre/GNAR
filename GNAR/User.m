@@ -24,8 +24,14 @@
 + (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete
 {
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"scores"];
-
+    [relation.query includeKey:@"modifiers"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
+//        PFQuery *query = [PFQuery queryWithClassName:@"Score"];
+//        [query whereKey:@"scorer" equalTo:[PFUser currentUser]];
+//        [query includeKey:@"modifiers"];
+//        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
         if (error)
         {
             NSLog(@"%@", error);
