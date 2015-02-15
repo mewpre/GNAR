@@ -1182,6 +1182,7 @@
                                                 <constraint firstItem="I9i-R8-zqk" firstAttribute="leading" secondItem="Qit-vp-G6v" secondAttribute="trailing" constant="-53" id="beh-Dw-5hb"/>
                                                 <constraint firstItem="I9i-R8-zqk" firstAttribute="leading" secondItem="R7V-fK-5yC" secondAttribute="trailing" constant="26" id="djm-Ko-CcC"/>
                                                 <constraint firstAttribute="bottom" secondItem="Qit-vp-G6v" secondAttribute="bottom" constant="8" id="iPc-AK-ZeN"/>
+                                                <constraint firstAttribute="centerY" secondItem="5i1-EP-9Jh" secondAttribute="centerY" id="qoD-pl-9qs"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
@@ -1194,14 +1195,15 @@
                                                 <mask key="constraints">
                                                     <exclude reference="HkC-K4-vii"/>
                                                     <exclude reference="Zyw-Pb-K1b"/>
-                                                    <exclude reference="beh-Dw-5hb"/>
-                                                    <exclude reference="djm-Ko-CcC"/>
-                                                    <exclude reference="P3h-hX-7ct"/>
+                                                    <exclude reference="qoD-pl-9qs"/>
                                                     <exclude reference="Kje-k1-AOs"/>
                                                     <exclude reference="Os5-xH-L77"/>
                                                     <exclude reference="PO1-Vw-WDf"/>
                                                     <exclude reference="Wuv-9V-plK"/>
                                                     <exclude reference="iPc-AK-ZeN"/>
+                                                    <exclude reference="P3h-hX-7ct"/>
+                                                    <exclude reference="beh-Dw-5hb"/>
+                                                    <exclude reference="djm-Ko-CcC"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -1213,16 +1215,17 @@
                                                     <include reference="I9i-R8-zqk"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="HkC-K4-vii"/>
+                                                    <exclude reference="HkC-K4-vii"/>
                                                     <include reference="Zyw-Pb-K1b"/>
-                                                    <include reference="beh-Dw-5hb"/>
-                                                    <include reference="djm-Ko-CcC"/>
-                                                    <include reference="P3h-hX-7ct"/>
+                                                    <include reference="qoD-pl-9qs"/>
                                                     <include reference="Kje-k1-AOs"/>
                                                     <include reference="Os5-xH-L77"/>
                                                     <include reference="PO1-Vw-WDf"/>
                                                     <include reference="Wuv-9V-plK"/>
                                                     <include reference="iPc-AK-ZeN"/>
+                                                    <include reference="P3h-hX-7ct"/>
+                                                    <include reference="beh-Dw-5hb"/>
+                                                    <include reference="djm-Ko-CcC"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1336,7 +1339,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddPlayerCell" rowHeight="50" id="Sjs-SD-uur" customClass="PlayerTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SelectPlayersCell" rowHeight="50" id="Sjs-SD-uur" customClass="PlayerTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sjs-SD-uur" id="ALq-C0-Ubt">
@@ -1345,22 +1348,28 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ha-gd-BnG">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="98" id="R73-V6-MWH"/>
                                                         <constraint firstAttribute="width" constant="83" id="SH5-CZ-zyM"/>
                                                         <constraint firstAttribute="height" constant="30" id="UqK-s8-TX3"/>
+                                                        <constraint firstAttribute="height" constant="30" id="iAM-yV-KcC"/>
                                                     </constraints>
-                                                    <state key="normal" title="Add Players">
+                                                    <state key="normal" title="Select Players">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="R73-V6-MWH"/>
                                                             <exclude reference="SH5-CZ-zyM"/>
                                                             <exclude reference="UqK-s8-TX3"/>
+                                                            <exclude reference="iAM-yV-KcC"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
-                                                            <include reference="SH5-CZ-zyM"/>
-                                                            <include reference="UqK-s8-TX3"/>
+                                                            <include reference="R73-V6-MWH"/>
+                                                            <exclude reference="SH5-CZ-zyM"/>
+                                                            <exclude reference="UqK-s8-TX3"/>
+                                                            <include reference="iAM-yV-KcC"/>
                                                         </mask>
                                                     </variation>
                                                     <connections>
@@ -1442,10 +1451,10 @@
             </objects>
             <point key="canvasLocation" x="6228" y="1362"/>
         </scene>
-        <!--Add Players View Controller-->
+        <!--Select Players View Controller-->
         <scene sceneID="ifC-iM-gHa">
             <objects>
-                <viewController id="qIj-iX-6LF" customClass="AddPlayersViewController" sceneMemberID="viewController">
+                <viewController id="qIj-iX-6LF" customClass="SelectPlayersViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EJW-cF-Dxy"/>
                         <viewControllerLayoutGuide type="bottom" id="KlD-Qr-MSo"/>

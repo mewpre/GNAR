@@ -1,15 +1,15 @@
 //
-//  AddPlayersViewController.m
+//  SelectPlayersViewController.m
 //  GNAR
 //
 //  Created by Chris Giersch on 2/14/15.
 //  Copyright (c) 2015 Yi-Chin Sun. All rights reserved.
 //
 
-#import "AddPlayersViewController.h"
+#import "SelectPlayersViewController.h"
 #import "User.h"
 
-@interface AddPlayersViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SelectPlayersViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation AddPlayersViewController
+@implementation SelectPlayersViewController
 
 - (void)viewDidLoad
 {

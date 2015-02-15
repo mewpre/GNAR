@@ -22,7 +22,7 @@
 - (IBAction)onAddPlayersButtonPressed:(id)sender
 {
     NSLog(@"Adding Players!");
-    [self.delegate didPressAddPlayersButton];
+    [self.delegate didPressSelectPlayersButton];
 }
 
 @end
