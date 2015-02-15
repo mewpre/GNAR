@@ -11,7 +11,7 @@
 
 @protocol AddPlayersDelegate <NSObject>
 
-- (void)addFriendsSaveButtonPressed:(NSMutableArray *)selectedUsersArray;
+- (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray;
 
 @end
 

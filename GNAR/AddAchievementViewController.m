@@ -235,7 +235,7 @@
         return NO;
     }
 }
-//------------------------------------------    PrepareForSegue    -------------------------------------------------
+//-------------------------------------------    PrepareForSegue    -------------------------------------------------
 #pragma mark - PrepareForSegue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -246,10 +246,10 @@
 }
 
 
-//--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
+//--------------------------------    Add Players View Controller Delegate Methods   ---------------------------------------------
 #pragma mark - Custom Cell Delegate Methods
 //TODO: this should be called didPressAddFriendsSaveButton
-- (void)addFriendsSaveButtonPressed:(NSMutableArray *)selectedUsersArray
+- (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray
 {
     //TODO: maybe change this to only move the deselested players and add the newly selected players
     self.playersArray = selectedUsersArray;
@@ -273,6 +273,8 @@
 
 }
 
+//--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
+#pragma mark - Custom Cell Delegate Methods
 -(void)didPressAddButton
 {
     // Create a score object for each of the players

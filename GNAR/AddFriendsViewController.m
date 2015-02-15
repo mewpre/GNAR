@@ -92,7 +92,7 @@
 #pragma mark - Actions
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
 {
-    [self.delegate addFriendsSaveButtonPressed:self.selectedUsersArray];
+    [self.delegate didPressDoneButtonWithSelectedUsers:self.selectedUsersArray];
     // unwind to previous view controller
     [self.navigationController popViewControllerAnimated:YES];
 
