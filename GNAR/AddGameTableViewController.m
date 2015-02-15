@@ -106,7 +106,6 @@ static NSString *kMountainsCell = @"mountainsCell";     // the cell containing t
     [super viewDidLoad];
 
     self.currentUser = [PFUser currentUser];
-
     // setup variables to save user selections to save new game
     self.startDate = [NSDate new];
     self.endDate = [NSDate new];

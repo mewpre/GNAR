@@ -54,7 +54,6 @@
 {
     if (self.achievement.type == LineWorth)
     {
-        NSLog(@"Section: %li", section);
         if (section == LWModifierCell)
         {
             return self.modifiersArray.count;
@@ -83,7 +82,6 @@
 {
     if (self.achievement.type == LineWorth)
     {
-        NSLog(@"Section: %ld  Row: %ld", (long)indexPath.section, (long)indexPath.row);
         if (indexPath.section == LWInfoCell)
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
@@ -220,9 +218,17 @@
 
 - (void)addFriendsSaveButtonPressed:(NSMutableArray *)selectedUsersArray
 {
-
     self.playersArray = selectedUsersArray;
-    NSRange range = NSMakeRange(4, 1);
+    NSRange range;
+    if (self.achievement.type == LineWorth)
+    {
+        range = NSMakeRange(LWPlayerCell, 1);
+    }
+    else
+    {
+        range = NSMakeRange(PlayerCell, 1);
+    }
+
     NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
 
     [self.tableView beginUpdates];
