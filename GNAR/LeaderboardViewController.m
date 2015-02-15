@@ -50,6 +50,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
     cell.textLabel.text = [self.playersArray[indexPath.row] username];
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
