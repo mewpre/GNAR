@@ -142,6 +142,7 @@
         {
             UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
             playersCell.textLabel.text = [self.playersArray[indexPath.row] username];
+            playersCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return playersCell;
         }
         else
@@ -150,13 +151,16 @@
             playerCell.delegate = self;
             playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
+            //TODO: Change "Add Players" button to "Select Players"
         }
     }
+
+
     else
     {
         if (indexPath.section == InfoCell)
         {
-            //TODO: modify InfoCell to display abbreviation and description instead of all the stuff LineWorths have
+            //TODO: modify InfoCell to display abbreviation, point values, and description instead of all the stuff LineWorths have
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
@@ -170,11 +174,13 @@
         else if (indexPath.section == PlayerCell)
         {
             UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
-            //        playersCell.textLabel.text = [self.playersArray[indexPath.row] username];
+            playersCell.textLabel.text = [self.playersArray[indexPath.row] username];
+            playersCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return playersCell;
         }
         else // AddPlayerCell
         {
+
             PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"AddPlayerCell"];
             playerCell.delegate = self;
             playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
@@ -208,6 +214,30 @@
     return 45.0;
 }
 
+//--------------------------------------    TableViewEditing    ---------------------------------------------
+#pragma mark - TableViewEditing
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.playersArray removeObjectAtIndex:indexPath.row];
+    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableView reloadData];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+#warning This works but I think we need to split up this conditional by checking if (self.acievement.type istypeOfClass(LineWorth))
+    if (indexPath.section == LWPlayerCell || indexPath.section == PlayerCell)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+//------------------------------------------    PrepareForSegue    -------------------------------------------------
+#pragma mark - PrepareForSegue
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     AddPlayersViewController *addVC = segue.destinationViewController;
@@ -216,8 +246,12 @@
 }
 
 
+//--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
+#pragma mark - Custom Cell Delegate Methods
+//TODO: this should be called didPressAddFriendsSaveButton
 - (void)addFriendsSaveButtonPressed:(NSMutableArray *)selectedUsersArray
 {
+    //TODO: maybe change this to only move the deselested players and add the newly selected players
     self.playersArray = selectedUsersArray;
     NSRange range;
     if (self.achievement.type == LineWorth)
@@ -235,27 +269,36 @@
     [self.tableView deleteSections:section withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView insertSections:section withRowAnimation:UITableViewRowAnimationRight];
     [self.tableView endUpdates];
+    NSLog(@"addFriendsSaveButtonPressed method called");
 
 }
 
-//--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
-#pragma mark - Custom Cell Delegate Methods
-
 -(void)didPressAddButton
 {
+    // Create a score object for each of the players
+
+    // Add score objects to each of the players
+
+    [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"Add Button delegate called");
 }
 
 -(void)didPressAddModifiersButton
 {
+    // Create new instance of AddAchievementViewController
+
+    // Display only ECPs, Trick Bonuses, and Penalties
+
     NSLog(@"Add Modifiers Button delegate called");
 }
 
+#warning I believe this is the same method name as addFriendsSaveButtonPressed
 -(void)didPressAddPlayersButton
 {
     NSLog(@"Add Players Button delegate called");
 }
 
+#warning I think we also have a method fo this one too
 -(void)didChangeSegment:(NSInteger)selectedSegment
 {
     NSLog(@"Change Segment delegate called");
