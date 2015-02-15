@@ -7,12 +7,12 @@
 //
 
 #import "AddAchievementViewController.h"
-#import "AddPlayersViewController.h"
+#import "SelectPlayersViewController.h"
 #import "User.h"
 #import "Score.h"
 #import "Enum.h"
 
-@interface AddAchievementViewController () <UITableViewDataSource, UITableViewDelegate, InfoTableViewCellDelegate, SnowTableViewCellDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate, AddPlayersDelegate>
+@interface AddAchievementViewController () <UITableViewDataSource, UITableViewDelegate, InfoTableViewCellDelegate, SnowTableViewCellDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate, SelectPlayersViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -147,7 +147,7 @@
         }
         else
         {
-            PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"AddPlayerCell"];
+            PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
             playerCell.delegate = self;
             playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
@@ -178,10 +178,10 @@
             playersCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return playersCell;
         }
-        else // AddPlayerCell
+        else
         {
 
-            PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"AddPlayerCell"];
+            PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
             playerCell.delegate = self;
             playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
@@ -198,7 +198,7 @@
     }
     else if (self.achievement.type == LineWorth)
     {
-        if (indexPath.section == LWAddModifierCell || indexPath.section == LWAddPlayerCell)
+        if (indexPath.section == LWAddModifierCell || indexPath.section == LWSelectPlayersCell)
         {
             return 50.0;
         }
@@ -207,7 +207,7 @@
             return 75.0;
         }
     }
-    else if (indexPath.section == AddPlayerCell)
+    else if (indexPath.section == SelectPlayersCell)
     {
         return 50.0;
     }
@@ -240,7 +240,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    AddPlayersViewController *addVC = segue.destinationViewController;
+    SelectPlayersViewController *addVC = segue.destinationViewController;
     addVC.delegate = self;
     addVC.selectedUsersArray = self.playersArray;
 }
@@ -292,10 +292,9 @@
     NSLog(@"Add Modifiers Button delegate called");
 }
 
-#warning I believe this is the same method name as addFriendsSaveButtonPressed
--(void)didPressAddPlayersButton
+-(void)didPressSelectPlayersButton
 {
-    NSLog(@"Add Players Button delegate called");
+    NSLog(@"Select Players Cell Button delegate called");
 }
 
 #warning I think we also have a method fo this one too

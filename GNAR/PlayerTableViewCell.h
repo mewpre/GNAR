@@ -10,7 +10,7 @@
 
 @protocol PlayerTableViewCellDelegate <NSObject>
 
-- (void)didPressAddPlayersButton;
+- (void)didPressSelectPlayersButton;
 
 @end
 
