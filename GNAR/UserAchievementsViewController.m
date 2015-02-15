@@ -54,6 +54,7 @@
     NSArray *modifiersArray = [score objectForKey:@"modifiers"];
 //    Score *modifier = ;
     cell.textLabel.text = @"10,000";
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = [NSString stringWithFormat:@"%@", score.score];
     return cell;
 }
