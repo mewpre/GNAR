@@ -25,7 +25,7 @@
     [super viewDidLoad];
 
     self.modifiersArray = [NSMutableArray new];
-    self.playersArray = [[NSMutableArray alloc] initWithObjects:[PFUser currentUser], nil];
+    self.playersArray = [[NSMutableArray alloc]initWithObjects:[PFUser currentUser], nil];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -213,43 +213,22 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     AddPlayersViewController *addVC = segue.destinationViewController;
+    addVC.delegate = self;
     addVC.selectedUsersArray = self.playersArray;
 }
 
 
-- (void)addFriendsSaveButtonPressed:(NSArray *)selectedUsersArray
+- (void)addFriendsSaveButtonPressed:(NSMutableArray *)selectedUsersArray
 {
-//    NSMutableArray *deleteArray = [NSMutableArray new];
-//    for (int i = 0; i < self.playersArray.count; i++)
-//    {
-//        [deleteArray addObject:[NSIndexPath indexPathForRow:i inSection:4]];
-//    }
-//    NSMutableArray *insertArray = [NSMutableArray new];
-//    for (int i = 0; i < selectedUsersArray.count; i++)
-//    {
-//        [insertArray addObject:[NSIndexPath indexPathForRow:i inSection:4]];
-//    }
-//
-//    [self.tableView beginUpdates];
-//    [self.tableView deleteRowsAtIndexPaths:deleteArray withRowAnimation:UITableViewRowAnimationFade];
-//    [self.tableView insertRowsAtIndexPaths:insertArray withRowAnimation:UITableViewRowAnimationRight];
-//    self.playersArray = selectedUsersArray;
-//    [self.tableView endUpdates];
-#warning FIX THIS!!!
 
+    self.playersArray = selectedUsersArray;
+    NSRange range = NSMakeRange(4, 1);
+    NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
 
-////    NSInteger diff = selectedUsersArray.count - self.playersArray.count;
-//    self.playersArray = selectedUsersArray;
-//    NSRange range = NSMakeRange(4, 1);
-//    NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
-////    [self.tableView reloadSections:section withRowAnimation:UITableViewRowAnimationNone];
-//
-////    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:4];
-//
-//    [self.tableView beginUpdates];
-//    [self.tableView deleteSections:section withRowAnimation:UITableViewRowActionStyleDestructive];
-//    [self.tableView insertSections:section withRowAnimation:UITableViewRowActionStyleNormal];
-//    [self.tableView endUpdates];
+    [self.tableView beginUpdates];
+    [self.tableView deleteSections:section withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView insertSections:section withRowAnimation:UITableViewRowAnimationRight];
+    [self.tableView endUpdates];
 
 }
 
