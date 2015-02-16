@@ -50,10 +50,12 @@
         if (cell == nil) {
             cell = [[AchievementDetailTableView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CHILD_CONTAINER_IDENTIFIER];
         }
-
+        cell.insideTableView.dataSource = cell;
+        cell.insideTableView.delegate = cell;
         [cell setSubTableForegroundColor:[UIColor whiteColor]];
         [cell setSubTableBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
         [cell setParentIndex:parentIndex];
+        cell.achievement = [self.achievementsArray objectAtIndex:parentIndex];
 
         [cell setDelegate:self];
         [cell reload];

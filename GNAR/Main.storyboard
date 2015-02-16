@@ -820,7 +820,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="577" id="JMs-LD-7it" customClass="AchievementDetailTableView">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellReuseId_Container" rowHeight="577" id="JMs-LD-7it" customClass="AchievementDetailTableView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JMs-LD-7it" id="fpC-EN-iRR">
@@ -1260,10 +1260,6 @@
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="0.0" y="-80" width="400" height="736"/>
                                                     </variation>
-                                                    <connections>
-                                                        <outlet property="dataSource" destination="ble-Fc-rE2" id="SOG-p6-p3F"/>
-                                                        <outlet property="delegate" destination="ble-Fc-rE2" id="7m2-t4-Boy"/>
-                                                    </connections>
                                                 </tableView>
                                             </subviews>
                                             <variation key="default">
@@ -1278,7 +1274,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="insideTableView" destination="ndv-jX-M13" id="Hwq-7U-NRk"/>
+                                            <outlet property="insideTableView" destination="ndv-jX-M13" id="zI9-au-hN8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1302,11 +1298,20 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="Nd7-4M-3FD" id="IxJ-AV-OIk"/>
+                        <outlet property="tableView" destination="Nd7-4M-3FD" id="WY5-fh-gPa"/>
                         <segue destination="ble-Fc-rE2" kind="show" identifier="AddAchievementSegue" id="7tM-oV-CcE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snL-FK-86a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rjz-aA-5fN">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="kwd-si-2ci" id="EvN-We-NUt"/>
+                        <outlet property="delegate" destination="kwd-si-2ci" id="G1i-CW-Swx"/>
+                    </connections>
+                </tableView>
             </objects>
             <point key="canvasLocation" x="5358" y="1362"/>
         </scene>

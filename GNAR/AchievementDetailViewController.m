@@ -9,6 +9,7 @@
 #import "AchievementDetailViewController.h"
 #import "AddAchievementViewController.h"
 #import "ParentTableView.h"
+#import "DetailParentTableView.h"
 #import "ParentTableViewCell.h"
 #import "AchievementDetailTableView.h"
 //#import "SubTableView.h"
@@ -19,7 +20,7 @@
 
 @interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet ParentTableView *tableView;
+@property (weak, nonatomic) IBOutlet DetailParentTableView *tableView;
 @property NSArray *achievementsArray;
 @property NSArray *childrenArray;
 
@@ -39,6 +40,7 @@
         // *** Must set delegates AFTER you set the tables data source (array)
         [self.tableView setDataSourceDelegate:self];
         [self.tableView setTableViewDelegate:self];
+        self.tableView.achievementsArray = self.achievementsArray;
         [self.tableView reloadData];
     }];
 
@@ -80,7 +82,7 @@
 
 - (NSInteger)heightForChildRows
 {
-    return 55;
+    return 300;
 }
 
 

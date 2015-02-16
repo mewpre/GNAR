@@ -15,11 +15,12 @@
 #import "Achievement.h"
 
 @interface AchievementDetailTableView : SubTableView // Actually a cell that contains a table view
-<UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, InfoTableViewCellDelegate, SnowTableViewCellDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate, SelectPlayersViewControllerDelegate>
+<UITableViewDataSource, UITableViewDelegate, InfoTableViewCellDelegate, SnowTableViewCellDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate, SelectPlayersViewControllerDelegate>
 
 
 @property (strong, nonatomic) IBOutlet UITableView *insideTableView;
 @property Achievement *achievement;
+@property NSArray *achievementsArray;
 @property NSMutableArray *modifiersArray;
 @property NSMutableArray *playersArray;
 

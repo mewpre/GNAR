@@ -12,6 +12,6 @@
 @interface DetailParentTableView : ParentTableView
 <UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate>
 
-
+@property NSArray *achievementsArray;
 
 @end
