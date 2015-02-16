@@ -7,7 +7,6 @@
 //
 
 #import "ParentTableView.h"
-#import "ParentTableViewCell.h"
 #import "ExpandedContainer.h"
 
 @interface ParentTableView () {

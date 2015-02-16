@@ -8,6 +8,22 @@
 
 #import "SubTableView.h"
 
-@interface AchievementDetailTableView : SubTableView
+@interface AchievementDetailTableView : SubTableView // Actually a cell that contains a table view
+<UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate
+
+<UITableViewDataSource, UITableViewDelegate, InfoTableViewCellDelegate, SnowTableViewCellDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate, SelectPlayersViewControllerDelegate>
+
+
+@property (strong, nonatomic) IBOutlet UITableView *insideTableView;
+
+
+
+
+
+
+
+
+
+
 
 @end

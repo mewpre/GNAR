@@ -10,8 +10,9 @@
 #import "AddAchievementViewController.h"
 #import "ParentTableView.h"
 #import "ParentTableViewCell.h"
-#import "SubTableView.h"
-#import "SubTableViewCell.h"
+#import "AchievementDetailTableView.h"
+//#import "SubTableView.h"
+//#import "SubTableViewCell.h"
 #import "Achievement.h"
 #import "Score.h"
 #import "Enum.h"
@@ -40,6 +41,7 @@
         [self.tableView setTableViewDelegate:self];
         [self.tableView reloadData];
     }];
+
 }
 
 
@@ -73,7 +75,7 @@
 // @required
 - (NSInteger)numberOfChildCellsUnderParentIndex:(NSInteger)parentIndex
 {
-    return self.childrenArray.count;
+    return 1;
 }
 
 - (NSInteger)heightForChildRows
@@ -81,16 +83,18 @@
     return 55;
 }
 
-// @optional
-- (NSString *)titleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
-{
-    return @"Child Label";
-}
 
-- (NSString *)subtitleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
-{
-    return @"";
-}
+
+// @optional
+//- (NSString *)titleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
+//{
+//    return @"Child Label";
+//}
+//
+//- (NSString *)subtitleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
+//{
+//    return @"";
+//}
 
 //-----------------------------------    SUB Table View Delegate    ----------------------------------------------------
 #pragma mark - Sub Table View Delegate
@@ -101,13 +105,13 @@
 }
 
 //Only used for testing for now
-- (void)tableView:(UITableView *)tableView didSelectParentCellAtIndex:(NSInteger)parentIndex
-{
-//    Achievement *selectedAchievement = [self.achievementsArray objectAtIndex:parentIndex];
-//    [self saveScoresFromAchievement:selectedAchievement toUsers:@[[PFUser currentUser]]];
-    NSLog(@"Pressed cell");
-    [self performSegueWithIdentifier:@"AddAchievementSegue" sender:self.achievementsArray[parentIndex]];
-}
+//- (void)tableView:(UITableView *)tableView didSelectParentCellAtIndex:(NSInteger)parentIndex
+//{
+////    Achievement *selectedAchievement = [self.achievementsArray objectAtIndex:parentIndex];
+////    [self saveScoresFromAchievement:selectedAchievement toUsers:@[[PFUser currentUser]]];
+//    NSLog(@"Pressed cell");
+////    [self performSegueWithIdentifier:@"AddAchievementSegue" sender:self.achievementsArray[parentIndex]];
+//}
 
 
 
@@ -132,6 +136,9 @@
             }];
     }
 }
+
+
+
 //-------------------------------------    Actions    ----------------------------------------------------
 #pragma mark - Actions
 - (IBAction)onSaveButtonPressed:(UIBarButtonItem *)sender

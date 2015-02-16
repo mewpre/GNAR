@@ -41,6 +41,7 @@
 		0FCF8AE11A8BD298006224BB /* ExpandedContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8ADE1A8BD298006224BB /* ExpandedContainer.m */; };
 		0FCF8AE21A8BD298006224BB /* SubTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AE01A8BD298006224BB /* SubTableView.m */; };
 		0FCF8AE71A8BD2EE006224BB /* SubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AE61A8BD2EE006224BB /* SubTableViewCell.m */; };
+		0FCFC4ED1A9163BB00DF6464 /* DetailParentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFC4EC1A9163BB00DF6464 /* DetailParentTableView.m */; };
 		0FEFE89A1A8A7B810062123D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8991A8A7B810062123D /* User.m */; };
 		0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE89D1A8A7C460062123D /* AchievementViewController.m */; };
 		0FEFE8A11A8A7DB50062123D /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A01A8A7DB50062123D /* Achievement.m */; };
@@ -125,6 +126,8 @@
 		0FCF8AE01A8BD298006224BB /* SubTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTableView.m; path = SubTable/SubRow/SubTableView.m; sourceTree = "<group>"; };
 		0FCF8AE51A8BD2EE006224BB /* SubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubTableViewCell.h; path = SubTable/SubRow/ChildCell/SubTableViewCell.h; sourceTree = "<group>"; };
 		0FCF8AE61A8BD2EE006224BB /* SubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTableViewCell.m; path = SubTable/SubRow/ChildCell/SubTableViewCell.m; sourceTree = "<group>"; };
+		0FCFC4EB1A9163BB00DF6464 /* DetailParentTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailParentTableView.h; sourceTree = "<group>"; };
+		0FCFC4EC1A9163BB00DF6464 /* DetailParentTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailParentTableView.m; sourceTree = "<group>"; };
 		0FEFE8981A8A7B810062123D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		0FEFE8991A8A7B810062123D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		0FEFE89C1A8A7C460062123D /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementViewController.h; sourceTree = "<group>"; };
@@ -354,6 +357,7 @@
 			children = (
 				0FCF8AE51A8BD2EE006224BB /* SubTableViewCell.h */,
 				0FCF8AE61A8BD2EE006224BB /* SubTableViewCell.m */,
+				0FA3EDE71A8F059800FDF764 /* Custom Cells */,
 			);
 			name = ChildCell;
 			sourceTree = "<group>";
@@ -361,10 +365,11 @@
 		0FCF8AE91A8BD313006224BB /* SubTable */ = {
 			isa = PBXGroup;
 			children = (
-				0FA3EDE71A8F059800FDF764 /* Custom Cells */,
 				0FCF8AE41A8BD2B1006224BB /* ParentCell */,
 				0FCF8AD91A8BD276006224BB /* ParentTableView.h */,
 				0FCF8ADA1A8BD276006224BB /* ParentTableView.m */,
+				0FCFC4EB1A9163BB00DF6464 /* DetailParentTableView.h */,
+				0FCFC4EC1A9163BB00DF6464 /* DetailParentTableView.m */,
 				0FCF8AE31A8BD2A1006224BB /* SubRow */,
 			);
 			name = SubTable;
@@ -574,6 +579,7 @@
 				0FCF8ADC1A8BD276006224BB /* ParentTableView.m in Sources */,
 				0FA3EDED1A8F061A00FDF764 /* ModifierTableViewCell.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
+				0FCFC4ED1A9163BB00DF6464 /* DetailParentTableView.m in Sources */,
 				0FA3EDF01A8F062400FDF764 /* PlayerTableViewCell.m in Sources */,
 				0FA3EDE61A8F059200FDF764 /* InfoTableViewCell.m in Sources */,
 				60A1E8D21A8D19E900CD2587 /* CustomTabBarController.m in Sources */,

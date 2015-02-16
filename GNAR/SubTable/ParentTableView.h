@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ExpandedContainer.h"
+#import "ParentTableViewCell.h"
 
 @class ViewController;
 
@@ -17,6 +18,7 @@
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex;
 - (void)tableView:(UITableView *)tableView didDeselectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex;
 - (void)tableView:(UITableView *)tableView didSelectParentCellAtIndex:(NSInteger)parentIndex;
+
 
 @end
 
@@ -57,5 +59,12 @@
 
 @property (assign, nonatomic) NSInteger selectedRow;
 - (void)collapseAllRows;
+- (NSUInteger)rowForParentIndex:(NSUInteger)parentIndex;
+- (NSUInteger)parentIndexForRow:(NSUInteger)row;
+- (BOOL)isExpansionCell:(NSUInteger)row;
+- (void)selectCell:(ParentTableViewCell *)cell;
+- (void)deselectCell:(ParentTableViewCell *)cell;
+
+
 
 @end

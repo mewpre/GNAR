@@ -8,6 +8,7 @@
 
 #import "AddAchievementViewController.h"
 #import "SelectPlayersViewController.h"
+#import "AchievementViewController.h"
 #import "User.h"
 #import "Score.h"
 #import "Enum.h"
@@ -225,7 +226,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#warning This works but I think we need to split up this conditional by checking if (self.acievement.type istypeOfClass(LineWorth))
+#warning This works but I think we need to split up this conditional by checking if (self.achievement.type istypeOfClass(LineWorth))
     if (indexPath.section == LWPlayerCell || indexPath.section == PlayerCell)
     {
         return YES;
@@ -240,6 +241,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
+
     SelectPlayersViewController *addVC = segue.destinationViewController;
     addVC.delegate = self;
     addVC.selectedUsersArray = self.playersArray;
@@ -287,11 +290,15 @@
 
 -(void)didPressAddModifiersButton
 {
+    NSLog(@"Add Modifiers Button delegate called");
+
     // Create new instance of AddAchievementViewController
+//    AchievementViewController *controller = [[AchievementViewController alloc] initWithNibName:@"AchievementViewController" bundle:[NSBundle mainBundle]];
+
+    [self performSegueWithIdentifier:@"AddModifiersSegue" sender:self];
 
     // Display only ECPs, Trick Bonuses, and Penalties
 
-    NSLog(@"Add Modifiers Button delegate called");
 }
 
 -(void)didPressSelectPlayersButton
@@ -299,7 +306,6 @@
     NSLog(@"Select Players Cell Button delegate called");
 }
 
-#warning I think we also have a method fo this one too
 -(void)didChangeSegment:(NSInteger)selectedSegment
 {
     NSLog(@"Change Segment delegate called");
