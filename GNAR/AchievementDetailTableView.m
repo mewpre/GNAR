@@ -14,6 +14,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self.playersArray = [NSMutableArray new];
     return self;
 }
 
@@ -216,26 +217,11 @@
 }
 
 
-//-------------------------------------------    PrepareForSegue    -------------------------------------------------
-#pragma mark - PrepareForSegue
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-
-
-    SelectPlayersViewController *addVC = segue.destinationViewController;
-    addVC.delegate = self;
-    addVC.selectedUsersArray = self.playersArray;
-}
-
-
 //--------------------------------    Add Players View Controller Delegate Methods   ---------------------------------------------
-#pragma mark - Custom Cell Delegate Methods
-//TODO: this should be called didPressAddFriendsSaveButton
-- (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray
+
+- (void)reload
 {
-    //TODO: maybe change this to only move the deselested players and add the newly selected players
-    self.playersArray = selectedUsersArray;
+    [super reload];
     NSRange range;
     if (self.achievement.type == LineWorth)
     {
@@ -252,8 +238,6 @@
     [self.insideTableView deleteSections:section withRowAnimation:UITableViewRowAnimationFade];
     [self.insideTableView insertSections:section withRowAnimation:UITableViewRowAnimationRight];
     [self.insideTableView endUpdates];
-    NSLog(@"addFriendsSaveButtonPressed method called");
-
 }
 
 //--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
@@ -281,9 +265,12 @@
 
 }
 
+//Delegate method from PlayerTableViewCell
 -(void)didPressSelectPlayersButton
 {
     NSLog(@"Select Players Cell Button delegate called");
+    //Pass self.playersArray up through chained delegation
+    [self.achievementDelegate didPressSelectPlayersButton:self.playersArray];
 }
 
 -(void)didChangeSegment:(NSInteger)selectedSegment

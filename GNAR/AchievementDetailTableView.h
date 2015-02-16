@@ -14,15 +14,22 @@
 #import "PlayerTableViewCell.h"
 #import "Achievement.h"
 
-@interface AchievementDetailTableView : SubTableView // Actually a cell that contains a table view
-<UITableViewDataSource, UITableViewDelegate, InfoTableViewCellDelegate, SnowTableViewCellDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate, SelectPlayersViewControllerDelegate>
+@protocol  AchievementDetailTableViewDelegate <NSObject>
 
+- (void)didPressSelectPlayersButton: (NSMutableArray *)playersArray;
+
+@end
+
+@interface AchievementDetailTableView : SubTableView // Actually a cell that contains a table view
+<UITableViewDataSource, UITableViewDelegate, InfoTableViewCellDelegate, SnowTableViewCellDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *insideTableView;
 @property Achievement *achievement;
 @property NSArray *achievementsArray;
 @property NSMutableArray *modifiersArray;
 @property NSMutableArray *playersArray;
+
+@property (weak, nonatomic) id<AchievementDetailTableViewDelegate> achievementDelegate;
 
 
 

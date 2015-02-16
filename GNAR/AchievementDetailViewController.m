@@ -18,11 +18,12 @@
 #import "Score.h"
 #import "Enum.h"
 
-@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate>
+@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate, SelectPlayersViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet DetailParentTableView *tableView;
 @property NSArray *achievementsArray;
 @property NSArray *childrenArray;
+@property NSMutableArray *playersArrayForPassing;
 
 @property NSMutableArray *playersArray;
 @property NSMutableArray *scoresArray;
@@ -42,6 +43,7 @@
         [self.tableView setDataSourceDelegate:self];
         [self.tableView setTableViewDelegate:self];
         self.tableView.achievementsArray = self.achievementsArray;
+        self.tableView.parentDelegate = self;
         [self.tableView reloadData];
     }];
 
@@ -154,12 +156,24 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     SelectPlayersViewController *selectVC = segue.destinationViewController;
-//    selectVC.selectedUsersArray = self.tableView...
-//    addVC.achievement = sender;
+    selectVC.delegate = self;
+    selectVC.selectedUsersArray = self.playersArrayForPassing;
+
 }
 
 
+- (void)didPassPlayersArray:(NSMutableArray *)playersArray
+{
+    self.playersArrayForPassing = playersArray;
+//    [self performSegueWithIdentifier:@"SelectPlayersSegue" sender:self];
+}
 
+- (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray
+{
+    NSLog(@"addFriendsSaveButtonPressed method called");
+    [self.tableView reloadData];
+    
+}
 
 
 

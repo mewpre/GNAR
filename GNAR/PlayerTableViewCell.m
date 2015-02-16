@@ -21,7 +21,6 @@
 }
 - (IBAction)onAddPlayersButtonPressed:(id)sender
 {
-    NSLog(@"Adding Players!");
     [self.delegate didPressSelectPlayersButton];
 }
 
