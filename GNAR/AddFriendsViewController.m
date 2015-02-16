@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 
 @property NSArray *displayedUsersArray;
 @property NSArray *currentArray;
@@ -50,18 +51,20 @@
         self.displayedUsersArray = self.allUsersArray;
         self.currentArray = self.allUsersArray;
         [self.tableView reloadData];
+        self.activitySpinner.stopAnimating;
     }];
 
-
-
-
+    // Create tap gesture recognizer to dismiss heyboard on click outside search bar
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.tableView addGestureRecognizer:gestureRecognizer];
+    // Don't disable all other user touches
     gestureRecognizer.cancelsTouchesInView = NO;
 
     self.navigationController.navigationBar.topItem.title = @"Cancel";
 }
 
+//-----------------------------------    Helper Methods    ----------------------------------------------------
+#pragma mark - Helper Methods
 - (void)hideKeyboard
 {
     [self.searchBar resignFirstResponder];
@@ -72,16 +75,20 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     NSMutableArray *tempSearchArray = [NSMutableArray new];
+    // If search bar is empty:
     if ([searchText isEqualToString:@""])
     {
         self.isSearching = FALSE;
+        // Replace displayed users to original array of users
         self.displayedUsersArray = self.currentArray;
     }
     else
     {
         self.isSearching = TRUE;
+        // Set up predicate to search for search bar text case-insensitive.
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.username contains[c] %@",searchText];
         tempSearchArray = [NSMutableArray arrayWithArray:[self.currentArray filteredArrayUsingPredicate:predicate]];
+        // Change displayed users to search results
         self.displayedUsersArray = tempSearchArray;
     }
     [self.tableView reloadData];
@@ -100,28 +107,35 @@
 
 - (IBAction)onSegmentPressed:(UISegmentedControl *)sender
 {
+    // Start activity spinner
+    [self.activitySpinner startAnimating];
+    // Reset the search bar: clear text field
     self.searchBar.text = @"";
+    // Dismiss keyboard
     [self.searchBar resignFirstResponder];
     if (sender.selectedSegmentIndex == 0)
     {
-        // Display my crew
+        // Display users in "my crew" (aka users I have friended within the GNAR app)
         self.displayedUsersArray = self.myCrewUsersArray;
         self.currentArray = self.myCrewUsersArray;
         [self.tableView reloadData];
+        [self.activitySpinner stopAnimating];
     }
     else if (sender.selectedSegmentIndex == 1)
     {
-        // Display my facebook friends
+        // Display users who are also my facebook friends
         self.displayedUsersArray = self.facebookUsersArray;
         self.currentArray = self.facebookUsersArray;
         [self.tableView reloadData];
+        [self.activitySpinner stopAnimating];
     }
     else
     {
-        // Search for all GNAR users
+        // Display all GNAR users
         self.displayedUsersArray = self.allUsersArray;
         self.currentArray = self.allUsersArray;
         [self.tableView reloadData];
+        [self.activitySpinner stopAnimating];
     }
 }
 
@@ -136,14 +150,18 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     User *currentUser = self.displayedUsersArray[indexPath.row];
+    // Set cell title to user's name
     cell.textLabel.text = currentUser.username;
     cell.textLabel.textColor = [UIColor whiteColor];
+    // Remove check mark
     cell.accessoryType = UITableViewCellAccessoryNone;
     // apply checkmark to users who have already been selected
     for (PFUser *user in self.selectedUsersArray)
     {
+        // Users ID matches any User ID in the selectedUsers array
         if ([currentUser.objectId isEqualToString:user.objectId])
         {
+            // Add a checkmark to show player has already been selected
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
@@ -152,14 +170,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // IF user is already selected:
     if ([self.selectedUsersArray containsObject:self.displayedUsersArray[indexPath.row]])
     {
+        // Remove checkmark to cell
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        // Remove player from selectedUsersArray
         [self.selectedUsersArray removeObject:self.displayedUsersArray[indexPath.row]];
     }
     else
     {
+        // Add checkmark to cell
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        // Add player to selectedUsersArray
         [self.selectedUsersArray addObject:self.displayedUsersArray[indexPath.row]];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

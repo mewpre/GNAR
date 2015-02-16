@@ -66,10 +66,15 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="5Nl-Wr-oDM"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="D0E-kB-WXE">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ine-pw-Ooi" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="8aN-aF-IJi"/>
+                            <constraint firstAttribute="centerY" secondItem="D0E-kB-WXE" secondAttribute="centerY" id="HNF-37-LbQ"/>
+                            <constraint firstAttribute="centerX" secondItem="D0E-kB-WXE" secondAttribute="centerX" id="JtH-nc-p9c"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5tg-0i-Vof" secondAttribute="bottom" id="M2M-jH-zKo"/>
                             <constraint firstItem="5tg-0i-Vof" firstAttribute="top" secondItem="ine-pw-Ooi" secondAttribute="bottom" constant="8" id="RB5-Tp-Ywj"/>
                             <constraint firstAttribute="trailing" secondItem="5tg-0i-Vof" secondAttribute="trailing" id="XH5-mb-xxa"/>
@@ -77,6 +82,24 @@
                             <constraint firstItem="5tg-0i-Vof" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="mk4-GK-wEA"/>
                             <constraint firstItem="ine-pw-Ooi" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="zPD-8C-mFg"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="D0E-kB-WXE"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="HNF-37-LbQ"/>
+                                <exclude reference="JtH-nc-p9c"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="D0E-kB-WXE"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="HNF-37-LbQ"/>
+                                <include reference="JtH-nc-p9c"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Games" id="XbL-fi-P9R">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Mvn-6d-KLZ">
@@ -86,6 +109,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activitySpinner" destination="D0E-kB-WXE" id="Fid-iO-Ye7"/>
                         <outlet property="segmentedControl" destination="ine-pw-Ooi" id="DvE-Ml-dFp"/>
                         <outlet property="tableView" destination="5tg-0i-Vof" id="zOa-GZ-m1n"/>
                     </connections>
@@ -378,10 +402,14 @@
                                     <outlet property="delegate" destination="ImX-us-J8f" id="EJ2-u0-a9P"/>
                                 </connections>
                             </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="84h-gK-eFf">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KSB-3G-cTS" firstAttribute="leading" secondItem="Vvn-gK-0JQ" secondAttribute="leading" id="2u3-RT-g75"/>
+                            <constraint firstAttribute="centerX" secondItem="84h-gK-eFf" secondAttribute="centerX" id="4Qb-dj-EbN"/>
                             <constraint firstItem="Lao-nC-Mkh" firstAttribute="trailing" secondItem="Vvn-gK-0JQ" secondAttribute="trailingMargin" id="5E9-va-NyU"/>
                             <constraint firstItem="KSB-3G-cTS" firstAttribute="top" secondItem="Lao-nC-Mkh" secondAttribute="bottom" constant="8" id="CcD-1y-vDV"/>
                             <constraint firstItem="do3-7a-h0f" firstAttribute="leading" secondItem="Vvn-gK-0JQ" secondAttribute="leadingMargin" constant="-16" id="D4Y-fI-LdL"/>
@@ -391,7 +419,26 @@
                             <constraint firstAttribute="bottom" secondItem="KSB-3G-cTS" secondAttribute="bottom" id="ZBj-E7-c3P"/>
                             <constraint firstAttribute="trailingMargin" secondItem="do3-7a-h0f" secondAttribute="trailing" constant="-16" id="l8I-V9-Dn6"/>
                             <constraint firstAttribute="trailing" secondItem="KSB-3G-cTS" secondAttribute="trailing" id="oRy-Yp-AMN"/>
+                            <constraint firstAttribute="centerY" secondItem="84h-gK-eFf" secondAttribute="centerY" id="s6Z-4e-ZBt"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="84h-gK-eFf"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="4Qb-dj-EbN"/>
+                                <exclude reference="s6Z-4e-ZBt"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="84h-gK-eFf"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="4Qb-dj-EbN"/>
+                                <include reference="s6Z-4e-ZBt"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Add Friends" id="CQj-Tz-gLk">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="c28-lZ-AIB">
@@ -401,6 +448,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activitySpinner" destination="84h-gK-eFf" id="mbF-LN-r2N"/>
                         <outlet property="searchBar" destination="do3-7a-h0f" id="KcY-99-n31"/>
                         <outlet property="segmentedControl" destination="Lao-nC-Mkh" id="1sR-LO-n2M"/>
                         <outlet property="tableView" destination="KSB-3G-cTS" id="ICc-F4-teU"/>
@@ -1319,7 +1367,6 @@
         <!--Add Achievement View Controller-->
         <scene sceneID="C4x-02-upy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5vh-em-ZgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ble-Fc-rE2" customClass="AddAchievementViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="93R-Q5-m2a"/>
@@ -1352,8 +1399,7 @@
                                                             <exclude reference="OJj-ka-fYh"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="254" y="9" width="58" height="30"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="GuA-OQ-rhZ"/>
                                                             <include reference="OJj-ka-fYh"/>
@@ -1434,9 +1480,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="16" y="94" width="290" height="21"/>
-                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -1540,8 +1583,7 @@
                                                             <exclude reference="a3O-15-JS7"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="114" y="41" width="198" height="29"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="POK-cE-q8s"/>
                                                             <include reference="a3O-15-JS7"/>
@@ -1566,8 +1608,7 @@
                                                             <exclude reference="U6R-Sz-Uxc"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="128" y="12" width="39" height="21"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="AG5-uG-KoA"/>
                                                             <include reference="U6R-Sz-Uxc"/>
@@ -1589,8 +1630,7 @@
                                                             <exclude reference="tSV-Ph-LqN"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="194" y="12" width="39" height="21"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="6bM-Er-wGe"/>
                                                             <include reference="tSV-Ph-LqN"/>
@@ -1634,8 +1674,7 @@
                                                             <exclude reference="NHx-Vj-73v"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="259" y="12" width="39" height="21"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="1k3-uB-o0o"/>
                                                             <include reference="NHx-Vj-73v"/>
@@ -1757,8 +1796,7 @@
                                                             <exclude reference="vgs-Es-LLY"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="112" y="10" width="96" height="30"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="hXa-PS-4kk"/>
                                                             <include reference="vgs-Es-LLY"/>
@@ -1837,8 +1875,7 @@
                                                             <exclude reference="iAM-yV-KcC"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="111" y="10" width="98" height="30"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="R73-V6-MWH"/>
                                                             <exclude reference="SH5-CZ-zyM"/>
@@ -1877,9 +1914,6 @@
                                         <color key="backgroundColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="736"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="ble-Fc-rE2" id="UXm-Y9-zwn"/>
                                     <outlet property="delegate" destination="ble-Fc-rE2" id="Sqc-YD-hyO"/>
@@ -1923,6 +1957,7 @@
                         <outlet property="tableView" destination="8do-fT-gdA" id="PAN-wH-Mc7"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5vh-em-ZgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7407" y="1286.25"/>
         </scene>

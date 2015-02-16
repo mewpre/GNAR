@@ -633,7 +633,7 @@ NSUInteger DeviceSystemMajorVersion()
 
 //-------------------------------------    AddFriends Delegate    ----------------------------------------------------
 #pragma mark - AddFriendsViewController Delegate
-- (void)addFriendsSaveButtonPressed:(NSArray *)selectedUsersArray
+- (void)didPressDoneButtonWithSelectedUsers:(NSArray *)selectedUsersArray
 {
     self.friendsArray = [selectedUsersArray mutableCopy];
     [self.tableView reloadData];

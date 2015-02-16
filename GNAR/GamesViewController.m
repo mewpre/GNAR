@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 
 @property NSArray *gamesArray;
 
@@ -53,6 +54,7 @@
         self.gamesArray = array;
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
+        [self.activitySpinner stopAnimating];
     }];
 }
 
