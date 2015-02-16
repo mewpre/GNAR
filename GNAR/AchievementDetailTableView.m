@@ -66,11 +66,11 @@
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
             infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
 
+//            infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
+//            infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
+//            infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
+//            infoCell.descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
 
-            //        infoCell.funLabel.attributedText = [NSAttributedString stringWithFormat:@"Fun Factor: ", self.selectedAchievement.funFactor];
-            //        infoCell.heroLabel.attributedText = [NSAttributedString stringWithFormat:@"Hero Factor: ", self.selectedAchievement.heroFactor];
-            //        infoCell.difficultyLabel.attributedText = [NSAttributedString stringWithFormat:@"Difficulty: ", self.selectedAchievement.difficulty];
-            //        infoCell.descriptionTextView.attributedText = [NSAttributedString stringWithFormat:@"Description: ", self.selectedAchievement.description];
             return infoCell;
         }
         else if (indexPath.section == LWSnowCell)
@@ -79,16 +79,19 @@
             snowCell.delegate = self;
             snowCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             NSMutableArray *pointValues = [NSMutableArray new];
-            for (NSNumber *score in self.achievement.pointValues)
+            for (int i = 0; i < self.achievement.pointValues.count; i++)
+//            for (NSNumber *score in self.achievement.pointValues)
             {
+                NSNumber *score = [self.achievement.pointValues objectAtIndex:i];
                 if ([score integerValue] == 0)
                 {
                     [pointValues addObject:@"NR"];
-                    [snowCell.segmentedControl setEnabled:NO forSegmentAtIndex:[self.achievement.pointValues indexOfObject:score]];
+                    [snowCell.segmentedControl setEnabled:NO forSegmentAtIndex:i];
                 }
                 else
                 {
                     [pointValues addObject:[NSString stringWithFormat:@"%@", score]];
+                    [snowCell.segmentedControl setEnabled:YES forSegmentAtIndex:i];
                 }
             }
             snowCell.lowSnowScoreLabel.text = pointValues[0];
@@ -142,10 +145,11 @@
             infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
             infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
-            //        infoCell.funLabel.attributedText = [NSAttributedString stringWithFormat:@"Fun Factor: ", self.selectedAchievement.funFactor];
-            //        infoCell.heroLabel.attributedText = [NSAttributedString stringWithFormat:@"Hero Factor: ", self.selectedAchievement.heroFactor];
-            //        infoCell.difficultyLabel.attributedText = [NSAttributedString stringWithFormat:@"Difficulty: ", self.selectedAchievement.difficulty];
-            //        infoCell.descriptionTextView.attributedText = [NSAttributedString stringWithFormat:@"Description: ", self.selectedAchievement.description];
+
+//            infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
+//            infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
+//            infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
+//            infoCell.descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
             return infoCell;
         }
         else if (indexPath.section == PlayerCell)
