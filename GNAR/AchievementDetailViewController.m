@@ -7,7 +7,7 @@
 //
 
 #import "AchievementDetailViewController.h"
-#import "AddAchievementViewController.h"
+#import "SelectPlayersViewController.h"
 #import "ParentTableView.h"
 #import "DetailParentTableView.h"
 #import "ParentTableViewCell.h"
@@ -24,6 +24,7 @@
 @property NSArray *achievementsArray;
 @property NSArray *childrenArray;
 
+@property NSMutableArray *playersArray;
 @property NSMutableArray *scoresArray;
 
 @end
@@ -98,7 +99,7 @@
 //    return @"";
 //}
 
-//-----------------------------------    SUB Table View Delegate    ----------------------------------------------------
+//---------------------------------    SUB Table View Delegate    ----------------------------------------------------
 #pragma mark - Sub Table View Delegate
 // @optional
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
@@ -148,12 +149,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//-------------------------------------    Prepare For Segue    ----------------------------------------------------
+//----------------------------------    Prepare For Segue    -------------------------------------------------
 #pragma mark - Prepare for Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    AddAchievementViewController *addVC = segue.destinationViewController;
-    addVC.achievement = sender;
+    SelectPlayersViewController *selectVC = segue.destinationViewController;
+//    selectVC.selectedUsersArray = self.tableView...
+//    addVC.achievement = sender;
 }
 
 

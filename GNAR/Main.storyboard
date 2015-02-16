@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="41l-PE-IwK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="41l-PE-IwK">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1147,6 +1147,7 @@
                                                                         </variation>
                                                                         <connections>
                                                                             <action selector="onAddModifiersButtonPressed:" destination="qOY-ET-CX4" eventType="touchUpInside" id="Bd7-JD-HTa"/>
+                                                                            <segue destination="5np-pR-Kzb" kind="show" identifier="AddModifiersSegue" id="Hqf-CB-jmb"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1228,6 +1229,7 @@
                                                                         </variation>
                                                                         <connections>
                                                                             <action selector="onAddPlayersButtonPressed:" destination="FkS-TZ-0KS" eventType="touchUpInside" id="ze7-xb-9kj"/>
+                                                                            <segue destination="qIj-iX-6LF" kind="show" identifier="SelectPlayersSegue" id="uOu-QA-hJs"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1299,7 +1301,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Nd7-4M-3FD" id="WY5-fh-gPa"/>
-                        <segue destination="ble-Fc-rE2" kind="show" identifier="AddAchievementSegue" id="7tM-oV-CcE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="snL-FK-86a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1318,6 +1319,7 @@
         <!--Add Achievement View Controller-->
         <scene sceneID="C4x-02-upy">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5vh-em-ZgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ble-Fc-rE2" customClass="AddAchievementViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="93R-Q5-m2a"/>
@@ -1764,7 +1766,6 @@
                                                     </variation>
                                                     <connections>
                                                         <action selector="onAddModifiersButtonPressed:" destination="P3B-DK-LoK" eventType="touchUpInside" id="PRv-xh-RUq"/>
-                                                        <segue destination="5np-pR-Kzb" kind="show" identifier="AddModifiersSegue" id="ATe-ZD-0eN"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1847,7 +1848,6 @@
                                                     </variation>
                                                     <connections>
                                                         <action selector="onAddPlayersButtonPressed:" destination="Sjs-SD-uur" eventType="touchUpInside" id="ejg-zk-yQ7"/>
-                                                        <segue destination="qIj-iX-6LF" kind="show" id="Waf-MF-Ahy"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1877,6 +1877,9 @@
                                         <color key="backgroundColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="736"/>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="ble-Fc-rE2" id="UXm-Y9-zwn"/>
                                     <outlet property="delegate" destination="ble-Fc-rE2" id="Sqc-YD-hyO"/>
@@ -1920,9 +1923,8 @@
                         <outlet property="tableView" destination="8do-fT-gdA" id="PAN-wH-Mc7"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5vh-em-ZgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6228" y="1362"/>
+            <point key="canvasLocation" x="7407" y="1286.25"/>
         </scene>
         <!--Select Players View Controller-->
         <scene sceneID="ifC-iM-gHa">
@@ -2000,7 +2002,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCs-tP-XJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7059" y="1019.25"/>
+            <point key="canvasLocation" x="6184.5" y="1133.25"/>
         </scene>
         <!--Home-->
         <scene sceneID="pZ1-t0-6s2">
@@ -2119,7 +2121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQb-E4-OI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7059" y="1683.75"/>
+            <point key="canvasLocation" x="6184.5" y="1781.25"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

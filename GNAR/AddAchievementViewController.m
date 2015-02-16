@@ -255,7 +255,7 @@
 - (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray
 {
     //TODO: maybe change this to only move the deselested players and add the newly selected players
-    self.playersArray = selectedUsersArray;
+    self.playersArray = selectedUsersArray; // *** Do we need to set this??? ***
     NSRange range;
     if (self.achievement.type == LineWorth)
     {
