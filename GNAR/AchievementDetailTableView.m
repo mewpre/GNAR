@@ -14,35 +14,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-
-    self.achievement = [Achievement new];
-        self.achievement[@"name"] = @"The Loft";
-        //    ML[@"description"] = @"Make headband or hat out of Priority Mail tape from Olympic Valley Post Office. Get signed by \"Postman Larry\" and ski with it on for 3 full days.";
-        self.achievement[@"type"] = @0;
-        self.achievement[@"group"] = @"The Palisades";
-    
     return self;
-}
-
-
-- (void)configureInsideTableView
-{
-    self.insideTableView.dataSource = self;
-    self.insideTableView.delegate = self;
-
-    self.insideTableView.backgroundColor = [UIColor clearColor];
-    self.insideTableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    self.insideTableView.separatorColor = [UIColor colorWithWhite:( 70/255.0) alpha:1.0];
-}
-
--(NSInteger)numberOfChildrenUnderParentIndex:(NSInteger)parentIndex
-{
-    return 1;
-}
-
--(NSInteger)heightForChildRows
-{
-    return 500;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
