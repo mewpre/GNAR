@@ -21,6 +21,16 @@
     self.insideTableView.separatorColor = [UIColor colorWithWhite:( 70/255.0) alpha:1.0];
 }
 
+-(NSInteger)numberOfChildrenUnderParentIndex:(NSInteger)parentIndex
+{
+    return 1;
+}
+
+-(NSInteger)heightForChildRows
+{
+    return 500;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     if (self.achievement.type == LineWorth)
@@ -200,13 +210,16 @@
 {
     [self.playersArray removeObjectAtIndex:indexPath.row];
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-    [self.tableView reloadData];
+    [self.insideTableView reloadData];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#warning This works but I think we need to split up this conditional by checking if (self.achievement.type istypeOfClass(LineWorth))
-    if (indexPath.section == LWPlayerCell || indexPath.section == PlayerCell)
+    if (self.achievement.type == LineWorth && indexPath.section == LWPlayerCell)
+    {
+        return YES;
+    }
+    else if (self.achievement.type != LineWorth && indexPath.section == PlayerCell)
     {
         return YES;
     }
@@ -215,8 +228,6 @@
         return NO;
     }
 }
-
-
 
 
 //-------------------------------------------    PrepareForSegue    -------------------------------------------------
@@ -251,10 +262,10 @@
 
     NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
 
-    [self.tableView beginUpdates];
-    [self.tableView deleteSections:section withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView insertSections:section withRowAnimation:UITableViewRowAnimationRight];
-    [self.tableView endUpdates];
+    [self.insideTableView beginUpdates];
+    [self.insideTableView deleteSections:section withRowAnimation:UITableViewRowAnimationFade];
+    [self.insideTableView insertSections:section withRowAnimation:UITableViewRowAnimationRight];
+    [self.insideTableView endUpdates];
     NSLog(@"addFriendsSaveButtonPressed method called");
 
 }
@@ -267,8 +278,8 @@
 
     // Add score objects to each of the players
 
-    [self.navigationController popViewControllerAnimated:YES];
-    NSLog(@"Add Button delegate called");
+//    [self.navigationController popViewControllerAnimated:YES];
+//    NSLog(@"Add Button delegate called");
 }
 
 -(void)didPressAddModifiersButton
@@ -278,7 +289,7 @@
     // Create new instance of AddAchievementViewController
     //    AchievementViewController *controller = [[AchievementViewController alloc] initWithNibName:@"AchievementViewController" bundle:[NSBundle mainBundle]];
 
-    [self performSegueWithIdentifier:@"AddModifiersSegue" sender:self];
+//    [self performSegueWithIdentifier:@"AddModifiersSegue" sender:self];
 
     // Display only ECPs, Trick Bonuses, and Penalties
 
@@ -293,8 +304,6 @@
 {
     NSLog(@"Change Segment delegate called");
 }
-
-@end
 
 
 /*

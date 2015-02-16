@@ -44,8 +44,8 @@
 
         return cell;
     }
-    else {
-
+    else
+    {
         AchievementDetailTableView *cell = (AchievementDetailTableView *)[self dequeueReusableCellWithIdentifier:CHILD_CONTAINER_IDENTIFIER];
         if (cell == nil) {
             cell = [[AchievementDetailTableView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CHILD_CONTAINER_IDENTIFIER];
