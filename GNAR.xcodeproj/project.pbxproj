@@ -261,11 +261,11 @@
 		0F61D5711A89C7F000FF96F0 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				0FCF8AE91A8BD313006224BB /* SubTable */,
 				606B716F1A894047004DDAB1 /* AppDelegate.h */,
 				606B71701A894047004DDAB1 /* AppDelegate.m */,
 				60EA882E1A8990B5004B6BF7 /* Comms.h */,
 				60EA882F1A8990B5004B6BF7 /* Comms.m */,
+				0FCF8AE91A8BD313006224BB /* SubTable */,
 			);
 			name = Other;
 			sourceTree = "<group>";

@@ -12,8 +12,8 @@
 #import "User.h"
 #import "ParentTableView.h"
 #import "ParentTableViewCell.h"
-#import "SubTableView.h"
-#import "SubTableViewCell.h"
+//#import "SubTableView.h"
+//#import "SubTableViewCell.h"
 
 
 @interface AchievementViewController () <SubTableViewDataSource, SubTableViewDelegate>
