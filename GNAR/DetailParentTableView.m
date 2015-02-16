@@ -56,12 +56,21 @@
         [cell setSubTableBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
         [cell setParentIndex:parentIndex];
         cell.achievement = [self.achievementsArray objectAtIndex:parentIndex];
-
+        if (!cell.playersArray)
+        {
+            cell.playersArray = [NSMutableArray new];
+        }
         [cell setDelegate:self];
+        cell.achievementDelegate = self;
         [cell reload];
 
         return cell;
     }
+}
+
+-(void)didPressSelectPlayersButton:(NSMutableArray *)playersArray
+{
+    [self.parentDelegate didPassPlayersArray:playersArray];
 }
 
 

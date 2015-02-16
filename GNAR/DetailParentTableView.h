@@ -9,9 +9,16 @@
 #import "ParentTableView.h"
 #import "AchievementDetailTableView.h"
 
+@protocol DetailParentTableViewDelegate <NSObject>
+
+- (void)didPassPlayersArray: (NSMutableArray *)playersArray;
+
+@end
+
 @interface DetailParentTableView : ParentTableView
-<UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate>
+<UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate, AchievementDetailTableViewDelegate>
 
 @property NSArray *achievementsArray;
+@property (weak, nonatomic) id<DetailParentTableViewDelegate> parentDelegate;
 
 @end
