@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4233" y="469.5"/>
+            <point key="canvasLocation" x="4233" y="465"/>
         </scene>
         <!--Current Game Players-->
         <scene sceneID="Mzl-4I-r70">
@@ -242,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzj-cd-TCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5917.5" y="465"/>
+            <point key="canvasLocation" x="5883" y="465"/>
         </scene>
         <!--Add Game Table View Controller-->
         <scene sceneID="dKv-0F-hc0">
@@ -377,7 +377,7 @@
                 </datePicker>
                 <barButtonItem title="Done" style="done" id="fdP-I6-m4b" userLabel="Done Button"/>
             </objects>
-            <point key="canvasLocation" x="4869" y="-453"/>
+            <point key="canvasLocation" x="5116.5" y="-217.5"/>
         </scene>
         <!--Add Friends-->
         <scene sceneID="W9A-8m-c07">
@@ -480,7 +480,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHi-QP-taE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5566.5" y="-453"/>
+            <point key="canvasLocation" x="5883" y="-217.5"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="vc9-2V-aas">
@@ -519,7 +519,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnn-gY-j6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3544" y="465"/>
+            <point key="canvasLocation" x="3486" y="465"/>
         </scene>
         <!--Login-->
         <scene sceneID="lIb-l6-Rkf">
@@ -867,7 +867,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLP-qy-Vxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4670" y="1360"/>
+            <point key="canvasLocation" x="5116.5" y="1222.5"/>
         </scene>
         <!--Add Achievements Detail-->
         <scene sceneID="iNs-Z5-vA7">
@@ -1392,7 +1392,7 @@
                     </connections>
                 </tableView>
             </objects>
-            <point key="canvasLocation" x="5358" y="1362"/>
+            <point key="canvasLocation" x="5883" y="1222.5"/>
         </scene>
         <!--Add Achievement View Controller-->
         <scene sceneID="C4x-02-upy">
@@ -1998,7 +1998,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5vh-em-ZgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7407" y="1286.25"/>
+            <point key="canvasLocation" x="7686" y="1286.25"/>
         </scene>
         <!--Select Players View Controller-->
         <scene sceneID="ifC-iM-gHa">
@@ -2076,7 +2076,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCs-tP-XJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6184.5" y="1133.25"/>
+            <point key="canvasLocation" x="6706.5" y="734.25"/>
         </scene>
         <!--Home-->
         <scene sceneID="pZ1-t0-6s2">
@@ -2152,7 +2152,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9E-Tp-Lm2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3861" y="1360.5"/>
+            <point key="canvasLocation" x="4233" y="1222.5"/>
         </scene>
         <!--Achievement View Controller-->
         <scene sceneID="BdI-55-Yhs">
@@ -2195,11 +2195,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQb-E4-OI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6184.5" y="1781.25"/>
+            <point key="canvasLocation" x="6706.5" y="1382.25"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="s5G-B6-5mG"/>
+        <segue reference="mDR-t4-JHh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.54117647058823526" green="0.27058823529411763" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

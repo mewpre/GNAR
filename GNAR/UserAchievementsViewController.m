@@ -26,8 +26,10 @@
     self.title = [NSString stringWithFormat:@"%@", self.currentPlayer.username];
 
     // Display the scores of the current user
-
-
+    [self getUserScoresForPlayer:self.currentPlayer forGame:self.currentGame withCompletion:^(NSArray *scores) {
+        self.scoresArray = scores;
+        [self.tableView reloadData];
+    }];
 
     
 //    [self.currentPlayer getUserScoresWithCompletion:^(NSArray *array) {
@@ -35,34 +37,34 @@
 //        [self.tableView reloadData];
 //    }];
 
-//    - (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete
-//    {
-//        PFQuery *query = [PFQuery queryWithClassName:@"Score"];
-//        [query whereKey:@"scorer" equalTo:self];
-//        [query whereKey:@"game" equalTo:]
-//
-//        PFRelation *relation = [self relationForKey:@"scores"];
-//        [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//            if (error)
-//            {
-//                NSLog(@"%@", error);
-//            }
-//            else
-//            {
-//                NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
-//            }
-//            complete(objects);
-//            
-//        }];
-//    }
-
-
-
     // Do any additional setup after loading the view.
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
+
+// Retrieves scores for a specified user within a specified game (includes score modifiers with fetch)
+- (void)getUserScoresForPlayer:(User *)player forGame:(Game *)game withCompletion:(void(^)(NSArray *scores))complete
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Score"];
+    [query whereKey:@"scorer" equalTo:player];
+    [query whereKey:@"game" equalTo:game];
+//    [query includeKey:@"modifiers"];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self.currentPlayer);
+        }
+        complete(objects);
+
+    }];
+}
+
 
 
 - (void)refresh:(UIRefreshControl *)refreshControl {

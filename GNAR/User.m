@@ -76,6 +76,7 @@
 {
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"games"];
 //    [relation.query includeKey:@"players"];
+    [relation.query addAscendingOrder:@"createdAt"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
