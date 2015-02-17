@@ -10,6 +10,11 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "User.h"
+#import "Achievement.h"
+#import "Game.h"
+#import "Score.h"
+
 
 @interface AppDelegate ()
 
@@ -41,7 +46,10 @@
     [[UITableView appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
     [[UITableViewCell appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
 
-    
+    [User registerSubclass];
+    [Achievement registerSubclass];
+    [Game registerSubclass];
+    [Score registerSubclass];
     
     return YES;
 }

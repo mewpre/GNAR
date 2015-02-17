@@ -46,7 +46,10 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "Game.h"
 
 @interface AddGameTableViewController : UITableViewController
+
+@property Game *currentGame;
 
 @end

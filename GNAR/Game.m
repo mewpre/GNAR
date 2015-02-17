@@ -16,6 +16,7 @@
 @dynamic endAt;
 @synthesize players;
 
+
 - (instancetype)initWithName:(NSString *)name mountain:(NSString *)mountain
 {
     self = [super init];
@@ -27,7 +28,18 @@
     return self;
 }
 
-- (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *array))complete
+//--------------------------------------    Get Games    ---------------------------------------------
+#pragma mark - Get Games
++ (void)getAllGames:(void(^)(NSArray *allGames))complete
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Game"];
+    [query addAscendingOrder:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        complete(objects);
+    }];
+}
+
+- (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *players))complete
 {
 //    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
 //    [query whereKey:@"post" equalTo:myPost];

@@ -24,11 +24,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *array) {
-        self.playersArray = array;
-        [self.tableView reloadData];
-        [self.activitySpinner stopAnimating];
+    // Get scores of current user
+
+    // Get current game (from app delegate???)
+    //TODO: change this to get current game and not first game of current user
+    [User getCurrentUserGamesWithCompletion:^(NSArray *currentUserGames) {
+        self.currentGame = currentUserGames.firstObject;
+        // Save current game in background
+        [self.currentGame pinInBackground];
+        // Get players within current game
+        [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *players) {
+            self.playersArray = players;
+
+            // Get scores for all other players within current game
+            for (User *user in self.playersArray)
+            {
+                [self getUserScores:user forGame:self.currentGame withCompletion:^(NSArray *userScores) {
+                    // Set fetched scores to local object.scores
+                    //TODO: change this to GQL local data storage
+//                    user.scores = userScores;
+
+                    [self.tableView reloadData];
+                    [self.activitySpinner stopAnimating];
+                }];
+            }
+        }];
     }];
+
+
+
 
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -36,6 +60,27 @@
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
+
+- (void)getUserScores:(User *)user forGame:(Game *)game withCompletion:(void(^)(NSArray *userScores))complete
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Score"];
+    [query whereKey:@"scorer" equalTo:user];
+    [query whereKey:@"game" equalTo:game];
+    [query includeKey:@"Modifiers"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
+        }
+        complete(objects);
+
+    }];
+}
+
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [refreshControl endRefreshing];

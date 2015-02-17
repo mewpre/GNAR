@@ -24,6 +24,9 @@
                                     <segment title="Friends"/>
                                     <segment title="All"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onSegmentPressed:" destination="vXZ-lx-hvc" eventType="valueChanged" id="h1E-86-p3r"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5tg-0i-Vof">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>

@@ -21,10 +21,12 @@
 @property (retain) NSNumber *ability;
 @property (retain) UIImage *profileImage;
 
-- (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete;
-+ (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete;
-+ (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *array))complete;
-+ (void)getCurrentUserFriendsWithCompletion:(void(^)(NSArray *array))complete;
+@property NSArray *scores;
+
+//- (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete;
++ (void)getCurrentUserScoresWithCompletion:(void(^)(NSArray *userScoresIncludingModifiers))complete;
++ (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *currentUserGames))complete;
++ (void)getCurrentUserFriendsWithCompletion:(void(^)(NSArray *currentUserFriends))complete;
 + (void)getAllUsers:(void(^)(NSArray *array))complete;
 + (void)getAllFacebookUsers:(void(^)(NSArray *array))complete;
 

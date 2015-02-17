@@ -17,7 +17,9 @@
 @property NSArray *players;
 
 - (instancetype)initWithName:(NSString *)name mountain:(NSString *)mountain;
-- (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *array))complete;
+
++ (void)getAllGames:(void(^)(NSArray *allGames))complete;
+- (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *players))complete;
 + (NSString *)parseClassName;
 
 @end

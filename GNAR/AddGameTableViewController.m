@@ -46,7 +46,6 @@
  */
 
 #import "AddGameTableViewController.h"
-#import "Game.h"
 #import "AddFriendsViewController.h"
 
 #define kPickerAnimationDuration    0.40   // duration for the animation to slide the date picker into view

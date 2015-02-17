@@ -10,42 +10,16 @@
 
 @implementation User
 
-@dynamic firstName;
-@dynamic lastName;
+@dynamic firstName, lastName, type, gender, birthday, homeMountain, ability, parseClassName, profileImage;
 //@dynamic lastKnownLocation;
-@dynamic type;
-@dynamic gender;
-@dynamic birthday;
-@dynamic homeMountain;
-@dynamic ability;
 
-@dynamic profileImage;
+@dynamic scores;
 
 
+//--------------------------------------    Get Scores    ---------------------------------------------
+#pragma mark - Get Scores
 
-
-//- (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete
-//{
-//    PFQuery *query = [PFQuery queryWithClassName:@"Score"];
-//    [query whereKey:@"scorer" equalTo:self];
-//    [query whereKey:@"game" equalTo:]
-//
-//    PFRelation *relation = [self relationForKey:@"scores"];
-//    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (error)
-//        {
-//            NSLog(@"%@", error);
-//        }
-//        else
-//        {
-//            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
-//        }
-//        complete(objects);
-//
-//    }];
-//}
-
-+ (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete
++ (void)getCurrentUserScoresWithCompletion:(void(^)(NSArray *userScoresIncludingModifiers))complete
 {
     
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"scores"];
@@ -72,7 +46,9 @@
 }
 
 
-+ (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *array))complete
+//--------------------------------------    Get Games    ---------------------------------------------
+#pragma mark - Get Games
++ (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *currentUserGames))complete
 {
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"games"];
 //    [relation.query includeKey:@"players"];
@@ -90,23 +66,30 @@
     }];
 }
 
-+ (void)getCurrentUserFriendsWithCompletion:(void(^)(NSArray *array))complete
-{
-    PFRelation *relation = [[PFUser currentUser] relationForKey:@"friends"];
+//- (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete
+//{
+//    PFQuery *query = [PFQuery queryWithClassName:@"Score"];
+//    [query whereKey:@"scorer" equalTo:self];
+//    [query whereKey:@"game" equalTo:]
+//
+//    PFRelation *relation = [self relationForKey:@"scores"];
+//    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (error)
+//        {
+//            NSLog(@"%@", error);
+//        }
+//        else
+//        {
+//            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
+//        }
+//        complete(objects);
+//
+//    }];
+//}
 
-    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error)
-        {
-            NSLog(@"%@", error);
-        }
-        else
-        {
-            NSLog(@"Fetched %lu friends with no errors", (unsigned long)objects.count);
-        }
-        complete(objects);
-    }];
-}
 
+//--------------------------------------    Get Users    ---------------------------------------------
+#pragma mark - Get Users
 + (void)getAllUsers:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [PFUser query];
@@ -159,6 +142,29 @@
     }];
 }
 
+
+//--------------------------------------    Get Friends    ---------------------------------------------
+#pragma mark - Get Friends
++ (void)getCurrentUserFriendsWithCompletion:(void(^)(NSArray *currentUserFriends))complete
+{
+    PFRelation *relation = [[PFUser currentUser] relationForKey:@"friends"];
+
+    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            NSLog(@"Fetched %lu friends with no errors", (unsigned long)objects.count);
+        }
+        complete(objects);
+    }];
+}
+
+
+//--------------------------------------    Get Achievements    ---------------------------------------------
+#pragma mark - Get Achievements
 + (void)getAchievementsWithCompletion:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Achievement"];
@@ -178,10 +184,11 @@
 }
 
 
+//--------------------------------------    Other    ---------------------------------------------
+#pragma mark - Other
 + (void)load {
     [self registerSubclass];
 }
-
 + (NSString *)parseClassName {
     return @"User";
 }

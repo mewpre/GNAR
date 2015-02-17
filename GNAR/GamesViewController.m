@@ -9,6 +9,7 @@
 #import "GamesViewController.h"
 #import "LeaderboardViewController.h"
 #import "User.h"
+#import "Game.h"
 
 @interface GamesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 
 @property NSArray *gamesArray;
+@property Game *currentGame;
 
 @property UIRefreshControl *refreshControl;
 
@@ -34,16 +36,62 @@
     [self.refreshControl addTarget:self action:@selector(getCurrentUserGames) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     self.tableView.backgroundColor = [UIColor colorWithWhite:( 30/255.0) alpha:1.0];
-    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.segmentedControl setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
-//    NSLog(@"%@", [PFUser currentUser].username);
+    //    NSLog(@"%@", [PFUser currentUser].username);
+
+
+//    PFQuery *query = [PFQuery queryWithClassName:@"Game"];
+//    [query fromLocalDatastore];
+//    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//        Game *game = object;
+//        self.currentGame = game;
+//    }];
+
     [self getCurrentUserGames];
 }
+
+//--------------------------------------    Actions    ---------------------------------------------
+#pragma mark - Actions
+
+- (IBAction)onSegmentPressed:(UISegmentedControl *)sender
+{
+    // Start activity spinner
+    [self.activitySpinner startAnimating];
+    if (sender.selectedSegmentIndex == 0)
+    {
+        // Display games I (current user) am a player in
+        [User getCurrentUserGamesWithCompletion:^(NSArray *currentUserGames) {
+            self.gamesArray = currentUserGames;
+            [self.tableView reloadData];
+            [self.activitySpinner stopAnimating];
+        }];
+    }
+    else if (sender.selectedSegmentIndex == 1)
+    {
+        // Get all friends
+
+        // Display games my friends have created and I'm not in
+
+        [self.tableView reloadData];
+        [self.activitySpinner stopAnimating];
+    }
+    else
+    {
+        // Display all games
+        [Game getAllGames:^(NSArray *allGames) {
+            self.gamesArray = allGames;
+            [self.tableView reloadData];
+            [self.activitySpinner stopAnimating];
+        }];
+    }
+}
+
 
 //--------------------------------------    Helper Methods   ---------------------------------------------
 #pragma mark - Helper Methods
@@ -65,14 +113,12 @@
 }
 
 
-
 //----------------------------------------    Table View    ----------------------------------------------------
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.gamesArray.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -81,14 +127,17 @@
     // Get game object for current cell
     Game *game = self.gamesArray[indexPath.row];
 
+
     // Set cell title to game's mountain
     cell.textLabel.text = [game objectForKey:@"name"];
     // Set users in game
     NSString *playersNames = [self createPlayersStringWithGame:game];
-
     cell.detailTextLabel.text = playersNames;
+    // Set number of detailText lines to fit all the players
+//    cell.detailTextLabel.numberOfLines = game.players.count;
     return cell;
 }
+
 
 //--------------------------------------    Helper Methods    ---------------------------------------------
 #pragma mark - Helper Methods
@@ -96,21 +145,11 @@
 - (NSString *)createPlayersStringWithGame:(Game *)game
 {
     NSMutableString *playersString = [NSMutableString new];
-    for (int i = 0; i < game.players.count && i < 4; i++)
+    for (int i = 0; i < game.players.count; i++)
     {
         User *user = game.players[i];
-        if (i == 0)
-        {
-            [playersString appendString:user.username];
-        }
-        else
-        {
-            [playersString appendString:[NSString stringWithFormat:@", %@", user.username]];
-        }
-        if (i == 3)
-        {
-            [playersString appendString:@"..."];
-        }
+        [playersString appendString:user.username];
+//        [playersString appendString:@"\n"];
     }
     return playersString;
 }
