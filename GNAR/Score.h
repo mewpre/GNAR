@@ -17,7 +17,7 @@
 
 + (NSString *)parseClassName;
 
-- (instancetype)initScoreWithAchievement:(Achievement *)achievement withModifiers: (NSArray *)modifiers;
+- (instancetype)initScoreWithAchievementData: (NSDictionary *)scoreData;
 
 
 @end
