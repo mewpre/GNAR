@@ -14,6 +14,7 @@
 @dynamic mountain;
 @dynamic startAt;
 @dynamic endAt;
+@synthesize players;
 
 - (instancetype)initWithName:(NSString *)name mountain:(NSString *)mountain
 {
@@ -28,6 +29,15 @@
 
 - (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *array))complete
 {
+//    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+//    [query whereKey:@"post" equalTo:myPost];
+//
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+//        // comments now contains the comments for myPost
+//    }];
+
+
+
     PFRelation *relation = [self relationForKey:@"players"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)

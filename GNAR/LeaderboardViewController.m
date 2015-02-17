@@ -12,6 +12,7 @@
 @interface LeaderboardViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 
 @property UIRefreshControl *refreshControl;
 @property NSArray *playersArray;
@@ -26,6 +27,7 @@
     [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *array) {
         self.playersArray = array;
         [self.tableView reloadData];
+        [self.activitySpinner stopAnimating];
     }];
 
     // refresh control used for pull-down to refresh functionality
@@ -68,6 +70,7 @@
 
 //        userAchieveVC.scoresArray = self.playersArray[[self.tableView indexPathForSelectedRow].row][@"scores"];
         userAchieveVC.currentPlayer = self.playersArray[[self.tableView indexPathForSelectedRow].row];
+        userAchieveVC.currentGame = self.currentGame;
     }
 //    else
     {

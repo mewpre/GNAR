@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Score.h"
 #import "User.h"
+#import "Game.h"
 
 @interface UserAchievementsViewController : UIViewController
 
 //@property NSArray *scoresArray;
 @property User *currentPlayer;
+@property Game *currentGame;
 
 @end

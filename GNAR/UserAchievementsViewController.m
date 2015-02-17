@@ -19,13 +19,42 @@
 
 @implementation UserAchievementsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    // Display current User's username in title
+    self.title = [NSString stringWithFormat:@"%@", self.currentPlayer.username];
 
-    [User getUserScoresWithCompletion:^(NSArray *array) {
-        self.scoresArray = array;
-        [self.tableView reloadData];
-    }];
+    // Display the scores of the current user
+
+
+
+    
+//    [self.currentPlayer getUserScoresWithCompletion:^(NSArray *array) {
+//        self.scoresArray = array;
+//        [self.tableView reloadData];
+//    }];
+
+//    - (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete
+//    {
+//        PFQuery *query = [PFQuery queryWithClassName:@"Score"];
+//        [query whereKey:@"scorer" equalTo:self];
+//        [query whereKey:@"game" equalTo:]
+//
+//        PFRelation *relation = [self relationForKey:@"scores"];
+//        [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//            if (error)
+//            {
+//                NSLog(@"%@", error);
+//            }
+//            else
+//            {
+//                NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
+//            }
+//            complete(objects);
+//            
+//        }];
+//    }
 
 
 
@@ -34,6 +63,7 @@
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
+
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [refreshControl endRefreshing];
@@ -46,6 +76,7 @@
 {
     return self.scoresArray.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];

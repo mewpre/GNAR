@@ -52,12 +52,12 @@
 {
     [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
         self.gamesArray = array;
-//        Game *firstGame = self.gamesArray.firstObject;
-//        NSArray *playersArray = [firstGame objectForKey:@"players"];
-//        PFObject *player = playersArray.firstObject;
-//        NSLog(@"Fetched %lu players from first game", playersArray.count);
-
-
+        for (Game *game in self.gamesArray)
+        {
+            [game getPlayersOfGameWithCompletion:^(NSArray *array) {
+                game.players = array;
+            }];
+        }
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
         [self.activitySpinner stopAnimating];
@@ -79,14 +79,40 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
     // Get game object for current cell
-    PFObject *game = self.gamesArray[indexPath.row];
+    Game *game = self.gamesArray[indexPath.row];
 
     // Set cell title to game's mountain
     cell.textLabel.text = [game objectForKey:@"name"];
     // Set users in game
-    NSString *mountain = [NSString stringWithFormat:@"%@", game[@"mountain"]];
-    cell.detailTextLabel.text = mountain;
+    NSString *playersNames = [self createPlayersStringWithGame:game];
+
+    cell.detailTextLabel.text = playersNames;
     return cell;
+}
+
+//--------------------------------------    Helper Methods    ---------------------------------------------
+#pragma mark - Helper Methods
+
+- (NSString *)createPlayersStringWithGame:(Game *)game
+{
+    NSMutableString *playersString = [NSMutableString new];
+    for (int i = 0; i < game.players.count && i < 4; i++)
+    {
+        User *user = game.players[i];
+        if (i == 0)
+        {
+            [playersString appendString:user.username];
+        }
+        else
+        {
+            [playersString appendString:[NSString stringWithFormat:@", %@", user.username]];
+        }
+        if (i == 3)
+        {
+            [playersString appendString:@"..."];
+        }
+    }
+    return playersString;
 }
 
 

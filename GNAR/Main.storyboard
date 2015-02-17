@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="41l-PE-IwK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="41l-PE-IwK">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -150,6 +150,9 @@
                                     <outlet property="delegate" destination="W0l-NK-axe" id="Mw5-De-fHV"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ymo-Vz-mm9">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -157,12 +160,33 @@
                             <constraint firstItem="4mJ-c3-qnI" firstAttribute="top" secondItem="yYB-g9-4XT" secondAttribute="top" constant="64" id="Bmq-Ac-64n">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
+                            <constraint firstAttribute="centerY" secondItem="Ymo-Vz-mm9" secondAttribute="centerY" id="DIZ-lg-JyS"/>
+                            <constraint firstAttribute="centerX" secondItem="Ymo-Vz-mm9" secondAttribute="centerX" id="JwQ-UO-TKR"/>
                             <constraint firstAttribute="trailing" secondItem="4mJ-c3-qnI" secondAttribute="trailing" id="i9A-5q-nF5"/>
                             <constraint firstAttribute="bottom" secondItem="4mJ-c3-qnI" secondAttribute="bottom" id="ryW-t4-ZKe"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Ymo-Vz-mm9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="DIZ-lg-JyS"/>
+                                <exclude reference="JwQ-UO-TKR"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Ymo-Vz-mm9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="DIZ-lg-JyS"/>
+                                <include reference="JwQ-UO-TKR"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Current Game Players" id="bhU-Dj-Jcj"/>
                     <connections>
+                        <outlet property="activitySpinner" destination="Ymo-Vz-mm9" id="w20-kF-nnm"/>
                         <outlet property="tableView" destination="4mJ-c3-qnI" id="CuY-o2-9KN"/>
                     </connections>
                 </viewController>
@@ -1889,7 +1913,8 @@
                                                             <exclude reference="iAM-yV-KcC"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="111" y="10" width="98" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="R73-V6-MWH"/>
                                                             <exclude reference="SH5-CZ-zyM"/>
