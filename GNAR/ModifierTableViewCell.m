@@ -22,7 +22,6 @@
 - (IBAction)onAddModifiersButtonPressed:(UIButton *)sender
 {
     NSLog(@"Add Modifier button tapped!");
-    [self.delegate didPressAddModifiersButton];
 }
 
 @end

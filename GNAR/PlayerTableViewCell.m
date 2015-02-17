@@ -21,7 +21,7 @@
 }
 - (IBAction)onAddPlayersButtonPressed:(id)sender
 {
-    [self.delegate didPressSelectPlayersButton];
+
 }
 
 @end

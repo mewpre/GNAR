@@ -13,7 +13,7 @@
 #import "Score.h"
 #import "Enum.h"
 
-@interface AddAchievementViewController () <UITableViewDataSource, UITableViewDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate, SelectPlayersViewControllerDelegate>
+@interface AddAchievementViewController () <UITableViewDataSource, UITableViewDelegate, SnowTableViewCellDelegate, SelectPlayersViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -133,7 +133,6 @@
         else if (indexPath.section == LWAddModifierCell)
         {
             ModifierTableViewCell *modifierCell = [tableView dequeueReusableCellWithIdentifier:@"AddModifierCell"];
-            modifierCell.delegate = self;
             modifierCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return modifierCell;
         }
@@ -147,7 +146,6 @@
         else
         {
             PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
-            playerCell.delegate = self;
             playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
             //TODO: Change "Add Players" button to "Select Players"
@@ -180,7 +178,6 @@
         {
 
             PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
-            playerCell.delegate = self;
             playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
         }
