@@ -21,8 +21,33 @@
 
 @dynamic profileImage;
 
+
+
+
+//- (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete
+//{
+//    PFQuery *query = [PFQuery queryWithClassName:@"Score"];
+//    [query whereKey:@"scorer" equalTo:self];
+//    [query whereKey:@"game" equalTo:]
+//
+//    PFRelation *relation = [self relationForKey:@"scores"];
+//    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (error)
+//        {
+//            NSLog(@"%@", error);
+//        }
+//        else
+//        {
+//            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
+//        }
+//        complete(objects);
+//
+//    }];
+//}
+
 + (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete
 {
+    
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"scores"];
     [relation.query includeKey:@"modifiers"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -50,7 +75,7 @@
 + (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *array))complete
 {
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"games"];
-    [relation.query includeKey:@"players"];
+//    [relation.query includeKey:@"players"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
