@@ -52,6 +52,12 @@
 {
     [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
         self.gamesArray = array;
+//        Game *firstGame = self.gamesArray.firstObject;
+//        NSArray *playersArray = [firstGame objectForKey:@"players"];
+//        PFObject *player = playersArray.firstObject;
+//        NSLog(@"Fetched %lu players from first game", playersArray.count);
+
+
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
         [self.activitySpinner stopAnimating];

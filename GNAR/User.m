@@ -39,6 +39,8 @@
         else
         {
             NSLog(@"Fetched %lu scores", (unsigned long)objects.count);
+//            NSLog(@"...including %lu modifiers", (unsigned long)objects.count);
+//            NSLog(@"...including %lu players", (unsigned long)objects.count);
         }
         complete(objects);
     }];
@@ -48,7 +50,7 @@
 + (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *array))complete
 {
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"games"];
-    [relation.query includeKey:@"friends"];
+    [relation.query includeKey:@"players"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
