@@ -7,15 +7,17 @@
 //
 
 #import "GamesViewController.h"
-#import "LeaderboardViewController.h"
+#import "AddGameTableViewController.h"
+#import "GameManager.h"
 #import "User.h"
-#import "Game.h"
 
 @interface GamesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
+
+@property GameManager *myGameManager;
 
 @property NSArray *gamesArray;
 @property Game *currentGame;
@@ -42,6 +44,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    self.myGameManager = [GameManager sharedManager];
+    // Get current game object from core data singleton
+    self.currentGame = self.myGameManager.currentGame;
+
     [self.segmentedControl setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     //    NSLog(@"%@", [PFUser currentUser].username);
 
@@ -103,7 +110,7 @@
         for (Game *game in self.gamesArray)
         {
             [game getPlayersOfGameWithCompletion:^(NSArray *array) {
-                game.players = array;
+                game.players = array;   
             }];
         }
         [self.tableView reloadData];
@@ -138,6 +145,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
+    // Save game as singleton in Core Data
+    self.myGameManager.currentGame = selectedGame;
+}
+
 
 //--------------------------------------    Helper Methods    ---------------------------------------------
 #pragma mark - Helper Methods
@@ -161,9 +175,9 @@
 {
     if ([segue.identifier isEqualToString:@"ViewGameSegue"])
     {
-        LeaderboardViewController *leaderVC = segue.destinationViewController;
+        AddGameTableViewController *addGameVC = segue.destinationViewController;
         Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
-        leaderVC.currentGame = selectedGame;
+        addGameVC.selectedGame = selectedGame;
     }
     else
     {

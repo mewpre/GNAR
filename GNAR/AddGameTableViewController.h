@@ -50,6 +50,6 @@
 
 @interface AddGameTableViewController : UITableViewController
 
-@property Game *currentGame;
+@property Game *selectedGame;
 
 @end

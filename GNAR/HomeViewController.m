@@ -9,23 +9,32 @@
 #import "HomeViewController.h"
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "GameManager.h"
 
 
 @interface HomeViewController ()<LoginViewControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property Game *currentGame;
+@property GameManager *myGameManager;
 
 @end
 
 @implementation HomeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
+    self.myGameManager = [GameManager sharedManager];
+    // Get current game object from core data singleton
+    self.currentGame = self.myGameManager.currentGame;
+
     self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [PFUser currentUser].username];
 }
 
