@@ -21,9 +21,9 @@
 @interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate, SelectPlayersViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet DetailParentTableView *tableView;
-@property NSArray *achievementsArray;
-@property NSArray *childrenArray;
+@property NSMutableArray *achievementsDataArray;
 @property NSMutableArray *playersArrayForPassing;
+@property NSInteger activeParentCellIndex;
 
 @property NSMutableArray *playersArray;
 @property NSMutableArray *scoresArray;
@@ -37,12 +37,26 @@
     [super viewDidLoad];
 
     [Achievement getAchievementsOfType:self.type inGroup:self.group withCompletion:^(NSArray *array) {
-        self.achievementsArray = array;
+        NSMutableArray *tempArray = [NSMutableArray new];
+        for (Achievement *achievement in array)
+        {
+            NSMutableArray *modifiersArray = [NSMutableArray new];
+            NSMutableArray *playersArray = [NSMutableArray new];
+            NSMutableString *snowLevel = [NSMutableString new];
+            NSDictionary *achievementData = @{
+                                              @"achievement" : achievement,
+                                              @"modifiersArray" : modifiersArray,
+                                              @"playersArray" : playersArray,
+                                              @"snowIndexString" : snowLevel
+                                              };
+            [tempArray addObject:achievementData];
+        }
 
+        self.achievementsDataArray = tempArray;
         // *** Must set delegates AFTER you set the tables data source (array)
         [self.tableView setDataSourceDelegate:self];
         [self.tableView setTableViewDelegate:self];
-        self.tableView.achievementsArray = self.achievementsArray;
+        self.tableView.achievementsArray = self.achievementsDataArray;
         self.tableView.parentDelegate = self;
         [self.tableView reloadData];
     }];
@@ -55,7 +69,7 @@
 // @required
 - (NSInteger)numberOfParentCells
 {
-    return self.achievementsArray.count;
+    return self.achievementsDataArray.count;
 }
 
 - (NSInteger)heightForParentRows
@@ -66,7 +80,7 @@
 // @optional
 - (NSString *)titleLabelForParentCellAtIndex:(NSInteger)parentIndex
 {
-    return [self.achievementsArray[parentIndex] name];
+    return [[self.achievementsDataArray[parentIndex] objectForKey:@"achievement"] name];
 }
 
 - (NSString *)subtitleLabelForParentCellAtIndex:(NSInteger)parentIndex
@@ -85,7 +99,7 @@
 
 - (NSInteger)heightForChildRows
 {
-    return 300;
+    return 400;
 }
 
 
@@ -106,7 +120,7 @@
 // @optional
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
 {
-    
+    NSLog(@"Selected child index at %lu with parent index %lu", childIndex, parentIndex);
 }
 
 //Only used for testing for now
@@ -157,14 +171,14 @@
 {
     SelectPlayersViewController *selectVC = segue.destinationViewController;
     selectVC.delegate = self;
-    selectVC.selectedUsersArray = self.playersArrayForPassing;
+    selectVC.selectedUsersArray = [self.achievementsDataArray objectAtIndex:self.activeParentCellIndex][@"playersArray"];
 
 }
 
 
-- (void)didPassPlayersArray:(NSMutableArray *)playersArray
+- (void)didGetIndex:(NSInteger)index
 {
-    self.playersArrayForPassing = playersArray;
+    self.activeParentCellIndex = index;
 //    [self performSegueWithIdentifier:@"SelectPlayersSegue" sender:self];
 }
 

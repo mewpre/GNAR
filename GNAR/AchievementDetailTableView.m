@@ -62,7 +62,6 @@
         if (indexPath.section == LWInfoCell)
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
-            infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
             infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
 
@@ -76,7 +75,6 @@
         else if (indexPath.section == LWSnowCell)
         {
             SnowTableViewCell *snowCell = [tableView dequeueReusableCellWithIdentifier:@"SnowCell"];
-            snowCell.delegate = self;
             snowCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             NSMutableArray *pointValues = [NSMutableArray new];
             for (int i = 0; i < self.achievement.pointValues.count; i++)
@@ -97,6 +95,14 @@
             snowCell.lowSnowScoreLabel.text = pointValues[0];
             snowCell.medSnowScoreLabel.text = pointValues[1];
             snowCell.highSnowScoreLabel.text = pointValues[2];
+            if (self.snowLevelIndex)
+            {
+                snowCell.segmentedControl.selectedSegmentIndex = [self.snowLevelIndex integerValue];
+            }
+            else
+            {
+                snowCell.segmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment;
+            }
 
             return snowCell;
         }
@@ -114,7 +120,7 @@
         else if (indexPath.section == LWAddModifierCell)
         {
             ModifierTableViewCell *modifierCell = [tableView dequeueReusableCellWithIdentifier:@"AddModifierCell"];
-            modifierCell.delegate = self;
+//            modifierCell.delegate = self;
             modifierCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return modifierCell;
         }
@@ -128,7 +134,7 @@
         else
         {
             PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
-            playerCell.delegate = self;
+//            playerCell.delegate = self;
             playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
             //TODO: Change "Add Players" button to "Select Players"
@@ -142,7 +148,6 @@
         {
             //TODO: modify InfoCell to display abbreviation, point values, and description instead of all the stuff LineWorths have
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
-            infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
             infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
 
@@ -163,7 +168,7 @@
         {
 
             PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
-            playerCell.delegate = self;
+//            playerCell.delegate = self;
             playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
         }
@@ -240,7 +245,7 @@
 
     [self.insideTableView beginUpdates];
     [self.insideTableView deleteSections:section withRowAnimation:UITableViewRowAnimationFade];
-    [self.insideTableView insertSections:section withRowAnimation:UITableViewRowAnimationRight];
+    [self.insideTableView insertSections:section withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.insideTableView endUpdates];
 }
 
@@ -274,12 +279,13 @@
 {
     NSLog(@"Select Players Cell Button delegate called");
     //Pass self.playersArray up through chained delegation
-    [self.achievementDelegate didPressSelectPlayersButton:self.playersArray];
+//    [self.achievementDelegate didGetParentIndex:self.parentIndex];
 }
 
 -(void)didChangeSegment:(NSInteger)selectedSegment
 {
     NSLog(@"Change Segment delegate called");
+//    self.snowLevelIndex = [NSNumber numberWithInteger:selectedSegment];
 }
 
 
