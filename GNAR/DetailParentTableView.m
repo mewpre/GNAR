@@ -55,24 +55,29 @@
         [cell setSubTableForegroundColor:[UIColor whiteColor]];
         [cell setSubTableBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
         [cell setParentIndex:parentIndex];
-        cell.achievement = [self.achievementsArray objectAtIndex:parentIndex];
-        if (!cell.playersArray)
-        {
-            cell.playersArray = [NSMutableArray new];
-        }
+
+        cell.achievement = [self.achievementsArray objectAtIndex:parentIndex][@"achievement"];
+        cell.playersArray = [self.achievementsArray objectAtIndex:parentIndex][@"playersArray"];
+        cell.modifiersArray = [self.achievementsArray objectAtIndex:parentIndex][@"modifiersArray"];
+        cell.snowLevelIndex = [self.achievementsArray objectAtIndex:parentIndex][@"snowIndexString"];
         [cell setDelegate:self];
-        cell.achievementDelegate = self;
         [cell reload];
 
         return cell;
     }
 }
 
--(void)didPressSelectPlayersButton:(NSMutableArray *)playersArray
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.parentDelegate didPassPlayersArray:playersArray];
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    UITableViewCell *selectedPCell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([selectedPCell isKindOfClass:[ParentTableViewCell class]])
+    {
+        ParentTableViewCell *pCell = (ParentTableViewCell *)selectedPCell;
+        NSLog(@"Parent Index: %lu", [pCell parentIndex]);
+        [self.parentDelegate didGetIndex: [pCell parentIndex]];
+    }
 }
-
 
 
 /*

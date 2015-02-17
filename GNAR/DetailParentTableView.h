@@ -11,12 +11,12 @@
 
 @protocol DetailParentTableViewDelegate <NSObject>
 
-- (void)didPassPlayersArray: (NSMutableArray *)playersArray;
+- (void)didGetIndex: (NSInteger)index;
 
 @end
 
 @interface DetailParentTableView : ParentTableView
-<UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate, AchievementDetailTableViewDelegate>
+<UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate>
 
 @property NSArray *achievementsArray;
 @property (weak, nonatomic) id<DetailParentTableViewDelegate> parentDelegate;
