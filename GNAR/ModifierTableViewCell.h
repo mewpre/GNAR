@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ModifierTableViewCellDelegate <NSObject>
-
-- (void)didPressAddModifiersButton;
-
-@end
-
 @interface ModifierTableViewCell : UITableViewCell
-
-@property (weak, nonatomic) id <ModifierTableViewCellDelegate> delegate;
 
 @end
