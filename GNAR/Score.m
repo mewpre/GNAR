@@ -23,14 +23,15 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 };
 
 
-- (instancetype)initScoreWithAchievement:(Achievement *)achievement withModifiers:(NSArray *)modifiers
+- (instancetype)initScoreWithAchievementData: (NSDictionary *)scoreData
 {
     self = [super init];
     // make score related to achievement
     PFRelation *achievementRelation = [self relationForKey:@"achievement"];
+    Achievement *achievement = scoreData[@"achievement"];
     [achievementRelation addObject:achievement];
-
     // add modifiers
+    NSArray *modifiers = scoreData[@"modifiersArray"];
     if (modifiers.count != 0)
     {
         for (Score *modifier in modifiers)
@@ -50,10 +51,10 @@ typedef NS_ENUM(NSInteger, AchievementType) {
         switch (type)
         {
             case LineWorth:
-                // TODO: stuff
-#warning                //do logic to get score based on snow level
-                self.score = achievement.pointValues.firstObject;
-                //note: a score of 0 means it's not rated
+            {
+                NSString *indexString = scoreData[@"snowIndexString"];
+                self.score = [achievement.pointValues objectAtIndex:[indexString integerValue]];
+            }
                 break;
 
                 case ECP:
