@@ -16,7 +16,7 @@
 @end
 
 @interface DetailParentTableView : ParentTableView
-<UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate>
+<UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate, AchievementDetailTableViewDelegate>
 
 @property NSArray *achievementsArray;
 @property NSMutableString *childHeightString;

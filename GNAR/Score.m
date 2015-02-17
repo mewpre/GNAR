@@ -30,6 +30,8 @@ typedef NS_ENUM(NSInteger, AchievementType) {
     PFRelation *achievementRelation = [self relationForKey:@"achievement"];
     Achievement *achievement = scoreData[@"achievement"];
     [achievementRelation addObject:achievement];
+    PFObject *achievementPointer = [self objectForKey:@"achievementPointer"];
+    achievementPointer = achievement;
     // add modifiers
     NSArray *modifiers = scoreData[@"modifiersArray"];
     if (modifiers.count != 0)

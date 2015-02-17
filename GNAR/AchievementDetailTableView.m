@@ -207,7 +207,7 @@
 {
     [self.playersArray removeObjectAtIndex:indexPath.row];
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-    [self.insideTableView reloadData];
+    [self.detailDelegate didRemovePlayerOnSwipe];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -270,22 +270,10 @@
 - (void)adjustHeightOfTableview
 {
     CGFloat height = self.insideTableView.contentSize.height;
-//    CGFloat maxHeight = self.insideTableView.superview.frame.size.height - self.insideTableView.frame.origin.y;
-//
-//    // if the height of the content is greater than the maxHeight of
-//    // total space on the screen, limit the height to the size of the
-//    // superview.
-//
-//    if (height > maxHeight)
-//        height = maxHeight;
-
-    // now set the height constraint accordingly
-
     [UIView animateWithDuration:0.25 animations:^{
         self.heightConstraint.constant = height;
         NSString *tempString = [NSString stringWithFormat:@"%f", height];
         [self.heightString setString:tempString];
-//        [self.view setNeedsUpdateConstraints];
     }];
 }
 
