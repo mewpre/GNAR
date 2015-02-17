@@ -34,7 +34,6 @@
 		0FA3EDEA1A8F05D900FDF764 /* SnowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDE91A8F05D900FDF764 /* SnowTableViewCell.m */; };
 		0FA3EDED1A8F061A00FDF764 /* ModifierTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDEC1A8F061A00FDF764 /* ModifierTableViewCell.m */; };
 		0FA3EDF01A8F062400FDF764 /* PlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDEF1A8F062400FDF764 /* PlayerTableViewCell.m */; };
-		0FA3EDF31A8F089F00FDF764 /* AddAchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDF21A8F089F00FDF764 /* AddAchievementViewController.m */; };
 		0FCD6E8E1A8F3F820074EB1C /* Enum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCD6E8D1A8F3F820074EB1C /* Enum.m */; };
 		0FCF8ADB1A8BD276006224BB /* ParentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AD81A8BD276006224BB /* ParentTableViewCell.m */; };
 		0FCF8ADC1A8BD276006224BB /* ParentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8ADA1A8BD276006224BB /* ParentTableView.m */; };
@@ -112,8 +111,6 @@
 		0FA3EDEC1A8F061A00FDF764 /* ModifierTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifierTableViewCell.m; sourceTree = "<group>"; };
 		0FA3EDEE1A8F062400FDF764 /* PlayerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerTableViewCell.h; sourceTree = "<group>"; };
 		0FA3EDEF1A8F062400FDF764 /* PlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTableViewCell.m; sourceTree = "<group>"; };
-		0FA3EDF11A8F089F00FDF764 /* AddAchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAchievementViewController.h; sourceTree = "<group>"; };
-		0FA3EDF21A8F089F00FDF764 /* AddAchievementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAchievementViewController.m; sourceTree = "<group>"; };
 		0FCD6E8C1A8F3F820074EB1C /* Enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
 		0FCD6E8D1A8F3F820074EB1C /* Enum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enum.m; sourceTree = "<group>"; };
 		0FCF8AD71A8BD276006224BB /* ParentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParentTableViewCell.h; path = SubTable/ParentCell/ParentTableViewCell.h; sourceTree = "<group>"; };
@@ -243,19 +240,17 @@
 			name = Games;
 			sourceTree = "<group>";
 		};
-		0F61D5701A89C7D100FF96F0 /* Achievements */ = {
+		0F61D5701A89C7D100FF96F0 /* Add Score */ = {
 			isa = PBXGroup;
 			children = (
 				0FEFE89C1A8A7C460062123D /* AchievementViewController.h */,
 				0FEFE89D1A8A7C460062123D /* AchievementViewController.m */,
 				0F61D57E1A89D04E00FF96F0 /* AchievementDetailViewController.h */,
 				0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */,
-				0FA3EDF11A8F089F00FDF764 /* AddAchievementViewController.h */,
-				0FA3EDF21A8F089F00FDF764 /* AddAchievementViewController.m */,
 				0F2EC8751A8F5D8E0013A6B2 /* SelectPlayersViewController.h */,
 				0F2EC8761A8F5D8E0013A6B2 /* SelectPlayersViewController.m */,
 			);
-			name = Achievements;
+			name = "Add Score";
 			sourceTree = "<group>";
 		};
 		0F61D5711A89C7F000FF96F0 /* Other */ = {
@@ -288,8 +283,8 @@
 				0F61D5841A89D12600FF96F0 /* Home */,
 				0F61D5791A89CAD500FF96F0 /* Sign Up/Login */,
 				0F61D56F1A89C7B700FF96F0 /* Games */,
-				0FCAA4351A8EA386002430F7 /* Scores */,
-				0F61D5701A89C7D100FF96F0 /* Achievements */,
+				0FCAA4351A8EA386002430F7 /* Leaderboard */,
+				0F61D5701A89C7D100FF96F0 /* Add Score */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -318,7 +313,7 @@
 			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
-		0FCAA4351A8EA386002430F7 /* Scores */ = {
+		0FCAA4351A8EA386002430F7 /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
 				0F61D5731A89C96300FF96F0 /* LeaderboardViewController.h */,
@@ -326,7 +321,7 @@
 				0F61D57B1A89CE9700FF96F0 /* UserAchievementsViewController.h */,
 				0F61D57C1A89CE9700FF96F0 /* UserAchievementsViewController.m */,
 			);
-			name = Scores;
+			name = Leaderboard;
 			sourceTree = "<group>";
 		};
 		0FCF8AE31A8BD2A1006224BB /* SubRow */ = {
@@ -573,7 +568,6 @@
 				0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */,
 				0FEFE8AC1A8AC7460062123D /* Score.m in Sources */,
 				0FCF8AE21A8BD298006224BB /* SubTableView.m in Sources */,
-				0FA3EDF31A8F089F00FDF764 /* AddAchievementViewController.m in Sources */,
 				0FEFE89A1A8A7B810062123D /* User.m in Sources */,
 				0FCF8AE11A8BD298006224BB /* ExpandedContainer.m in Sources */,
 				0FCF8ADC1A8BD276006224BB /* ParentTableView.m in Sources */,
