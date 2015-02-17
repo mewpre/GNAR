@@ -24,6 +24,9 @@
 @property NSMutableArray *playersArray;
 @property NSMutableString *snowIndexString;
 @property NSMutableString *saveKey;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
+@property NSMutableString *heightString;
+
 
 
 @end

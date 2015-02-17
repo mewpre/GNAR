@@ -63,7 +63,7 @@
                                               };
             [tempArray addObject:achievementData];
         }
-
+        self.tableView.childHeightString = [NSMutableString new];
         self.achievementsDataArray = tempArray;
         // *** Must set delegates AFTER you set the tables data source (array)
         [self.tableView setDataSourceDelegate:self];
@@ -115,7 +115,9 @@
 
 - (NSInteger)heightForChildRows
 {
-    return 400;
+    NSLog(@"%ld", (long)[self.tableView.childHeightString integerValue]);
+//    return [self.tableView.childHeightString integerValue];
+    return 450;
 }
 
 
@@ -202,7 +204,8 @@
 {
     NSLog(@"addFriendsSaveButtonPressed method called");
     [self.tableView reloadData];
-    
+    [self.view setNeedsUpdateConstraints];
+
 }
 
 
