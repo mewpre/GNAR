@@ -16,6 +16,8 @@
 //#import "SubTableViewCell.h"
 #import "Achievement.h"
 #import "Score.h"
+#import "Game.h"
+#import "User.h"
 #import "Enum.h"
 
 @interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate, SelectPlayersViewControllerDelegate>
@@ -27,6 +29,8 @@
 
 @property NSMutableArray *playersArray;
 @property NSMutableArray *scoresArray;
+
+@property Game *currentGame;
 
 @end
 
@@ -43,11 +47,13 @@
             NSMutableArray *modifiersArray = [NSMutableArray new];
             NSMutableArray *playersArray = [NSMutableArray new];
             NSMutableString *snowLevel = [NSMutableString new];
+            NSMutableString *saveKey = [NSMutableString stringWithString: @"NO"];
             NSDictionary *achievementData = @{
                                               @"achievement" : achievement,
                                               @"modifiersArray" : modifiersArray,
                                               @"playersArray" : playersArray,
-                                              @"snowIndexString" : snowLevel
+                                              @"snowIndexString" : snowLevel,
+                                              @"saveKey": saveKey,
                                               };
             [tempArray addObject:achievementData];
         }
@@ -59,6 +65,10 @@
         self.tableView.achievementsArray = self.achievementsDataArray;
         self.tableView.parentDelegate = self;
         [self.tableView reloadData];
+        [User getCurrentUserGamesWithCompletion:^(NSArray *array)
+        {
+            self.currentGame = array.firstObject;
+        }];
     }];
 
 }
@@ -74,7 +84,7 @@
 
 - (NSInteger)heightForParentRows
 {
-    return 75;
+    return 65;
 }
 
 // @optional
@@ -123,36 +133,29 @@
     NSLog(@"Selected child index at %lu with parent index %lu", childIndex, parentIndex);
 }
 
-//Only used for testing for now
-//- (void)tableView:(UITableView *)tableView didSelectParentCellAtIndex:(NSInteger)parentIndex
-//{
-////    Achievement *selectedAchievement = [self.achievementsArray objectAtIndex:parentIndex];
-////    [self saveScoresFromAchievement:selectedAchievement toUsers:@[[PFUser currentUser]]];
-//    NSLog(@"Pressed cell");
-////    [self performSegueWithIdentifier:@"AddAchievementSegue" sender:self.achievementsArray[parentIndex]];
-//}
-
-
-
 // Helper method to save single achievement into Parse
-- (void)saveScoresFromAchievement: (Achievement *) achievement toUsers:(NSArray *)usersArray
+- (void)saveScoresFromAchievementData: (NSDictionary *)scoreData
 {
-    for (PFUser *user in usersArray)
+    for (PFUser *user in scoreData[@"playersArray"])
     {
-        // TODO: Implement logic to get modifiers from custom table view cell
-#warning        //Implement logic to get modifiers from custom table view cell
-        NSArray *modifiersArray = @[];
-        Score *score = [[Score alloc]initScoreWithAchievement:achievement withModifiers:modifiersArray];
-            PFRelation *scorerRelation = [score relationForKey:@"scorer"];
-            [scorerRelation addObject:[PFUser currentUser]];
-            [score saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+        Score *score = [[Score alloc]initScoreWithAchievementData:scoreData];
+        PFRelation *scorerRelation = [score relationForKey:@"scorer"];
+        [scorerRelation addObject:user];
+        PFRelation *gameRelation = [score relationForKey:@"game"];
+        [gameRelation addObject:self.currentGame];
+        [score saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+         {
+             NSLog(@"Saved score!");
+             if ([user isEqual:[PFUser currentUser]])
              {
-                 PFRelation *scoresRelation = [[PFUser currentUser] relationForKey:@"scores"];
-                 [scoresRelation addObject:score];
+                 PFRelation *scoreRelation = [user relationForKey:@"scores"];
+                 [scoreRelation addObject:score];
                  [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-                  {
-                  }];
-            }];
+                 {
+                     NSLog(@"Saved score to self");
+                 }];
+             }
+         }];
     }
 }
 
@@ -162,6 +165,14 @@
 #pragma mark - Actions
 - (IBAction)onSaveButtonPressed:(UIBarButtonItem *)sender
 {
+    for (NSDictionary *scoreData in self.achievementsDataArray)
+    {
+        NSString *saveKey = scoreData[@"saveKey"];
+        if ([saveKey isEqualToString:@"YES"])
+        {
+            [self saveScoresFromAchievementData:scoreData];
+        }
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -179,7 +190,6 @@
 - (void)didGetIndex:(NSInteger)index
 {
     self.activeParentCellIndex = index;
-//    [self performSegueWithIdentifier:@"SelectPlayersSegue" sender:self];
 }
 
 - (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray

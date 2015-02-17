@@ -95,7 +95,7 @@
 
 - (NSInteger)heightForParentRows
 {
-    return 75;
+    return 65;
 }
 
 // @optional
@@ -118,7 +118,7 @@
 
 - (NSInteger)heightForChildRows
 {
-    return 55;
+    return 45;
 }
 
 // @optional
@@ -148,10 +148,6 @@
     {
         NSInteger parent = [sender[@"Parent Index"] integerValue];
         NSInteger child = [sender[@"Child Index"]integerValue];
-
-        NSLog(@"Parent: %@", sender[@"Parent Index"]);
-        NSLog(@"Child: %@", [self.dataDictionary objectForKey:self.typesArray[parent]][child]);
-
 
         AchievementDetailViewController *detailVC = segue.destinationViewController;
         detailVC.type = parent;

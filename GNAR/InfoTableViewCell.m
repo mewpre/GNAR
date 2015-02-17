@@ -18,6 +18,7 @@
 - (IBAction)addButtonPressed:(UIButton *)sender
 {
     NSLog(@"Add Button pressed!!!");
+    [self.delegate didPressAddButton];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -62,6 +62,7 @@
         if (indexPath.section == LWInfoCell)
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+            infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
             infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
 
@@ -96,9 +97,9 @@
             snowCell.lowSnowScoreLabel.text = pointValues[0];
             snowCell.medSnowScoreLabel.text = pointValues[1];
             snowCell.highSnowScoreLabel.text = pointValues[2];
-            if ([self.snowLevelIndex integerValue] > 0)
+            if ([self.snowIndexString integerValue] > 0)
             {
-                snowCell.segmentedControl.selectedSegmentIndex = [self.snowLevelIndex integerValue];
+                snowCell.segmentedControl.selectedSegmentIndex = [self.snowIndexString integerValue];
             }
             else
             {
@@ -147,13 +148,14 @@
         {
             //TODO: modify InfoCell to display abbreviation, point values, and description instead of all the stuff LineWorths have
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+            infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
-            infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
+//            infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
 
 //            infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
 //            infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
 //            infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
-//            infoCell.descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
+            infoCell.descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
             return infoCell;
         }
         else if (indexPath.section == PlayerCell)
@@ -252,41 +254,18 @@
 #pragma mark - Custom Cell Delegate Methods
 -(void)didPressAddButton
 {
-    // Create a score object for each of the players
-
-    // Add score objects to each of the players
-
-//    [self.navigationController popViewControllerAnimated:YES];
-//    NSLog(@"Add Button delegate called");
-}
-
--(void)didPressAddModifiersButton
-{
-    NSLog(@"Add Modifiers Button delegate called");
-
-    // Create new instance of AddAchievementViewController
-    //    AchievementViewController *controller = [[AchievementViewController alloc] initWithNibName:@"AchievementViewController" bundle:[NSBundle mainBundle]];
-
-//    [self performSegueWithIdentifier:@"AddModifiersSegue" sender:self];
-
-    // Display only ECPs, Trick Bonuses, and Penalties
-
-}
-
-//Delegate method from PlayerTableViewCell
--(void)didPressSelectPlayersButton
-{
-    NSLog(@"Select Players Cell Button delegate called");
-    //Pass self.playersArray up through chained delegation
-//    [self.achievementDelegate didGetParentIndex:self.parentIndex];
+    NSLog(@"Add Button pressed in subCell");
+    
+    [self.saveKey setString:@"YES"];
 }
 
 -(void)didChangeSegment:(NSInteger)selectedSegment
 {
     NSLog(@"Change Segment delegate called");
     NSString *tempString = [NSString stringWithFormat:@"%lu", selectedSegment];
-    [self.snowLevelIndex setString:tempString];
+    [self.snowIndexString setString:tempString];
 }
+
 
 
 /*
