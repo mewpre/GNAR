@@ -19,6 +19,7 @@
 <UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate>
 
 @property NSArray *achievementsArray;
+@property NSMutableString *childHeightString;
 @property (weak, nonatomic) id<DetailParentTableViewDelegate> parentDelegate;
 
 @end

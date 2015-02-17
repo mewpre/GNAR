@@ -61,6 +61,8 @@
         cell.modifiersArray = [self.achievementsArray objectAtIndex:parentIndex][@"modifiersArray"];
         cell.snowIndexString = [self.achievementsArray objectAtIndex:parentIndex][@"snowIndexString"];
         cell.saveKey = [self.achievementsArray objectAtIndex:parentIndex][@"saveKey"];
+
+        cell.heightString = self.childHeightString;
         [cell setDelegate:self];
         [cell reload];
 

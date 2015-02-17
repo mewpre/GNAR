@@ -248,6 +248,7 @@
     [self.insideTableView deleteSections:section withRowAnimation:UITableViewRowAnimationFade];
     [self.insideTableView insertSections:section withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.insideTableView endUpdates];
+    [self adjustHeightOfTableview];
 }
 
 //--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
@@ -266,7 +267,27 @@
     [self.snowIndexString setString:tempString];
 }
 
+- (void)adjustHeightOfTableview
+{
+    CGFloat height = self.insideTableView.contentSize.height;
+//    CGFloat maxHeight = self.insideTableView.superview.frame.size.height - self.insideTableView.frame.origin.y;
+//
+//    // if the height of the content is greater than the maxHeight of
+//    // total space on the screen, limit the height to the size of the
+//    // superview.
+//
+//    if (height > maxHeight)
+//        height = maxHeight;
 
+    // now set the height constraint accordingly
+
+    [UIView animateWithDuration:0.25 animations:^{
+        self.heightConstraint.constant = height;
+        NSString *tempString = [NSString stringWithFormat:@"%f", height];
+        [self.heightString setString:tempString];
+//        [self.view setNeedsUpdateConstraints];
+    }];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

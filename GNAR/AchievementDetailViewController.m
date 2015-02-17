@@ -57,7 +57,7 @@
                                               };
             [tempArray addObject:achievementData];
         }
-
+        self.tableView.childHeightString = [NSMutableString new];
         self.achievementsDataArray = tempArray;
         // *** Must set delegates AFTER you set the tables data source (array)
         [self.tableView setDataSourceDelegate:self];
@@ -65,7 +65,7 @@
         self.tableView.achievementsArray = self.achievementsDataArray;
         self.tableView.parentDelegate = self;
         [self.tableView reloadData];
-        [User getCurrentUserGamesWithCompletion:^(NSArray *array)
+         [User getCurrentUserGamesWithCompletion:^(NSArray *array)
         {
             self.currentGame = array.firstObject;
         }];
@@ -109,7 +109,9 @@
 
 - (NSInteger)heightForChildRows
 {
-    return 400;
+    NSLog(@"%ld", (long)[self.tableView.childHeightString integerValue]);
+//    return [self.tableView.childHeightString integerValue];
+    return 450;
 }
 
 
@@ -196,7 +198,8 @@
 {
     NSLog(@"addFriendsSaveButtonPressed method called");
     [self.tableView reloadData];
-    
+    [self.view setNeedsUpdateConstraints];
+
 }
 
 
