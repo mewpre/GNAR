@@ -13,7 +13,7 @@
 #import "Score.h"
 #import "Enum.h"
 
-@interface AddAchievementViewController () <UITableViewDataSource, UITableViewDelegate, InfoTableViewCellDelegate, SnowTableViewCellDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate, SelectPlayersViewControllerDelegate>
+@interface AddAchievementViewController () <UITableViewDataSource, UITableViewDelegate, ModifierTableViewCellDelegate, PlayerTableViewCellDelegate, SelectPlayersViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -86,7 +86,6 @@
         if (indexPath.section == LWInfoCell)
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
-            infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
             infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
 
@@ -100,7 +99,6 @@
         else if (indexPath.section == LWSnowCell)
         {
             SnowTableViewCell *snowCell = [tableView dequeueReusableCellWithIdentifier:@"SnowCell"];
-            snowCell.delegate = self;
             snowCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             NSMutableArray *pointValues = [NSMutableArray new];
             for (NSNumber *score in self.achievement.pointValues)
@@ -163,7 +161,6 @@
         {
             //TODO: modify InfoCell to display abbreviation, point values, and description instead of all the stuff LineWorths have
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
-            infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
             infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
             //        infoCell.funLabel.attributedText = [NSAttributedString stringWithFormat:@"Fun Factor: ", self.selectedAchievement.funFactor];

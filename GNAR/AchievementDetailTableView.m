@@ -95,7 +95,7 @@
             snowCell.lowSnowScoreLabel.text = pointValues[0];
             snowCell.medSnowScoreLabel.text = pointValues[1];
             snowCell.highSnowScoreLabel.text = pointValues[2];
-            if (self.snowLevelIndex)
+            if ([self.snowLevelIndex integerValue] > 0)
             {
                 snowCell.segmentedControl.selectedSegmentIndex = [self.snowLevelIndex integerValue];
             }
@@ -285,7 +285,8 @@
 -(void)didChangeSegment:(NSInteger)selectedSegment
 {
     NSLog(@"Change Segment delegate called");
-//    self.snowLevelIndex = [NSNumber numberWithInteger:selectedSegment];
+    NSString *tempString = [NSString stringWithFormat:@"%lu", selectedSegment];
+    [self.snowLevelIndex setString:tempString];
 }
 
 

@@ -15,7 +15,7 @@
 #import "Achievement.h"
 
 @interface AchievementDetailTableView : SubTableView // Actually a cell that contains a table view
-<UITableViewDataSource, UITableViewDelegate>
+<UITableViewDataSource, UITableViewDelegate, SnowTableViewCellDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *insideTableView;
 @property Achievement *achievement;
