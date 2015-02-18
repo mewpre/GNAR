@@ -8,12 +8,8 @@
 
 #import "AchievementDetailViewController.h"
 #import "SelectPlayersViewController.h"
-#import "ParentTableView.h"
 #import "DetailParentTableView.h"
 #import "ParentTableViewCell.h"
-#import "AchievementDetailTableView.h"
-//#import "SubTableView.h"
-//#import "SubTableViewCell.h"
 #import "Achievement.h"
 #import "Score.h"
 #import "Game.h"
@@ -90,7 +86,7 @@
 
 - (NSInteger)heightForParentRows
 {
-    return 65;
+    return 55;
 }
 
 // @optional
@@ -116,8 +112,7 @@
 - (NSInteger)heightForChildRows
 {
     NSLog(@"%ld", (long)[self.tableView.childHeightString integerValue]);
-//    return [self.tableView.childHeightString integerValue];
-    return 450;
+    return [self.tableView.childHeightString integerValue];
 }
 
 

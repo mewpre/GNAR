@@ -41,7 +41,7 @@
     subtitleLabel.textAlignment = NSTextAlignmentLeft;
     [self.contentView addSubview:subtitleLabel];
     
-    UIImageView *bottomLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 73, 320, 2)];
+    UIImageView *bottomLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 53, 370, 2)];
     bottomLine.backgroundColor = [UIColor colorWithWhite:( 42/255.0) alpha:1.0];
     [self.contentView addSubview:bottomLine];
     

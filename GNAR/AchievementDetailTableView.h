@@ -14,6 +14,12 @@
 #import "PlayerTableViewCell.h"
 #import "Achievement.h"
 
+@protocol AchievementDetailTableViewDelegate <NSObject>
+
+- (void)didRemovePlayerOnSwipe;
+
+@end
+
 @interface AchievementDetailTableView : SubTableView // Actually a cell that contains a table view
 <UITableViewDataSource, UITableViewDelegate, SnowTableViewCellDelegate, InfoTableViewCellDelegate>
 
@@ -27,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 @property NSMutableString *heightString;
 
+@property (weak, atomic) id<AchievementDetailTableViewDelegate> detailDelegate;
 
 
 @end

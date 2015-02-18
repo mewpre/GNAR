@@ -95,7 +95,7 @@
 
 - (NSInteger)heightForParentRows
 {
-    return 65;
+    return 55;
 }
 
 // @optional

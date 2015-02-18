@@ -64,6 +64,7 @@
 
         cell.heightString = self.childHeightString;
         [cell setDelegate:self];
+        cell.detailDelegate = self;
         [cell reload];
 
         return cell;
@@ -80,6 +81,11 @@
         NSLog(@"Parent Index: %lu", [pCell parentIndex]);
         [self.parentDelegate didGetIndex: [pCell parentIndex]];
     }
+}
+
+- (void)didRemovePlayerOnSwipe
+{
+    [self reloadData];
 }
 
 
