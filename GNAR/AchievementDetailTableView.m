@@ -63,9 +63,10 @@
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
-            infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
-            infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
-
+            infoCell.funLabel.text = @"Fun Factor: ❄︎❄︎❄︎";
+            infoCell.descriptionLabel.text = @"Description: Super Awesome Saus is one of the best, most super awesome sauses around. Don't be fooled by the extreme awesomeness of the point value.";
+            infoCell.difficultyLabel.text = @"Difficulty: Super Hard";
+            infoCell.heroLabel.text = @"Hero Factor: 💪💪";
 //            infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
 //            infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
 //            infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
@@ -227,7 +228,7 @@
 }
 
 
-//--------------------------------    Add Players View Controller Delegate Methods   ---------------------------------------------
+//-----------------------------    Add Players VC Delegate Methods   ---------------------------------------------
 
 - (void)reload
 {
@@ -253,10 +254,12 @@
 
 //--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
 #pragma mark - Custom Cell Delegate Methods
+// Called when "Add" button pressed in Child cell
 -(void)didPressAddButton
 {
+    //TODO: enable AddModifiers button when press this AddModifier button
+    //TODO: close drawer when add button pressed
     NSLog(@"Add Button pressed in subCell");
-    
     [self.saveKey setString:@"YES"];
 }
 

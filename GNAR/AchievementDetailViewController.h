@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Achievement;
+
+//@protocol AchievementViewControllerDelegate <NSObject>
+//
+//- (void)didFinishAddingModifiers;
+//
+//@end
+
+//@class Achievement;
 
 @interface AchievementDetailViewController : UIViewController
+
+//@property (weak, nonatomic) id <AchievementViewControllerDelegate> delegate;
 
 @property NSInteger type;
 @property NSString *group;

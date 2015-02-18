@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, AchievementType) {
                 break;
 
                 case ECP:
-#warning                //do logic to get score based on gender
+                //TODO:do logic to get score based on gender
                 break;
                 
             default:

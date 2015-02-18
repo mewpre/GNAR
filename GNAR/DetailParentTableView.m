@@ -20,10 +20,11 @@
     NSUInteger parentIndex = [self parentIndexForRow:row];
     BOOL isParentCell = ![self isExpansionCell:row];
 
-    if (isParentCell) {
-
+    if (isParentCell)
+    {
         ParentTableViewCell *cell = (ParentTableViewCell *)[self dequeueReusableCellWithIdentifier:PARENT_IDENTIFIER];
-        if (cell == nil) {
+        if (cell == nil)
+        {
             cell = [[ParentTableViewCell alloc] initWithReuseIdentifier:PARENT_IDENTIFIER];
         }
 
@@ -57,9 +58,9 @@
         [cell setParentIndex:parentIndex];
 
         cell.achievement = [self.achievementsArray objectAtIndex:parentIndex][@"achievement"];
-        cell.playersArray = [self.achievementsArray objectAtIndex:parentIndex][@"playersArray"];
-        cell.modifiersArray = [self.achievementsArray objectAtIndex:parentIndex][@"modifiersArray"];
         cell.snowIndexString = [self.achievementsArray objectAtIndex:parentIndex][@"snowIndexString"];
+        cell.modifiersArray = [self.achievementsArray objectAtIndex:parentIndex][@"modifiersArray"];
+        cell.playersArray = [self.achievementsArray objectAtIndex:parentIndex][@"playersArray"];
         cell.saveKey = [self.achievementsArray objectAtIndex:parentIndex][@"saveKey"];
 
         cell.heightString = self.childHeightString;
@@ -78,7 +79,7 @@
     if ([selectedPCell isKindOfClass:[ParentTableViewCell class]])
     {
         ParentTableViewCell *pCell = (ParentTableViewCell *)selectedPCell;
-        NSLog(@"Parent Index: %lu", [pCell parentIndex]);
+//        NSLog(@"Parent Index: %lu", [pCell parentIndex]);
         [self.parentDelegate didGetIndex: [pCell parentIndex]];
     }
 }

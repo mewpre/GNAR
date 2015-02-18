@@ -91,11 +91,17 @@
 //    [XT saveInBackground];
 //
 //    NSLog(@"Saved achievements");
+}
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //TODO: remove this once changed to collapse rows after pressing add button
+    [self.tableView collapseAllRows];
 }
 
 //-----------------------------------    SUB Table View Data Source    ----------------------------------------------------
+//                             ----------    Parent Cells    ------------
 #pragma mark - Sub Table View Data Source - Parent
 // @required
 - (NSInteger)numberOfParentCells
@@ -148,6 +154,7 @@
     }
 }
 
+//                             ----------    Child Cells    ------------
 - (NSInteger)heightForChildRows
 {
     return 45;

@@ -18,7 +18,7 @@
 #import "Enum.h"
 #import "GameManager.h"
 
-@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate, SelectPlayersViewControllerDelegate, AchievementViewControllerDelegate>
+@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate> // SelectPlayersViewControllerDelegate> // AchievementViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet DetailParentTableView *tableView;
 @property NSMutableArray *achievementsDataArray;
@@ -39,10 +39,12 @@
 {
     [super viewDidLoad];
 
-    // If adding modifiers: change the "Save" button to "Add"
+    // If adding modifiers: change the "Save" button to an new "Add" that will add modifiers to the score instead of save to Parse
     if (self.modifiersDictionary)
     {
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(onAddButtonPressed)];
+        // Disable Add button (so you can't add modifiers until you select modifier)
+        addButton.enabled = NO;
         self.navigationItem.rightBarButtonItem = addButton;
     }
 
@@ -83,11 +85,18 @@
 //            self.currentGame = array.firstObject;
 //        }];
     }];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+    [self.view setNeedsUpdateConstraints];
 }
 
 
-//-----------------------------------    SUB Table View Data Source    ----------------------------------------------------
+//-----------------------------------    SUB Table View Data    ---------------------------------------------
+//                             ----------    Parent Cells    ------------
 #pragma mark - Sub Table View Data Source - Parent
 // @required
 - (NSInteger)numberOfParentCells
@@ -112,7 +121,7 @@
 }
 
 
-
+//                              ----------    Child Cells    ------------
 #pragma mark - Sub Table View Data Source - Child
 // @required
 - (NSInteger)numberOfChildCellsUnderParentIndex:(NSInteger)parentIndex
@@ -122,11 +131,9 @@
 
 - (NSInteger)heightForChildRows
 {
-    NSLog(@"%ld", (long)[self.tableView.childHeightString integerValue]);
+//    NSLog(@"%ld", (long)[self.tableView.childHeightString integerValue]);
     return [self.tableView.childHeightString integerValue];
 }
-
-
 
 // @optional
 //- (NSString *)titleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
@@ -206,7 +213,8 @@
 
 //-------------------------------------    Actions    ----------------------------------------------------
 #pragma mark - Actions
-- (IBAction)onAddButtonPressed
+// When right navigation right bar "Add" button pressed: add all modifiers to current Line Worth
+- (IBAction)onAddButtonPressed // (this is connected programmatically so that is why the circle is empty)
 {
     for (NSDictionary *scoreData in self.achievementsDataArray)
     {
@@ -217,9 +225,9 @@
         }
     }
     [self.navigationController popViewControllerAnimated:YES];
-
 }
 
+// When navigation right bar "Save" button pressed at top of view controller: save all scores on Parse
 - (IBAction)onSaveButtonPressed:(UIBarButtonItem *)sender
 {
     for (NSDictionary *scoreData in self.achievementsDataArray)
@@ -237,7 +245,9 @@
 {
     NSLog(@"Modifiers button pressed");
     AchievementViewController *achieveVC = [self.storyboard instantiateViewControllerWithIdentifier:[AchievementViewController description]];
-    achieveVC.delegate = self;
+
+//    achieveVC.delegate = self;
+
     achieveVC.modifiersDictionary = [self.achievementsDataArray objectAtIndex:self.activeParentCellIndex][@"modifiersDictionary"];
     [self.navigationController pushViewController:achieveVC animated:YES];
 }
@@ -249,7 +259,7 @@
 //    if ([segue.identifier isEqualToString:@"SelectPlayersSegue"])
     {
         SelectPlayersViewController *selectVC = segue.destinationViewController;
-        selectVC.delegate = self;
+//        selectVC.delegate = self;
         selectVC.selectedUsersArray = [self.achievementsDataArray objectAtIndex:self.activeParentCellIndex][@"playersArray"];
     }
 }
@@ -260,23 +270,26 @@
     self.activeParentCellIndex = index;
 }
 
-//--------------------------------------    Delegate Methods    ---------------------------------------------
-#pragma mark - Delegate Methods
+////--------------------------------------    Delegate    ---------------------------------------------
+//#pragma mark - Delegate
+//
+//- (void)didFinishAddingModifiers
+//{
+//    NSLog(@"didFinishAddingModifiers method called");
+//    [self.tableView reloadData];
+//    [self.view setNeedsUpdateConstraints];
+//}
 
-- (void)didFinishAddingModifiers
-{
-    NSLog(@"addFriendsSaveButtonPressed method called");
-    [self.tableView reloadData];
-    [self.view setNeedsUpdateConstraints];
-}
-
-//TODO: rename this didFinishAddingPlayers and refactor
-- (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray
-{
-    NSLog(@"addFriendsSaveButtonPressed method called");
-    [self.tableView reloadData];
-    [self.view setNeedsUpdateConstraints];
-}
+////--------------------------------------    SelectPlayersViewController Delegate    ---------------------------------------------
+//#pragma mark - SelectPlayersViewController Delegate
+//
+////TODO: rename this didFinishAddingPlayers and refactor
+//- (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray
+//{
+//    NSLog(@"addFriendsSaveButtonPressed method called");
+//    [self.tableView reloadData];
+//    [self.view setNeedsUpdateConstraints];
+//}
 
 
 
