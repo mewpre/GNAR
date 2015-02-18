@@ -94,6 +94,13 @@
     [self.view setNeedsUpdateConstraints];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
+    [self.view setNeedsUpdateConstraints];
+}
+
 
 //-----------------------------------    SUB Table View Data    ---------------------------------------------
 //                             ----------    Parent Cells    ------------

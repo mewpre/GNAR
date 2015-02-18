@@ -11,6 +11,7 @@
 #import "InfoTableViewCell.h"
 #import "SnowTableViewCell.h"
 #import "ModifierTableViewCell.h"
+#import "ModifiersListTableViewCell.h"
 #import "PlayerTableViewCell.h"
 #import "Achievement.h"
 
@@ -26,14 +27,14 @@
 @property (strong, nonatomic) IBOutlet UITableView *insideTableView;
 @property Achievement *achievement;
 @property NSArray *achievementsArray;
-@property NSMutableArray *modifiersArray;
+@property NSMutableDictionary *modifiersDictionary;
 @property NSMutableArray *playersArray;
 @property NSMutableString *snowIndexString;
 @property NSMutableString *saveKey;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 @property NSMutableString *heightString;
 
-@property (weak, atomic) id<AchievementDetailTableViewDelegate> detailDelegate;
+@property (weak, nonatomic) id<AchievementDetailTableViewDelegate> detailDelegate;
 
 
 @end

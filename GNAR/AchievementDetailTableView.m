@@ -36,7 +36,8 @@
     {
         if (section == LWModifierCell)
         {
-            return self.modifiersArray.count;
+            NSArray *users = self.modifiersDictionary[@"users"];
+            return users.count;
         }
         else if (section == LWPlayerCell)
         {
@@ -111,13 +112,14 @@
         }
         else if (indexPath.section == LWModifierCell)
         {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ModifierCell"];
+            ModifiersListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ModifierCell"];
 
-            //        Score *score = self.modifiersArray[indexPath.row];
-            // get achievement relation object from score object
-            //        Achievement *achievement =
-            //        cell.textLabel.text = score.
-            //        cell.detailTextLabel.text =
+            NSString *dictionaryKey = self.modifiersDictionary[@"users"][indexPath.row];
+            NSMutableArray *scores = self.modifiersDictionary[dictionaryKey];
+            NSLog (@"%@", scores);
+            cell.modifiersList = scores;
+            cell.playerUsername = dictionaryKey;
+            [cell.tableView reloadData];
             return cell;
         }
         else if (indexPath.section == LWAddModifierCell)

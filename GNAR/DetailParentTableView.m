@@ -58,9 +58,9 @@
         [cell setParentIndex:parentIndex];
 
         cell.achievement = [self.achievementsArray objectAtIndex:parentIndex][@"achievement"];
-        cell.snowIndexString = [self.achievementsArray objectAtIndex:parentIndex][@"snowIndexString"];
-        cell.modifiersArray = [self.achievementsArray objectAtIndex:parentIndex][@"modifiersArray"];
         cell.playersArray = [self.achievementsArray objectAtIndex:parentIndex][@"playersArray"];
+        cell.modifiersDictionary = [self.achievementsArray objectAtIndex:parentIndex][@"modifiersDictionary"];
+        cell.snowIndexString = [self.achievementsArray objectAtIndex:parentIndex][@"snowIndexString"];
         cell.saveKey = [self.achievementsArray objectAtIndex:parentIndex][@"saveKey"];
 
         cell.heightString = self.childHeightString;
