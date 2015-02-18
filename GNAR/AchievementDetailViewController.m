@@ -15,6 +15,7 @@
 #import "Game.h"
 #import "User.h"
 #import "Enum.h"
+#import "GameManager.h"
 
 @interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate, SelectPlayersViewControllerDelegate>
 
@@ -27,6 +28,7 @@
 @property NSMutableArray *scoresArray;
 
 @property Game *currentGame;
+@property GameManager *myGameManager;
 
 @end
 
@@ -35,6 +37,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.myGameManager = [GameManager sharedManager];
+    // Get current game object from core data singleton
+    self.currentGame = self.myGameManager.currentGame;
 
     [Achievement getAchievementsOfType:self.type inGroup:self.group withCompletion:^(NSArray *array) {
         NSMutableArray *tempArray = [NSMutableArray new];
@@ -61,10 +67,10 @@
         self.tableView.achievementsArray = self.achievementsDataArray;
         self.tableView.parentDelegate = self;
         [self.tableView reloadData];
-         [User getCurrentUserGamesWithCompletion:^(NSArray *array)
-        {
-            self.currentGame = array.firstObject;
-        }];
+//        [User getCurrentUserGamesWithCompletion:^(NSArray *array)
+//        {
+//            self.currentGame = array.firstObject;
+//        }];
     }];
 
 }

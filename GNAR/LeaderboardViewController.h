@@ -12,6 +12,4 @@
 
 @interface LeaderboardViewController : UIViewController
 
-@property Game *currentGame;
-
 @end

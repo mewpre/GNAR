@@ -34,6 +34,7 @@
 		0FA3EDEA1A8F05D900FDF764 /* SnowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDE91A8F05D900FDF764 /* SnowTableViewCell.m */; };
 		0FA3EDED1A8F061A00FDF764 /* ModifierTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDEC1A8F061A00FDF764 /* ModifierTableViewCell.m */; };
 		0FA3EDF01A8F062400FDF764 /* PlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDEF1A8F062400FDF764 /* PlayerTableViewCell.m */; };
+		0FCCB2131A93C0C3004EF2D5 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCCB2121A93C0C3004EF2D5 /* GameManager.m */; };
 		0FCD6E8E1A8F3F820074EB1C /* Enum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCD6E8D1A8F3F820074EB1C /* Enum.m */; };
 		0FCF8ADB1A8BD276006224BB /* ParentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AD81A8BD276006224BB /* ParentTableViewCell.m */; };
 		0FCF8ADC1A8BD276006224BB /* ParentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8ADA1A8BD276006224BB /* ParentTableView.m */; };
@@ -111,6 +112,8 @@
 		0FA3EDEC1A8F061A00FDF764 /* ModifierTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifierTableViewCell.m; sourceTree = "<group>"; };
 		0FA3EDEE1A8F062400FDF764 /* PlayerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerTableViewCell.h; sourceTree = "<group>"; };
 		0FA3EDEF1A8F062400FDF764 /* PlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTableViewCell.m; sourceTree = "<group>"; };
+		0FCCB2111A93C0C3004EF2D5 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		0FCCB2121A93C0C3004EF2D5 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		0FCD6E8C1A8F3F820074EB1C /* Enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
 		0FCD6E8D1A8F3F820074EB1C /* Enum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enum.m; sourceTree = "<group>"; };
 		0FCF8AD71A8BD276006224BB /* ParentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParentTableViewCell.h; path = SubTable/ParentCell/ParentTableViewCell.h; sourceTree = "<group>"; };
@@ -383,6 +386,8 @@
 				0FEFE8AB1A8AC7460062123D /* Score.m */,
 				0FCD6E8C1A8F3F820074EB1C /* Enum.h */,
 				0FCD6E8D1A8F3F820074EB1C /* Enum.m */,
+				0FCCB2111A93C0C3004EF2D5 /* GameManager.h */,
+				0FCCB2121A93C0C3004EF2D5 /* GameManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 				0F61D56E1A89C7A600FF96F0 /* GamesViewController.m in Sources */,
 				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
 				0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */,
+				0FCCB2131A93C0C3004EF2D5 /* GameManager.m in Sources */,
 				60E5617E1A8EFA7200D81C48 /* AchievementDetailTableView.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,
 			);

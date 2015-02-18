@@ -43,12 +43,14 @@
     [self.tableView addSubview:self.refreshControl];
 }
 
+//--------------------------------------    Helper Methods    ---------------------------------------------
+#pragma mark - Helper Methods
 // Retrieves scores for a specified user within a specified game (includes score modifiers with fetch)
 - (void)getUserScoresForPlayer:(User *)player forGame:(Game *)game withCompletion:(void(^)(NSArray *scores))complete
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Score"];
     [query whereKey:@"scorer" equalTo:player];
-    [query whereKey:@"game" equalTo:game];
+//    [query whereKey:@"game" equalTo:game];
 //    [query includeKey:@"modifiers"];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -64,8 +66,6 @@
 
     }];
 }
-
-
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [refreshControl endRefreshing];

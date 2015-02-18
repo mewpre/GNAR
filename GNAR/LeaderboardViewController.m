@@ -8,6 +8,7 @@
 
 #import "LeaderboardViewController.h"
 #import "UserAchievementsViewController.h"
+#import "GameManager.h"
 
 @interface LeaderboardViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -16,44 +17,16 @@
 
 @property UIRefreshControl *refreshControl;
 @property NSArray *playersArray;
+@property Game *currentGame;
+@property GameManager *myGameManager;
 
 @end
 
 @implementation LeaderboardViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-
-    // Get scores of current user
-
-    // Get current game (from app delegate???)
-    //TODO: change this to get current game and not first game of current user
-    [User getCurrentUserGamesWithCompletion:^(NSArray *currentUserGames) {
-        self.currentGame = currentUserGames.firstObject;
-        // Save current game in background
-        [self.currentGame pinInBackground];
-        // Get players within current game
-        [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *players) {
-            self.playersArray = players;
-
-            // Get scores for all other players within current game
-            for (User *user in self.playersArray)
-            {
-                [self getUserScores:user forGame:self.currentGame withCompletion:^(NSArray *userScores) {
-                    // Set fetched scores to local object.scores
-                    //TODO: change this to GQL local data storage
-//                    user.scores = userScores;
-
-                    [self.tableView reloadData];
-                    [self.activitySpinner stopAnimating];
-                }];
-            }
-        }];
-    }];
-
-
-
-
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
     // since this is not a table view controller, need to programatically create link between VC and refresh control
@@ -61,6 +34,39 @@
     [self.tableView addSubview:self.refreshControl];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    self.myGameManager = [GameManager sharedManager];
+    // Get current game object from core data singleton
+    self.currentGame = self.myGameManager.currentGame;
+
+    // Get scores of current user
+
+    // Get current game (from app delegate???)
+
+    // Get players within current game
+    [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *players) {
+        self.playersArray = players;
+
+        // Get scores for all other players within current game
+        for (User *user in self.playersArray)
+        {
+            [self getUserScores:user forGame:self.currentGame withCompletion:^(NSArray *userScores) {
+                // Set fetched scores to local object.scores
+                //TODO: change this to GQL local data storage
+                //                    user.scores = userScores;
+
+                [self.tableView reloadData];
+                [self.activitySpinner stopAnimating];
+            }];
+        }
+    }];
+}
+
+//--------------------------------------    Helper Methods    ---------------------------------------------
+#pragma mark - Helper Methods
 - (void)getUserScores:(User *)user forGame:(Game *)game withCompletion:(void(^)(NSArray *userScores))complete
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Score"];
@@ -100,8 +106,6 @@
     cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
-
-
 
 
 
