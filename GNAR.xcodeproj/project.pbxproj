@@ -284,7 +284,6 @@
 			children = (
 				60A1E8D31A8D1A9000CD2587 /* Tab Bar Controller */,
 				0F61D5841A89D12600FF96F0 /* Home */,
-				0F61D5791A89CAD500FF96F0 /* Sign Up/Login */,
 				0F61D56F1A89C7B700FF96F0 /* Games */,
 				0FCAA4351A8EA386002430F7 /* Leaderboard */,
 				0F61D5701A89C7D100FF96F0 /* Add Score */,
@@ -297,6 +296,7 @@
 			children = (
 				0F61D5811A89D12200FF96F0 /* HomeViewController.h */,
 				0F61D5821A89D12200FF96F0 /* HomeViewController.m */,
+				0F61D5791A89CAD500FF96F0 /* Sign Up/Login */,
 			);
 			name = Home;
 			sourceTree = "<group>";

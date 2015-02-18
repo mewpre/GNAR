@@ -11,9 +11,8 @@
 
 @implementation Score
 
-@dynamic snowLevel;
-@dynamic score;
-@dynamic completedAt;
+@dynamic snowLevel, score, completedAt;
+@dynamic achievement, achievementPointer;
 
 typedef NS_ENUM(NSInteger, AchievementType) {
     LineWorth,

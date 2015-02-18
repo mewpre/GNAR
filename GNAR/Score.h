@@ -15,6 +15,9 @@
 @property (retain) NSNumber *score;
 @property (retain) NSDate *completedAt;
 
+@property Achievement *achievement;
+@property Achievement *achievementPointer;
+
 + (NSString *)parseClassName;
 
 - (instancetype)initScoreWithAchievementData: (NSDictionary *)scoreData;

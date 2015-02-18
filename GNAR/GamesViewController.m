@@ -150,6 +150,7 @@
     Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
     // Save game as singleton in Core Data
     self.myGameManager.currentGame = selectedGame;
+//    [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
 

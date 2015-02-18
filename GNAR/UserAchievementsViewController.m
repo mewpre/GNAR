@@ -7,6 +7,7 @@
 //
 
 #import "UserAchievementsViewController.h"
+#import "Achievement.h"
 
 @interface UserAchievementsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -27,6 +28,10 @@
 
     // Display the scores of the current user
     [self getUserScoresForPlayer:self.currentPlayer forGame:self.currentGame withCompletion:^(NSArray *scores) {
+//        for (Score *score in scores)
+//        {
+//            <#statements#>
+//        }
         self.scoresArray = scores;
         [self.tableView reloadData];
     }];
@@ -49,8 +54,11 @@
 - (void)getUserScoresForPlayer:(User *)player forGame:(Game *)game withCompletion:(void(^)(NSArray *scores))complete
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Score"];
+    // Player-specific query
     [query whereKey:@"scorer" equalTo:player];
-//    [query whereKey:@"game" equalTo:game];
+    // Game-specific query
+    [query whereKey:@"game" equalTo:game];
+    [query includeKey:@"achievementPointer"];
 //    [query includeKey:@"modifiers"];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -63,7 +71,6 @@
             NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self.currentPlayer);
         }
         complete(objects);
-
     }];
 }
 
@@ -82,13 +89,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    Score *score = self.scoresArray[indexPath.row];
-//    NSLog(@"%@", score);
-    NSArray *modifiersArray = [score objectForKey:@"modifiers"];
-//    Score *modifier = ;
-    cell.textLabel.text = @"10,000";
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", score.score];
+
+    Score *score = self.scoresArray[indexPath.row];
+
+    Achievement *scoreAchievement = score[@"achievementPointer"];
+
+    cell.textLabel.text = scoreAchievement.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", scoreAchievement.pointValues[score.snowLevel.intValue]];
+
+//    NSArray *modifiersArray = [score objectForKey:@"modifiers"];
+    //    Score *modifier = ;
     return cell;
 }
 

@@ -14,6 +14,7 @@
 #import "Achievement.h"
 #import "Game.h"
 #import "Score.h"
+#import "GameManager.h"
 
 
 @interface AppDelegate ()
@@ -34,6 +35,7 @@
                   clientKey:@"tDWtQucoKGDKM0rOIkBiMkKq0skhCbgDA2ME4ctU"];
 
     // Initialize Parse's Facebook Utilities singleton. This uses the FacebookAppID we specified in our App bundle's plist.
+    //TODO: This is running a long-running operation on the main thread          ***
     [PFFacebookUtils initializeFacebook];
 
     // To track statistics around application opens
@@ -50,6 +52,9 @@
     [Achievement registerSubclass];
     [Game registerSubclass];
     [Score registerSubclass];
+
+//    GameManager *myGameManager = [GameManager sharedManager];
+
     
     return YES;
 }
