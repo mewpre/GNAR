@@ -11,6 +11,7 @@
 
 @protocol SelectPlayersViewControllerDelegate <NSObject>
 
+//TODO: remove selectedUserArray from this method (we don't need it anymore) and refactor
 - (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray;
 
 @end

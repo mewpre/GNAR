@@ -7,6 +7,7 @@
 //
 
 #import "AchievementDetailViewController.h"
+#import "AchievementViewController.h"
 #import "SelectPlayersViewController.h"
 #import "DetailParentTableView.h"
 #import "ParentTableViewCell.h"
@@ -17,7 +18,7 @@
 #import "Enum.h"
 #import "GameManager.h"
 
-@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate, SelectPlayersViewControllerDelegate>
+@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate, SelectPlayersViewControllerDelegate, AchievementViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet DetailParentTableView *tableView;
 @property NSMutableArray *achievementsDataArray;
@@ -38,6 +39,13 @@
 {
     [super viewDidLoad];
 
+    // If adding modifiers: change the "Save" button to "Add"
+    if (self.modifiersDictionary)
+    {
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(onAddButtonPressed)];
+        self.navigationItem.rightBarButtonItem = addButton;
+    }
+
     self.myGameManager = [GameManager sharedManager];
     // Get current game object from core data singleton
     self.currentGame = self.myGameManager.currentGame;
@@ -46,16 +54,19 @@
         NSMutableArray *tempArray = [NSMutableArray new];
         for (Achievement *achievement in array)
         {
-            NSMutableArray *modifiersArray = [NSMutableArray new];
+            // Create Dictionary to contain modifiers to add to scores
+            NSMutableArray *usersArray = [NSMutableArray new];
+            NSMutableDictionary *modifiersDictionary = [NSMutableDictionary dictionaryWithObject:usersArray forKey:@"users"];
+            // Create Dictionary to hold scores to save to Parse
             NSMutableArray *playersArray = [NSMutableArray new];
             NSMutableString *snowLevel = [NSMutableString new];
             NSMutableString *saveKey = [NSMutableString stringWithString: @"NO"];
             NSDictionary *achievementData = @{
                                               @"achievement" : achievement,
-                                              @"modifiersArray" : modifiersArray,
+                                              @"modifiersDictionary" : modifiersDictionary,
                                               @"playersArray" : playersArray,
                                               @"snowIndexString" : snowLevel,
-                                              @"saveKey": saveKey,
+                                              @"saveKey": saveKey
                                               };
             [tempArray addObject:achievementData];
         }
@@ -154,11 +165,40 @@
                  PFRelation *scoreRelation = [user relationForKey:@"scores"];
                  [scoreRelation addObject:score];
                  [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-                 {
-                     NSLog(@"Saved score to self");
-                 }];
+                  {
+                      NSLog(@"Saved score to self");
+                  }];
              }
          }];
+    }
+}
+
+- (void)saveModifiersFromAchievementData:(NSDictionary *)modifierData
+{
+    for (PFUser *user in modifierData[@"playersArray"])
+    {
+        Score *score = [[Score alloc]initScoreWithAchievementData:modifierData];
+        PFRelation *scorerRelation = [score relationForKey:@"scorer"];
+        [scorerRelation addObject:user];
+        PFRelation *gameRelation = [score relationForKey:@"game"];
+        [gameRelation addObject:self.currentGame];
+
+        // If userName already exists as key in dictionary:
+        if ([[self.modifiersDictionary allKeys] containsObject:user.username])
+        {
+            // Get array with userName key
+            NSMutableArray *userScores = [self.modifiersDictionary objectForKey:user.username];
+            [userScores addObject:score];
+        }
+        else
+        {
+            // Create new array and add score
+            NSMutableArray *userScores = [NSMutableArray arrayWithObject:score];
+            [self.modifiersDictionary setObject:userScores forKey:user.username];
+            NSMutableArray *users = [self.modifiersDictionary objectForKey:@"users"];
+            // Add username to list of users that have had modifiers to add to scores
+            [users addObject:user.username];
+        }
     }
 }
 
@@ -166,6 +206,20 @@
 
 //-------------------------------------    Actions    ----------------------------------------------------
 #pragma mark - Actions
+- (IBAction)onAddButtonPressed
+{
+    for (NSDictionary *scoreData in self.achievementsDataArray)
+    {
+        NSString *saveKey = scoreData[@"saveKey"];
+        if ([saveKey isEqualToString:@"YES"])
+        {
+            [self saveModifiersFromAchievementData:scoreData];
+        }
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
+
 - (IBAction)onSaveButtonPressed:(UIBarButtonItem *)sender
 {
     for (NSDictionary *scoreData in self.achievementsDataArray)
@@ -179,14 +233,25 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)onAddModifiersButtonPressed:(UIButton *)sender
+{
+    NSLog(@"Modifiers button pressed");
+    AchievementViewController *achieveVC = [self.storyboard instantiateViewControllerWithIdentifier:[AchievementViewController description]];
+    achieveVC.delegate = self;
+    achieveVC.modifiersDictionary = [self.achievementsDataArray objectAtIndex:self.activeParentCellIndex][@"modifiersDictionary"];
+    [self.navigationController pushViewController:achieveVC animated:YES];
+}
+
 //----------------------------------    Prepare For Segue    -------------------------------------------------
 #pragma mark - Prepare for Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    SelectPlayersViewController *selectVC = segue.destinationViewController;
-    selectVC.delegate = self;
-    selectVC.selectedUsersArray = [self.achievementsDataArray objectAtIndex:self.activeParentCellIndex][@"playersArray"];
-
+//    if ([segue.identifier isEqualToString:@"SelectPlayersSegue"])
+    {
+        SelectPlayersViewController *selectVC = segue.destinationViewController;
+        selectVC.delegate = self;
+        selectVC.selectedUsersArray = [self.achievementsDataArray objectAtIndex:self.activeParentCellIndex][@"playersArray"];
+    }
 }
 
 
@@ -195,12 +260,22 @@
     self.activeParentCellIndex = index;
 }
 
+//--------------------------------------    Delegate Methods    ---------------------------------------------
+#pragma mark - Delegate Methods
+
+- (void)didFinishAddingModifiers
+{
+    NSLog(@"addFriendsSaveButtonPressed method called");
+    [self.tableView reloadData];
+    [self.view setNeedsUpdateConstraints];
+}
+
+//TODO: rename this didFinishAddingPlayers and refactor
 - (void)didPressDoneButtonWithSelectedUsers:(NSMutableArray *)selectedUsersArray
 {
     NSLog(@"addFriendsSaveButtonPressed method called");
     [self.tableView reloadData];
     [self.view setNeedsUpdateConstraints];
-
 }
 
 

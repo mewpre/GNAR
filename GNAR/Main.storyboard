@@ -849,7 +849,7 @@
         <!--Achievement View Controller-->
         <scene sceneID="q7D-Cy-gry">
             <objects>
-                <viewController id="VIu-Cg-BJz" customClass="AchievementViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AchievementViewController" id="VIu-Cg-BJz" customClass="AchievementViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZIZ-ax-Pgm"/>
                         <viewControllerLayoutGuide type="bottom" id="MPo-fr-xz6"/>
@@ -1282,8 +1282,7 @@
                                                                             </mask>
                                                                         </variation>
                                                                         <connections>
-                                                                            <action selector="onAddModifiersButtonPressed:" destination="qOY-ET-CX4" eventType="touchUpInside" id="Bd7-JD-HTa"/>
-                                                                            <segue destination="5np-pR-Kzb" kind="show" identifier="AddModifiersSegue" id="Hqf-CB-jmb"/>
+                                                                            <action selector="onAddModifiersButtonPressed:" destination="kwd-si-2ci" eventType="touchUpInside" id="z6F-03-jbJ"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -1365,7 +1364,6 @@
                                                                             </mask>
                                                                         </variation>
                                                                         <connections>
-                                                                            <action selector="onAddPlayersButtonPressed:" destination="FkS-TZ-0KS" eventType="touchUpInside" id="ze7-xb-9kj"/>
                                                                             <segue destination="qIj-iX-6LF" kind="show" identifier="SelectPlayersSegue" id="uOu-QA-hJs"/>
                                                                         </connections>
                                                                     </button>
@@ -1476,7 +1474,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Achievements Detail" id="zdM-W9-qhc">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="beT-uY-5mY">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="beT-uY-5mY">
                             <connections>
                                 <action selector="onSaveButtonPressed:" destination="kwd-si-2ci" id="CrO-PB-vA6"/>
                             </connections>
@@ -1576,7 +1574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCs-tP-XJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5806.5" y="1420.5"/>
+            <point key="canvasLocation" x="5766" y="1628.25"/>
         </scene>
         <!--Home-->
         <scene sceneID="pZ1-t0-6s2">
@@ -1653,49 +1651,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9E-Tp-Lm2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3486" y="1420.5"/>
-        </scene>
-        <!--Achievement View Controller-->
-        <scene sceneID="BdI-55-Yhs">
-            <objects>
-                <viewController id="5np-pR-Kzb" customClass="AchievementViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aXC-3q-QUX"/>
-                        <viewControllerLayoutGuide type="bottom" id="xKR-VY-0df"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="594-Ml-42u">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EvN-BS-DQU" customClass="ParentTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="mIs-nE-yoO" customClass="ParentTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mIs-nE-yoO" id="O6y-be-7C8">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="EvN-BS-DQU" secondAttribute="bottom" id="PfF-4t-XCv"/>
-                            <constraint firstItem="EvN-BS-DQU" firstAttribute="leading" secondItem="594-Ml-42u" secondAttribute="leading" id="T2X-Gw-Wfa"/>
-                            <constraint firstAttribute="trailing" secondItem="EvN-BS-DQU" secondAttribute="trailing" id="kh0-Jj-mzI"/>
-                            <constraint firstItem="EvN-BS-DQU" firstAttribute="top" secondItem="594-Ml-42u" secondAttribute="top" id="xTd-xW-CfY"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="oj6-kd-fzF"/>
-                    <connections>
-                        <outlet property="tableView" destination="EvN-BS-DQU" id="g9w-Xt-KCn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WQb-E4-OI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6553.5" y="1724.25"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="ShO-gb-KVu">

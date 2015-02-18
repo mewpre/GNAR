@@ -18,6 +18,7 @@
 
 @interface AchievementViewController () <SubTableViewDataSource, SubTableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addButton; // set to strong so it will stay when we set it to nil and not auto-released too early
 @property (weak, nonatomic) IBOutlet ParentTableView *tableView;
 @property NSArray *achievementsArray;
 @property NSArray *typesArray;
@@ -34,6 +35,15 @@
 {
     [super viewDidLoad];
 
+    if (!self.modifiersDictionary)
+    {
+        self.title = @"Add Scores";
+    }
+    else
+    {
+        self.title = @"Add Modifiers";
+    }
+    
     self.typesArray = [[NSArray alloc] initWithObjects:@"Line Worths", @"ECPs", @"Penalties", @"Trick Bonuses", nil];
     self.dataDictionary = @{ self.typesArray[0] : @[@"Cornice II Bowl", @"Eagle's Nest", @"Enchanted Forest", @"Fingers", @"Light Towers/Headwall", @"Mainline Pocket", @"Olympic Lady", @"The Nose", @"The Palisades", @"West Side KT22"],
                              self.typesArray[1] : @[@"Daily ECPs", @"Yearly ECPs", @"Unlimited ECPs"],
@@ -90,7 +100,14 @@
 // @required
 - (NSInteger)numberOfParentCells
 {
-    return self.typesArray.count;
+    if (self.modifiersDictionary) // If adding modifiers to score: remove LineWorths so to only add other kind of points
+    {
+        return self.typesArray.count - 1;
+    }
+    else
+    {
+        return self.typesArray.count;
+    }
 }
 
 - (NSInteger)heightForParentRows
@@ -101,7 +118,15 @@
 // @optional
 - (NSString *)titleLabelForParentCellAtIndex:(NSInteger)parentIndex
 {
-    return self.typesArray[parentIndex];
+    if (self.modifiersDictionary)
+    {
+        return self.typesArray[parentIndex + 1];
+    }
+    else
+    {
+        return self.typesArray[parentIndex];
+
+    }
 }
 
 - (NSString *)subtitleLabelForParentCellAtIndex:(NSInteger)parentIndex
@@ -113,7 +138,14 @@
 // @required
 - (NSInteger)numberOfChildCellsUnderParentIndex:(NSInteger)parentIndex
 {
-    return [self.dataDictionary[self.typesArray[parentIndex]] count];
+    if (self.modifiersDictionary)
+    {
+        return [self.dataDictionary[self.typesArray[parentIndex + 1]] count];
+    }
+    else
+    {
+        return [self.dataDictionary[self.typesArray[parentIndex]] count];
+    }
 }
 
 - (NSInteger)heightForChildRows
@@ -124,7 +156,14 @@
 // @optional
 - (NSString *)titleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
 {
-    return [self.dataDictionary[self.typesArray[parentIndex]] objectAtIndex:childIndex];
+    if (self.modifiersDictionary)
+    {
+        return [self.dataDictionary[self.typesArray[parentIndex + 1]] objectAtIndex:childIndex];
+    }
+    else
+    {
+        return [self.dataDictionary[self.typesArray[parentIndex]] objectAtIndex:childIndex];
+    }
 }
 
 - (NSString *)subtitleLabelForCellAtChildIndex:(NSInteger)childIndex withinParentCellIndex:(NSInteger)parentIndex
@@ -142,20 +181,34 @@
     [self performSegueWithIdentifier:@"AchievementDetailSegue" sender:pathDictionary];
 }
 
+//--------------------------------------    Prepare For Segue    ---------------------------------------------
+#pragma mark - Prepare For Segue
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([sender isKindOfClass:[NSDictionary class]])
     {
+
         NSInteger parent = [sender[@"Parent Index"] integerValue];
-        NSInteger child = [sender[@"Child Index"]integerValue];
+        NSInteger child = [sender[@"Child Index"] integerValue];
 
         AchievementDetailViewController *detailVC = segue.destinationViewController;
-        detailVC.type = parent;
-        detailVC.group = [self.dataDictionary objectForKey:self.typesArray[parent]][child];
-
+        if (self.modifiersDictionary)
+        {
+            detailVC.type = parent + 1;
+            detailVC.group = [self.dataDictionary objectForKey:self.typesArray[parent + 1]][child];
+            detailVC.title = [self.dataDictionary objectForKey:self.typesArray[parent + 1]][child];
+            detailVC.modifiersDictionary = self.modifiersDictionary;
+            
+        }
+        else
+        {
+            detailVC.type = parent;
+            detailVC.group = [self.dataDictionary objectForKey:self.typesArray[parent]][child];
+            detailVC.title = [self.dataDictionary objectForKey:self.typesArray[parent]][child];
+        }
     }
 }
-
 
 
 

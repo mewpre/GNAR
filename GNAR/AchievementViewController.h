@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AchievementViewControllerDelegate <NSObject>
+
+- (void)didFinishAddingModifiers;
+
+@end
+
 @interface AchievementViewController : UIViewController
+
+@property (weak, nonatomic) id <AchievementViewControllerDelegate> delegate;
+@property NSMutableDictionary *modifiersDictionary;
 
 @end

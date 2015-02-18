@@ -19,9 +19,6 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)onAddPlayersButtonPressed:(id)sender
-{
 
-}
 
 @end

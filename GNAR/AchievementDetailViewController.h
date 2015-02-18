@@ -13,5 +13,6 @@
 
 @property NSInteger type;
 @property NSString *group;
+@property NSMutableDictionary *modifiersDictionary;
 
 @end
