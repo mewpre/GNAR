@@ -60,7 +60,7 @@
             NSMutableDictionary *modifiersDictionary = [NSMutableDictionary new];
             // Create Dictionary to hold scores to save to Parse
             NSMutableArray *playersArray = [NSMutableArray new];
-            NSMutableString *snowLevel = [NSMutableString new];
+            NSMutableString *snowLevel = [NSMutableString stringWithFormat:@"-1"];
             NSMutableString *saveKey = [NSMutableString stringWithString: @"NO"];
             NSDictionary *achievementData = @{
                                               @"achievement" : achievement,

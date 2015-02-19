@@ -98,7 +98,7 @@
             snowCell.lowSnowScoreLabel.text = pointValues[0];
             snowCell.medSnowScoreLabel.text = pointValues[1];
             snowCell.highSnowScoreLabel.text = pointValues[2];
-            if ([self.snowIndexString integerValue] > 0)
+            if ([self.snowIndexString integerValue] >= 0)
             {
                 snowCell.segmentedControl.selectedSegmentIndex = [self.snowIndexString integerValue];
             }

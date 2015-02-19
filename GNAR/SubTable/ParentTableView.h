@@ -59,6 +59,8 @@
 
 @property (assign, nonatomic) NSInteger selectedRow;
 - (void)collapseAllRows;
+- (void)collapseForParentAtRow:(NSInteger)row;
+- (void)expandForParentAtRow:(NSInteger)row;
 - (NSUInteger)rowForParentIndex:(NSUInteger)parentIndex;
 - (NSUInteger)parentIndexForRow:(NSUInteger)row;
 - (BOOL)isExpansionCell:(NSUInteger)row;

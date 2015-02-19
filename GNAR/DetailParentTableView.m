@@ -9,6 +9,13 @@
 #import "DetailParentTableView.h"
 #import "ParentTableViewCell.h"
 
+@interface DetailParentTableView () {
+
+    ParentTableViewCell *previouslySelectedCell;
+}
+
+@end
+
 @implementation DetailParentTableView
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -74,13 +81,36 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     UITableViewCell *selectedPCell = [tableView cellForRowAtIndexPath:indexPath];
     if ([selectedPCell isKindOfClass:[ParentTableViewCell class]])
     {
+
         ParentTableViewCell *pCell = (ParentTableViewCell *)selectedPCell;
-//        NSLog(@"Parent Index: %lu", [pCell parentIndex]);
+        self.selectedRow = [pCell parentIndex];
+        NSLog(@"Parent Index: %lu", [pCell parentIndex]);
         [self.parentDelegate didGetIndex: [pCell parentIndex]];
+
+        if ([[self.expansionStates objectAtIndex:[pCell parentIndex]] boolValue]) {
+
+            // clicked an already expanded cell
+            [self collapseForParentAtRow:indexPath.row];
+            [self deselectCell:pCell];
+            previouslySelectedCell = nil;
+        }
+        else {
+
+            // clicked a collapsed cell
+            [self collapseAllRows];
+            [self expandForParentAtRow:[pCell parentIndex]];
+
+            [self deselectCell:previouslySelectedCell];
+            previouslySelectedCell = pCell;
+            [self selectCell:previouslySelectedCell];
+        }
+
+        if ([self.tableViewDelegate respondsToSelector:@selector(tableView:didSelectParentCellAtIndex:)]) {
+            [self.tableViewDelegate tableView:tableView didSelectParentCellAtIndex:[pCell parentIndex]];
+        }
     }
 }
 
