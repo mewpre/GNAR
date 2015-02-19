@@ -22,7 +22,7 @@
 
     if (self.achievement.type == LineWorth)
     {
-        return 6;
+        return 4;
     }
     else
     {
@@ -36,13 +36,12 @@
     {
         if (section == LWModifierCell)
         {
-            NSArray *users = self.modifiersDictionary[@"users"];
-            return users.count;
-        }
-        else if (section == LWPlayerCell)
-        {
             return self.playersArray.count;
         }
+//        else if (section == LWPlayerCell)
+//        {
+//            return self.playersArray.count;
+//        }
         else
         {
             return 1;
@@ -114,34 +113,34 @@
         {
             ModifiersListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ModifierCell"];
 
-            NSString *dictionaryKey = self.modifiersDictionary[@"users"][indexPath.row];
-            NSMutableArray *scores = self.modifiersDictionary[dictionaryKey];
-            NSLog (@"%@", scores);
+            NSString *userName = [self.playersArray[indexPath.row] username];
+            NSMutableArray *scores = self.modifiersDictionary[userName];
             cell.modifiersList = scores;
-            cell.playerUsername = dictionaryKey;
+            cell.playerUsername = userName;
             [cell.tableView reloadData];
+            [cell adjustHeightOfTableview];
             return cell;
         }
-        else if (indexPath.section == LWAddModifierCell)
+        else // if (indexPath.section == LWAddModifierCell)
         {
             ModifierTableViewCell *modifierCell = [tableView dequeueReusableCellWithIdentifier:@"AddModifierCell"];
             modifierCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return modifierCell;
         }
-        else if (indexPath.section == LWPlayerCell)
-        {
-            UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
-            playersCell.textLabel.text = [self.playersArray[indexPath.row] username];
-            playersCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            return playersCell;
-        }
-        else
-        {
-            PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
-            playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
-            return playerCell;
-            //TODO: Change "Add Players" button to "Select Players"
-        }
+//        else if (indexPath.section == LWPlayerCell)
+//        {
+//            UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
+//            playersCell.textLabel.text = [self.playersArray[indexPath.row] username];
+//            playersCell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            return playersCell;
+//        }
+//        else
+//        {
+//            PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
+//            playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
+//            return playerCell;
+//            //TODO: Change "Add Players" button to "Select Players"
+//        }
     }
 
 
@@ -188,7 +187,7 @@
     }
     else if (self.achievement.type == LineWorth)
     {
-        if (indexPath.section == LWAddModifierCell || indexPath.section == LWSelectPlayersCell)
+        if (indexPath.section == LWAddModifierCell) // || indexPath.section == LWSelectPlayersCell)
         {
             return 50.0;
         }
@@ -215,7 +214,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.achievement.type == LineWorth && indexPath.section == LWPlayerCell)
+    if (self.achievement.type == LineWorth && indexPath.section == LWModifierCell)
     {
         return YES;
     }
@@ -238,7 +237,7 @@
     NSRange range;
     if (self.achievement.type == LineWorth)
     {
-        range = NSMakeRange(LWPlayerCell, 1);
+        range = NSMakeRange(LWModifierCell, 1);
     }
     else
     {
@@ -269,6 +268,7 @@
 {
     NSLog(@"Change Segment delegate called");
     NSString *tempString = [NSString stringWithFormat:@"%lu", selectedSegment];
+    NSLog(@"%@", tempString);
     [self.snowIndexString setString:tempString];
 }
 

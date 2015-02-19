@@ -32,8 +32,19 @@
     [super viewDidAppear:animated];
 
     self.myGameManager = [GameManager sharedManager];
-    // Get current game object from core data singleton
-    self.currentGame = self.myGameManager.currentGame;
+
+
+    // Query the Local Datastore
+    PFQuery *query = [PFQuery queryWithClassName:@"Game"];
+    [query fromLocalDatastore];
+    [query whereKey:@"starred" equalTo:@YES];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *games, NSError *error) {
+        NSLog(@"Fetched %lu games from backgroud.", (unsigned long)games.count);
+        self.myGameManager.currentGame = games.firstObject;
+        // Get current game object from core data singleton
+        self.currentGame = self.myGameManager.currentGame;
+    }];
+
 
     self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [PFUser currentUser].username];
 }

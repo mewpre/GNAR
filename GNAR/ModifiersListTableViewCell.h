@@ -15,4 +15,6 @@
 @property NSMutableArray *modifiersList;
 @property NSString *playerUsername;
 
+- (void)adjustHeightOfTableview;
+
 @end

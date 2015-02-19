@@ -44,7 +44,7 @@
     {
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(onAddButtonPressed)];
         // Disable Add button (so you can't add modifiers until you select modifier)
-        addButton.enabled = NO;
+//        addButton.enabled = NO;
         self.navigationItem.rightBarButtonItem = addButton;
     }
 
@@ -57,8 +57,7 @@
         for (Achievement *achievement in array)
         {
             // Create Dictionary to contain modifiers to add to scores
-            NSMutableArray *usersArray = [NSMutableArray new];
-            NSMutableDictionary *modifiersDictionary = [NSMutableDictionary dictionaryWithObject:usersArray forKey:@"users"];
+            NSMutableDictionary *modifiersDictionary = [NSMutableDictionary new];
             // Create Dictionary to hold scores to save to Parse
             NSMutableArray *playersArray = [NSMutableArray new];
             NSMutableString *snowLevel = [NSMutableString new];

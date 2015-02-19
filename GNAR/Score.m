@@ -8,6 +8,7 @@
 
 #import "Score.h"
 #import "Achievement.h"
+#import "User.h"
 
 @implementation Score
 
@@ -25,20 +26,34 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 - (instancetype)initScoreWithAchievementData: (NSDictionary *)scoreData
 {
     self = [super init];
-    // make score related to achievement
+
     PFRelation *achievementRelation = [self relationForKey:@"achievement"];
+    // Get achievement (pointer) from scoreData dictionary
     Achievement *achievement = scoreData[@"achievement"];
+    // Set Score's achievement relation
     [achievementRelation addObject:achievement];
-    PFObject *achievementPointer = [self objectForKey:@"achievementPointer"];
-    achievementPointer = achievement;
-    // add modifiers
-    NSArray *modifiers = scoreData[@"modifiersArray"];
-    if (modifiers.count != 0)
+
+    // Set Score's Pointer to achievement
+    [self setObject:achievement forKey:@"achievementPointer"]; 
+
+    // Get dictionary
+    NSDictionary *modifiersDictionary = scoreData[@"modifiersDictionary"];
+    // Get users array from dictionary
+    NSArray *usersArray = modifiersDictionary[@"users"];
+
+    for (User *user in usersArray)
     {
-        for (Score *modifier in modifiers)
+        // Get all modifiers for user
+        NSArray *modifiers = [scoreData objectForKey:user.username];
+
+        if (modifiers.count != 0)
         {
-            PFRelation *modifierRelation = [self relationForKey:@"modifiers"];
-            [modifierRelation addObject:modifier];
+            for (Score *modifier in modifiers)
+            {
+                // Add modifer to Score's modifiers relation
+                PFRelation *modifierRelation = [self relationForKey:@"modifiers"];
+                [modifierRelation addObject:modifier];
+            }
         }
     }
 

@@ -18,8 +18,9 @@
 @interface DetailParentTableView : ParentTableView
 <UITableViewDataSource, UITableViewDelegate, SubTableViewCellDelegate, AchievementDetailTableViewDelegate>
 
+@property (weak, nonatomic) id<DetailParentTableViewDelegate> parentDelegate;
 @property NSArray *achievementsArray;
 @property NSMutableString *childHeightString;
-@property (weak, nonatomic) id<DetailParentTableViewDelegate> parentDelegate;
+
 
 @end

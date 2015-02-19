@@ -107,10 +107,14 @@
 {
     [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
         self.gamesArray = array;
+
         for (Game *game in self.gamesArray)
         {
             [game getPlayersOfGameWithCompletion:^(NSArray *array) {
-                game.players = array;   
+                game.players = array;
+                [game pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    NSLog(@"Pinned game in background: %@", game.name);
+                }];
             }];
         }
         [self.tableView reloadData];
