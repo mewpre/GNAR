@@ -75,9 +75,13 @@
 - (void)adjustHeightOfTableview
 {
     CGFloat height = self.tableView.contentSize.height;
+
     [UIView animateWithDuration:0.25 animations:^{
         self.tableViewHeightConstraint.constant = height;
     }];
+    
+    NSLog(@"Modifiers height: %f", height);
 }
+
 
 @end
