@@ -38,7 +38,7 @@
     // Update location
     if ([CLLocationManager locationServicesEnabled])
     {
-        [self.locationManager startMonitoringSignificantLocationChanges];
+        [self.locationManager startUpdatingLocation];
     }
 
     // Add user's location to map
@@ -50,6 +50,13 @@
     [super viewWillAppear:animated];
 
 //    [self.locationManager startUpdatingLocation];
+
+    [User getAllFacebookUsers:^(NSArray *array) {
+        NSMutableArray *facebookFriendsArray = [NSMutableArray new];
+        for (User *user in array) {
+            [facebookFriendsArray addObject:user];
+        }
+    }];
 
 }
 
