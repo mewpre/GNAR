@@ -93,6 +93,7 @@
 + (void)getAllUsers:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [PFUser query];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {

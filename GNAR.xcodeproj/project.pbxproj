@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F2005B11A95D87400ADC41C /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2005B01A95D87400ADC41C /* LocationManager.m */; };
 		0F2EC8771A8F5D8E0013A6B2 /* SelectPlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2EC8761A8F5D8E0013A6B2 /* SelectPlayersViewController.m */; };
 		0F61D5431A8943BE00FF96F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D5411A8943BE00FF96F0 /* Bolts.framework */; };
 		0F61D5441A8943BE00FF96F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F61D5421A8943BE00FF96F0 /* Parse.framework */; };
@@ -77,8 +76,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F2005AF1A95D87400ADC41C /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = ../LocationManager.h; sourceTree = "<group>"; };
-		0F2005B01A95D87400ADC41C /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = ../LocationManager.m; sourceTree = "<group>"; };
 		0F2EC8751A8F5D8E0013A6B2 /* SelectPlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPlayersViewController.h; sourceTree = "<group>"; };
 		0F2EC8761A8F5D8E0013A6B2 /* SelectPlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPlayersViewController.m; sourceTree = "<group>"; };
 		0F61D5411A8943BE00FF96F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -413,8 +410,6 @@
 				0FCD6E8D1A8F3F820074EB1C /* Enum.m */,
 				0FCCB2111A93C0C3004EF2D5 /* GameManager.h */,
 				0FCCB2121A93C0C3004EF2D5 /* GameManager.m */,
-				0F2005AF1A95D87400ADC41C /* LocationManager.h */,
-				0F2005B01A95D87400ADC41C /* LocationManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -589,7 +584,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FCD6E8E1A8F3F820074EB1C /* Enum.m in Sources */,
-				0F2005B11A95D87400ADC41C /* LocationManager.m in Sources */,
 				0FA3EDEA1A8F05D900FDF764 /* SnowTableViewCell.m in Sources */,
 				0FEFE8A41A8A7ED20062123D /* Game.m in Sources */,
 				0F61D5781A89CABC00FF96F0 /* LoginViewController.m in Sources */,

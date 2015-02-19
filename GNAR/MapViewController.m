@@ -10,15 +10,14 @@
 //#import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
-#import "LocationManager.h"
 #import "User.h"
 
-@interface MapViewController () <CLLocationManagerDelegate>
+@interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property LocationManager *locationManager;
-//@property CLLocation *currentLocation;
-//@property CLLocationCoordinate2D myLocation;
+@property CLLocationManager *locationManager;
+@property CLLocation *currentLocation;
+@property CLLocationCoordinate2D locationCoordinate;
 @property User *currentUser;
 
 
@@ -53,11 +52,39 @@
 
     [User getAllFacebookUsers:^(NSArray *array) {
         NSMutableArray *facebookFriendsArray = [NSMutableArray new];
-        for (User *user in array) {
+        for (PFUser *user in array)
+        {
             [facebookFriendsArray addObject:user];
+
+            PFGeoPoint *geoPoint = [user objectForKey:@"lastKnownLocation"];
+
+            if ([user objectForKey:@"lastKnownLocation"])
+            {
+                CLLocationCoordinate2D userLocation = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                MKPointAnnotation *annotation = [MKPointAnnotation new];
+                annotation.coordinate = userLocation;
+                annotation.title = user.username;
+                [self.mapView addAnnotation:annotation];
+            }
         }
+        [self.mapView showAnnotations:self.mapView.annotations animated:YES];
     }];
 
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if (annotation == mapView.userLocation)
+    {
+        return nil;
+    }
+    else
+    {
+        MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
+        pin.canShowCallout = YES;
+        pin.pinColor = MKPinAnnotationColorGreen;
+        return pin;
+    }
 }
 
 
@@ -82,7 +109,7 @@
     }
 
     // Create LocationManager
-    self.locationManager = [LocationManager new];
+    self.locationManager = [CLLocationManager new];
     self.locationManager.delegate = self;
 
     // Request user authorization
@@ -116,21 +143,23 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     CLLocationCoordinate2D myLocation = [locations.firstObject coordinate];
-//    self.myLocation = myLocation;
-    self.locationManager.currentCLLocationCoordinate = myLocation;
+    self.locationCoordinate = myLocation;
 //    [self.mapView setCenterCoordinate:self.myLocation animated:YES];
 
     // Set phones current location
-    self.locationManager.currentCLLocation = locations.lastObject;
+    self.currentLocation = locations.lastObject;
 
-    if (self.locationManager.currentCLLocation != nil)
+    if (self.currentLocation != nil)
     {
         // Stop updating location
         [self.locationManager stopUpdatingLocation];
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locationManager.currentCLLocationCoordinate, 1000, 1000);
-        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
 
-        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.locationManager.currentCLLocationCoordinate.latitude longitude:self.locationManager.currentCLLocationCoordinate.longitude];
+//        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locationCoordinate, 1000, 1000);
+        //        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+
+        [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.locationCoordinate.latitude longitude:self.locationCoordinate.longitude];
         [[PFUser currentUser] setObject:geoPoint forKey:@"lastKnownLocation"];
         [self.currentUser saveInBackground];
     }
