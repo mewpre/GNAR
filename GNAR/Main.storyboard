@@ -513,6 +513,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="vJx-8X-CVC" kind="relationship" relationship="viewControllers" id="xVo-kd-WPf"/>
                         <segue destination="aRT-BI-5hW" kind="relationship" relationship="viewControllers" id="Ge2-EJ-npm"/>
                         <segue destination="EL6-vs-COo" kind="relationship" relationship="viewControllers" id="raq-OU-0ft"/>
                         <segue destination="J0F-hd-Jwf" kind="relationship" relationship="viewControllers" id="Zay-ZW-mhm"/>
@@ -1494,7 +1495,8 @@
                                                                                 <exclude reference="MvE-gL-MDP"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="0.0" y="-2" width="160" height="50"/>
                                                                             <mask key="constraints">
                                                                                 <exclude reference="KZX-SH-aCq"/>
                                                                                 <exclude reference="MvE-gL-MDP"/>
@@ -1519,7 +1521,8 @@
                                                                                 <exclude reference="jN5-EK-A9m"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="160" y="-2" width="160" height="50"/>
                                                                             <mask key="constraints">
                                                                                 <exclude reference="9ut-vk-7Ok"/>
                                                                                 <exclude reference="jN5-EK-A9m"/>
@@ -1637,7 +1640,8 @@
                                                                                 <exclude reference="rHU-BU-F6W"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                                                             <mask key="constraints">
                                                                                 <exclude reference="AV8-f3-mvk"/>
                                                                                 <exclude reference="rHU-BU-F6W"/>
@@ -1946,6 +1950,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9E-Tp-Lm2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3486" y="1420.5"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="3VQ-Ec-2wh">
+            <objects>
+                <viewController id="vJx-8X-CVC" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fZe-M5-o96"/>
+                        <viewControllerLayoutGuide type="bottom" id="caG-sU-z36"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I4F-LP-tVI">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ekh-fS-UW9">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="vJx-8X-CVC" id="8bW-O0-9fD"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="caG-sU-z36" firstAttribute="top" secondItem="ekh-fS-UW9" secondAttribute="bottom" id="EMe-Lb-LMG"/>
+                            <constraint firstItem="ekh-fS-UW9" firstAttribute="top" secondItem="I4F-LP-tVI" secondAttribute="top" id="K9E-53-4yn"/>
+                            <constraint firstAttribute="trailing" secondItem="ekh-fS-UW9" secondAttribute="trailing" id="VgF-bc-HuC"/>
+                            <constraint firstItem="ekh-fS-UW9" firstAttribute="leading" secondItem="I4F-LP-tVI" secondAttribute="leading" id="eff-Tv-WXr"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ekh-fS-UW9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="K9E-53-4yn"/>
+                                <exclude reference="VgF-bc-HuC"/>
+                                <exclude reference="eff-Tv-WXr"/>
+                                <exclude reference="EMe-Lb-LMG"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="ekh-fS-UW9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="K9E-53-4yn"/>
+                                <include reference="VgF-bc-HuC"/>
+                                <include reference="eff-Tv-WXr"/>
+                                <include reference="EMe-Lb-LMG"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="gpX-xa-IlO"/>
+                    <connections>
+                        <outlet property="mapView" destination="ekh-fS-UW9" id="vBG-Nc-HgT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A72-m2-aaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2754" y="1473"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="ShO-gb-KVu">

@@ -42,6 +42,8 @@
 		0FCF8AE21A8BD298006224BB /* SubTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AE01A8BD298006224BB /* SubTableView.m */; };
 		0FCF8AE71A8BD2EE006224BB /* SubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AE61A8BD2EE006224BB /* SubTableViewCell.m */; };
 		0FCFC4ED1A9163BB00DF6464 /* DetailParentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFC4EC1A9163BB00DF6464 /* DetailParentTableView.m */; };
+		0FD0B8D01A95C49C003F74EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD0B8CF1A95C49C003F74EB /* MapViewController.m */; };
+		0FD0B8D31A95C878003F74EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD0B8D21A95C878003F74EB /* MapKit.framework */; };
 		0FEFE89A1A8A7B810062123D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8991A8A7B810062123D /* User.m */; };
 		0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE89D1A8A7C460062123D /* AchievementViewController.m */; };
 		0FEFE8A11A8A7DB50062123D /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A01A8A7DB50062123D /* Achievement.m */; };
@@ -129,6 +131,9 @@
 		0FCF8AE61A8BD2EE006224BB /* SubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubTableViewCell.m; path = SubTable/SubRow/ChildCell/SubTableViewCell.m; sourceTree = "<group>"; };
 		0FCFC4EB1A9163BB00DF6464 /* DetailParentTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailParentTableView.h; sourceTree = "<group>"; };
 		0FCFC4EC1A9163BB00DF6464 /* DetailParentTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailParentTableView.m; sourceTree = "<group>"; };
+		0FD0B8CE1A95C49C003F74EB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		0FD0B8CF1A95C49C003F74EB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		0FD0B8D21A95C878003F74EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0FEFE8981A8A7B810062123D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		0FEFE8991A8A7B810062123D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		0FEFE89C1A8A7C460062123D /* AchievementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementViewController.h; sourceTree = "<group>"; };
@@ -171,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FD0B8D31A95C878003F74EB /* MapKit.framework in Frameworks */,
 				0F61D55F1A89446D00FF96F0 /* libsqlite3.dylib in Frameworks */,
 				0F61D55D1A89446200FF96F0 /* libz.dylib in Frameworks */,
 				0F61D55B1A89445700FF96F0 /* SystemConfiguration.framework in Frameworks */,
@@ -212,6 +218,7 @@
 		0F61D5451A8943C400FF96F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FD0B8D21A95C878003F74EB /* MapKit.framework */,
 				60EA882C1A896003004B6BF7 /* ParseFacebookUtils.framework */,
 				606B71911A894F19004DDAB1 /* FacebookSDK.framework */,
 				0F61D55E1A89446D00FF96F0 /* libsqlite3.dylib */,
@@ -290,6 +297,7 @@
 				0F61D56F1A89C7B700FF96F0 /* Games */,
 				0FCAA4351A8EA386002430F7 /* Leaderboard */,
 				0F61D5701A89C7D100FF96F0 /* Add Score */,
+				0FD0B8D11A95C4A4003F74EB /* Map */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -376,6 +384,15 @@
 				0FCF8AE31A8BD2A1006224BB /* SubRow */,
 			);
 			name = SubTable;
+			sourceTree = "<group>";
+		};
+		0FD0B8D11A95C4A4003F74EB /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0FD0B8CE1A95C49C003F74EB /* MapViewController.h */,
+				0FD0B8CF1A95C49C003F74EB /* MapViewController.m */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		0FEFE89B1A8A7B8C0062123D /* Models */ = {
@@ -581,6 +598,7 @@
 				0FCF8AE21A8BD298006224BB /* SubTableView.m in Sources */,
 				0FEFE89A1A8A7B810062123D /* User.m in Sources */,
 				0FCF8AE11A8BD298006224BB /* ExpandedContainer.m in Sources */,
+				0FD0B8D01A95C49C003F74EB /* MapViewController.m in Sources */,
 				0FCF8ADC1A8BD276006224BB /* ParentTableView.m in Sources */,
 				0FA3EDED1A8F061A00FDF764 /* ModifierTableViewCell.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
