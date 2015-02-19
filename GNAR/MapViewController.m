@@ -9,15 +9,17 @@
 #import "MapViewController.h"
 //#import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
-//#import <Parse/Parse.h>
+#import <Parse/Parse.h>
 #import "LocationManager.h"
+#import "User.h"
 
 @interface MapViewController () <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property LocationManager *locationManager;
-@property CLLocation *currentLocation;
-@property CLLocationCoordinate2D myLocation;
+//@property CLLocation *currentLocation;
+//@property CLLocationCoordinate2D myLocation;
+@property User *currentUser;
 
 
 @end
@@ -29,7 +31,15 @@
 {
     [super viewDidLoad];
 
+    self.currentUser = [PFUser currentUser];
+
     [self setupLocationManager];
+
+    // Update location
+    if ([CLLocationManager locationServicesEnabled])
+    {
+        [self.locationManager startMonitoringSignificantLocationChanges];
+    }
 
     // Add user's location to map
     self.mapView.showsUserLocation = YES;
@@ -44,8 +54,8 @@
 }
 
 
-//-------------------------------    Location Manager    ----------------------------------
-#pragma mark - Location Manager
+//-----------------------------    Setup Location Manager    ----------------------------------
+#pragma mark - Setup Location Manager
 - (void)setupLocationManager
 {
     // Pre-check for authorizations
@@ -70,8 +80,7 @@
 
     // Request user authorization
     [self.locationManager requestAlwaysAuthorization];
-    [self.locationManager startMonitoringSignificantLocationChanges];
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+//    [self.locationManager startMonitoringSignificantLocationChanges];
 
     /* Pinpoint our location with the following accuracy:
      *
@@ -82,8 +91,7 @@
      *     kCLLocationAccuracyKilometer          1000 meters
      *     kCLLocationAccuracyThreeKilometers    3000 meters
      */
-    // Set to 10 meters which is assumedly good for skiing???
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
 
     /* Notify changes when device has moved x meters.
      * Default value is kCLDistanceFilterNone: all movements are reported.
@@ -94,30 +102,30 @@
      * Default value is kCLHeadingFilterNone: all movements are reported.
      */
     self.locationManager.headingFilter = 5;
-
-    // update location
-    if ([CLLocationManager locationServicesEnabled]){
-        [self.locationManager startUpdatingLocation];
-    }
-
 }
 
+//--------------------------------------    Location Manager    ---------------------------------------------
+#pragma mark - Location Manager
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     CLLocationCoordinate2D myLocation = [locations.firstObject coordinate];
-    self.myLocation = myLocation;
+//    self.myLocation = myLocation;
+    self.locationManager.currentCLLocationCoordinate = myLocation;
 //    [self.mapView setCenterCoordinate:self.myLocation animated:YES];
 
     // Set phones current location
-    self.currentLocation = locations.lastObject;
+    self.locationManager.currentCLLocation = locations.lastObject;
 
-    if (self.currentLocation != nil)
+    if (self.locationManager.currentCLLocation != nil)
     {
         // Stop updating location
-//        [self.locationManager stopUpdatingLocation];
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(myLocation, 1000, 1000);
+        [self.locationManager stopUpdatingLocation];
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locationManager.currentCLLocationCoordinate, 1000, 1000);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
 
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.locationManager.currentCLLocationCoordinate.latitude longitude:self.locationManager.currentCLLocationCoordinate.longitude];
+        [[PFUser currentUser] setObject:geoPoint forKey:@"lastKnownLocation"];
+        [self.currentUser saveInBackground];
     }
 }
 

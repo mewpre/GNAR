@@ -11,7 +11,7 @@
 @implementation User
 
 @dynamic firstName, lastName, type, gender, birthday, homeMountain, ability, parseClassName, profileImage;
-//@dynamic lastKnownLocation;
+@dynamic lastKnownLocation;
 
 @dynamic scores;
 

@@ -13,7 +13,7 @@
 
 @property (retain) NSString *firstName;
 @property (retain) NSString *lastName;
-//@property (retain) CLLocation *lastKnownLocation;
+@property (retain) PFGeoPoint *lastKnownLocation;
 @property (retain) NSString *type;
 @property (retain) NSString *gender;
 @property (retain) NSDate *birthday;
