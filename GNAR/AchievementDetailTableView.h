@@ -17,7 +17,7 @@
 
 @protocol AchievementDetailTableViewDelegate <NSObject>
 
-- (void)didRemovePlayerOnSwipe;
+- (void)didChangeSubTableViewHeight;
 
 @end
 

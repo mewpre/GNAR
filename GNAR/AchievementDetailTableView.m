@@ -195,6 +195,14 @@
         {
             return 75.0;
         }
+        else if (indexPath.section == LWModifierCell)
+        {
+            NSString *userName = [self.playersArray[indexPath.row] username];
+            NSMutableArray *scores = self.modifiersDictionary[userName];
+            // The height of each cell in the ModifiersListTableViewCell table view is 40
+            // and the number of rows in that table view is the number of modifiers + 1
+            return ((scores.count + 1) * 40);
+        }
     }
     else if (indexPath.section == SelectPlayersCell)
     {
@@ -209,7 +217,7 @@
 {
     [self.playersArray removeObjectAtIndex:indexPath.row];
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-    [self.detailDelegate didRemovePlayerOnSwipe];
+    [self.detailDelegate didChangeSubTableViewHeight];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -280,6 +288,7 @@
         NSString *tempString = [NSString stringWithFormat:@"%f", height];
         [self.heightString setString:tempString];
     }];
+    NSLog(@"Achievement Detail Height: %f", height);
 }
 
 /*

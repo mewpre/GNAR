@@ -84,7 +84,7 @@
     }
 }
 
-- (void)didRemovePlayerOnSwipe
+- (void)didChangeSubTableViewHeight
 {
     [self reloadData];
 }
