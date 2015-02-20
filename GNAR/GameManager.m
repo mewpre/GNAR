@@ -10,7 +10,7 @@
 
 @implementation GameManager
 
-@synthesize currentGame;
+//@synthesize currentGame;
 static GameManager *gameManager = nil;
 
 + (GameManager *)sharedManager
@@ -30,14 +30,14 @@ static GameManager *gameManager = nil;
     NSLog(@"Saved singleton game: %@", self.currentGame.name);
 }
 
-- (GameManager *)init
-{
-    if (self = [super init])
-    {
-        currentGame = [Game new];
-    }
-    return self;
-}
+//- (GameManager *)init
+//{
+//    if (self = [super init])
+//    {
+//        currentGame = [Game new];
+//    }
+//    return self;
+//}
 
 
 

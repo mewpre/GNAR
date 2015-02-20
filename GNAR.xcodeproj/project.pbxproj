@@ -30,6 +30,7 @@
 		0F61D5801A89D04E00FF96F0 /* AchievementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D57F1A89D04E00FF96F0 /* AchievementDetailViewController.m */; };
 		0F61D5831A89D12200FF96F0 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5821A89D12200FF96F0 /* HomeViewController.m */; };
 		0F61D5871A89DBA800FF96F0 /* AddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */; };
+		0F88F76C1A97C09400DA99EB /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F88F76B1A97C09400DA99EB /* Player.m */; };
 		0FA3EDE61A8F059200FDF764 /* InfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDE51A8F059200FDF764 /* InfoTableViewCell.m */; };
 		0FA3EDEA1A8F05D900FDF764 /* SnowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDE91A8F05D900FDF764 /* SnowTableViewCell.m */; };
 		0FA3EDED1A8F061A00FDF764 /* ModifierTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDEC1A8F061A00FDF764 /* ModifierTableViewCell.m */; };
@@ -107,6 +108,8 @@
 		0F61D5821A89D12200FF96F0 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0F61D5851A89DBA800FF96F0 /* AddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendsViewController.h; sourceTree = "<group>"; };
 		0F61D5861A89DBA800FF96F0 /* AddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendsViewController.m; sourceTree = "<group>"; };
+		0F88F76A1A97C09400DA99EB /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		0F88F76B1A97C09400DA99EB /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		0FA3EDE41A8F059200FDF764 /* InfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoTableViewCell.h; sourceTree = "<group>"; };
 		0FA3EDE51A8F059200FDF764 /* InfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoTableViewCell.m; sourceTree = "<group>"; };
 		0FA3EDE81A8F05D900FDF764 /* SnowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTableViewCell.h; sourceTree = "<group>"; };
@@ -406,6 +409,8 @@
 				0FEFE8A31A8A7ED20062123D /* Game.m */,
 				0FEFE8AA1A8AC7460062123D /* Score.h */,
 				0FEFE8AB1A8AC7460062123D /* Score.m */,
+				0F88F76A1A97C09400DA99EB /* Player.h */,
+				0F88F76B1A97C09400DA99EB /* Player.m */,
 				0FCD6E8C1A8F3F820074EB1C /* Enum.h */,
 				0FCD6E8D1A8F3F820074EB1C /* Enum.m */,
 				0FCCB2111A93C0C3004EF2D5 /* GameManager.h */,
@@ -602,6 +607,7 @@
 				0FCF8ADC1A8BD276006224BB /* ParentTableView.m in Sources */,
 				0FA3EDED1A8F061A00FDF764 /* ModifierTableViewCell.m in Sources */,
 				606B71711A894047004DDAB1 /* AppDelegate.m in Sources */,
+				0F88F76C1A97C09400DA99EB /* Player.m in Sources */,
 				0FCFC4ED1A9163BB00DF6464 /* DetailParentTableView.m in Sources */,
 				0FA3EDF01A8F062400FDF764 /* PlayerTableViewCell.m in Sources */,
 				0FA3EDE61A8F059200FDF764 /* InfoTableViewCell.m in Sources */,

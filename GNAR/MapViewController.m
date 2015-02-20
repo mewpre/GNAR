@@ -20,6 +20,7 @@
 @property CLLocation *currentLocation;
 @property CLLocationCoordinate2D locationCoordinate;
 @property User *currentUser;
+@property Game *currentGame;
 
 
 @end
@@ -51,24 +52,9 @@
     [super viewWillAppear:animated];
 
     [self.locationManager startUpdatingLocation];
-    Game *currentGame = [[GameManager sharedManager] currentGame];
+    self.currentGame = [[GameManager sharedManager] currentGame];
+    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 
-    [currentGame getPlayersOfGameWithCompletion:^(NSArray *players) {
-        for (PFUser *user in players)
-        {
-            PFGeoPoint *geoPoint = [user objectForKey:@"lastKnownLocation"];
-            if ([user objectForKey:@"lastKnownLocation"] && ![user.objectId isEqual:[User currentUser].objectId])
-            {
-                CLLocationCoordinate2D userLocation = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
-                MKPointAnnotation *annotation = [MKPointAnnotation new];
-                annotation.coordinate = userLocation;
-                annotation.title = user.username;
-                [self.mapView addAnnotation:annotation];
-            }
-        }
-
-        [self.mapView showAnnotations:self.mapView.annotations animated:YES];
-    }];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -99,6 +85,10 @@
     {
         [self.mapView setMapType:MKMapTypeSatellite];
     }
+}
+- (IBAction)onReloadButtonPressed:(UIButton *)sender
+{
+    [self.locationManager startUpdatingLocation];
 }
 
 //-----------------------------    Setup Location Manager    ----------------------------------
@@ -175,8 +165,43 @@
         PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.locationCoordinate.latitude longitude:self.locationCoordinate.longitude];
         [[User currentUser] setObject:geoPoint forKey:@"lastKnownLocation"];
         [self.currentUser saveInBackground];
+
+        // Get all other players locations from parse and display on map
+        [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *players) {
+            for (PFUser *user in players)
+            {
+
+
+                PFGeoPoint *geoPoint = [user objectForKey:@"lastKnownLocation"];
+                if ([user objectForKey:@"lastKnownLocation"] && ![user.objectId isEqual:[User currentUser].objectId])
+                {
+                    CLLocationCoordinate2D userLocation = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                    MKPointAnnotation *annotation = [MKPointAnnotation new];
+                    annotation.coordinate = userLocation;
+                    annotation.title = user.username;
+
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title == %@", user.username];
+                    NSArray *filtered = [self.mapView.annotations filteredArrayUsingPredicate:predicate];
+
+                    // If user pin already exists:
+                    if (filtered.count != 0)
+                    {
+                        //
+                        [filtered.firstObject setCoordinate:userLocation];
+                    }
+                    else
+                    {
+                        [self.mapView addAnnotation:annotation];
+                    }
+                }
+            }
+
+//            [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+        }];
+
     }
-    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+
+//    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 }
 
 
