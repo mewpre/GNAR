@@ -11,6 +11,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 #import "Comms.h"
+#import "User.h"
 
 @interface SignUpViewController () <CommsDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -25,9 +26,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if ([PFUser currentUser])
+    if ([User currentUser])
     {
-        NSLog(@"Already logged in as %@", [PFUser currentUser].username);
+        NSLog(@"Already logged in as %@", [User currentUser].username);
     }
 
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
@@ -73,7 +74,7 @@
              if (!error)
              {
                  // Hooray! Let them use the app now.
-                 NSLog(@"Signed up as %@", [PFUser currentUser].username);
+                 NSLog(@"Signed up as %@", [User currentUser].username);
                  [self dismissViewControllerAnimated:NO completion:nil];
              }
              else
@@ -110,9 +111,9 @@
                 // result is a dictionary with the user's Facebook data
                 NSDictionary *userData = (NSDictionary *)result;
                 NSLog(@"%@", userData);
-                [[PFUser currentUser] setEmail:userData[@"email"]];
-                [[PFUser currentUser] setObject:userData[@"gender"] forKey:@"gender"];
-                [[PFUser currentUser] saveInBackground];
+                [[User currentUser] setEmail:userData[@"email"]];
+                [[User currentUser] setObject:userData[@"gender"] forKey:@"gender"];
+                [[User currentUser] saveInBackground];
                 [self dismissViewControllerAnimated:NO completion:nil];
 
             }

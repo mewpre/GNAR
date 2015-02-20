@@ -7,6 +7,7 @@
 //
 
 #import "Comms.h"
+#import "User.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
 @implementation Comms
@@ -38,7 +39,7 @@
                 if (!error) {
                     NSDictionary<FBGraphUser> *me = (NSDictionary<FBGraphUser> *)result;
                     // Store the Facebook Id
-                    [[PFUser currentUser] setObject:me.objectID forKey:@"fbId"];
+                    [[User currentUser] setObject:me.objectID forKey:@"fbId"];
                     if (user.isNew)
                     {
                         [user deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -48,7 +49,7 @@
                     }
                     else
                     {
-                        [[PFUser currentUser] saveInBackground];
+                        [[User currentUser] saveInBackground];
                         
                         // Callback - login successful
                         if ([delegate respondsToSelector:@selector(commsDidLogin:)]) {
@@ -88,18 +89,18 @@
                  if (!error) {
                      NSDictionary<FBGraphUser> *me = (NSDictionary<FBGraphUser> *)result;
                      // Store the Facebook Id
-                     [[PFUser currentUser] setObject:me.objectID forKey:@"fbId"];
+                     [[User currentUser] setObject:me.objectID forKey:@"fbId"];
                      if (user.isNew)
                      {
-                         [PFUser currentUser].username = username;
-                         [[PFUser currentUser] saveInBackground];
+                         [User currentUser].username = username;
+                         [[User currentUser] saveInBackground];
 
                          [delegate commsDidSignUp:YES];
                      }
                      else
                      {
                          //User already exists in Parse. Log in instead.
-                         [[PFUser currentUser] saveInBackground];
+                         [[User currentUser] saveInBackground];
                          [delegate showAlertController];
                      }
                  }

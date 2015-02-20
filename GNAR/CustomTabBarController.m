@@ -8,6 +8,7 @@
 
 #import "CustomTabBarController.h"
 #import "LoginViewController.h"
+#import "User.h"
 #import <Parse/Parse.h>
 
 @interface CustomTabBarController () <LoginViewControllerDelegate>
@@ -27,7 +28,7 @@
 {
     [super viewDidAppear:animated];
     
-    if (![PFUser currentUser])
+    if (![User currentUser])
     {
         self.loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         self.loginVC.delegate = self;
@@ -52,7 +53,7 @@
 - (void)didDismissPresentedViewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"logged in as: %@", [PFUser currentUser].username);
+    NSLog(@"logged in as: %@", [User currentUser].username);
     [self setSelectedIndex:2];
 
 }

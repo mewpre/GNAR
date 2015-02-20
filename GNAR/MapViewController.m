@@ -173,7 +173,7 @@
         [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 
         PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.locationCoordinate.latitude longitude:self.locationCoordinate.longitude];
-        [[PFUser currentUser] setObject:geoPoint forKey:@"lastKnownLocation"];
+        [[User currentUser] setObject:geoPoint forKey:@"lastKnownLocation"];
         [self.currentUser saveInBackground];
     }
     [self.mapView showAnnotations:self.mapView.annotations animated:YES];

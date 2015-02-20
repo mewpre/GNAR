@@ -71,7 +71,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     User *currentUser = self.displayedUsersArray[indexPath.row];
     // Set cell title to user's name
-    if ([currentUser isEqual:[PFUser currentUser]])
+    if ([currentUser.objectId isEqual:[User currentUser].objectId])
     {
         cell.textLabel.text = [NSString stringWithFormat:@"%@ (me)", currentUser.username];
 
@@ -96,10 +96,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.selectedUsersArray containsObject:self.displayedUsersArray[indexPath.row]])
+    User *user = self.displayedUsersArray[indexPath.row];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.objectId == %@", user.objectId];
+    NSArray *filtered = [self.selectedUsersArray filteredArrayUsingPredicate:predicate];
+    if (filtered.count > 0)
     {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        [self.selectedUsersArray removeObject:self.displayedUsersArray[indexPath.row]];
+        [self.selectedUsersArray removeObject:filtered.firstObject];
     }
     else
     {
