@@ -62,6 +62,8 @@
              {
                  NSLog(@"Logged in as %@", [PFUser currentUser].username);
                  [self.delegate didDismissPresentedViewController];
+                 // Clear all local cached data
+                 [PFQuery clearAllCachedResults];
              }
              else
              {

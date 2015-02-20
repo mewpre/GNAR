@@ -48,7 +48,7 @@
 {
     [super viewWillAppear:animated];
 
-//    [self.locationManager startUpdatingLocation];
+    [self.locationManager startUpdatingLocation];
 
     [User getAllFacebookUsers:^(NSArray *array) {
         NSMutableArray *facebookFriendsArray = [NSMutableArray new];

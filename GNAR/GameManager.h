@@ -13,6 +13,6 @@
 
 @property Game *currentGame;
 
-+ (id)sharedManager;
++ (GameManager *)sharedManager;
 
 @end

@@ -53,6 +53,7 @@
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"games"];
 //    [relation.query includeKey:@"players"];
     [relation.query addAscendingOrder:@"createdAt"];
+    // Apply local cache
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {

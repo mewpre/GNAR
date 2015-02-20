@@ -10,17 +10,20 @@
 
 @implementation GameManager
 
-@synthesize currentGame;
+static GameManager *gameManager = nil;
 
-+ (id)sharedManager
++ (GameManager *)sharedManager
 {
-    static GameManager *sharedMyManager = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedMyManager = [[self alloc] init];
-    });
-    return sharedMyManager;
+    if (!gameManager)
+    {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            gameManager = [[self alloc] init];
+        });
+    }
+    return gameManager;
 }
+
 
 //- (id)init
 //{

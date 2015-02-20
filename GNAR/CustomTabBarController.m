@@ -38,7 +38,7 @@
     else
     {
         NSLog(@"Already logged in");
-        [self setSelectedIndex:1];
+        [self setSelectedIndex:2];
         
     }
 }
@@ -47,7 +47,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"logged in as: %@", [PFUser currentUser].username);
-    [self setSelectedIndex:1];
+    [self setSelectedIndex:2];
 
 }
 

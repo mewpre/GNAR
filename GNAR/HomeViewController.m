@@ -15,8 +15,8 @@
 @interface HomeViewController ()<LoginViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
-@property Game *currentGame;
-@property GameManager *myGameManager;
+//@property Game *currentGame;
+//@property GameManager *gameManager;
 
 @end
 
@@ -25,25 +25,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+//    self.gameManager = [GameManager sharedManager];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
-    self.myGameManager = [GameManager sharedManager];
+    //TODO: decide which game to pull here (change getCurrentGameWithCompletion method)
+//    [Game getCurrentGameWithCompletion:^(Game *currentGame) {
+//        // Set game object to singleton
+//        [GameManager sharedManager].currentGame = currentGame;
+//    }];
 
-
-    // Query the Local Datastore
-    PFQuery *query = [PFQuery queryWithClassName:@"Game"];
-    [query fromLocalDatastore];
-    [query whereKey:@"starred" equalTo:@YES];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *games, NSError *error) {
-        NSLog(@"Fetched %lu games from backgroud.", (unsigned long)games.count);
-        self.myGameManager.currentGame = games.firstObject;
-        // Get current game object from core data singleton
-        self.currentGame = self.myGameManager.currentGame;
-    }];
+    NSLog(@"%@", [GameManager sharedManager].currentGame);
 
 
     self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [PFUser currentUser].username];

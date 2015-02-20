@@ -7,6 +7,7 @@
 //
 
 #import "Game.h"
+#import "User.h"
 
 @implementation Game
 
@@ -30,6 +31,35 @@
 
 //--------------------------------------    Get Games    ---------------------------------------------
 #pragma mark - Get Games
++ (void)getCurrentGameWithCompletion:(void(^)(Game *currentGame))complete
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Game"];
+    [query whereKey:@"players" equalTo:[User currentUser]];
+//    [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"Fetched with error: %@", error);
+        }
+        else
+        {
+            NSLog(@"Fetched %lu games.", (unsigned long)objects.count);
+        }
+        complete(objects.firstObject);
+    }];
+}
+
+- (void)getGameWithCompletion:(void(^)(Game *game))complete
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Game"];
+    [query whereKey:@"objectId" equalTo:self.objectId];
+
+    [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        complete(objects.firstObject);
+    }];
+}
+
 + (void)getAllGames:(void(^)(NSArray *allGames))complete
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Game"];

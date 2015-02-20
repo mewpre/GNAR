@@ -10,6 +10,7 @@
 #import "AddGameTableViewController.h"
 #import "GameManager.h"
 #import "User.h"
+#import "Game.h"
 
 @interface GamesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -17,10 +18,10 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
 
-@property GameManager *myGameManager;
+//@property GameManager *gameManager;
 
 @property NSArray *gamesArray;
-@property Game *currentGame;
+//@property Game *currentGame;
 
 @property UIRefreshControl *refreshControl;
 
@@ -45,9 +46,8 @@
 {
     [super viewWillAppear:animated];
 
-    self.myGameManager = [GameManager sharedManager];
     // Get current game object from core data singleton
-    self.currentGame = self.myGameManager.currentGame;
+//    self.currentGame = self.gameManager.currentGame;
 
     [self.segmentedControl setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     //    NSLog(@"%@", [PFUser currentUser].username);
@@ -60,7 +60,21 @@
 //        self.currentGame = game;
 //    }];
 
-    [self getCurrentUserGames];
+    [User getCurrentUserGamesWithCompletion:^(NSArray *currentUserGames) {
+        self.gamesArray = currentUserGames;
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+        [self.activitySpinner stopAnimating];
+
+//        [PFObject pinAllInBackground:self.gamesArray withName:@"UserGames" block:^(BOOL succeeded, NSError *error) {
+//            NSLog(@"Successfully pinned %lu games in background.", (unsigned long)self.gamesArray.count);
+//            [self.tableView reloadData];
+//            [self.refreshControl endRefreshing];
+//            [self.activitySpinner stopAnimating];
+//
+//        }];
+    }];
+//    [self getCurrentUserGames];
 }
 
 //--------------------------------------    Actions    ---------------------------------------------
@@ -100,28 +114,29 @@
 }
 
 
-//--------------------------------------    Helper Methods   ---------------------------------------------
-#pragma mark - Helper Methods
-//Helper method for refresh control
-- (void)getCurrentUserGames
-{
-    [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
-        self.gamesArray = array;
-
-        for (Game *game in self.gamesArray)
-        {
-            [game getPlayersOfGameWithCompletion:^(NSArray *array) {
-                game.players = array;
-                [game pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    NSLog(@"Pinned game in background: %@", game.name);
-                }];
-            }];
-        }
-        [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
-        [self.activitySpinner stopAnimating];
-    }];
-}
+////--------------------------------------    Helper Methods   ---------------------------------------------
+//#pragma mark - Helper Methods
+////Helper method for refresh control
+//- (void)getCurrentUserGames:(void(^)(NSArray *currentUserGames))complete
+//{
+//    [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
+////        self.gamesArray = array;
+//        complete()
+//
+////        for (Game *game in self.gamesArray)
+////        {
+////            [game getPlayersOfGameWithCompletion:^(NSArray *array) {
+////                game.players = array;
+////                [game pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+////                    NSLog(@"Pinned game in background: %@", game.name);
+////                }];
+////            }];
+////        }
+//        [self.tableView reloadData];
+//        [self.refreshControl endRefreshing];
+//        [self.activitySpinner stopAnimating];
+//    }];
+//}
 
 
 //----------------------------------------    Table View    ----------------------------------------------------
@@ -152,8 +167,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
-    // Save game as singleton in Core Data
-    self.myGameManager.currentGame = selectedGame;
+
+    //TODO: Add alert to ask if you want to change games
+
+    // Set current game to selectedGame
+    [GameManager sharedManager].currentGame = selectedGame;
+
+    NSLog(@"%@", selectedGame);
+//    [self.gameManager.currentGame getGameWithCompletion:^(Game *game) {
+//        // Save game as singleton in Core Data
+//        self.gameManager.currentGame = game;
+//    }];
 //    [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
