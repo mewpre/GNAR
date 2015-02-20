@@ -45,6 +45,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSLog(@"Current game: %@", [GameManager sharedManager].currentGame.name);
 
     // Get current game object from core data singleton
 //    self.currentGame = self.gameManager.currentGame;

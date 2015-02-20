@@ -47,6 +47,8 @@
 
 #import "AddGameTableViewController.h"
 #import "AddFriendsViewController.h"
+#import "GameManager.h"
+#import "User.h"
 
 #define kPickerAnimationDuration    0.40   // duration for the animation to slide the date picker into view
 #define kDatePickerTag              99     // view tag identifiying the date picker view
@@ -104,7 +106,7 @@ static NSString *kMountainsCell = @"mountainsCell";     // the cell containing t
 {
     [super viewDidLoad];
 
-    self.currentUser = [PFUser currentUser];
+    self.currentUser = [User currentUser];
     // setup variables to save user selections to save new game
     self.startDate = [NSDate new];
     self.endDate = [NSDate new];
@@ -576,22 +578,22 @@ NSUInteger DeviceSystemMajorVersion()
 {
     // Create game
 //    Game *game = [[Game alloc] initWithName:self.textField.text mountain:@"Squaw Valley"];
-    PFObject *game = [PFObject objectWithClassName:@"Game"];
+    Game *game = (Game *)[PFObject objectWithClassName:@"Game"];
     game[@"name"] = self.textField.text;
     game[@"mountain"] = @"Squaw Valley";
     game[@"startAt"] = self.startDate;
     game[@"endAt"] = self.endDate;
-    [game[@"creator"] addObject:[PFUser currentUser]];
+    [game[@"creator"] addObject:[User currentUser]];
 
     // make current player the creator of the game
     PFRelation *creatorRelation = [game relationForKey:@"creator"];
-    [creatorRelation addObject:[PFUser currentUser]];
+    [creatorRelation addObject:[User currentUser]];
 
     // make current user a player in the game
     PFRelation *playerRelation = [game relationForKey:@"players"];
-    [playerRelation addObject:[PFUser currentUser]];
+    [playerRelation addObject:[User currentUser]];
     // Add all selected users to game
-    for (PFUser *user in self.friendsArray) {
+    for (User *user in self.friendsArray) {
         [playerRelation addObject:user];
     }
 
@@ -599,17 +601,20 @@ NSUInteger DeviceSystemMajorVersion()
 
     [game saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // add game to current users games
-        PFRelation *gamesRelation = [[PFUser currentUser] relationForKey:@"games"];
+        PFRelation *gamesRelation = [[User currentUser] relationForKey:@"games"];
         [gamesRelation addObject:game];
 
         // add game to current users created games
-        PFRelation *createdGamesRelation = [[PFUser currentUser] relationForKey:@"createdGames"];
+        PFRelation *createdGamesRelation = [[User currentUser] relationForKey:@"createdGames"];
         [createdGamesRelation addObject:game];
 
-        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [[User currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             // unwind to previous view controller
             [self.navigationController popViewControllerAnimated:YES];
         }];
+
+        // Save game to core data singleton
+        [GameManager sharedManager].currentGame = game;
     }];
 }
 

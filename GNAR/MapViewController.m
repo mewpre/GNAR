@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 #import "User.h"
+#import "GameManager.h"
 
 @interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 
@@ -31,7 +32,6 @@
     [super viewDidLoad];
 
     self.currentUser = [User currentUser];
-
     [self setupLocationManager];
 
     // Update location
@@ -39,11 +39,10 @@
     {
         [self.locationManager startUpdatingLocation];
     }
-
     // Add user's location to map
     self.mapView.showsUserLocation = YES;
 
-    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+//    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 
 }
 
@@ -52,15 +51,13 @@
     [super viewWillAppear:animated];
 
     [self.locationManager startUpdatingLocation];
+    Game *currentGame = [[GameManager sharedManager] currentGame];
 
-    [User getAllFacebookUsers:^(NSArray *array) {
-        NSMutableArray *facebookFriendsArray = [NSMutableArray new];
-        for (PFUser *user in array)
+    [currentGame getPlayersOfGameWithCompletion:^(NSArray *players) {
+        for (PFUser *user in players)
         {
-            [facebookFriendsArray addObject:user];
-
             PFGeoPoint *geoPoint = [user objectForKey:@"lastKnownLocation"];
-            if ([user objectForKey:@"lastKnownLocation"])
+            if ([user objectForKey:@"lastKnownLocation"] && ![user.objectId isEqual:[User currentUser].objectId])
             {
                 CLLocationCoordinate2D userLocation = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
                 MKPointAnnotation *annotation = [MKPointAnnotation new];
@@ -69,9 +66,9 @@
                 [self.mapView addAnnotation:annotation];
             }
         }
+
         [self.mapView showAnnotations:self.mapView.annotations animated:YES];
     }];
-
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -164,7 +161,11 @@
         [[PFUser currentUser] setObject:geoPoint forKey:@"lastKnownLocation"];
         [self.currentUser saveInBackground];
     }
+    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 }
+
+
+
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {

@@ -17,6 +17,19 @@
 @dynamic endAt;
 @synthesize players;
 
+//@synthesize players = _players;
+//
+//- (void) setPlayers:(PFRelation *)players{
+//    _players = players;
+//}
+//
+//- (PFRelation *) players{
+//    if(_players== nil) {
+//        _players = [self relationForKey:@"players"];
+//    }
+//    return _players;
+//}
+
 
 - (instancetype)initWithName:(NSString *)name mountain:(NSString *)mountain
 {
@@ -64,6 +77,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Game"];
     [query addAscendingOrder:@"createdAt"];
+    [query includeKey:@"players"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         complete(objects);
     }];
@@ -71,14 +85,6 @@
 
 - (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *players))complete
 {
-//    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
-//    [query whereKey:@"post" equalTo:myPost];
-//
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
-//        // comments now contains the comments for myPost
-//    }];
-
-
     PFRelation *relation = [self relationForKey:@"players"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)

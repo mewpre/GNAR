@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "GameManager.h"
 
 @implementation User
 
