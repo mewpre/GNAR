@@ -588,6 +588,7 @@ NSUInteger DeviceSystemMajorVersion()
     // make current player the creator of the game
     PFRelation *creatorRelation = [game relationForKey:@"creator"];
     [creatorRelation addObject:[User currentUser]];
+    
 
     // make current user a player in the game
     PFRelation *playerRelation = [game relationForKey:@"players"];
@@ -637,11 +638,11 @@ NSUInteger DeviceSystemMajorVersion()
 
 //-------------------------------------    AddFriends Delegate    ----------------------------------------------------
 #pragma mark - AddFriendsViewController Delegate
-//- (void)didPressDoneButtonWithSelectedUsers
-//{
-//    self.friendsArray = [selectedUsersArray mutableCopy];
-//    [self.tableView reloadData];
-//}
+- (void)didPressDoneButtonWithSelectedUsers:(NSArray *)selectedUsersArray
+{
+    self.friendsArray = [selectedUsersArray mutableCopy];
+    [self.tableView reloadData];
+}
 
 
 

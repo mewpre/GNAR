@@ -186,8 +186,20 @@
                     // If user pin already exists:
                     if (filtered.count != 0)
                     {
-                        //
+                        MKPointAnnotation *filteredAnnotation = filtered.firstObject;
+                        // Update player location
+                        NSLog(@"Updating %@'s location", user.username);
                         [filtered.firstObject setCoordinate:userLocation];
+
+//                        [UIView animateWithDuration:1.0f
+//                                         animations:^(void)
+//                         {
+//                             filteredAnnotation.coordinate = userLocation;
+//                         }
+//                                         completion:^(BOOL finished)
+//                         {
+//                             [self.mapView removeAnnotation:annotation];
+//                         }
                     }
                     else
                     {
@@ -195,8 +207,7 @@
                     }
                 }
             }
-
-//            [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+            [self.mapView showAnnotations:self.mapView.annotations animated:YES];
         }];
 
     }

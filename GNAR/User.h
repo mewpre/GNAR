@@ -21,6 +21,13 @@
 @property (retain) NSNumber *ability;
 @property (retain) UIImage *profileImage;
 
+//@property (retain, nonatomic) PFRelation *friends;
+@property (retain, nonatomic) PFRelation *games;
+@property (retain, nonatomic) PFRelation *scores;
+//@property (retain, nonatomic) PFRelation *createdAchievements;
+@property (retain, nonatomic) PFRelation *createdGames;
+
+
 
 //@property NSMutableArray *scores;
 
