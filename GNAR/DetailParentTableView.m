@@ -9,8 +9,8 @@
 #import "DetailParentTableView.h"
 #import "ParentTableViewCell.h"
 
-@interface DetailParentTableView () {
-
+@interface DetailParentTableView ()
+{
     ParentTableViewCell *previouslySelectedCell;
 }
 
@@ -91,7 +91,6 @@
         [self.parentDelegate didGetIndex: [pCell parentIndex]];
 
         if ([[self.expansionStates objectAtIndex:[pCell parentIndex]] boolValue]) {
-
             // clicked an already expanded cell
             [self collapseForParentAtRow:indexPath.row];
             [self deselectCell:pCell];
@@ -114,9 +113,21 @@
     }
 }
 
+//-----------------------------    Achievement Detail Table View Delegate Methods   ------------------------------
+#pragma mark - Achievement Detail Table View Delegate Methods
 - (void)didChangeSubTableViewHeight
 {
     [self reloadData];
+}
+
+- (void)didPressAddButtonAtParentIndex:(NSInteger)parentIndex
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:parentIndex inSection:0];
+    ParentTableViewCell *parentCell = (ParentTableViewCell *)[self cellForRowAtIndexPath:indexPath];
+//    parentCell.subtitleLabel.text = @"🌟";
+//    parentCell.detailTextLabel.text = @"🌟";
+    [self reloadData];
+    [self collapseForParentAtRow:parentIndex];
 }
 
 

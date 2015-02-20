@@ -46,15 +46,12 @@
         self.displayedUsersArray = self.allUsersArray;
         [self.tableView reloadData];
     }];
-
-    self.navigationController.navigationBar.topItem.title = @"Cancel";
 }
 
 //----------------------------------------    Actions    ----------------------------------------------------
 #pragma mark - Actions
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
 {
-//    [self.delegate didPressDoneButtonWithSelectedUsers];
     // unwind to previous view controller
     [self.navigationController popViewControllerAnimated:YES];
 }

@@ -18,6 +18,7 @@
 @protocol AchievementDetailTableViewDelegate <NSObject>
 
 - (void)didChangeSubTableViewHeight;
+- (void)didPressAddButtonAtParentIndex: (NSInteger)parentIndex;
 
 @end
 
