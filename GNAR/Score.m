@@ -69,32 +69,32 @@ typedef NS_ENUM(NSInteger, AchievementType) {
     PFRelation *achievementRelation = [self relationForKey:@"achievement"];
     // Get achievement (pointer) from scoreData dictionary
     Achievement *achievement = scoreData[@"achievement"];
-    // Set Score's achievement relation
-    [achievementRelation addObject:achievement];
+//    // Set Score's achievement relation
+//    [achievementRelation addObject:achievement];
 
     // Set Score's Pointer to achievement
-    [self setObject:achievement forKey:@"achievementPointer"]; 
+    [self setObject:achievement forKey:@"achievementPointer"];
 
-    // Get dictionary
-    NSDictionary *modifiersDictionary = scoreData[@"modifiersDictionary"];
-    // Get users array from dictionary
-    NSArray *usersArray = modifiersDictionary[@"users"];
-
-    for (User *user in usersArray)
-    {
-        // Get all modifiers for user
-        NSArray *modifiers = [scoreData objectForKey:user.username];
-
-        if (modifiers.count != 0)
-        {
-            for (Score *modifier in modifiers)
-            {
-                // Add modifer to Score's modifiers relation
-                PFRelation *modifierRelation = [self relationForKey:@"modifiers"];
-                [modifierRelation addObject:modifier];
-            }
-        }
-    }
+//    // Get dictionary
+//    NSDictionary *modifiersDictionary = scoreData[@"modifiersDictionary"];
+//    // Get users array from dictionary
+//    NSArray *usersArray = modifiersDictionary[@"users"];
+//
+//    for (User *user in usersArray)
+//    {
+//        // Get all modifiers for user
+//        NSArray *modifiers = [scoreData objectForKey:user.username];
+//
+//        if (modifiers.count != 0)
+//        {
+//            for (Score *modifier in modifiers)
+//            {
+//                // Add modifer to Score's modifiers relation
+//                PFRelation *modifierRelation = [self relationForKey:@"modifiers"];
+//                [modifierRelation addObject:modifier];
+//            }
+//        }
+//    }
 
     if (achievement.pointValues.count == 1)
     {

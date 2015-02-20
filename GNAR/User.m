@@ -23,12 +23,12 @@
 + (void)getCurrentUserScoresWithCompletion:(void(^)(NSArray *userScoresIncludingModifiers))complete
 {
     
-    PFRelation *relation = [[PFUser currentUser] relationForKey:@"scores"];
+    PFRelation *relation = [[User currentUser] relationForKey:@"scores"];
     [relation.query includeKey:@"modifiers"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
 //        PFQuery *query = [PFQuery queryWithClassName:@"Score"];
-//        [query whereKey:@"scorer" equalTo:[PFUser currentUser]];
+//        [query whereKey:@"scorer" equalTo:[User currentUser]];
 //        [query includeKey:@"modifiers"];
 //        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
@@ -51,7 +51,7 @@
 #pragma mark - Get Games
 + (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *currentUserGames))complete
 {
-    PFRelation *relation = [[PFUser currentUser] relationForKey:@"games"];
+    PFRelation *relation = [[User currentUser] relationForKey:@"games"];
 //    [relation.query includeKey:@"players"];
     [relation.query addAscendingOrder:@"createdAt"];
     // Apply local cache
@@ -150,7 +150,7 @@
 #pragma mark - Get Friends
 + (void)getCurrentUserFriendsWithCompletion:(void(^)(NSArray *currentUserFriends))complete
 {
-    PFRelation *relation = [[PFUser currentUser] relationForKey:@"friends"];
+    PFRelation *relation = [[User currentUser] relationForKey:@"friends"];
 
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)

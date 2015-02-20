@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 #import "Comms.h"
+#import "User.h"
 
 @interface LoginViewController () <CommsDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -23,9 +24,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if ([PFUser currentUser])
+    if ([User currentUser])
     {
-        NSLog(@"Already logged in as %@", [PFUser currentUser].username);
+        NSLog(@"Already logged in as %@", [User currentUser].username);
 
     }
 
@@ -60,7 +61,7 @@
          {
              if (!error)
              {
-                 NSLog(@"Logged in as %@", [PFUser currentUser].username);
+                 NSLog(@"Logged in as %@", [User currentUser].username);
                  [self.delegate didDismissPresentedViewController];
                  // Clear all local cached data
                  [PFQuery clearAllCachedResults];
@@ -93,7 +94,7 @@
                 // result is a dictionary with the user's Facebook data
                 NSDictionary *userData = (NSDictionary *)result;
                 NSLog(@"%@", userData);
-                NSLog(@"%@",[PFUser currentUser].username);
+                NSLog(@"%@",[User currentUser].username);
                 [self.delegate didDismissPresentedViewController];
             }
         }];

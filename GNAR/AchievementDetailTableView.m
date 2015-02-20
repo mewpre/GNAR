@@ -114,7 +114,7 @@
         {
             ModifiersListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ModifierCell"];
             User *userAtIndex = self.playersArray[indexPath.row];
-            if ([userAtIndex isEqual:[PFUser currentUser]])
+            if ([userAtIndex.objectId isEqual:[User currentUser].objectId])
             {
                 cell.playerText = [NSString stringWithFormat:@"%@ (me)", userAtIndex.username];
 
@@ -158,7 +158,7 @@
             UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
 
             User *userAtIndex = self.playersArray[indexPath.row];
-            if ([userAtIndex isEqual:[PFUser currentUser]])
+            if ([userAtIndex.objectId isEqual:[User currentUser].objectId])
             {
                 playersCell.textLabel.text = [NSString stringWithFormat:@"%@ (me)", userAtIndex.username];
 

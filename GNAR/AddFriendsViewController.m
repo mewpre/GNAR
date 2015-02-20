@@ -151,7 +151,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     User *currentUser = self.displayedUsersArray[indexPath.row];
     // Set cell title to user's name
-    if ([currentUser isEqual:[PFUser currentUser]])
+    if ([currentUser.objectId isEqual:[User currentUser].objectId])
     {
         cell.textLabel.text = [NSString stringWithFormat:@"%@ (me)", currentUser.username];
 

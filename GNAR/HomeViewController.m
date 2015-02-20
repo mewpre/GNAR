@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "GameManager.h"
+#import "User.h"
 
 
 @interface HomeViewController ()<LoginViewControllerDelegate>
@@ -42,7 +43,7 @@
 {
     [super viewDidAppear:animated];
 
-    self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [PFUser currentUser].username];
+    self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [User currentUser].username];
 }
 
 
@@ -61,7 +62,7 @@
 - (void)didDismissPresentedViewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"logged in as: %@", [PFUser currentUser].username);
+    NSLog(@"logged in as: %@", [User currentUser].username);
     self.tabBarController.selectedIndex = 1;
 }
 
