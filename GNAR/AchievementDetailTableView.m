@@ -7,6 +7,7 @@
 //
 
 #import "AchievementDetailTableView.h"
+#import "User.h"
 #import "Enum.h"
 @implementation AchievementDetailTableView
 
@@ -112,11 +113,18 @@
         else if (indexPath.section == LWModifierCell)
         {
             ModifiersListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ModifierCell"];
+            User *userAtIndex = self.playersArray[indexPath.row];
+            if ([userAtIndex isEqual:[PFUser currentUser]])
+            {
+                cell.playerText = [NSString stringWithFormat:@"%@ (me)", userAtIndex.username];
 
-            NSString *userName = [self.playersArray[indexPath.row] username];
-            NSMutableArray *scores = self.modifiersDictionary[userName];
+            }
+            else
+            {
+                cell.playerText = userAtIndex.username;
+            }
+            NSMutableArray *scores = self.modifiersDictionary[userAtIndex.username];
             cell.modifiersList = scores;
-            cell.playerUsername = userName;
             [cell.tableView reloadData];
             [cell adjustHeightOfTableview];
             return cell;
@@ -127,22 +135,7 @@
             modifierCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return modifierCell;
         }
-//        else if (indexPath.section == LWPlayerCell)
-//        {
-//            UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
-//            playersCell.textLabel.text = [self.playersArray[indexPath.row] username];
-//            playersCell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            return playersCell;
-//        }
-//        else
-//        {
-//            PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
-//            playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
-//            return playerCell;
-//            //TODO: Change "Add Players" button to "Select Players"
-//        }
     }
-
 
     else
     {
@@ -163,7 +156,17 @@
         else if (indexPath.section == PlayerCell)
         {
             UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
-            playersCell.textLabel.text = [self.playersArray[indexPath.row] username];
+
+            User *userAtIndex = self.playersArray[indexPath.row];
+            if ([userAtIndex isEqual:[PFUser currentUser]])
+            {
+                playersCell.textLabel.text = [NSString stringWithFormat:@"%@ (me)", userAtIndex.username];
+
+            }
+            else
+            {
+                playersCell.textLabel.text = [self.playersArray[indexPath.row] username];
+            }
             playersCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return playersCell;
         }

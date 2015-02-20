@@ -99,7 +99,7 @@
 #pragma mark - Actions
 - (IBAction)onDoneButtonPressed:(UIBarButtonItem *)sender
 {
-    [self.delegate didPressDoneButtonWithSelectedUsers:self.selectedUsersArray];
+//    [self.delegate didPressDoneButtonWithSelectedUsers:self.selectedUsersArray];
     // unwind to previous view controller
     [self.navigationController popViewControllerAnimated:YES];
 
@@ -151,7 +151,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     User *currentUser = self.displayedUsersArray[indexPath.row];
     // Set cell title to user's name
-    cell.textLabel.text = currentUser.username;
+    if ([currentUser isEqual:[PFUser currentUser]])
+    {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ (me)", currentUser.username];
+
+    }
+    else
+    {
+        cell.textLabel.text = currentUser.username;
+    }
+    
     cell.textLabel.textColor = [UIColor whiteColor];
     // Remove check mark
     cell.accessoryType = UITableViewCellAccessoryNone;

@@ -70,7 +70,17 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     User *currentUser = self.displayedUsersArray[indexPath.row];
-    cell.textLabel.text = currentUser.username;
+    // Set cell title to user's name
+    if ([currentUser isEqual:[PFUser currentUser]])
+    {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ (me)", currentUser.username];
+
+    }
+    else
+    {
+        cell.textLabel.text = currentUser.username;
+    }
+
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.accessoryType = UITableViewCellAccessoryNone;
     // apply checkmark to users who have already been selected
