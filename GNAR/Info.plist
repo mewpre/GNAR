@@ -49,5 +49,9 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Share your location to see yourself on the map.</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

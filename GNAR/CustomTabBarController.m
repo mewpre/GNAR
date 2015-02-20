@@ -12,6 +12,8 @@
 
 @interface CustomTabBarController () <LoginViewControllerDelegate>
 
+@property LoginViewController *loginVC;
+
 @end
 
 @implementation CustomTabBarController
@@ -27,12 +29,11 @@
     
     if (![PFUser currentUser])
     {
-        LoginViewController *vcObj = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        vcObj.delegate = self;
-        UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:vcObj];
-
-        navCon.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-
+        self.loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        self.loginVC.delegate = self;
+        UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:self.loginVC];
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Up" style:UIBarButtonItemStylePlain target:self action: @selector(onSignUpButtonPressed)];
+        self.loginVC.navigationItem.rightBarButtonItem = rightButton;
         [self presentViewController:navCon animated:NO completion:nil];
     }
     else
@@ -41,6 +42,11 @@
         [self setSelectedIndex:2];
         
     }
+}
+
+- (void) onSignUpButtonPressed
+{
+    [self.loginVC performSegueWithIdentifier:@"SignUpSegue" sender:self];
 }
 
 - (void)didDismissPresentedViewController
