@@ -26,21 +26,20 @@
 {
     [super viewDidLoad];
 
-//    self.gameManager = [GameManager sharedManager];
+    if (![GameManager sharedManager].currentGame)
+    {
+        //TODO: decide which game to pull here (change getCurrentGameWithCompletion method) OR ask user to create or select game?
+        [Game getCurrentGameWithCompletion:^(Game *currentGame) {
+            // Set game object to singleton
+            [GameManager sharedManager].currentGame = currentGame;
+            NSLog(@"Fetched game: %@", [GameManager sharedManager].currentGame.name);
+        }];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
-    //TODO: decide which game to pull here (change getCurrentGameWithCompletion method)
-//    [Game getCurrentGameWithCompletion:^(Game *currentGame) {
-//        // Set game object to singleton
-//        [GameManager sharedManager].currentGame = currentGame;
-//    }];
-
-    NSLog(@"%@", [GameManager sharedManager].currentGame);
-
 
     self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [PFUser currentUser].username];
 }
@@ -75,13 +74,13 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

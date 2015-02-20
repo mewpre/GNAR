@@ -18,7 +18,6 @@
 @property UIRefreshControl *refreshControl;
 @property NSArray *playersArray;
 @property Game *currentGame;
-@property GameManager *myGameManager;
 
 @end
 
@@ -38,9 +37,8 @@
 {
     [super viewWillAppear:animated];
 
-    self.myGameManager = [GameManager sharedManager];
     // Get current game object from core data singleton
-    self.currentGame = self.myGameManager.currentGame;
+    self.currentGame = [GameManager sharedManager].currentGame;
 
     // Get scores of current user
 

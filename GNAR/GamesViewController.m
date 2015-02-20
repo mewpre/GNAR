@@ -36,7 +36,7 @@
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
     // since this is not a table view controller, need to programatically create link between VC and refresh control
-    [self.refreshControl addTarget:self action:@selector(getCurrentUserGames) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(getCurrentUserGamesWithCompletion:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     self.tableView.backgroundColor = [UIColor colorWithWhite:( 30/255.0) alpha:1.0];
 

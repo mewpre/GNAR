@@ -35,7 +35,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Game"];
     [query whereKey:@"players" equalTo:[User currentUser]];
-//    [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {

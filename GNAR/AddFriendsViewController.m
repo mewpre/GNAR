@@ -50,8 +50,8 @@
         self.allUsersArray = array;
         self.displayedUsersArray = self.allUsersArray;
         self.currentArray = self.allUsersArray;
+        [self.activitySpinner stopAnimating];
         [self.tableView reloadData];
-        self.activitySpinner.stopAnimating;
     }];
 
     // Create tap gesture recognizer to dismiss heyboard on click outside search bar

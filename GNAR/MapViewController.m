@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
 
-    self.currentUser = [PFUser currentUser];
+    self.currentUser = [User currentUser];
 
     [self setupLocationManager];
 
@@ -42,6 +42,9 @@
 
     // Add user's location to map
     self.mapView.showsUserLocation = YES;
+
+    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -57,7 +60,6 @@
             [facebookFriendsArray addObject:user];
 
             PFGeoPoint *geoPoint = [user objectForKey:@"lastKnownLocation"];
-
             if ([user objectForKey:@"lastKnownLocation"])
             {
                 CLLocationCoordinate2D userLocation = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
@@ -82,11 +84,10 @@
     {
         MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
         pin.canShowCallout = YES;
-        pin.pinColor = MKPinAnnotationColorGreen;
+        pin.pinColor = MKPinAnnotationColorPurple;
         return pin;
     }
 }
-
 
 //-----------------------------    Setup Location Manager    ----------------------------------
 #pragma mark - Setup Location Manager
@@ -155,7 +156,7 @@
         [self.locationManager stopUpdatingLocation];
 
 //        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locationCoordinate, 1000, 1000);
-        //        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+//        [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
 
         [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 
