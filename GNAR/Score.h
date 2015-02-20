@@ -18,7 +18,9 @@
 @property Achievement *achievement;
 @property Achievement *achievementPointer;
 
-@property (retain) PFRelation *modifiers;
+@property (retain, nonatomic) PFRelation *modifiers;
+@property (retain, nonatomic) PFRelation *game;
+@property (retain, nonatomic) PFRelation *scorer;
 
 
 + (NSString *)parseClassName;

@@ -16,17 +16,43 @@
 @dynamic achievement, achievementPointer;
 
 @synthesize modifiers = _modifiers;
+@synthesize game = _game;
+@synthesize scorer = _scorer;
+
 
 - (void) setModifiers:(PFRelation *)modifiers{
     _modifiers = modifiers;
 }
-
 - (PFRelation *) modifiers{
     if(_modifiers== nil) {
         _modifiers = [self relationForKey:@"modifiers"];
     }
     return _modifiers;
 }
+
+
+- (void) setgame:(PFRelation *)game
+{
+    _game = game;
+}
+- (PFRelation *) game{
+    if(_game== nil) {
+        _game = [self relationForKey:@"game"];
+    }
+    return _game;
+}
+
+
+- (void) setscorer:(PFRelation *)scorer{
+    _scorer = scorer;
+}
+- (PFRelation *) scorer{
+    if(_scorer== nil) {
+        _scorer = [self relationForKey:@"scorer"];
+    }
+    return _scorer;
+}
+
 
 typedef NS_ENUM(NSInteger, AchievementType) {
     LineWorth,
