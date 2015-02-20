@@ -14,7 +14,7 @@
 @dynamic firstName, lastName, type, gender, birthday, homeMountain, ability, parseClassName, profileImage;
 @dynamic lastKnownLocation;
 
-@dynamic scores;
+//@dynamic scores;
 
 
 //--------------------------------------    Get Scores    ---------------------------------------------

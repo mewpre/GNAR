@@ -28,7 +28,7 @@
     // Override point for customization after application launch.
 
     // Provide a local datastore which can be used to store and retrieve PFObjects, even when the network is unavailable
-//    [Parse enableLocalDatastore];
+    [Parse enableLocalDatastore];
 
     // Added to allow access to parse database created for GNAR
     [Parse setApplicationId:@"edM3ZgRhFNDpw2KyVaUcvmGBn6O8DsifkZsSJ1hr"

@@ -10,6 +10,7 @@
 
 @implementation GameManager
 
+@synthesize currentGame;
 static GameManager *gameManager = nil;
 
 + (GameManager *)sharedManager
@@ -24,14 +25,19 @@ static GameManager *gameManager = nil;
     return gameManager;
 }
 
+- (void)printCurrentGame
+{
+    NSLog(@"Saved singleton game: %@", self.currentGame.name);
+}
 
-//- (id)init
-//{
-//    if (self = [super init]) {
-//        someProperty = [[NSString alloc] initWithString:@"Default Property Value"];
-//    }
-//    return self;
-//}
+- (GameManager *)init
+{
+    if (self = [super init])
+    {
+        currentGame = [Game new];
+    }
+    return self;
+}
 
 
 

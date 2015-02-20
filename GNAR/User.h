@@ -21,7 +21,8 @@
 @property (retain) NSNumber *ability;
 @property (retain) UIImage *profileImage;
 
-@property NSArray *scores;
+
+//@property NSMutableArray *scores;
 
 //- (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete;
 + (void)getCurrentUserScoresWithCompletion:(void(^)(NSArray *userScoresIncludingModifiers))complete;

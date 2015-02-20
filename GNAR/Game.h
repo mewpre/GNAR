@@ -14,6 +14,7 @@
 @property (retain) NSString *mountain;
 @property (retain) NSDate *startAt;
 @property (retain) NSDate *endAt;
+
 @property NSArray *players;
 
 //@property (retain) PFRelation *players;

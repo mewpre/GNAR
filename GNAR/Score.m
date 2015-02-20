@@ -29,8 +29,6 @@
     }
     return _modifiers;
 }
-
-
 - (void) setgame:(PFRelation *)game
 {
     _game = game;
@@ -41,8 +39,6 @@
     }
     return _game;
 }
-
-
 - (void) setscorer:(PFRelation *)scorer{
     _scorer = scorer;
 }
@@ -60,6 +56,7 @@ typedef NS_ENUM(NSInteger, AchievementType) {
     TrickBonus,
     Penalty
 };
+
 
 
 - (instancetype)initScoreWithAchievementData: (NSDictionary *)scoreData

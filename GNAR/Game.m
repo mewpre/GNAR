@@ -86,6 +86,7 @@
 - (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *players))complete
 {
     PFRelation *relation = [self relationForKey:@"players"];
+    
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {

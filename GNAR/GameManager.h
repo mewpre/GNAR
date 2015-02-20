@@ -14,5 +14,6 @@
 @property Game *currentGame;
 
 + (GameManager *)sharedManager;
+- (void)printCurrentGame;
 
 @end

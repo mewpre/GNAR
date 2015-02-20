@@ -26,15 +26,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[GameManager sharedManager] printCurrentGame];
 
     if (![GameManager sharedManager].currentGame)
     {
         //TODO: decide which game to pull here (change getCurrentGameWithCompletion method) OR ask user to create or select game?
-        [Game getCurrentGameWithCompletion:^(Game *currentGame) {
-            // Set game object to singleton
-            [GameManager sharedManager].currentGame = currentGame;
-            NSLog(@"Fetched game: %@", [GameManager sharedManager].currentGame.name);
-        }];
+//        [Game getCurrentGameWithCompletion:^(Game *currentGame) {
+//            // Set game object to singleton
+//            [GameManager sharedManager].currentGame = currentGame;
+//            NSLog(@"Fetched game: %@", [GameManager sharedManager].currentGame.name);
+//        }];
     }
 }
 

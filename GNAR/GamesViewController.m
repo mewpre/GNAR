@@ -33,6 +33,8 @@
 {
     [super viewDidLoad];
 
+    [[GameManager sharedManager] printCurrentGame];
+
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
     // since this is not a table view controller, need to programatically create link between VC and refresh control
@@ -174,7 +176,7 @@
     // Set current game to selectedGame
     [GameManager sharedManager].currentGame = selectedGame;
 
-    NSLog(@"%@", selectedGame);
+    NSLog(@"%@", [GameManager sharedManager].currentGame.name);
 //    [self.gameManager.currentGame getGameWithCompletion:^(Game *game) {
 //        // Save game as singleton in Core Data
 //        self.gameManager.currentGame = game;
