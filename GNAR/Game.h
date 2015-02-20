@@ -15,9 +15,10 @@
 @property (retain) NSDate *startAt;
 @property (retain) NSDate *endAt;
 
-@property NSArray *players;
+@property NSArray *playersArray;
 
-//@property (retain) PFRelation *players;
+@property (retain, nonatomic) PFRelation *players;
+@property (retain, nonatomic) PFRelation *creator;
 
 
 + (void)getCurrentGameWithCompletion:(void(^)(Game *currentGame))complete;

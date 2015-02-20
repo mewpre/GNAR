@@ -15,20 +15,39 @@
 @dynamic mountain;
 @dynamic startAt;
 @dynamic endAt;
-@synthesize players;
+@dynamic playersArray;
 
-//@synthesize players = _players;
-//
-//- (void) setPlayers:(PFRelation *)players{
-//    _players = players;
-//}
-//
-//- (PFRelation *) players{
-//    if(_players== nil) {
-//        _players = [self relationForKey:@"players"];
-//    }
-//    return _players;
-//}
+@synthesize players = _players;
+@synthesize creator = _creator;
+
+
+- (void)setPlayers:(PFRelation *)players
+{
+    _players = players;
+}
+
+- (PFRelation *)players
+{
+    if(_players == nil)
+    {
+        _players = [self relationForKey:@"players"];
+    }
+    return _players;
+}
+
+- (void)setCreator:(PFRelation *)creator
+{
+    _creator = creator;
+}
+
+- (PFRelation *)creator
+{
+    if(_creator == nil)
+    {
+        _creator = [self relationForKey:@"creator"];
+    }
+    return _creator;
+}
 
 
 - (instancetype)initWithName:(NSString *)name mountain:(NSString *)mountain

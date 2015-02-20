@@ -1475,7 +1475,8 @@
                                                                                 <exclude reference="eqE-70-m6X"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="eqE-70-m6X"/>
                                                                             </mask>
@@ -2086,16 +2087,16 @@
                                 <exclude reference="ZYc-Ch-Ba7"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="K9E-53-4yn"/>
-                                <exclude reference="VgF-bc-HuC"/>
-                                <exclude reference="eff-Tv-WXr"/>
+                                <exclude reference="EMe-Lb-LMG"/>
+                                <exclude reference="mdf-cy-Xd5"/>
                                 <exclude reference="II9-34-tpS"/>
                                 <exclude reference="W6x-dv-jvY"/>
                                 <exclude reference="YUy-Ck-gIj"/>
                                 <exclude reference="hqJ-It-Ygx"/>
                                 <exclude reference="uzg-H5-EIU"/>
-                                <exclude reference="EMe-Lb-LMG"/>
-                                <exclude reference="mdf-cy-Xd5"/>
+                                <exclude reference="K9E-53-4yn"/>
+                                <exclude reference="VgF-bc-HuC"/>
+                                <exclude reference="eff-Tv-WXr"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2105,16 +2106,16 @@
                                 <include reference="ZYc-Ch-Ba7"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="K9E-53-4yn"/>
-                                <include reference="VgF-bc-HuC"/>
-                                <include reference="eff-Tv-WXr"/>
+                                <exclude reference="EMe-Lb-LMG"/>
+                                <include reference="mdf-cy-Xd5"/>
                                 <include reference="II9-34-tpS"/>
                                 <include reference="W6x-dv-jvY"/>
                                 <include reference="YUy-Ck-gIj"/>
                                 <include reference="hqJ-It-Ygx"/>
                                 <include reference="uzg-H5-EIU"/>
-                                <exclude reference="EMe-Lb-LMG"/>
-                                <include reference="mdf-cy-Xd5"/>
+                                <include reference="K9E-53-4yn"/>
+                                <include reference="VgF-bc-HuC"/>
+                                <include reference="eff-Tv-WXr"/>
                             </mask>
                         </variation>
                     </view>

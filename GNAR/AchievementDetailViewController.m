@@ -145,7 +145,7 @@
 // Helper method to save single achievement into Parse
 - (void)saveScoresFromAchievementData: (NSDictionary *)scoreData
 {
-    for (PFUser *user in scoreData[@"playersArray"])
+    for (User *user in scoreData[@"playersArray"])
     {
         Score *score = [[Score alloc]initScoreWithAchievementData:scoreData];
         [score.scorer addObject:user];
@@ -187,7 +187,7 @@
 
 - (void)saveModifiersFromAchievementData:(NSDictionary *)modifierData
 {
-    for (PFUser *user in modifierData[@"playersArray"])
+    for (User *user in modifierData[@"playersArray"])
     {
         Score *score = [[Score alloc]initScoreWithAchievementData:modifierData];
         [score.scorer addObject:user];

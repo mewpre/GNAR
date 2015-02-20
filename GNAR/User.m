@@ -16,6 +16,53 @@
 
 //@dynamic scores;
 
+//@synthesize friends = _friends;
+@synthesize games = _games;
+@synthesize scores = _scores;
+//@synthesize createdAchievements = _createdAchievements;
+@synthesize createdGames = _createdGames;
+
+- (void)setGames:(PFRelation *)games
+{
+    _games = games;
+}
+- (PFRelation *)games
+{
+    if(_games == nil)
+    {
+        _games = [self relationForKey:@"games"];
+    }
+    return _games;
+}
+
+- (void)setScores:(PFRelation *)scores
+{
+    _scores = scores;
+}
+- (PFRelation *)scores
+{
+    if(_scores == nil)
+    {
+        _scores = [self relationForKey:@"scores"];
+    }
+    return _scores;
+}
+
+- (void)setCreatedGames:(PFRelation *)createdGames
+{
+    _createdGames = createdGames;
+}
+- (PFRelation *)createdGames
+{
+    if(_createdGames == nil)
+    {
+        _createdGames = [self relationForKey:@"createdGames"];
+    }
+    return _createdGames;
+}
+
+
+
 
 //--------------------------------------    Get Scores    ---------------------------------------------
 #pragma mark - Get Scores

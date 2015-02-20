@@ -191,9 +191,11 @@
 - (NSString *)createPlayersStringWithGame:(Game *)game
 {
     NSMutableString *playersString = [NSMutableString new];
-    for (int i = 0; i < game.players.count; i++)
+#warning This uses game.playersArray which is local only...find way to use only relation???
+    for (int i = 0; i < game.playersArray.count; i++)
     {
-        User *user = game.players[i];
+#warning This uses game.playersArray which is local only...find way to use only relation???
+        User *user = game.playersArray[i];
         [playersString appendString:user.username];
 //        [playersString appendString:@"\n"];
     }
