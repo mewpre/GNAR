@@ -15,6 +15,7 @@
 @interface HomeViewController ()<LoginViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property LoginViewController *loginVC;
 //@property Game *currentGame;
 //@property GameManager *gameManager;
 
@@ -50,13 +51,11 @@
 {
     [PFUser logOut];
     NSLog(@"Logged Out");
-
-    LoginViewController *vcObj = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    vcObj.delegate = self;
-    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:vcObj];
-
-    navCon.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-
+    self.loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    self.loginVC.delegate = self;
+    UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:self.loginVC];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Up" style:UIBarButtonItemStylePlain target:self action: @selector(onSignUpButtonPressed)];
+    self.loginVC.navigationItem.rightBarButtonItem = rightButton;
     [self presentViewController:navCon animated:NO completion:nil];
 }
 
@@ -67,7 +66,10 @@
     self.tabBarController.selectedIndex = 1;
 }
 
-
+- (void) onSignUpButtonPressed
+{
+    [self.loginVC performSegueWithIdentifier:@"SignUpSegue" sender:self];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
