@@ -85,6 +85,21 @@
         return pin;
     }
 }
+- (IBAction)onSegmentPressed:(UISegmentedControl *)sender
+{
+    if (sender.selectedSegmentIndex == 0)
+    {
+        [self.mapView setMapType:MKMapTypeStandard];
+    }
+    else if (sender.selectedSegmentIndex == 1)
+    {
+        [self.mapView setMapType:MKMapTypeHybrid];
+    }
+    else
+    {
+        [self.mapView setMapType:MKMapTypeSatellite];
+    }
+}
 
 //-----------------------------    Setup Location Manager    ----------------------------------
 #pragma mark - Setup Location Manager

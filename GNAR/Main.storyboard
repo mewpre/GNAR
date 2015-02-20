@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="41l-PE-IwK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="41l-PE-IwK">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1986,6 +1986,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hEv-Zq-BPR">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Qw4-ZV-LVe"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Qw4-ZV-LVe"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Qw4-ZV-LVe"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onSegmentPressed:" destination="vJx-8X-CVC" eventType="valueChanged" id="70S-5I-nv2"/>
+                                </connections>
+                            </segmentedControl>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ekh-fS-UW9">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <connections>
@@ -1995,33 +2019,49 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="caG-sU-z36" firstAttribute="top" secondItem="ekh-fS-UW9" secondAttribute="bottom" id="EMe-Lb-LMG"/>
+                            <constraint firstItem="caG-sU-z36" firstAttribute="top" secondItem="ekh-fS-UW9" secondAttribute="bottom" id="EMe-Lb-LMG">
+                                <variation key="heightClass=regular-widthClass=compact" constant="44"/>
+                            </constraint>
                             <constraint firstItem="ekh-fS-UW9" firstAttribute="top" secondItem="I4F-LP-tVI" secondAttribute="top" id="K9E-53-4yn">
-                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="ekh-fS-UW9" secondAttribute="trailing" id="VgF-bc-HuC"/>
+                            <constraint firstItem="hEv-Zq-BPR" firstAttribute="trailing" secondItem="I4F-LP-tVI" secondAttribute="trailingMargin" id="YUy-Ck-gIj"/>
                             <constraint firstItem="ekh-fS-UW9" firstAttribute="leading" secondItem="I4F-LP-tVI" secondAttribute="leading" id="eff-Tv-WXr"/>
+                            <constraint firstItem="hEv-Zq-BPR" firstAttribute="leading" secondItem="I4F-LP-tVI" secondAttribute="leadingMargin" id="hqJ-It-Ygx"/>
+                            <constraint firstItem="caG-sU-z36" firstAttribute="top" secondItem="hEv-Zq-BPR" secondAttribute="bottom" constant="8" id="mdf-cy-Xd5"/>
+                            <constraint firstItem="hEv-Zq-BPR" firstAttribute="top" secondItem="ekh-fS-UW9" secondAttribute="bottom" constant="8" id="uzg-H5-EIU"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="hEv-Zq-BPR"/>
                                 <exclude reference="ekh-fS-UW9"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="EMe-Lb-LMG"/>
                                 <exclude reference="K9E-53-4yn"/>
                                 <exclude reference="VgF-bc-HuC"/>
                                 <exclude reference="eff-Tv-WXr"/>
+                                <exclude reference="YUy-Ck-gIj"/>
+                                <exclude reference="hqJ-It-Ygx"/>
+                                <exclude reference="uzg-H5-EIU"/>
+                                <exclude reference="EMe-Lb-LMG"/>
+                                <exclude reference="mdf-cy-Xd5"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
+                                <include reference="hEv-Zq-BPR"/>
                                 <include reference="ekh-fS-UW9"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="EMe-Lb-LMG"/>
                                 <include reference="K9E-53-4yn"/>
                                 <include reference="VgF-bc-HuC"/>
                                 <include reference="eff-Tv-WXr"/>
+                                <include reference="YUy-Ck-gIj"/>
+                                <include reference="hqJ-It-Ygx"/>
+                                <include reference="uzg-H5-EIU"/>
+                                <exclude reference="EMe-Lb-LMG"/>
+                                <include reference="mdf-cy-Xd5"/>
                             </mask>
                         </variation>
                     </view>
