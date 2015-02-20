@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="41l-PE-IwK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="41l-PE-IwK">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -31,7 +31,6 @@
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5tg-0i-Vof">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="Cell" textLabel="FcX-1W-sa8" detailTextLabel="Bga-Od-Z9s" style="IBUITableViewCellStyleSubtitle" id="D7R-gK-mxd">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -73,7 +72,7 @@
                                 <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ine-pw-Ooi" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="8aN-aF-IJi"/>
                             <constraint firstAttribute="centerY" secondItem="D0E-kB-WXE" secondAttribute="centerY" id="HNF-37-LbQ"/>
@@ -442,9 +441,18 @@
                                     <action selector="onSegmentPressed:" destination="ImX-us-J8f" eventType="valueChanged" id="WVg-mn-OaI"/>
                                 </connections>
                             </segmentedControl>
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="do3-7a-h0f">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ImX-us-J8f" id="EJ2-u0-a9P"/>
+                                </connections>
+                            </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="84h-gK-eFf">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KSB-3G-cTS">
                                 <rect key="frame" x="0.0" y="150" width="600" height="450"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="HEG-v2-J5B">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -459,28 +467,22 @@
                                     <outlet property="delegate" destination="ImX-us-J8f" id="qIS-yK-dri"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="do3-7a-h0f">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ImX-us-J8f" id="EJ2-u0-a9P"/>
-                                </connections>
-                            </searchBar>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="84h-gK-eFf">
-                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="KSB-3G-cTS" firstAttribute="leading" secondItem="Vvn-gK-0JQ" secondAttribute="leading" id="2u3-RT-g75"/>
                             <constraint firstAttribute="centerX" secondItem="84h-gK-eFf" secondAttribute="centerX" id="4Qb-dj-EbN"/>
                             <constraint firstItem="Lao-nC-Mkh" firstAttribute="trailing" secondItem="Vvn-gK-0JQ" secondAttribute="trailingMargin" id="5E9-va-NyU"/>
-                            <constraint firstItem="KSB-3G-cTS" firstAttribute="top" secondItem="Lao-nC-Mkh" secondAttribute="bottom" constant="8" id="CcD-1y-vDV"/>
+                            <constraint firstItem="KSB-3G-cTS" firstAttribute="top" secondItem="Lao-nC-Mkh" secondAttribute="bottom" constant="8" id="CcD-1y-vDV">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-41"/>
+                            </constraint>
                             <constraint firstItem="do3-7a-h0f" firstAttribute="leading" secondItem="Vvn-gK-0JQ" secondAttribute="leadingMargin" constant="-16" id="D4Y-fI-LdL"/>
                             <constraint firstItem="do3-7a-h0f" firstAttribute="top" secondItem="x1b-xs-cGZ" secondAttribute="bottom" id="The-yZ-56M"/>
                             <constraint firstItem="Lao-nC-Mkh" firstAttribute="top" secondItem="do3-7a-h0f" secondAttribute="bottom" constant="6" id="Vqw-jv-5lW"/>
                             <constraint firstItem="Lao-nC-Mkh" firstAttribute="leading" secondItem="Vvn-gK-0JQ" secondAttribute="leadingMargin" id="Y5X-E5-dDZ"/>
-                            <constraint firstAttribute="bottom" secondItem="KSB-3G-cTS" secondAttribute="bottom" id="ZBj-E7-c3P"/>
+                            <constraint firstAttribute="bottom" secondItem="KSB-3G-cTS" secondAttribute="bottom" id="ZBj-E7-c3P">
+                                <variation key="heightClass=regular-widthClass=compact" constant="49"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="do3-7a-h0f" secondAttribute="trailing" constant="-16" id="l8I-V9-Dn6"/>
                             <constraint firstAttribute="trailing" secondItem="KSB-3G-cTS" secondAttribute="trailing" id="oRy-Yp-AMN"/>
                             <constraint firstAttribute="centerY" secondItem="84h-gK-eFf" secondAttribute="centerY" id="s6Z-4e-ZBt"/>
@@ -898,7 +900,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DiM-Lf-PhU" customClass="ParentTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="avf-8D-vCF" customClass="ParentTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -910,7 +912,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="DiM-Lf-PhU" firstAttribute="leading" secondItem="YDc-cp-0V9" secondAttribute="leading" id="I0f-Hn-CZl"/>
                             <constraint firstItem="DiM-Lf-PhU" firstAttribute="leading" secondItem="YDc-cp-0V9" secondAttribute="leading" id="XJm-D0-F1U"/>
@@ -1783,14 +1785,16 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="Nd7-4M-3FD" firstAttribute="leading" secondItem="KCD-Ht-55C" secondAttribute="leading" id="0zk-fF-WGk"/>
                             <constraint firstItem="Nd7-4M-3FD" firstAttribute="leading" secondItem="KCD-Ht-55C" secondAttribute="leading" id="H5m-zz-snP"/>
                             <constraint firstAttribute="trailing" secondItem="Nd7-4M-3FD" secondAttribute="trailing" id="LFu-Rv-9BB"/>
                             <constraint firstAttribute="bottom" secondItem="Nd7-4M-3FD" secondAttribute="bottom" id="SFy-0j-RDi"/>
                             <constraint firstAttribute="trailing" secondItem="Nd7-4M-3FD" secondAttribute="trailing" id="b2s-tj-why"/>
-                            <constraint firstItem="Nd7-4M-3FD" firstAttribute="top" secondItem="KCD-Ht-55C" secondAttribute="top" id="hVi-wb-bHj"/>
+                            <constraint firstItem="Nd7-4M-3FD" firstAttribute="top" secondItem="KCD-Ht-55C" secondAttribute="top" id="hVi-wb-bHj">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="Nd7-4M-3FD" firstAttribute="top" secondItem="KCD-Ht-55C" secondAttribute="top" id="pjf-jG-1wy"/>
                             <constraint firstItem="3ic-os-FsS" firstAttribute="top" secondItem="Nd7-4M-3FD" secondAttribute="bottom" id="xbx-RF-5xc"/>
                         </constraints>
@@ -1855,7 +1859,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OnR-e6-zUy">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="cN1-8k-cwe">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1871,9 +1874,11 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="OnR-e6-zUy" secondAttribute="bottom" id="Be7-5V-LDa"/>
+                            <constraint firstAttribute="bottom" secondItem="OnR-e6-zUy" secondAttribute="bottom" id="Be7-5V-LDa">
+                                <variation key="heightClass=regular-widthClass=compact" constant="44"/>
+                            </constraint>
                             <constraint firstItem="OnR-e6-zUy" firstAttribute="leading" secondItem="gt3-Uc-hwU" secondAttribute="leading" id="Cqj-3N-WSW"/>
                             <constraint firstAttribute="trailing" secondItem="OnR-e6-zUy" secondAttribute="trailing" id="HKs-t1-ynf"/>
                             <constraint firstItem="OnR-e6-zUy" firstAttribute="top" secondItem="gt3-Uc-hwU" secondAttribute="top" id="jg3-rd-5K8"/>
@@ -2070,7 +2075,7 @@
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="ZYc-Ch-Ba7" secondAttribute="trailing" constant="16" id="II9-34-tpS"/>
                             <constraint firstItem="ekh-fS-UW9" firstAttribute="top" secondItem="I4F-LP-tVI" secondAttribute="top" id="K9E-53-4yn">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="ekh-fS-UW9" secondAttribute="trailing" id="VgF-bc-HuC"/>
                             <constraint firstItem="ZYc-Ch-Ba7" firstAttribute="top" secondItem="fZe-M5-o96" secondAttribute="bottom" id="W6x-dv-jvY"/>
