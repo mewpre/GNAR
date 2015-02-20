@@ -33,7 +33,7 @@
     if (indexPath.section == 0)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
-        cell.textLabel.text = self.playerUsername;
+        cell.textLabel.text = self.playerText;
     }
     else
     {

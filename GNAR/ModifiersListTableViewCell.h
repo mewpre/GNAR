@@ -13,7 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
 @property NSMutableArray *modifiersList;
-@property NSString *playerUsername;
+@property NSString *playerText;
 
 - (void)adjustHeightOfTableview;
 

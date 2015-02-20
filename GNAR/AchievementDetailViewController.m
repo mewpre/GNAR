@@ -59,7 +59,7 @@
             // Create Dictionary to contain modifiers to add to scores
             NSMutableDictionary *modifiersDictionary = [NSMutableDictionary new];
             // Create Dictionary to hold scores to save to Parse
-            NSMutableArray *playersArray = [NSMutableArray new];
+            NSMutableArray *playersArray = [[NSMutableArray alloc]initWithObjects:[PFUser currentUser], nil];
             NSMutableString *snowLevel = [NSMutableString stringWithFormat:@"-1"];
             NSMutableString *saveKey = [NSMutableString stringWithString: @"NO"];
             NSDictionary *achievementData = @{
