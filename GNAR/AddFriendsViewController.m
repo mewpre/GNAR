@@ -179,19 +179,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // IF user is already selected:
-    if ([self.selectedUsersArray containsObject:self.displayedUsersArray[indexPath.row]])
+    User *user = self.displayedUsersArray[indexPath.row];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.objectId == %@", user.objectId];
+    NSArray *filtered = [self.selectedUsersArray filteredArrayUsingPredicate:predicate];
+    if (filtered.count > 0)
     {
-        // Remove checkmark to cell
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        // Remove player from selectedUsersArray
-        [self.selectedUsersArray removeObject:self.displayedUsersArray[indexPath.row]];
+        [self.selectedUsersArray removeObject:filtered.firstObject];
     }
     else
     {
-        // Add checkmark to cell
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-        // Add player to selectedUsersArray
         [self.selectedUsersArray addObject:self.displayedUsersArray[indexPath.row]];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

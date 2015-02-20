@@ -41,8 +41,6 @@
     [self.passwordTextField resignFirstResponder];
 }
 
-
-
 //----------------------------------------    Actions    ----------------------------------------------------
 #pragma mark - Actions
 - (IBAction)onLoginButtonPressed:(UIButton *)sender

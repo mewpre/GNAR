@@ -39,10 +39,6 @@
         {
             return self.playersArray.count;
         }
-//        else if (section == LWPlayerCell)
-//        {
-//            return self.playersArray.count;
-//        }
         else
         {
             return 1;
@@ -82,7 +78,6 @@
             snowCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             NSMutableArray *pointValues = [NSMutableArray new];
             for (int i = 0; i < self.achievement.pointValues.count; i++)
-//            for (NSNumber *score in self.achievement.pointValues)
             {
                 NSNumber *score = [self.achievement.pointValues objectAtIndex:i];
                 if ([score integerValue] == 0)
@@ -117,7 +112,6 @@
             if ([userAtIndex.objectId isEqual:[User currentUser].objectId])
             {
                 cell.playerText = [NSString stringWithFormat:@"%@ (me)", userAtIndex.username];
-
             }
             else
             {
@@ -172,9 +166,7 @@
         }
         else
         {
-
             PlayerTableViewCell *playerCell = [tableView dequeueReusableCellWithIdentifier:@"SelectPlayersCell"];
-//            playerCell.delegate = self;
             playerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
             return playerCell;
         }
@@ -239,7 +231,6 @@
     }
 }
 
-
 //-----------------------------    Add Players VC Delegate Methods   ---------------------------------------------
 
 - (void)reload
@@ -273,6 +264,7 @@
     //TODO: close drawer when add button pressed
     NSLog(@"Add Button pressed in subCell");
     [self.saveKey setString:@"YES"];
+    [self.detailDelegate didPressAddButtonAtParentIndex:self.parentIndex];
 }
 
 -(void)didChangeSegment:(NSInteger)selectedSegment

@@ -43,8 +43,6 @@
     [self.emailTextField resignFirstResponder];
 }
 
-
-
 //----------------------------------------    Actions    ----------------------------------------------------
 #pragma mark - Actions
 - (IBAction)onSignUpButtonPressed:(UIButton *)sender
@@ -60,7 +58,6 @@
     else if ([self.emailTextField.text isEqualToString:@""])
     {
         [self showSignUpErrorAlertController:@"Error: Email missing" withMessage:@"Please enter a email."];
-
     }
     else
     {

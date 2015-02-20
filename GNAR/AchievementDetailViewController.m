@@ -10,7 +10,7 @@
 #import "AchievementViewController.h"
 #import "SelectPlayersViewController.h"
 #import "DetailParentTableView.h"
-#import "ParentTableViewCell.h"
+//#import "ParentTableViewCell.h"
 #import "Achievement.h"
 #import "Score.h"
 #import "Game.h"
@@ -18,7 +18,7 @@
 #import "Enum.h"
 #import "GameManager.h"
 
-@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate> // SelectPlayersViewControllerDelegate> // AchievementViewControllerDelegate>
+@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet DetailParentTableView *tableView;
 @property NSMutableArray *achievementsDataArray;
@@ -44,7 +44,6 @@
     {
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(onAddButtonPressed)];
         // Disable Add button (so you can't add modifiers until you select modifier)
-//        addButton.enabled = NO;
         self.navigationItem.rightBarButtonItem = addButton;
     }
 
@@ -60,6 +59,7 @@
             NSMutableDictionary *modifiersDictionary = [NSMutableDictionary new];
             // Create Dictionary to hold scores to save to Parse
             NSMutableArray *playersArray = [[NSMutableArray alloc]initWithObjects:[User currentUser], nil];
+            // Set to -1 to make segmented control unselected by default
             NSMutableString *snowLevel = [NSMutableString stringWithFormat:@"-1"];
             NSMutableString *saveKey = [NSMutableString stringWithString: @"NO"];
             NSDictionary *achievementData = @{
@@ -89,7 +89,6 @@
     [self.view setNeedsUpdateConstraints];
 }
 
-
 //-----------------------------------    SUB Table View Data    ---------------------------------------------
 //                             ----------    Parent Cells    ------------
 #pragma mark - Sub Table View Data Source - Parent
@@ -112,9 +111,15 @@
 
 - (NSString *)subtitleLabelForParentCellAtIndex:(NSInteger)parentIndex
 {
-    return @"";
+    if ([[self.achievementsDataArray[parentIndex] objectForKey:@"saveKey"] isEqualToString:@"YES"])
+    {
+        return @"🌟";
+    }
+    else
+    {
+        return @"";
+    }
 }
-
 
 //                              ----------    Child Cells    ------------
 #pragma mark - Sub Table View Data Source - Child
@@ -126,7 +131,6 @@
 
 - (NSInteger)heightForChildRows
 {
-//    NSLog(@"%ld", (long)[self.tableView.childHeightString integerValue]);
     return [self.tableView.childHeightString integerValue];
 }
 
@@ -179,28 +183,6 @@
               }];
          }];
     }
-
-//    for (PFUser *user in scoreData[@"playersArray"])
-//    {
-//        Score *score = [[Score alloc]initScoreWithAchievementData:scoreData];
-//        PFRelation *scorerRelation = [score relationForKey:@"scorer"];
-//        [scorerRelation addObject:user];
-//        PFRelation *gameRelation = [score relationForKey:@"game"];
-//        [gameRelation addObject:self.currentGame];
-//        [score saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//         {
-//             NSLog(@"Saved score!");
-//             if ([user isEqual:[User currentUser]])
-//             {
-//                 PFRelation *scoreRelation = [user relationForKey:@"scores"];
-//                 [scoreRelation addObject:score];
-//                 [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//                  {
-//                      NSLog(@"Saved score to self");
-//                  }];
-//             }
-//         }];
-//    }
 }
 
 - (void)saveModifiersFromAchievementData:(NSDictionary *)modifierData
@@ -228,34 +210,7 @@
             [users addObject:user.username];
         }
     }
-//    for (PFUser *user in modifierData[@"playersArray"])
-//    {
-//        Score *score = [[Score alloc]initScoreWithAchievementData:modifierData];
-//        PFRelation *scorerRelation = [score relationForKey:@"scorer"];
-//        [scorerRelation addObject:user];
-//        PFRelation *gameRelation = [score relationForKey:@"game"];
-//        [gameRelation addObject:self.currentGame];
-//
-//        // If userName already exists as key in dictionary:
-//        if ([[self.modifiersDictionary allKeys] containsObject:user.username])
-//        {
-//            // Get array with userName key
-//            NSMutableArray *userScores = [self.modifiersDictionary objectForKey:user.username];
-//            [userScores addObject:score];
-//        }
-//        else
-//        {
-//            // Create new array and add score
-//            NSMutableArray *userScores = [NSMutableArray arrayWithObject:score];
-//            [self.modifiersDictionary setObject:userScores forKey:user.username];
-//            NSMutableArray *users = [self.modifiersDictionary objectForKey:@"users"];
-//            // Add username to list of users that have had modifiers to add to scores
-//            [users addObject:user.username];
-//        }
-//    }
 }
-
-
 
 //-------------------------------------    Actions    ----------------------------------------------------
 #pragma mark - Actions
@@ -303,9 +258,9 @@
     {
         SelectPlayersViewController *selectVC = segue.destinationViewController;
         selectVC.selectedUsersArray = [self.achievementsDataArray objectAtIndex:self.activeParentCellIndex][@"playersArray"];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
 }
-
 
 - (void)didGetIndex:(NSInteger)index
 {

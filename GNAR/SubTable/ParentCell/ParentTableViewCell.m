@@ -26,22 +26,21 @@
     self.contentView.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 16, 200, 23)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 150, 20)];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.opaque = NO;
     titleLabel.textColor = [UIColor darkTextColor];
     titleLabel.textAlignment = NSTextAlignmentLeft;
     [self.contentView addSubview:titleLabel];
-    
-    
-    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 41, 200, 16)];
+
+    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(325, 15, 20, 20)];
     subtitleLabel.backgroundColor = [UIColor clearColor];
     subtitleLabel.opaque = NO;
     subtitleLabel.textColor = [UIColor darkTextColor];
     subtitleLabel.textAlignment = NSTextAlignmentLeft;
     [self.contentView addSubview:subtitleLabel];
     
-    UIImageView *bottomLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 53, 370, 2)];
+    UIImageView *bottomLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 48, 370, 2)];
     bottomLine.backgroundColor = [UIColor colorWithWhite:( 42/255.0) alpha:1.0];
     [self.contentView addSubview:bottomLine];
     
