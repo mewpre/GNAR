@@ -18,6 +18,9 @@
 @property Achievement *achievement;
 @property Achievement *achievementPointer;
 
+@property (retain) PFRelation *modifiers;
+
+
 + (NSString *)parseClassName;
 
 - (instancetype)initScoreWithAchievementData: (NSDictionary *)scoreData;

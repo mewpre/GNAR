@@ -15,6 +15,19 @@
 @dynamic snowLevel, score, completedAt;
 @dynamic achievement, achievementPointer;
 
+@synthesize modifiers = _modifiers;
+
+- (void) setModifiers:(PFRelation *)modifiers{
+    _modifiers = modifiers;
+}
+
+- (PFRelation *) modifiers{
+    if(_modifiers== nil) {
+        _modifiers = [self relationForKey:@"modifiers"];
+    }
+    return _modifiers;
+}
+
 typedef NS_ENUM(NSInteger, AchievementType) {
     LineWorth,
     ECP,
