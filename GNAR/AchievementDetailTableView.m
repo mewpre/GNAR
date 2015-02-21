@@ -60,6 +60,7 @@
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
+            infoCell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
             infoCell.funLabel.text = @"Fun Factor: ❄︎❄︎❄︎";
             infoCell.descriptionLabel.text = @"Description: Super Awesome Saus is one of the best, most super awesome sauses around. Don't be fooled by the extreme awesomeness of the point value.";
             infoCell.difficultyLabel.text = @"Difficulty: Super Hard";
@@ -119,6 +120,7 @@
             }
             NSMutableArray *scores = self.modifiersDictionary[userAtIndex.username];
             cell.modifiersList = scores;
+            cell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
             [cell.tableView reloadData];
             [cell adjustHeightOfTableview];
             return cell;
@@ -139,6 +141,7 @@
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
             infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
+            infoCell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
 //            infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
 
 //            infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
@@ -150,7 +153,7 @@
         else if (indexPath.section == PlayerCell)
         {
             UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
-
+            playersCell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
             User *userAtIndex = self.playersArray[indexPath.row];
             if ([userAtIndex.objectId isEqual:[User currentUser].objectId])
             {
