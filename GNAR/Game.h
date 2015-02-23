@@ -20,9 +20,13 @@
 @property (retain, nonatomic) PFRelation *players;
 @property (retain, nonatomic) PFRelation *creator;
 
+- (void)saveGame;
++ (void)loadSavedGame;
++ (void)loadSavedGameWithCompletion:(void(^)(Game *loadedGame))complete;
 
 + (void)getCurrentGameWithCompletion:(void(^)(Game *currentGame))complete;
 - (instancetype)initWithName:(NSString *)name mountain:(NSString *)mountain;
++ (void)getGameWithId:(NSString *)gameId withCompletion:(void(^)(Game *game))complete;
 - (void)getGameWithCompletion:(void(^)(Game *game))complete;
 + (void)getAllGames:(void(^)(NSArray *allGames))complete;
 - (void)getPlayersOfGameWithCompletion:(void(^)(NSArray *players))complete;
