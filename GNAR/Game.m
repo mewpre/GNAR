@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Yi-Chin Sun. All rights reserved.
 //
 
-#import "Game.h"
 #import "User.h"
+#import "Game.h"
+#import "GameManager.h"
 
 @implementation Game
 
@@ -20,6 +21,66 @@
 @synthesize players = _players;
 @synthesize creator = _creator;
 
+- (void)saveGame
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *myEncodedObject = [NSKeyedArchiver archivedDataWithRootObject:self];
+    [defaults setObject:myEncodedObject forKey:@"CurrentGame"];
+    [defaults synchronize];
+    [GameManager sharedManager].currentGame = self;
+}
+
++ (void)loadSavedGame
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    // Load game object from defaults
+    NSData *myEncodedGame = [defaults objectForKey:@"CurrentGame"];
+    Game *game = (Game *)[NSKeyedUnarchiver unarchiveObjectWithData:myEncodedGame];
+
+    // Else: laod game from defaults only (which doesn't have realations connected yet)
+    //TODO: encode game PFRelations so we can pull relations from nsuserdefaults too
+    [GameManager sharedManager].currentGame = game;
+}
+
++ (void)loadSavedGameWithCompletion:(void(^)(Game *loadedGame))complete
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    // Load GAME ID from defaults
+    NSString *gameId = [defaults objectForKey:@"CurrentGameId"];
+    // If network connection: load game from parse
+    [Game getGameWithId:gameId withCompletion:^(Game *game) {
+        [GameManager sharedManager].currentGame = game;
+        NSLog(@"Loaded game: %@", game);
+        complete(game);
+    }];
+
+}
+
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.name forKey:@"name"];
+    [encoder encodeObject:self.mountain forKey:@"mountain"];
+    [encoder encodeObject:self.startAt forKey:@"startAt"];
+    [encoder encodeObject:self.endAt forKey:@"endAt"];
+
+    [encoder encodeObject:self.playersArray forKey:@"playersArray"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self)
+    {
+        self.name = [decoder decodeObjectForKey:@"name"];
+        self.mountain = [decoder decodeObjectForKey:@"mountain"];
+        self.startAt = [decoder decodeObjectForKey:@"startAt"];
+        self.endAt = [decoder decodeObjectForKey:@"endAt"];
+        self.playersArray = [decoder decodeObjectForKey:@"playersArray"];
+    }
+    return self;
+}
 
 - (void)setPlayers:(PFRelation *)players
 {
@@ -77,6 +138,17 @@
         {
             NSLog(@"Fetched %lu games.", (unsigned long)objects.count);
         }
+        complete(objects.firstObject);
+    }];
+}
+
++ (void)getGameWithId:(NSString *)gameId withCompletion:(void(^)(Game *game))complete
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Game"];
+    [query whereKey:@"objectId" equalTo:gameId];
+
+//    [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         complete(objects.firstObject);
     }];
 }

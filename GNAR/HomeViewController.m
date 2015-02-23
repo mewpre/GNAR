@@ -11,6 +11,8 @@
 #import <Parse/Parse.h>
 #import "GameManager.h"
 #import "User.h"
+#import "AppDelegate.h"
+#define kGameIdKey @"CurrentGameId"
 
 
 @interface HomeViewController ()<LoginViewControllerDelegate>
@@ -19,6 +21,7 @@
 @property LoginViewController *loginVC;
 //@property Game *currentGame;
 //@property GameManager *gameManager;
+@property NSUserDefaults *defaults;
 
 @end
 
@@ -27,23 +30,44 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[GameManager sharedManager] printCurrentGame];
 
-    if (![GameManager sharedManager].currentGame)
-    {
-        //TODO: decide which game to pull here (change getCurrentGameWithCompletion method) OR ask user to create or select game?
+    self.defaults = [NSUserDefaults standardUserDefaults];
+
+    [[GameManager sharedManager] printCurrentGame];
+//    if (![GameManager sharedManager].currentGame)
+//    {
+//        //TODO: decide which game to pull here (change getCurrentGameWithCompletion method) OR ask user to create or select game?
 //        [Game getCurrentGameWithCompletion:^(Game *currentGame) {
 //            // Set game object to singleton
 //            [GameManager sharedManager].currentGame = currentGame;
 //            NSLog(@"Fetched game: %@", [GameManager sharedManager].currentGame.name);
 //        }];
-    }
+//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
+    // If no current game exists:
+    if (![self.defaults objectForKey:kGameIdKey])
+    {
+        //TODO: ask/tell user to select or create game
+        // Tell user to create or select a game
+        // Alert view to prompt user to select game???
+    }
+    else
+    {
+        // Load current game from user defaults and set to global current game
+//        [Game loadSavedGame];
+//        NSLog(@"Loaded game from defaults: %@", [GameManager sharedManager].currentGame);
+
+        [Game loadSavedGameWithCompletion:^(Game *loadedGame) {
+            NSLog(@"Loaded game from defaults from parse: %@", loadedGame);
+        }];
+    }
     self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [User currentUser].username];
+    NSLog(@"GameId from NSDefaults: %@", [self.defaults objectForKey:kGameIdKey]);
 }
 
 

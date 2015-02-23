@@ -11,6 +11,7 @@
 #import "GameManager.h"
 #import "User.h"
 #import "Game.h"
+#define kGameIdKey @"CurrentGameId"
 
 @interface GamesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,6 +25,7 @@
 //@property Game *currentGame;
 
 @property UIRefreshControl *refreshControl;
+@property NSUserDefaults *defaults;
 
 @end
 
@@ -34,6 +36,8 @@
     [super viewDidLoad];
 
     [[GameManager sharedManager] printCurrentGame];
+
+    self.defaults = [NSUserDefaults standardUserDefaults];
 
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -171,7 +175,18 @@
 {
     Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
 
-    //TODO: Add alert to ask if you want to change games
+    //TODO: Add alert to ask if you want to officially change games
+
+    // Save game to NSUserDefaults
+//    [selectedGame saveGame];
+
+    // Save game objectID to NSUserDefaults
+    NSString *gameId = selectedGame.objectId;
+    [self.defaults setObject:gameId forKey:kGameIdKey];
+    [self.defaults synchronize];
+
+    // Save Game to NSUserDefaults
+    [selectedGame saveGame];
 
     // Set current game to selectedGame
     [GameManager sharedManager].currentGame = selectedGame;
