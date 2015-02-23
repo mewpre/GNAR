@@ -30,26 +30,30 @@
     [GameManager sharedManager].currentGame = self;
 }
 
-+ (void)loadSavedGame
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    // Load game object from defaults
-    NSData *myEncodedGame = [defaults objectForKey:@"CurrentGame"];
-    Game *game = (Game *)[NSKeyedUnarchiver unarchiveObjectWithData:myEncodedGame];
-
-    // Else: laod game from defaults only (which doesn't have realations connected yet)
-    //TODO: encode game PFRelations so we can pull relations from nsuserdefaults too
-    [GameManager sharedManager].currentGame = game;
-}
+//+ (void)loadSavedGame
+//{
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//
+//    // Load game object from defaults
+//    NSData *myEncodedGame = [defaults objectForKey:@"CurrentGame"];
+//    Game *game = (Game *)[NSKeyedUnarchiver unarchiveObjectWithData:myEncodedGame];
+//
+//    // Else: laod game from defaults only (which doesn't have realations connected yet)
+//    //TODO: encode game PFRelations so we can pull relations from nsuserdefaults too
+//    [GameManager sharedManager].currentGame = game;
+////    [GameManager sharedManager].currentPlayers = 
+//
+//    // Update players
+//}
 
 + (void)loadSavedGameWithCompletion:(void(^)(Game *loadedGame))complete
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     // Load GAME ID from defaults
     NSString *gameId = [defaults objectForKey:@"CurrentGameId"];
-    // If network connection: load game from parse
+    // Load game from parse
     [Game getGameWithId:gameId withCompletion:^(Game *game) {
+        // Save game to NSUserDefaults
         [GameManager sharedManager].currentGame = game;
         NSLog(@"Loaded game: %@", game);
         complete(game);
@@ -146,6 +150,7 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Game"];
     [query whereKey:@"objectId" equalTo:gameId];
+//    [query includeKey:@"players"];
 
 //    [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

@@ -8,6 +8,7 @@
 
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import "Game.h"
 
 @interface User : PFUser <PFSubclassing>
 
@@ -31,6 +32,7 @@
 
 //@property NSMutableArray *scores;
 
+- (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete;
 //- (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete;
 + (void)getCurrentUserScoresWithCompletion:(void(^)(NSArray *userScoresIncludingModifiers))complete;
 + (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *currentUserGames))complete;

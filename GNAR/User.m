@@ -67,7 +67,7 @@
 //--------------------------------------    Get Scores    ---------------------------------------------
 #pragma mark - Get Scores
 
-+ (void)getCurrentUserScoresWithCompletion:(void(^)(NSArray *userScoresIncludingModifiers))complete
++ (void)getUserScoresWithCompletion:(void(^)(NSArray *userScoresIncludingModifiers))complete
 {
     
     PFRelation *relation = [[User currentUser] relationForKey:@"scores"];
@@ -96,32 +96,14 @@
 
 //--------------------------------------    Get Games    ---------------------------------------------
 #pragma mark - Get Games
-+ (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *currentUserGames))complete
-{
-    PFRelation *relation = [[User currentUser] relationForKey:@"games"];
-//    [relation.query includeKey:@"players"];
-    [relation.query addAscendingOrder:@"createdAt"];
-    // Apply local cache
-    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error)
-        {
-            NSLog(@"%@", error);
-        }
-        else
-        {
-            NSLog(@"Fetched %lu games with no errors", (unsigned long)objects.count);
-        }
-        complete(objects);
-    }];
-}
 
-//- (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete
+// ** Don't think we use this, could maybe delete **
+//+ (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *currentUserGames))complete
 //{
-//    PFQuery *query = [PFQuery queryWithClassName:@"Score"];
-//    [query whereKey:@"scorer" equalTo:self];
-//    [query whereKey:@"game" equalTo:]
-//
-//    PFRelation *relation = [self relationForKey:@"scores"];
+//    PFRelation *relation = [[User currentUser] relationForKey:@"games"];
+////    [relation.query includeKey:@"players"];
+//    [relation.query addAscendingOrder:@"createdAt"];
+//    // Apply local cache
 //    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 //        if (error)
 //        {
@@ -129,16 +111,35 @@
 //        }
 //        else
 //        {
-//            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
+//            NSLog(@"Fetched %lu games with no errors", (unsigned long)objects.count);
 //        }
 //        complete(objects);
-//
 //    }];
 //}
+
+- (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Score"];
+    [query whereKey:@"scorer" equalTo:self];
+    [query whereKey:@"game" equalTo:game];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
+        }
+        complete(objects);
+    }];
+}
 
 
 //--------------------------------------    Get Users    ---------------------------------------------
 #pragma mark - Get Users
+
+
 + (void)getAllUsers:(void(^)(NSArray *array))complete
 {
     PFQuery *query = [PFUser query];
