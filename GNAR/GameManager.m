@@ -13,6 +13,13 @@
 //@synthesize currentGame;
 static GameManager *gameManager = nil;
 
+
+
+
+
+
+
+
 + (GameManager *)sharedManager
 {
     if (!gameManager)
@@ -28,6 +35,7 @@ static GameManager *gameManager = nil;
 - (void)printCurrentGame
 {
     NSLog(@"Saved singleton game: %@", self.currentGame.name);
+    NSLog(@"Saved singleton game player count: %lu", (unsigned long)self.currentGame.playersArray.count);
 }
 
 //- (GameManager *)init

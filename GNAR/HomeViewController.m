@@ -21,6 +21,13 @@
 
 @property CLLocationManager *locationManager;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstPlaceUserLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondPlaceUserLabel;
+@property (weak, nonatomic) IBOutlet UILabel *thirdPlaceUserLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstPlaceScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secondPlaceScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *thirdPlaceScoreLabel;
 @property LoginViewController *loginVC;
 //@property Game *currentGame;
 //@property GameManager *gameManager;
@@ -107,8 +114,23 @@
 //        [Game loadSavedGame];
 //        NSLog(@"Loaded game from defaults: %@", [GameManager sharedManager].currentGame);
 
+        // Load saved game form Parse using GameId from NSUserDefaults
         [Game loadSavedGameWithCompletion:^(Game *loadedGame) {
             NSLog(@"Loaded game from defaults from parse: %@", loadedGame);
+
+//            // Load game's players from Parse
+//            [loadedGame getPlayersOfGameWithCompletion:^(NSArray *players) {
+//                // Convert users to Player objects
+//                NSMutableArray *playersArray = [NSMutableArray new];
+//                for (User *user in players)
+//                {
+//
+//                }
+//                // Save players as singletons
+//
+//            }];
+
+
         }];
     }
     self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [User currentUser].username];

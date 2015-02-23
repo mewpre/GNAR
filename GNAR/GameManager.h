@@ -12,6 +12,7 @@
 @interface GameManager : NSObject
 
 @property Game *currentGame;
+@property NSArray *currentPlayers;
 
 + (GameManager *)sharedManager;
 - (void)printCurrentGame;
