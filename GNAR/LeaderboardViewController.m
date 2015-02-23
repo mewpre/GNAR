@@ -24,6 +24,7 @@
 @property NSArray *playerScoresArray;
 
 @property NSMutableDictionary *playersScoresData;
+@property NSMutableDictionary *playersTotalScoresData;
 
 @end
 
@@ -55,14 +56,10 @@
 
         // Set up dictionary to hold players (and then scores later)
         self.playersScoresData = [NSMutableDictionary new];
+        self.playersTotalScoresData = [NSMutableDictionary new];
+
         [self.playersScoresData setObject:players forKey:@"playersArray"];
-
-        // Get scores for all other players within current game
-
-//        [self getScoresForUsers:players forGame:self.currentGame withCompletion:^(NSArray *playersScores) {
-//            self.playerScoresArray = playersScores;
-//        }];
-
+        [self.playersTotalScoresData setObject:players forKey:@"playersArray"];
 
 
         for (User *user in self.playersArray)
@@ -73,9 +70,14 @@
             [self getUserScores:user forGame:self.currentGame withCompletion:^(NSArray *userScores) {
                 // Set fetched scores to local object.scores
                 //TODO: change this to GQL local data storage
-//                [user.scores addObjectsFromArray:userScores];
                 [self.playersScoresData setObject:userScores forKey:user.username];
-
+                NSInteger tempScore = 0;
+                for (Score *score in userScores)
+                {
+                    tempScore = tempScore + [score.score integerValue];
+                }
+                NSNumber *totalScore = [NSNumber numberWithInteger:tempScore];
+                [self.playersTotalScoresData setObject:totalScore forKey:user.username];
                 [self.tableView reloadData];
                 [self.activitySpinner stopAnimating];
             }];
@@ -85,25 +87,6 @@
 
 //--------------------------------------    Helper Methods    ---------------------------------------------
 #pragma mark - Helper Methods
-//- (void)getScoresForUsers:(NSArray *)users forGame:(Game *)game withCompletion:(void(^)(NSArray *playersScores))complete
-//{
-//    PFQuery *query = [PFQuery queryWithClassName:@"Score"];
-//    [query whereKey:@"scorer" containedIn:users];
-//    [query whereKey:@"game" equalTo:game];
-//    [query includeKey:@"Modifiers"];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (error)
-//        {
-//            NSLog(@"%@", error);
-//        }
-//        else
-//        {
-//            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
-//        }
-//        complete(objects);
-//    }];
-//}
-
 - (void)getUserScores:(User *)user forGame:(Game *)game withCompletion:(void(^)(NSArray *userScores))complete
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Score"];
@@ -139,13 +122,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     NSArray *playersArray = [self.playersScoresData objectForKey:@"playersArray"];
     User *player = playersArray[indexPath.row];
-    int totalScore = 0;
-    for (Score *score in [self.playersScoresData objectForKey:player.username])
-    {
-        totalScore = totalScore + [score.score intValue];
-    }
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", totalScore];
-    cell.textLabel.text = [self.playersArray[indexPath.row] username];
+//    int totalScore = 0;
+//    for (Score *score in [self.playersScoresData objectForKey:player.username])
+//    {
+//        totalScore = totalScore + [score.score intValue];
+//    }
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.playersTotalScoresData objectForKey:player.username]];
+    cell.textLabel.text = player.username;
     cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
