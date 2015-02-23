@@ -68,6 +68,7 @@
 //    }];
 
     [User getCurrentUserGamesWithCompletion:^(NSArray *currentUserGames) {
+
         self.gamesArray = currentUserGames;
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];

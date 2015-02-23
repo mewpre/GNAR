@@ -22,12 +22,6 @@
 @property CLLocationManager *locationManager;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userScoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *firstPlaceUserLabel;
-@property (weak, nonatomic) IBOutlet UILabel *secondPlaceUserLabel;
-@property (weak, nonatomic) IBOutlet UILabel *thirdPlaceUserLabel;
-@property (weak, nonatomic) IBOutlet UILabel *firstPlaceScoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *secondPlaceScoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *thirdPlaceScoreLabel;
 @property LoginViewController *loginVC;
 //@property Game *currentGame;
 //@property GameManager *gameManager;
