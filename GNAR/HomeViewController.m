@@ -14,6 +14,8 @@
 #import "AppDelegate.h"
 #define kGameIdKey @"CurrentGameId"
 
+#import "Achievement.h"
+
 
 @interface HomeViewController ()<LoginViewControllerDelegate, CLLocationManagerDelegate>
 
@@ -31,6 +33,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    NSLog(@"Saved achievements");
+
 
     self.defaults = [NSUserDefaults standardUserDefaults];
 
