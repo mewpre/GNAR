@@ -14,6 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activitySpinner;
+@property (weak, nonatomic) IBOutlet UILabel *myUserNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *myScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *myRankLabel;
 
 @property UIRefreshControl *refreshControl;
 @property NSArray *playersArray;
