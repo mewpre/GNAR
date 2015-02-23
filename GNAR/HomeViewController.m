@@ -37,6 +37,13 @@
 
     NSLog(@"Saved achievements");
 
+//    // Testing push notifications
+//    PFQuery *pushQuery = [PFInstallation query];
+//    [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
+//
+//    // Send push notification to query
+//    [PFPush sendPushMessageToQueryInBackground:pushQuery
+//                                   withMessage:@"Hello World!"];
 
     self.defaults = [NSUserDefaults standardUserDefaults];
 

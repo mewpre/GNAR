@@ -41,6 +41,15 @@
     // To track statistics around application opens
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
+    // Configure app to receive push notifications
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+
     [[UILabel appearance] setTextColor:[UIColor whiteColor]];
     [[UIDatePicker appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
@@ -93,6 +102,22 @@
     return [FBAppCall handleOpenURL:url
                   sourceApplication:sourceApplication
                         withSession:[PFFacebookUtils session]];
+}
+
+// Used to inform Parse about device registration
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    currentInstallation.channels = @[@"global"];
+    [currentInstallation saveInBackground];
+}
+
+// Handles push notification when app is running
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    //TODO: have app handle push notification instead of using Parse
+    [PFPush handlePush:userInfo];
 }
 
 @end
