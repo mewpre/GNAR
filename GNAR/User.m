@@ -98,24 +98,24 @@
 #pragma mark - Get Games
 
 // ** Don't think we use this, could maybe delete **
-//+ (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *currentUserGames))complete
-//{
-//    PFRelation *relation = [[User currentUser] relationForKey:@"games"];
-////    [relation.query includeKey:@"players"];
-//    [relation.query addAscendingOrder:@"createdAt"];
-//    // Apply local cache
-//    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (error)
-//        {
-//            NSLog(@"%@", error);
-//        }
-//        else
-//        {
-//            NSLog(@"Fetched %lu games with no errors", (unsigned long)objects.count);
-//        }
-//        complete(objects);
-//    }];
-//}
++ (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *currentUserGames))complete
+{
+    PFRelation *relation = [[User currentUser] relationForKey:@"games"];
+//    [relation.query includeKey:@"players"];
+    [relation.query addAscendingOrder:@"createdAt"];
+    // Apply local cache
+    [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            NSLog(@"Fetched %lu games with no errors", (unsigned long)objects.count);
+        }
+        complete(objects);
+    }];
+}
 
 - (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete
 {
