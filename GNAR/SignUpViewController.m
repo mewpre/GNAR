@@ -112,7 +112,6 @@
                 [[User currentUser] setObject:userData[@"gender"] forKey:@"gender"];
                 [[User currentUser] saveInBackground];
                 [self dismissViewControllerAnimated:NO completion:nil];
-
             }
         }];
     }

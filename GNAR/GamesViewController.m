@@ -164,29 +164,49 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
+    if (![[GameManager sharedManager].currentGame isEqual:selectedGame])
+    {
+        //TODO: Add alert to ask if you want to officially change games
 
-    //TODO: Add alert to ask if you want to officially change games
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Select %@?", selectedGame.name]
+                                                                       message:[NSString stringWithFormat: @"Are you sure you want to make %@ your current game?", selectedGame.name]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                             {
+                                 //Save Game to NSUserDefaults
+                                 // Save game to NSUserDefaults
+                                 //    [selectedGame saveGame];
 
-    // Save game to NSUserDefaults
-//    [selectedGame saveGame];
+                                 // Save game objectID to NSUserDefaults
+                                 NSString *gameId = selectedGame.objectId;
+                                 [self.defaults setObject:gameId forKey:kGameIdKey];
+                                 [self.defaults synchronize];
 
-    // Save game objectID to NSUserDefaults
-    NSString *gameId = selectedGame.objectId;
-    [self.defaults setObject:gameId forKey:kGameIdKey];
-    [self.defaults synchronize];
+                                 // Save Game to NSUserDefaults
+                                 [selectedGame saveGame];
 
-    // Save Game to NSUserDefaults
-    [selectedGame saveGame];
+                                 // Set current game to selectedGame
+                                 [GameManager sharedManager].currentGame = selectedGame;
 
-    // Set current game to selectedGame
-    [GameManager sharedManager].currentGame = selectedGame;
+                                 NSLog(@"%@", [GameManager sharedManager].currentGame.name);
+                                 //    [self.gameManager.currentGame getGameWithCompletion:^(Game *game) {
+                                 //        // Save game as singleton in Core Data
+                                 //        self.gameManager.currentGame = game;
+                                 //    }];
+                                 //    [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+                             }];
 
-    NSLog(@"%@", [GameManager sharedManager].currentGame.name);
-//    [self.gameManager.currentGame getGameWithCompletion:^(Game *game) {
-//        // Save game as singleton in Core Data
-//        self.gameManager.currentGame = game;
-//    }];
-//    [self.tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+        {
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        }];
+
+        [alert addAction:cancel];
+        [alert addAction:ok];
+
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+
 }
 
 

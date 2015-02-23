@@ -61,6 +61,7 @@
              {
                  NSLog(@"Logged in as %@", [User currentUser].username);
                  [self.delegate didDismissPresentedViewController];
+                 self.tabBarController.selectedIndex = 2;
                  // Clear all local cached data
                  [PFQuery clearAllCachedResults];
              }
@@ -115,12 +116,12 @@
 
 - (void)showLoginErrorAlertController: (NSString *)errorTitle withMessage: (NSString*)errorMessage
 {
-    UIAlertController * alert= [UIAlertController
+    UIAlertController *alert= [UIAlertController
                                 alertControllerWithTitle:errorTitle
                                 message:errorMessage
                                 preferredStyle:UIAlertControllerStyleAlert];
 
-    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
                                                    [alert dismissViewControllerAnimated:YES completion:nil];
                                                }];
