@@ -148,8 +148,15 @@ return cell;
         UserAchievementsViewController *userAchieveVC = segue.destinationViewController;
 
 //        userAchieveVC.scoresArray = self.playersArray[[self.tableView indexPathForSelectedRow].row][@"scores"];
-        //TODO: Have player passed correspond to username in sortedPlayersArray
-        userAchieveVC.currentPlayer = self.playersArray[[self.tableView indexPathForSelectedRow].row];
+
+        NSString *selectedUsername = self.sortedPlayersArray[[self.tableView indexPathForSelectedRow].row];
+        for (User *user in self.playersArray)
+        {
+            if ([selectedUsername isEqualToString:user.username])
+            {
+                userAchieveVC.currentPlayer = user;
+            }
+        }
         userAchieveVC.currentGame = self.currentGame;
     }
 //    else
@@ -162,10 +169,12 @@ return cell;
 
 - (void) sortPlayerTotalDictionary
 {
+    //TODO: Should have the cells contain users instead of just the 
     self.sortedPlayersArray = [self.playersTotalScoresData keysSortedByValueUsingComparator: ^(id obj1, id obj2) {
         // Switching the order of the operands reverses the sort direction
         return [obj2 compare:obj1];
     }];
+    
 }
 
 

@@ -123,7 +123,7 @@
 - (void)didPressAddButtonAtParentIndex:(NSInteger)parentIndex
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:parentIndex inSection:0];
-    ParentTableViewCell *parentCell = (ParentTableViewCell *)[self cellForRowAtIndexPath:indexPath];
+//    ParentTableViewCell *parentCell = (ParentTableViewCell *)[self cellForRowAtIndexPath:indexPath];
 //    parentCell.subtitleLabel.text = @"🌟";
 //    parentCell.detailTextLabel.text = @"🌟";
     [self reloadData];
