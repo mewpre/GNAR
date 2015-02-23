@@ -22,7 +22,6 @@
 
 @property (weak, nonatomic) IBOutlet DetailParentTableView *tableView;
 @property NSMutableArray *achievementsDataArray;
-@property NSMutableArray *playersArrayForPassing;
 @property NSInteger activeParentCellIndex;
 
 @property NSMutableArray *playersArray;
@@ -205,9 +204,9 @@
             // Create new array and add score
             NSMutableArray *userScores = [NSMutableArray arrayWithObject:score];
             [self.modifiersDictionary setObject:userScores forKey:user.username];
-            NSMutableArray *users = [self.modifiersDictionary objectForKey:@"users"];
-            // Add username to list of users that have had modifiers to add to scores
-            [users addObject:user.username];
+//            NSMutableArray *users = [self.modifiersDictionary objectForKey:@"users"];
+//            // Add username to list of users that have had modifiers to add to scores
+//            [users addObject:user.username];
         }
     }
 }

@@ -33,7 +33,7 @@
     titleLabel.textAlignment = NSTextAlignmentLeft;
     [self.contentView addSubview:titleLabel];
 
-    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(325, 15, 20, 20)];
+    self.subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(275, 15, 20, 20)];
     subtitleLabel.backgroundColor = [UIColor clearColor];
     subtitleLabel.opaque = NO;
     subtitleLabel.textColor = [UIColor darkTextColor];

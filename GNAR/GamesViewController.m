@@ -42,7 +42,7 @@
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
     // since this is not a table view controller, need to programatically create link between VC and refresh control
-    [self.refreshControl addTarget:self action:@selector(getCurrentUserGamesWithCompletion:) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(getCurrentUserGames) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
     self.tableView.backgroundColor = [UIColor colorWithWhite:( 30/255.0) alpha:1.0];
 
@@ -121,29 +121,19 @@
 }
 
 
-////--------------------------------------    Helper Methods   ---------------------------------------------
-//#pragma mark - Helper Methods
-////Helper method for refresh control
-//- (void)getCurrentUserGames:(void(^)(NSArray *currentUserGames))complete
-//{
-//    [User getCurrentUserGamesWithCompletion:^(NSArray *array) {
-////        self.gamesArray = array;
-//        complete()
-//
-////        for (Game *game in self.gamesArray)
-////        {
-////            [game getPlayersOfGameWithCompletion:^(NSArray *array) {
-////                game.players = array;
-////                [game pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-////                    NSLog(@"Pinned game in background: %@", game.name);
-////                }];
-////            }];
-////        }
-//        [self.tableView reloadData];
-//        [self.refreshControl endRefreshing];
-//        [self.activitySpinner stopAnimating];
-//    }];
-//}
+//--------------------------------------    Helper Methods   ---------------------------------------------
+#pragma mark - Helper Methods
+//Helper method for refresh control
+- (void)getCurrentUserGames
+{
+    [User getCurrentUserGamesWithCompletion:^(NSArray *currentUserGames)
+    {
+        self.gamesArray = currentUserGames;
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+        [self.activitySpinner stopAnimating];
+    }];
+}
 
 
 //----------------------------------------    Table View    ----------------------------------------------------
