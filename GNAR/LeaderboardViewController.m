@@ -20,6 +20,7 @@
 
 @property UIRefreshControl *refreshControl;
 @property NSArray *playersArray;
+@property NSArray *sortedPlayersArray;
 @property Game *currentGame;
 @property NSArray *playerScoresArray;
 
@@ -59,13 +60,10 @@
         self.playersTotalScoresData = [NSMutableDictionary new];
 
         [self.playersScoresData setObject:players forKey:@"playersArray"];
-        [self.playersTotalScoresData setObject:players forKey:@"playersArray"];
-
 
         for (User *user in self.playersArray)
         {
             // Get scores of USER for GAME
-
 
             [self getUserScores:user forGame:self.currentGame withCompletion:^(NSArray *userScores) {
                 // Set fetched scores to local object.scores
@@ -78,11 +76,17 @@
                 }
                 NSNumber *totalScore = [NSNumber numberWithInteger:tempScore];
                 [self.playersTotalScoresData setObject:totalScore forKey:user.username];
+                [self sortPlayerTotalDictionary];
                 [self.tableView reloadData];
                 [self.activitySpinner stopAnimating];
             }];
         }
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 //--------------------------------------    Helper Methods    ---------------------------------------------
@@ -115,22 +119,22 @@
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.playersArray.count;
+    return self.sortedPlayersArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    NSArray *playersArray = [self.playersScoresData objectForKey:@"playersArray"];
-    User *player = playersArray[indexPath.row];
-//    int totalScore = 0;
-//    for (Score *score in [self.playersScoresData objectForKey:player.username])
-//    {
-//        totalScore = totalScore + [score.score intValue];
-//    }
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.playersTotalScoresData objectForKey:player.username]];
-    cell.textLabel.text = player.username;
+    NSString *username = self.sortedPlayersArray[indexPath.row];
+    //    int totalScore = 0;
+    //    for (Score *score in [self.playersScoresData objectForKey:player.username])
+    //    {
+    //        totalScore = totalScore + [score.score intValue];
+    //    }
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.playersTotalScoresData objectForKey:username]];
+    cell.textLabel.text = username;
     cell.textLabel.textColor = [UIColor whiteColor];
-    return cell;
+
+return cell;
 }
 
 
@@ -144,6 +148,7 @@
         UserAchievementsViewController *userAchieveVC = segue.destinationViewController;
 
 //        userAchieveVC.scoresArray = self.playersArray[[self.tableView indexPathForSelectedRow].row][@"scores"];
+        //TODO: Have player passed correspond to username in sortedPlayersArray
         userAchieveVC.currentPlayer = self.playersArray[[self.tableView indexPathForSelectedRow].row];
         userAchieveVC.currentGame = self.currentGame;
     }
@@ -155,7 +160,13 @@
 
 
 
-
+- (void) sortPlayerTotalDictionary
+{
+    self.sortedPlayersArray = [self.playersTotalScoresData keysSortedByValueUsingComparator: ^(id obj1, id obj2) {
+        // Switching the order of the operands reverses the sort direction
+        return [obj2 compare:obj1];
+    }];
+}
 
 
 
