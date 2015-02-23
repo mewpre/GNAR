@@ -114,6 +114,7 @@ typedef NS_ENUM(NSInteger, AchievementType) {
             {
                 NSString *indexString = scoreData[@"snowIndexString"];
                 self.score = [achievement.pointValues objectAtIndex:[indexString integerValue]];
+                self.snowLevel = indexString;
             }
                 break;
 
