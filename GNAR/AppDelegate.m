@@ -64,7 +64,23 @@
 
 //    GameManager *myGameManager = [GameManager sharedManager];
 
-    
+    // Extract the notification data
+    NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (notificationPayload)
+    {
+        // Create a pointer to the Photo object
+        NSString *gameID = [notificationPayload objectForKey:@"gameID"];
+        PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game" objectId:gameID];
+
+        // Fetch game object
+        [targetGame fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            // Show photo view controller
+            if (!error && [PFUser currentUser])
+            {
+                //Do logic to somehow bring up game view controller and an alert asking if you want to join the game??
+            }
+        }];
+    }
     return YES;
 }
 
@@ -109,16 +125,40 @@
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    currentInstallation.channels = @[@"global"];
-    [currentInstallation saveInBackground];
+    if ([PFUser currentUser])
+    {
+        [currentInstallation setObject:[PFUser currentUser] forKey:@"user"];
+    }
 
+    [currentInstallation saveEventually];
 }
 
 // Handles push notification when app is running
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler
 {
-    //TODO: have app handle push notification instead of using Parse
     [PFPush handlePush:userInfo];
+
+    NSString *gameID = [userInfo objectForKey:@"gameID"];
+    PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game"
+                                                            objectId:gameID];
+
+    [targetGame fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (error)
+        {
+            handler(UIBackgroundFetchResultFailed);
+        }
+        else if ([PFUser currentUser])
+        {
+            //Do logic to somehow bring up game view controller and an alert asking if you want to join the game??
+            handler(UIBackgroundFetchResultNewData);
+        }
+        else
+        {
+//            handler(UIBackgroundModeNoData);
+        }
+    }];
 }
 
 @end

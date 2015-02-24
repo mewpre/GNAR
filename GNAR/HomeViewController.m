@@ -37,61 +37,16 @@
 
     NSLog(@"Saved achievements");
 
-//    // Testing push notifications
-//    PFQuery *pushQuery = [PFInstallation query];
-//    [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
-//
-//    // Send push notification to query
-//    [PFPush sendPushMessageToQueryInBackground:pushQuery
-//                                   withMessage:@"Hello World!"];
-
     self.defaults = [NSUserDefaults standardUserDefaults];
-
-//    // If no current game exists:
-//    if (![self.defaults objectForKey:kGameIdKey])
-//    {
-//        // Tell user to create or select a game
-//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Current Game :C" message:@"You are not in a GNAR game. Please select or create a game!" preferredStyle:UIAlertControllerStyleAlert];
-//        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-//                             {
-//                                 //Go to Games View controller
-//                                 self.tabBarController.selectedIndex = 1;
-//                             }];
-//
-//        [alert addAction:ok];
-//
-//        [self presentViewController:alert animated:YES completion:nil];
-//
-//    }
-//    else
-//    {
-//        // Load current game from user defaults and set to global current game
-//        //        [Game loadSavedGame];
-//        //        NSLog(@"Loaded game from defaults: %@", [GameManager sharedManager].currentGame);
-//
-//        [Game loadSavedGameWithCompletion:^(Game *loadedGame) {
-//            NSLog(@"Loaded game from defaults from parse: %@", loadedGame);
-//        }];
-//    }
-//    self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [User currentUser].username];
-//    NSLog(@"GameId from NSDefaults: %@", [self.defaults objectForKey:kGameIdKey]);
-//    [[GameManager sharedManager] printCurrentGame];
-
-//    if (![GameManager sharedManager].currentGame)
-//    {
-//        //TODO: decide which game to pull here (change getCurrentGameWithCompletion method) OR ask user to create or select game?
-//        [Game getCurrentGameWithCompletion:^(Game *currentGame) {
-//            // Set game object to singleton
-//            [GameManager sharedManager].currentGame = currentGame;
-//            NSLog(@"Fetched game: %@", [GameManager sharedManager].currentGame.name);
-//        }];
-//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    [self setupLocationManager];
+
+//    // Associate the device with a user
+//    [PFInstallation currentInstallation][@"user"] = [User currentUser];
+//    [[PFInstallation currentInstallation] saveInBackground];
 
     // If no current game exists:
     if (![self.defaults objectForKey:kGameIdKey])
