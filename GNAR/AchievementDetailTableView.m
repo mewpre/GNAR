@@ -148,7 +148,7 @@
         else if (indexPath.section == PlayerCell)
         {
             UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
-            playersCell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
+            playersCell.backgroundColor = [UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0];
             User *userAtIndex = self.playersArray[indexPath.row];
             if ([userAtIndex.objectId isEqual:[User currentUser].objectId])
             {

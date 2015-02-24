@@ -58,7 +58,7 @@
     [[UITableViewCell appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
 
     [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-    [[UITableView appearance] setSeparatorColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
+    [[UITableView appearance] setSeparatorColor:[UIColor colorWithWhite:0.40 alpha:1.0]];
     [[UITableView appearance] setSeparatorInset:UIEdgeInsetsZero];
 
 
