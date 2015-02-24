@@ -14,7 +14,9 @@
 #import "User.h"
 
 @interface SignUpViewController () <CommsDelegate>
+@property (weak, nonatomic) IBOutlet UISegmentedControl *skierBoarderSegControl;
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *broChickSegControl;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
 
