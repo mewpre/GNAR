@@ -730,29 +730,145 @@
             </objects>
             <point key="canvasLocation" x="3486" y="741"/>
         </scene>
-        <!--View Controller-->
+        <!--Rules View Controller-->
         <scene sceneID="ji7-Kz-VD3">
             <objects>
-                <viewController id="DY0-bC-0XJ" sceneMemberID="viewController">
-                    <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" id="s9b-sx-kUJ">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                <viewController id="DY0-bC-0XJ" customClass="RulesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gfh-S2-b6d"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Jj-r1-xb9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hx4-f2-oX4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqK-mp-pHG">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fFL-ZS-hpI"/>
+                                    <constraint firstAttribute="width" constant="42" id="vZ1-6e-LR8"/>
+                                </constraints>
+                                <state key="normal" title="Got it!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fFL-ZS-hpI"/>
+                                        <exclude reference="vZ1-6e-LR8"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="fFL-ZS-hpI"/>
+                                        <include reference="vZ1-6e-LR8"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onGotItButtonPressed:" destination="DY0-bC-0XJ" eventType="touchUpInside" id="xVc-Ou-eBg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxn-um-jn4">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="8gs-eL-PMB"/>
+                                    <constraint firstAttribute="width" constant="203" id="IUm-sv-VzU"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Rules of GNAR">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8gs-eL-PMB"/>
+                                        <exclude reference="IUm-sv-VzU"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="8gs-eL-PMB"/>
+                                        <include reference="IUm-sv-VzU"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEr-h8-xEa">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">1. Cheating is not allowed.  2. Players must score themselves unless you can find a non player who wants to act as score keeper.  3. Lines can only be scored once per day and only on the first attempt of that day. Example: if you crash on the first try and then stick it on the second you still can only score the first try.  4. You must score yourself if you try a line listed in this book. Scoring only the lines that you want to score but sttempting many is not allowed. When playing and trying a line, it must be scored, even if you crash.   5. Extra Credit Points. (ECPs). There are two types of ECPs. Line Related ECPs (LRECPs) and Non-Line Related ECPs (NLR ECPs). LR ECPs are simply extra credit points you can acquire while performing a line and are to be added to that line's score. (See Scoring) Non-Line Related ECPs are points you can acquire by completing extra tasks. These points are to be added to your GNAR Factor. See the score sheet at the end of the book for an example. All ECPs fall into one of three categories: Daily, Yearly, and Unlimited. "Daily ECPs" can only be scored once per day. "Yearly ECPs" can only be scored once per year. "Unlimited ECPs" can be scored as many times as possible on any day.   6. Any and all points acquired during the day of play must be counted for the Daily game. i.e. Acquiring a very large sum of points by scoring a multiple number of yearsly ECPs is a great way to rack up points but also a great way to use them up for the year. Hint, use your ECPs wisely and at the right time.   7. Penalties must be accounted for. It is up to you and your competitors to be honest with scoring your penalties. Penalties cannot be used up. You can rack up an unlimited number of penalties.   8. Players can also earn a "Trick Bonus." The "Trick Bonus" can only be obtained if the trick is performed on a designated line. See trick list.   9. Mutiple ECPs and Penalties can be scored on any line by simply performing any combination of them.    Summary Scenario: Stand atop the Chimney Sweep in medium snow level. Yell, "Hey! Check me out! I'm gonna rip the shit out of this!" Then get poached. Then do the line naked, Spread Eagle Ball Grab the air at the bottom, get tagged by a snowball in mid air, Tomahawk it and give your self a binding butt. Line Worth = 900 + RY (150) + poached (-3,000) + naked (5,000) + Spread Eagle Ball Grab (100) + snowball tag (-100) + Tomahawk (-2,000) + binding butt (-300) = 750 total points for this line. </string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="ChalkboardSE-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                </variation>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <attributedString key="attributedText">
-                            <fragment>
-                                <string key="content">1. Cheating is not allowed.  2. Players must score themselves unless you can find a non player who wants to act as score keeper.  3. Lines can only be scored once per day and only on the first attempt of that day. Example: if you crash on the first try and then stick it on the second you still can only score the first try.  4. You must score yourself if you try a line listed in this book. Scoring only the lines that you want to score but sttempting many is not allowed. When playing and trying a line, it must be scored, even if you crash.   5. Extra Credit Points. (ECPs). There are two types of ECPs. Line Related ECPs (LRECPs) and Non-Line Related ECPs (NLR ECPs). LR ECPs are simply extra credit points you can acquire while performing a line and are to be added to that line's score. (See Scoring) Non-Line Related ECPs are points you can acquire by completing extra tasks. These points are to be added to your GNAR Factor. See the score sheet at the end of the book for an example. All ECPs fall into one of three categories: Daily, Yearly, and Unlimited. "Daily ECPs" can only be scored once per day. "Yearly ECPs" can only be scored once per year. "Unlimited ECPs" can be scored as many times as possible on any day.   6. Any and all points acquired during the day of play must be counted for the Daily game. i.e. Acquiring a very large sum of points by scoring a multiple number of yearsly ECPs is a great way to rack up points but also a great way to use them up for the year. Hint, use your ECPs wisely and at the right time.   7. Penalties must be accounted for. It is up to you and your competitors to be honest with scoring your penalties. Penalties cannot be used up. You can rack up an unlimited number of penalties.   8. Players can also earn a "Trick Bonus." The "Trick Bonus" can only be obtained if the trick is performed on a designated line. See trick list.   9. Mutiple ECPs and Penalties can be scored on any line by simply performing any combination of them.    Summary Scenario: Stand atop the Chimney Sweep in medium snow level. Yell, "Hey! Check me out! I'm gonna rip the shit out of this!" Then get poached. Then do the line naked, Spread Eagle Ball Grab the air at the bottom, get tagged by a snowball in mid air, Tomahawk it and give your self a binding butt. Line Worth = 900 + RY (150) + poached (-3,000) + naked (5,000) + Spread Eagle Ball Grab (100) + snowball tag (-100) + Tomahawk (-2,000) + binding butt (-300) = 750 total points for this line. </string>
-                                <attributes>
-                                    <font key="NSFont" size="12" name="HelveticaNeue"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <constraints>
+                            <constraint firstItem="xEr-h8-xEa" firstAttribute="leading" secondItem="Hx4-f2-oX4" secondAttribute="leading" id="1fs-Hl-5ba"/>
+                            <constraint firstItem="6Jj-r1-xb9" firstAttribute="top" secondItem="xEr-h8-xEa" secondAttribute="bottom" id="BRi-CX-iVD">
+                                <variation key="heightClass=regular-widthClass=compact" constant="7"/>
+                            </constraint>
+                            <constraint firstItem="iqK-mp-pHG" firstAttribute="top" secondItem="gfh-S2-b6d" secondAttribute="bottom" constant="1" id="ZJX-8S-Hqd"/>
+                            <constraint firstAttribute="centerX" secondItem="Qxn-um-jn4" secondAttribute="centerX" id="eiK-E9-Mgi"/>
+                            <constraint firstAttribute="trailing" secondItem="xEr-h8-xEa" secondAttribute="trailing" id="hBg-wJ-3Y0"/>
+                            <constraint firstItem="Qxn-um-jn4" firstAttribute="top" secondItem="gfh-S2-b6d" secondAttribute="bottom" id="jhA-2B-doy"/>
+                            <constraint firstAttribute="trailing" secondItem="iqK-mp-pHG" secondAttribute="trailing" constant="16" id="kxM-pb-Rcp"/>
+                            <constraint firstItem="xEr-h8-xEa" firstAttribute="top" secondItem="Hx4-f2-oX4" secondAttribute="top" id="yv8-Sf-r4b">
+                                <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="iqK-mp-pHG"/>
+                                <exclude reference="Qxn-um-jn4"/>
+                                <exclude reference="xEr-h8-xEa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="1fs-Hl-5ba"/>
+                                <exclude reference="hBg-wJ-3Y0"/>
+                                <exclude reference="yv8-Sf-r4b"/>
+                                <exclude reference="eiK-E9-Mgi"/>
+                                <exclude reference="jhA-2B-doy"/>
+                                <exclude reference="ZJX-8S-Hqd"/>
+                                <exclude reference="kxM-pb-Rcp"/>
+                                <exclude reference="BRi-CX-iVD"/>
+                            </mask>
                         </variation>
-                    </textView>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="iqK-mp-pHG"/>
+                                <include reference="Qxn-um-jn4"/>
+                                <include reference="xEr-h8-xEa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="1fs-Hl-5ba"/>
+                                <include reference="hBg-wJ-3Y0"/>
+                                <include reference="yv8-Sf-r4b"/>
+                                <include reference="eiK-E9-Mgi"/>
+                                <include reference="jhA-2B-doy"/>
+                                <include reference="ZJX-8S-Hqd"/>
+                                <include reference="kxM-pb-Rcp"/>
+                                <include reference="BRi-CX-iVD"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="xEr-h8-xEa" id="QEs-Tg-seB"/>
+                        <outlet property="titleLabel" destination="Qxn-um-jn4" id="cYK-Iu-fNT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gsF-un-HMI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2340,48 +2456,26 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GNAR Factor:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-W0-Z0J">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="E4m-Sw-MzZ"/>
-                                    <constraint firstAttribute="width" constant="120" id="in0-97-vaQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="E4m-Sw-MzZ"/>
-                                        <exclude reference="in0-97-vaQ"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="E4m-Sw-MzZ"/>
-                                        <include reference="in0-97-vaQ"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,550,350" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="NmA-mY-iQ8">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="73" id="1Ku-Nu-oAZ"/>
-                                    <constraint firstAttribute="width" constant="240" id="1qp-uJ-GvM"/>
+                                    <constraint firstAttribute="height" constant="73" id="5WB-YN-R80"/>
+                                    <constraint firstAttribute="width" constant="240" id="KHH-Ge-BNm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="PartyLetPlain" family="Party LET" pointSize="50"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="1Ku-Nu-oAZ"/>
-                                        <exclude reference="1qp-uJ-GvM"/>
+                                        <exclude reference="5WB-YN-R80"/>
+                                        <exclude reference="KHH-Ge-BNm"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="PartyLetPlain" family="Party LET" pointSize="50"/>
                                     <mask key="constraints">
-                                        <include reference="1Ku-Nu-oAZ"/>
-                                        <include reference="1qp-uJ-GvM"/>
+                                        <include reference="5WB-YN-R80"/>
+                                        <include reference="KHH-Ge-BNm"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -2410,27 +2504,49 @@
                                     <segue destination="DY0-bC-0XJ" kind="presentation" id="T3u-PV-8BM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GNAR Factor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-W0-Z0J">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="REg-Yh-yzI"/>
+                                    <constraint firstAttribute="width" constant="102" id="dgR-Px-Clf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="REg-Yh-yzI"/>
+                                        <exclude reference="dgR-Px-Clf"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="REg-Yh-yzI"/>
+                                        <include reference="dgR-Px-Clf"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ihX-W0-Z0J" firstAttribute="leading" secondItem="iaT-El-H0d" secondAttribute="leading" constant="32" id="0pf-bz-uMe"/>
-                            <constraint firstAttribute="trailing" secondItem="NmA-mY-iQ8" secondAttribute="trailing" id="4mN-8B-qoO"/>
+                            <constraint firstAttribute="centerX" secondItem="ihX-W0-Z0J" secondAttribute="centerX" id="1Od-ri-Qhc"/>
                             <constraint firstItem="eQy-Av-3Jy" firstAttribute="top" secondItem="N9Q-TR-gJd" secondAttribute="bottom" constant="15" id="5f6-sw-dtt"/>
                             <constraint firstItem="Eic-im-a60" firstAttribute="leading" secondItem="iaT-El-H0d" secondAttribute="leading" constant="16" id="6LX-OH-9Z0"/>
+                            <constraint firstItem="NmA-mY-iQ8" firstAttribute="top" secondItem="ihX-W0-Z0J" secondAttribute="bottom" constant="8" id="Drc-SF-asg"/>
+                            <constraint firstAttribute="centerX" secondItem="NmA-mY-iQ8" secondAttribute="centerX" id="EZV-nF-W0Z"/>
                             <constraint firstItem="N9Q-TR-gJd" firstAttribute="top" secondItem="vfs-Gi-wR7" secondAttribute="bottom" constant="50" id="KOd-1E-yj0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uob-Xt-aA9" secondAttribute="trailing" constant="-16" id="OGs-SG-mNO"/>
                             <constraint firstItem="eQy-Av-3Jy" firstAttribute="top" secondItem="uob-Xt-aA9" secondAttribute="bottom" constant="18" id="QfY-Cl-5Ad"/>
                             <constraint firstAttribute="centerX" secondItem="N9Q-TR-gJd" secondAttribute="centerX" id="UAd-r5-1XJ"/>
                             <constraint firstItem="uob-Xt-aA9" firstAttribute="leading" secondItem="iaT-El-H0d" secondAttribute="leadingMargin" constant="-16" id="UYh-Ck-NQF"/>
                             <constraint firstItem="uob-Xt-aA9" firstAttribute="top" secondItem="iaT-El-H0d" secondAttribute="topMargin" id="Vrt-1V-gJz"/>
-                            <constraint firstItem="xWW-Ax-7km" firstAttribute="top" secondItem="NmA-mY-iQ8" secondAttribute="bottom" id="dCI-Xk-amN"/>
                             <constraint firstAttribute="centerX" secondItem="eQy-Av-3Jy" secondAttribute="centerX" id="hUX-0W-J6D"/>
                             <constraint firstItem="N9Q-TR-gJd" firstAttribute="top" secondItem="uob-Xt-aA9" secondAttribute="bottom" constant="22" id="lAv-iH-b3t">
                                 <variation key="heightClass=regular-widthClass=compact" constant="80"/>
                             </constraint>
+                            <constraint firstItem="xWW-Ax-7km" firstAttribute="top" secondItem="NmA-mY-iQ8" secondAttribute="bottom" id="pY7-Ch-Bst"/>
                             <constraint firstAttribute="centerY" secondItem="eQy-Av-3Jy" secondAttribute="centerY" id="qil-Db-I73"/>
                             <constraint firstItem="eQy-Av-3Jy" firstAttribute="trailing" secondItem="iaT-El-H0d" secondAttribute="trailingMargin" id="qxZ-Vo-fyl"/>
-                            <constraint firstItem="xWW-Ax-7km" firstAttribute="top" secondItem="ihX-W0-Z0J" secondAttribute="bottom" constant="36" id="tM8-Be-1no"/>
                             <constraint firstItem="Eic-im-a60" firstAttribute="top" secondItem="uob-Xt-aA9" secondAttribute="bottom" constant="18" id="z8K-4G-tCJ"/>
                         </constraints>
                         <variation key="default">
@@ -2438,9 +2554,9 @@
                                 <exclude reference="N9Q-TR-gJd"/>
                                 <exclude reference="eQy-Av-3Jy"/>
                                 <exclude reference="uob-Xt-aA9"/>
-                                <exclude reference="ihX-W0-Z0J"/>
                                 <exclude reference="NmA-mY-iQ8"/>
                                 <exclude reference="Eic-im-a60"/>
+                                <exclude reference="ihX-W0-Z0J"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="OGs-SG-mNO"/>
@@ -2456,10 +2572,10 @@
                                 <exclude reference="hUX-0W-J6D"/>
                                 <exclude reference="qil-Db-I73"/>
                                 <exclude reference="qxZ-Vo-fyl"/>
-                                <exclude reference="0pf-bz-uMe"/>
-                                <exclude reference="4mN-8B-qoO"/>
-                                <exclude reference="dCI-Xk-amN"/>
-                                <exclude reference="tM8-Be-1no"/>
+                                <exclude reference="1Od-ri-Qhc"/>
+                                <exclude reference="Drc-SF-asg"/>
+                                <exclude reference="EZV-nF-W0Z"/>
+                                <exclude reference="pY7-Ch-Bst"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -2467,9 +2583,9 @@
                                 <include reference="N9Q-TR-gJd"/>
                                 <include reference="eQy-Av-3Jy"/>
                                 <include reference="uob-Xt-aA9"/>
-                                <include reference="ihX-W0-Z0J"/>
                                 <include reference="NmA-mY-iQ8"/>
                                 <include reference="Eic-im-a60"/>
+                                <include reference="ihX-W0-Z0J"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="OGs-SG-mNO"/>
@@ -2485,10 +2601,10 @@
                                 <exclude reference="hUX-0W-J6D"/>
                                 <exclude reference="qil-Db-I73"/>
                                 <include reference="qxZ-Vo-fyl"/>
-                                <include reference="0pf-bz-uMe"/>
-                                <include reference="4mN-8B-qoO"/>
-                                <include reference="dCI-Xk-amN"/>
-                                <include reference="tM8-Be-1no"/>
+                                <include reference="1Od-ri-Qhc"/>
+                                <include reference="Drc-SF-asg"/>
+                                <include reference="EZV-nF-W0Z"/>
+                                <include reference="pY7-Ch-Bst"/>
                             </mask>
                         </variation>
                     </view>
