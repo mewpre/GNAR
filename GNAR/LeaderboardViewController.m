@@ -9,6 +9,7 @@
 #import "LeaderboardViewController.h"
 #import "UserAchievementsViewController.h"
 #import "GameManager.h"
+#import "LeaderboardTableViewCell.h"
 
 @interface LeaderboardViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -123,7 +124,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    LeaderboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     NSString *username = self.sortedPlayersArray[indexPath.row];
     //    int totalScore = 0;
     //    for (Score *score in [self.playersScoresData objectForKey:player.username])
