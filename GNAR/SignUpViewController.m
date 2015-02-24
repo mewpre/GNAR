@@ -59,7 +59,15 @@
     }
     else if ([self.emailTextField.text isEqualToString:@""])
     {
-        [self showSignUpErrorAlertController:@"Error: Email missing" withMessage:@"Please enter a email."];
+        [self showSignUpErrorAlertController:@"Error: Email missing" withMessage:@"Please enter an email."];
+    }
+    else if (![self.skierBoarderSegControl isSelected])
+    {
+        [self showSignUpErrorAlertController:@"Error: No riding style selected" withMessage:@"Please select whether you're a skier or a boarder."];
+    }
+    else if (![self.broChickSegControl isSelected])
+    {
+        [self showSignUpErrorAlertController:@"Error: No gender selected" withMessage:@"Please select whether you're a bro or a chick."];
     }
     else
     {
@@ -67,6 +75,23 @@
         user.username = self.usernameTextField.text;
         user.password = self.passwordTextField.text;
         user.email = self.emailTextField.text;
+        if ([self.broChickSegControl selectedSegmentIndex] == 0)
+        {
+            [user setObject:@"male" forKey:@"gender"];
+        }
+        else
+        {
+            [user setObject:@"female" forKey:@"gender"];
+        }
+
+        if ([self.skierBoarderSegControl selectedSegmentIndex] == 0)
+        {
+            [user setObject:@"skier" forKey:@"type"];
+        }
+        else
+        {
+            [user setObject:@"snowboarder" forKey:@"type"];
+        }
 
         [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
          {
@@ -87,14 +112,18 @@
 
 - (IBAction)onFacebookButtonPressed:(UIButton *)sender
 {
-    if (![self.usernameTextField.text isEqualToString:@""])
+    if ([self.usernameTextField.text isEqualToString:@""])
     {
-        // Do the signup
-        [Comms signup:self withUsername:self.usernameTextField.text];
+        [self showSignUpErrorAlertController:@"Error: Username Required" withMessage:@"Please enter a username."];
+    }
+    else if (![self.skierBoarderSegControl isSelected])
+    {
+        [self showSignUpErrorAlertController:@"Error: No riding style selected" withMessage:@"Please select whether you're a skier or a snowboarder."];
     }
     else
     {
-        [self showSignUpErrorAlertController:@"Error: Username Required" withMessage:@"Please enter a username."];
+        // Do the signup
+        [Comms signup:self withUsername:self.usernameTextField.text];
     }
 }
 
@@ -112,6 +141,14 @@
                 NSLog(@"%@", userData);
                 [[User currentUser] setEmail:userData[@"email"]];
                 [[User currentUser] setObject:userData[@"gender"] forKey:@"gender"];
+                if ([self.skierBoarderSegControl selectedSegmentIndex] == 0)
+                {
+                    [[User currentUser] setObject:@"skier" forKey:@"type"];
+                }
+                else
+                {
+                    [[User currentUser] setObject:@"snowboarder" forKey:@"type"];
+                }
                 [[User currentUser] saveInBackground];
                 [self dismissViewControllerAnimated:NO completion:nil];
             }
