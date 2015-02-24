@@ -86,8 +86,8 @@
                 if ([user.username isEqualToString:[[User currentUser] username]])
                 {
                     self.myUserNameLabel.text = [User currentUser].username;
-                    self.myScoreLabel.text = [NSString stringWithFormat:@"%li", (long)totalScore]; //self.playersTotalScoresData[[User currentUser].username];
-//                    self.myRankLabel.text =
+                    self.myScoreLabel.text = [NSString stringWithFormat:@"%@", totalScore];
+                    // self.myRankLabel.text =
                 }
             }];
         }

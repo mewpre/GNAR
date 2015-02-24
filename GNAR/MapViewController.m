@@ -179,6 +179,7 @@
                     MKPointAnnotation *annotation = [MKPointAnnotation new];
                     annotation.coordinate = userLocation;
                     annotation.title = user.username;
+                    // annotation.subtitle = user.
 
                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.title == %@", user.username];
                     NSArray *filtered = [self.mapView.annotations filteredArrayUsingPredicate:predicate];
