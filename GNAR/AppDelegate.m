@@ -41,7 +41,7 @@
     // To track statistics around application opens
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
-    // Configure app to receive push notifications
+    // Register for Push Notifications
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                     UIUserNotificationTypeBadge |
                                                     UIUserNotificationTypeSound);
@@ -111,6 +111,7 @@
     [currentInstallation setDeviceTokenFromData:deviceToken];
     currentInstallation.channels = @[@"global"];
     [currentInstallation saveInBackground];
+
 }
 
 // Handles push notification when app is running
