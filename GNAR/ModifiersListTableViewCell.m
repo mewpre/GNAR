@@ -12,10 +12,11 @@
 
 @implementation ModifiersListTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
 
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -54,6 +55,7 @@
     }
     else
     {
+        NSLog(@"Number of modifiers: %lu", (unsigned long)self.modifiersList.count);
         return self.modifiersList.count;
     }
 }
@@ -78,8 +80,9 @@
 
     [UIView animateWithDuration:0.25 animations:^{
         self.tableViewHeightConstraint.constant = height;
+        [self layoutIfNeeded];
     }];
-    
+
     NSLog(@"Modifiers height: %f", height);
 }
 

@@ -86,7 +86,7 @@
                 if ([user.username isEqualToString:[[User currentUser] username]])
                 {
                     self.myUserNameLabel.text = [User currentUser].username;
-                    self.myScoreLabel.text = [NSString stringWithFormat:@"%li", (long)totalScore]; //self.playersTotalScoresData[[User currentUser].username];
+                    self.myScoreLabel.text = [NSString stringWithFormat:@"%@", totalScore]; //self.playersTotalScoresData[[User currentUser].username];
 //                    self.myRankLabel.text =
                 }
             }];
@@ -114,7 +114,7 @@
         }
         else
         {
-            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
+            NSLog(@"Fetched %lu scores for %@", objects.count, self);
         }
         complete(objects);
     }];
@@ -139,12 +139,12 @@
     //    User *user = self.playersArray[indexPath.row];
     cell.userNameLabel.text = username;
     cell.scoreLabel.text = [NSString stringWithFormat:@"%@", self.playersTotalScoresData[username]];
-    cell.rankLabel.text = [NSString stringWithFormat:@"#%li", (long)indexPath.row + 1];
+    cell.rankLabel.text = [NSString stringWithFormat:@"#%li", indexPath.row + 1];
     //    cell.scoreRatioLabel =
 
     if ([username isEqualToString:[User currentUser].username])
     {
-//        self.myRankLabel.text = [NSString stringWithFormat:@"#%li", (long)indexPath.row + 1];
+//        self.myRankLabel.text = [NSString stringWithFormat:@"#%li", indexPath.row + 1];
 
     }
 

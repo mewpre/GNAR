@@ -34,7 +34,7 @@
         if (!error)
         {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu achievements.", (unsigned long)objects.count);
+            NSLog(@"Successfully retrieved %lu achievements.", objects.count);
         }
         else
         {

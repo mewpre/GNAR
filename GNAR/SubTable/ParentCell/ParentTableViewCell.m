@@ -26,7 +26,7 @@
     self.contentView.backgroundColor = [UIColor clearColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 150, 20)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, 200, 20)];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.opaque = NO;
     titleLabel.textColor = [UIColor darkTextColor];

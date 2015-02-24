@@ -268,7 +268,7 @@
 -(void)didChangeSegment:(NSInteger)selectedSegment
 {
     NSLog(@"Change Segment delegate called");
-    NSString *tempString = [NSString stringWithFormat:@"%lu", (long)selectedSegment];
+    NSString *tempString = [NSString stringWithFormat:@"%lu", selectedSegment];
     NSLog(@"%@", tempString);
     [self.snowIndexString setString:tempString];
 }

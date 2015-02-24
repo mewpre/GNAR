@@ -68,7 +68,7 @@
         }
         else
         {
-            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self.currentPlayer);
+            NSLog(@"Fetched %lu scores for %@", objects.count, self.currentPlayer);
         }
         complete(objects);
     }];

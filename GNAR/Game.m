@@ -140,7 +140,7 @@
         }
         else
         {
-            NSLog(@"Fetched %lu games.", (unsigned long)objects.count);
+            NSLog(@"Fetched %lu games.", objects.count);
         }
         complete(objects.firstObject);
     }];
@@ -190,7 +190,7 @@
         }
         else
         {
-            NSLog(@"Fetched %lu players from game.", (unsigned long)objects.count);
+            NSLog(@"Fetched %lu players from game.", objects.count);
         }
         complete(objects);
     }];

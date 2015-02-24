@@ -75,7 +75,7 @@
         [self.activitySpinner stopAnimating];
 
 //        [PFObject pinAllInBackground:self.gamesArray withName:@"UserGames" block:^(BOOL succeeded, NSError *error) {
-//            NSLog(@"Successfully pinned %lu games in background.", (unsigned long)self.gamesArray.count);
+//            NSLog(@"Successfully pinned %lu games in background.", self.gamesArray.count);
 //            [self.tableView reloadData];
 //            [self.refreshControl endRefreshing];
 //            [self.activitySpinner stopAnimating];

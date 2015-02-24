@@ -50,7 +50,9 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
 
-    [[UILabel appearance] setTextColor:[UIColor whiteColor]];
+    [[UILabel appearanceWhenContainedIn: [UITableViewCell class], nil] setTextColor:[UIColor whiteColor]];
+//    [[UILabel appearanceWhenContainedIn:[UISegmentedControl class], nil] setTextColor:[UIColor purpleColor]];
+
     [[UIDatePicker appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
