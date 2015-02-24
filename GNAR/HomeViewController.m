@@ -35,7 +35,14 @@
 {
     [super viewDidLoad];
 
-    NSLog(@"Saved achievements");
+//    // Create achievements for testing
+//    Achievement *ML = [Achievement new];
+//    ML[@"name"] = @"Freebird";
+//    ML[@"descriptionString"] = @"";
+//    ML[@"type"] = @0;
+//    ML[@"group"] = @"Eagle's Nest";
+//    [ML saveInBackground];
+//    NSLog(@"Saved achievements");
 
 //    // Testing push notifications
 //    PFQuery *pushQuery = [PFInstallation query];
