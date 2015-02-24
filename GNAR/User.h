@@ -33,8 +33,7 @@
 //@property NSMutableArray *scores;
 
 - (void)getUserScoresForGame:(Game *)game withCompletion:(void(^)(NSArray *array))complete;
-//- (void)getUserScoresWithCompletion:(void(^)(NSArray *array))complete;
-+ (void)getCurrentUserScoresWithCompletion:(void(^)(NSArray *userScoresIncludingModifiers))complete;
+//+ (void)getCurrentUserScoresWithCompletion:(void(^)(NSArray *userScoresIncludingModifiers))complete;
 + (void)getCurrentUserGamesWithCompletion:(void(^)(NSArray *currentUserGames))complete;
 + (void)getCurrentUserFriendsWithCompletion:(void(^)(NSArray *currentUserFriends))complete;
 + (void)getAllUsers:(void(^)(NSArray *array))complete;

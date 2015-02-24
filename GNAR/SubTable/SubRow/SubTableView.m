@@ -44,9 +44,6 @@
     insideTableView.scrollEnabled = NO;
     
     insideTableView.backgroundColor = [UIColor clearColor];
-    insideTableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    insideTableView.separatorColor = [UIColor colorWithWhite:( 70/255.0) alpha:1.0];
-    
     [self.contentView addSubview:self.insideTableView];
 }
 
@@ -138,7 +135,7 @@
         cell.titleLabel.text = [self.delegate titleLabelForChildIndex:row underParentIndex:self.parentIndex];
         cell.subtitleLabel.text = [self.delegate subtitleLabelForChildIndex:row underParentIndex:self.parentIndex];
         
-        [cell setCellBackgroundColor:[UIColor colorWithWhite:0.15 alpha:1.0]];
+        [cell setCellBackgroundColor:[UIColor colorWithWhite:0.25 alpha:1.0]];
         [cell setCellForegroundColor:fgColor];
         [cell.titleLabel setFont:font];
         
@@ -168,6 +165,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // must be implemented by concrete subclasses
+    
     [self.delegate didSelectRowAtChildIndex:indexPath.row underParentIndex:self.parentIndex];
 }
 

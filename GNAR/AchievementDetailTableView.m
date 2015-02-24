@@ -60,7 +60,7 @@
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
-            infoCell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
+            infoCell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
             infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
             infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
             infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
@@ -116,7 +116,7 @@
             }
             NSMutableArray *scores = self.modifiersDictionary[userAtIndex.username];
             cell.modifiersList = scores;
-            cell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
+            cell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
             [cell.tableView reloadData];
             [cell adjustHeightOfTableview];
             return cell;
@@ -136,7 +136,7 @@
             //TODO: modify InfoCell to display abbreviation, point values, and description instead of all the stuff LineWorths have
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
-            infoCell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
+            infoCell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
 
             // For non-Line Worths, want to display abbreviation and point value instead of fun, difficulty, and hero
             infoCell.funLabel.text = @"";
@@ -148,7 +148,7 @@
         else if (indexPath.section == PlayerCell)
         {
             UITableViewCell *playersCell  = [tableView dequeueReusableCellWithIdentifier:@"PlayerCell"];
-            playersCell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
+            playersCell.backgroundColor = [UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0];
             User *userAtIndex = self.playersArray[indexPath.row];
             if ([userAtIndex.objectId isEqual:[User currentUser].objectId])
             {

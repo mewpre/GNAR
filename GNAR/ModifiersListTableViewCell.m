@@ -12,10 +12,11 @@
 
 @implementation ModifiersListTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
 
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -34,12 +35,15 @@
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
         cell.textLabel.text = self.playerText;
+        cell.backgroundColor = [UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0];
+
     }
     else
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ModifierCell"];
         Score *score = [self.modifiersList objectAtIndex:indexPath.row];
         cell.textLabel.text = score.achievementPointer.abbreviation;
+        cell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", score.score];
     }
     return cell;
@@ -54,6 +58,7 @@
     }
     else
     {
+        NSLog(@"Number of modifiers: %lu", (unsigned long)self.modifiersList.count);
         return self.modifiersList.count;
     }
 }
@@ -78,8 +83,9 @@
 
     [UIView animateWithDuration:0.25 animations:^{
         self.tableViewHeightConstraint.constant = height;
+        [self layoutIfNeeded];
     }];
-    
+
     NSLog(@"Modifiers height: %f", height);
 }
 

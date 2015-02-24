@@ -50,9 +50,9 @@
 - (void)setupDisplay {
     
     [self.contentView setAutoresizesSubviews:YES];
-    
-    self.titleLabel.frame = CGRectMake(35, 10, 165, 20);
-    self.subtitleLabel.frame = CGRectMake(35, 30, 165, 16);
+
+    self.titleLabel.frame = CGRectMake(35, 10, 185, 20);
+    self.subtitleLabel.frame = CGRectMake(35, 30, 185, 16);
     
     self.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     self.subtitleLabel.font = [UIFont systemFontOfSize:12];

@@ -37,6 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithWhite:( 20/255.0) alpha:1.0];
 
     // If adding modifiers: change the "Save" button to an new "Add" that will add modifiers to the score instead of save to Parse
     if (self.modifiersDictionary)
@@ -138,7 +139,7 @@
 // @optional
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
 {
-    NSLog(@"Selected child index at %lu with parent index %lu", childIndex, parentIndex);
+    NSLog(@"Selected child index at %ld with parent index %ld", childIndex, parentIndex);
 }
 
 // Helper method to save single achievement into Parse

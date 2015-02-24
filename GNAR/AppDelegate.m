@@ -50,12 +50,17 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
 
-    [[UILabel appearance] setTextColor:[UIColor whiteColor]];
-    [[UIDatePicker appearance] setTintColor:[UIColor whiteColor]];
+    [[UILabel appearanceWhenContainedIn: [UITableViewCell class], nil] setTextColor:[UIColor whiteColor]];
+    [[UILabel appearanceWhenContainedIn:[UIDatePicker class], nil] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     [[UITableView appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
     [[UITableViewCell appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
+
+    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [[UITableView appearance] setSeparatorColor:[UIColor colorWithWhite:0.40 alpha:1.0]];
+    [[UITableView appearance] setSeparatorInset:UIEdgeInsetsZero];
+
 
     [User registerSubclass];
     [Achievement registerSubclass];
@@ -68,7 +73,7 @@
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
     if (notificationPayload)
     {
-        // Create a pointer to the Photo object
+        // Create a pointer to the game object
         NSString *gameID = [notificationPayload objectForKey:@"gameID"];
         PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game" objectId:gameID];
 
@@ -77,6 +82,7 @@
             // Show photo view controller
             if (!error && [PFUser currentUser])
             {
+                NSLog(@"Received notification!");
                 //Do logic to somehow bring up game view controller and an alert asking if you want to join the game??
             }
         }];
@@ -151,6 +157,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler
         }
         else if ([PFUser currentUser])
         {
+            NSLog(@"Received notification!");
             //Do logic to somehow bring up game view controller and an alert asking if you want to join the game??
             handler(UIBackgroundFetchResultNewData);
         }

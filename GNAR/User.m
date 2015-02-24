@@ -85,9 +85,9 @@
         }
         else
         {
-            NSLog(@"Fetched %lu scores", (unsigned long)objects.count);
-//            NSLog(@"...including %lu modifiers", (unsigned long)objects.count);
-//            NSLog(@"...including %lu players", (unsigned long)objects.count);
+            NSLog(@"Fetched %lu scores", objects.count);
+//            NSLog(@"...including %lu modifiers", objects.count);
+//            NSLog(@"...including %lu players", objects.count);
         }
         complete(objects);
     }];
@@ -111,7 +111,7 @@
         }
         else
         {
-            NSLog(@"Fetched %lu games with no errors", (unsigned long)objects.count);
+            NSLog(@"Fetched %lu games with no errors", objects.count);
         }
         complete(objects);
     }];
@@ -129,7 +129,7 @@
         }
         else
         {
-            NSLog(@"Fetched %lu scores for %@", (unsigned long)objects.count, self);
+            NSLog(@"Fetched %lu scores for %@", objects.count, self);
         }
         complete(objects);
     }];
@@ -186,7 +186,7 @@
             // findObjects will return a list of PFUsers that are friends
             // with the current user
             [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                NSLog(@"Successfully retrieved %lu Facebook friends.", (unsigned long)objects.count);
+                NSLog(@"Successfully retrieved %lu Facebook friends.", objects.count);
                 complete(objects);
             }];
         }
@@ -207,7 +207,7 @@
         }
         else
         {
-            NSLog(@"Fetched %lu friends with no errors", (unsigned long)objects.count);
+            NSLog(@"Fetched %lu friends with no errors", objects.count);
         }
         complete(objects);
     }];

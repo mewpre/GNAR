@@ -34,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.backgroundColor = [UIColor colorWithWhite:( 30/255.0) alpha:1.0];
+
 
     if (!self.modifiersDictionary)
     {
