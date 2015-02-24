@@ -43,10 +43,6 @@
     [self setDelegate:self];
     
     self.backgroundColor = [UIColor colorWithWhite:( 20/255.0) alpha:1.0];
-    self.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    self.separatorColor = [UIColor darkGrayColor];
-    
     UIView *footer = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableFooterView = footer;
 }
@@ -254,8 +250,8 @@
 
 #pragma mark - Table view - Cell Selection
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *selectedPCell = [tableView cellForRowAtIndexPath:indexPath];
     if ([selectedPCell isKindOfClass:[ParentTableViewCell class]]) {
         
@@ -295,47 +291,6 @@
     cell.titleLabel.textColor = [UIColor colorWithWhite:0.85 alpha:1.0];
     cell.subtitleLabel.textColor = [UIColor colorWithWhite:0.85 alpha:1.0];
 }
-
-
-
-# pragma mark - TableView - Section
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    
-//    return 30;
-//}
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    
-//    return @"click to expand";
-//}
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    
-//    NSString *oldSectionTitle = [self tableView:tableView titleForHeaderInSection:section];
-//    NSString *sectionTitle = [NSString stringWithFormat:@"   %@",oldSectionTitle];
-//    if (sectionTitle == nil) {
-//        return nil;
-//    }
-//    
-//    UILabel *label = [[UILabel alloc] init];
-//    label.frame = CGRectMake(0, 0, 320, 30);
-//    label.backgroundColor = [UIColor colorWithWhite:( 20/255.0) alpha:1.0];
-//    label.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
-//    label.shadowColor = [UIColor darkGrayColor];
-//    label.shadowOffset = CGSizeMake(-1.0, 1.0);
-//    label.font = [UIFont systemFontOfSize:17];
-//    label.text = sectionTitle;
-//    
-//    UIImageView *bottomLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 28, 370, 2)];
-//    bottomLine.backgroundColor = [UIColor colorWithWhite:( 50/255.0) alpha:1.0];
-//    
-//    UIView *view = [[UIView alloc] init];
-//    [view addSubview:label];
-//    [view addSubview:bottomLine];
-//    
-//    return view;
-//}
-
-
 
 #pragma mark - SubRow Delegate
 

@@ -51,13 +51,16 @@
     [application registerForRemoteNotifications];
 
     [[UILabel appearanceWhenContainedIn: [UITableViewCell class], nil] setTextColor:[UIColor whiteColor]];
-//    [[UILabel appearanceWhenContainedIn:[UISegmentedControl class], nil] setTextColor:[UIColor purpleColor]];
-
-    [[UIDatePicker appearance] setTintColor:[UIColor whiteColor]];
+    [[UILabel appearanceWhenContainedIn:[UIDatePicker class], nil] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     [[UITableView appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
     [[UITableViewCell appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
+
+    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+    [[UITableView appearance] setSeparatorColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
+    [[UITableView appearance] setSeparatorInset:UIEdgeInsetsZero];
+
 
     [User registerSubclass];
     [Achievement registerSubclass];

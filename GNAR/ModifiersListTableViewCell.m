@@ -35,12 +35,15 @@
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
         cell.textLabel.text = self.playerText;
+        cell.backgroundColor = [UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0];
+
     }
     else
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ModifierCell"];
         Score *score = [self.modifiersList objectAtIndex:indexPath.row];
         cell.textLabel.text = score.achievementPointer.abbreviation;
+        cell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", score.score];
     }
     return cell;

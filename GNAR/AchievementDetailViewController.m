@@ -37,6 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithWhite:( 20/255.0) alpha:1.0];
 
     // If adding modifiers: change the "Save" button to an new "Add" that will add modifiers to the score instead of save to Parse
     if (self.modifiersDictionary)
