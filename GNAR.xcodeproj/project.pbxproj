@@ -35,6 +35,7 @@
 		0FA3EDED1A8F061A00FDF764 /* ModifierTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDEC1A8F061A00FDF764 /* ModifierTableViewCell.m */; };
 		0FA3EDF01A8F062400FDF764 /* PlayerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3EDEF1A8F062400FDF764 /* PlayerTableViewCell.m */; };
 		0FC37C9B1A9BCC2F00408336 /* RulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC37C9A1A9BCC2F00408336 /* RulesViewController.m */; };
+		0FC37C9E1A9C460200408336 /* LeaderboardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FC37C9D1A9C460200408336 /* LeaderboardTableViewCell.m */; };
 		0FCCB2131A93C0C3004EF2D5 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCCB2121A93C0C3004EF2D5 /* GameManager.m */; };
 		0FCD6E8E1A8F3F820074EB1C /* Enum.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCD6E8D1A8F3F820074EB1C /* Enum.m */; };
 		0FCF8ADB1A8BD276006224BB /* ParentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF8AD81A8BD276006224BB /* ParentTableViewCell.m */; };
@@ -118,6 +119,8 @@
 		0FA3EDEF1A8F062400FDF764 /* PlayerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTableViewCell.m; sourceTree = "<group>"; };
 		0FC37C991A9BCC2F00408336 /* RulesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RulesViewController.h; path = ../RulesViewController.h; sourceTree = "<group>"; };
 		0FC37C9A1A9BCC2F00408336 /* RulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RulesViewController.m; path = ../RulesViewController.m; sourceTree = "<group>"; };
+		0FC37C9C1A9C460200408336 /* LeaderboardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardTableViewCell.h; sourceTree = "<group>"; };
+		0FC37C9D1A9C460200408336 /* LeaderboardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardTableViewCell.m; sourceTree = "<group>"; };
 		0FCCB2111A93C0C3004EF2D5 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		0FCCB2121A93C0C3004EF2D5 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		0FCD6E8C1A8F3F820074EB1C /* Enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
@@ -333,6 +336,15 @@
 			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		0FC37C9F1A9C460A00408336 /* Leaderboard Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0FC37C9C1A9C460200408336 /* LeaderboardTableViewCell.h */,
+				0FC37C9D1A9C460200408336 /* LeaderboardTableViewCell.m */,
+			);
+			name = "Leaderboard Cells";
+			sourceTree = "<group>";
+		};
 		0FCAA4351A8EA386002430F7 /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +426,7 @@
 				0FCD6E8D1A8F3F820074EB1C /* Enum.m */,
 				0FCCB2111A93C0C3004EF2D5 /* GameManager.h */,
 				0FCCB2121A93C0C3004EF2D5 /* GameManager.m */,
+				0FC37C9F1A9C460A00408336 /* Leaderboard Cells */,
 				0FCF8AE91A8BD313006224BB /* SubTable */,
 			);
 			name = Models;
@@ -622,6 +635,7 @@
 				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
 				0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */,
 				0FCCB2131A93C0C3004EF2D5 /* GameManager.m in Sources */,
+				0FC37C9E1A9C460200408336 /* LeaderboardTableViewCell.m in Sources */,
 				60E5617E1A8EFA7200D81C48 /* AchievementDetailTableView.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,
 			);
