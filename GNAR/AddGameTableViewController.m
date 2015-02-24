@@ -341,7 +341,7 @@ NSUInteger DeviceSystemMajorVersion()
     if ([cellID isEqualToString:kFriendsCell])
     {
         cell.textLabel.text = [itemData valueForKey:kTitleKey];
-        NSString *friendsCount = [NSString stringWithFormat:@"%lu", self.friendsArray.count];
+        NSString *friendsCount = [NSString stringWithFormat:@"%lu", (unsigned long)self.friendsArray.count];
         cell.detailTextLabel.text = friendsCount;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }

@@ -87,7 +87,7 @@
 
         ParentTableViewCell *pCell = (ParentTableViewCell *)selectedPCell;
         self.selectedRow = [pCell parentIndex];
-        NSLog(@"Parent Index: %lu", [pCell parentIndex]);
+        NSLog(@"Parent Index: %lu", (long)[pCell parentIndex]);
         [self.parentDelegate didGetIndex: [pCell parentIndex]];
 
         if ([[self.expansionStates objectAtIndex:[pCell parentIndex]] boolValue]) {
@@ -122,10 +122,6 @@
 
 - (void)didPressAddButtonAtParentIndex:(NSInteger)parentIndex
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:parentIndex inSection:0];
-//    ParentTableViewCell *parentCell = (ParentTableViewCell *)[self cellForRowAtIndexPath:indexPath];
-//    parentCell.subtitleLabel.text = @"🌟";
-//    parentCell.detailTextLabel.text = @"🌟";
     [self reloadData];
     [self collapseForParentAtRow:parentIndex];
 }

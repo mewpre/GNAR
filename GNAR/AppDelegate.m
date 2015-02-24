@@ -68,7 +68,7 @@
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
     if (notificationPayload)
     {
-        // Create a pointer to the Photo object
+        // Create a pointer to the game object
         NSString *gameID = [notificationPayload objectForKey:@"gameID"];
         PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game" objectId:gameID];
 
@@ -77,6 +77,7 @@
             // Show photo view controller
             if (!error && [PFUser currentUser])
             {
+                NSLog(@"Received notification!");
                 //Do logic to somehow bring up game view controller and an alert asking if you want to join the game??
             }
         }];
@@ -151,6 +152,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler
         }
         else if ([PFUser currentUser])
         {
+            NSLog(@"Received notification!");
             //Do logic to somehow bring up game view controller and an alert asking if you want to join the game??
             handler(UIBackgroundFetchResultNewData);
         }

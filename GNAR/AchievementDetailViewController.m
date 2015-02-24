@@ -138,7 +138,7 @@
 // @optional
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
 {
-    NSLog(@"Selected child index at %lu with parent index %lu", childIndex, parentIndex);
+    NSLog(@"Selected child index at %lu with parent index %lu", (long)childIndex, (long)parentIndex);
 }
 
 // Helper method to save single achievement into Parse

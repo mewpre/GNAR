@@ -148,7 +148,7 @@
         if (!error)
         {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu Users.", objects.count);
+            NSLog(@"Successfully retrieved %lu Users.", (unsigned long)objects.count);
         }
         else
         {
@@ -223,7 +223,7 @@
         if (!error)
         {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu achievements.", objects.count);
+            NSLog(@"Successfully retrieved %lu achievements.", (unsigned long)objects.count);
         }
         else
         {

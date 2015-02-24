@@ -186,7 +186,6 @@
                     // If user pin already exists:
                     if (filtered.count != 0)
                     {
-                        MKPointAnnotation *filteredAnnotation = filtered.firstObject;
                         // Update player location
                         NSLog(@"Updating %@'s location", user.username);
                         [filtered.firstObject setCoordinate:userLocation];

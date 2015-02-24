@@ -71,7 +71,8 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 {
     self = [super init];
 
-    PFRelation *achievementRelation = [self relationForKey:@"achievement"];
+//    //No longer needed since we're using pointers instead of relationships
+//    PFRelation *achievementRelation = [self relationForKey:@"achievement"];
     // Get achievement (pointer) from scoreData dictionary
     Achievement *achievement = scoreData[@"achievement"];
 //    // Set Score's achievement relation
