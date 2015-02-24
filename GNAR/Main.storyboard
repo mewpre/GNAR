@@ -246,8 +246,7 @@
                                                             <exclude reference="djF-1b-vbM"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="9" width="64" height="64"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="Mi9-CE-ufV"/>
                                                             <include reference="djF-1b-vbM"/>
@@ -273,8 +272,7 @@
                                                             <exclude reference="qkA-m1-Fxq"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="80" y="18" width="105" height="21"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="49n-sh-lf3"/>
                                                             <include reference="ncb-Fk-WJj"/>
@@ -294,15 +292,15 @@
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="bhq-KR-6cQ"/>
                                                             <exclude reference="QRB-SR-FTG"/>
+                                                            <exclude reference="bhq-KR-6cQ"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                                         <rect key="frame" x="80" y="46" width="111" height="21"/>
                                                         <mask key="constraints">
-                                                            <include reference="bhq-KR-6cQ"/>
                                                             <include reference="QRB-SR-FTG"/>
+                                                            <include reference="bhq-KR-6cQ"/>
                                                         </mask>
                                                     </variation>
                                                 </label>
@@ -317,15 +315,15 @@
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="sWq-H9-zie"/>
                                                             <exclude reference="S5v-rK-SLB"/>
+                                                            <exclude reference="sWq-H9-zie"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                                         <rect key="frame" x="231" y="46" width="136" height="21"/>
                                                         <mask key="constraints">
-                                                            <include reference="sWq-H9-zie"/>
                                                             <include reference="S5v-rK-SLB"/>
+                                                            <include reference="sWq-H9-zie"/>
                                                         </mask>
                                                     </variation>
                                                 </label>
@@ -381,12 +379,12 @@
                                                     <exclude reference="YGs-cz-MGr"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="9Lj-3l-6tV"/>
-                                                    <exclude reference="zBH-Z3-3LI"/>
-                                                    <exclude reference="Lrq-x1-0ew"/>
-                                                    <exclude reference="iMD-be-U6d"/>
                                                     <exclude reference="oR7-LO-p71"/>
                                                     <exclude reference="wKO-Hn-spU"/>
+                                                    <exclude reference="Lrq-x1-0ew"/>
+                                                    <exclude reference="iMD-be-U6d"/>
+                                                    <exclude reference="9Lj-3l-6tV"/>
+                                                    <exclude reference="zBH-Z3-3LI"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -398,12 +396,12 @@
                                                     <include reference="YGs-cz-MGr"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="9Lj-3l-6tV"/>
-                                                    <include reference="zBH-Z3-3LI"/>
-                                                    <include reference="Lrq-x1-0ew"/>
-                                                    <include reference="iMD-be-U6d"/>
                                                     <include reference="oR7-LO-p71"/>
                                                     <include reference="wKO-Hn-spU"/>
+                                                    <include reference="Lrq-x1-0ew"/>
+                                                    <include reference="iMD-be-U6d"/>
+                                                    <include reference="9Lj-3l-6tV"/>
+                                                    <include reference="zBH-Z3-3LI"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -435,14 +433,14 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Q7S-wk-Wnw"/>
                                         <exclude reference="4qi-gy-9qI"/>
+                                        <exclude reference="Q7S-wk-Wnw"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="Q7S-wk-Wnw"/>
                                         <include reference="4qi-gy-9qI"/>
+                                        <include reference="Q7S-wk-Wnw"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -481,22 +479,22 @@
                                 <exclude reference="gi1-3e-hXI"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Of5-o0-5yV"/>
-                                <exclude reference="Oo8-qA-udl"/>
-                                <exclude reference="hrc-nO-pX7"/>
-                                <exclude reference="3iP-dz-UE0"/>
-                                <exclude reference="xta-YT-b8g"/>
-                                <exclude reference="06Z-5v-6lo"/>
-                                <exclude reference="V0V-Oc-qez"/>
-                                <exclude reference="AMY-DR-ZLg"/>
-                                <exclude reference="Uk9-94-KMh"/>
-                                <exclude reference="g5D-47-YFb"/>
                                 <exclude reference="WXE-SA-CIa"/>
                                 <exclude reference="vrd-9Y-ucB"/>
+                                <exclude reference="06Z-5v-6lo"/>
+                                <exclude reference="V0V-Oc-qez"/>
+                                <exclude reference="3iP-dz-UE0"/>
+                                <exclude reference="xta-YT-b8g"/>
                                 <exclude reference="PlB-Sb-uuz"/>
                                 <exclude reference="j7S-Aw-h3s"/>
                                 <exclude reference="DIZ-lg-JyS"/>
                                 <exclude reference="JwQ-UO-TKR"/>
+                                <exclude reference="Of5-o0-5yV"/>
+                                <exclude reference="Oo8-qA-udl"/>
+                                <exclude reference="hrc-nO-pX7"/>
+                                <exclude reference="AMY-DR-ZLg"/>
+                                <exclude reference="Uk9-94-KMh"/>
+                                <exclude reference="g5D-47-YFb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -510,22 +508,22 @@
                                 <include reference="gi1-3e-hXI"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Of5-o0-5yV"/>
-                                <include reference="Oo8-qA-udl"/>
-                                <include reference="hrc-nO-pX7"/>
-                                <include reference="3iP-dz-UE0"/>
-                                <include reference="xta-YT-b8g"/>
-                                <include reference="06Z-5v-6lo"/>
-                                <include reference="V0V-Oc-qez"/>
-                                <include reference="AMY-DR-ZLg"/>
-                                <include reference="Uk9-94-KMh"/>
-                                <include reference="g5D-47-YFb"/>
                                 <include reference="WXE-SA-CIa"/>
                                 <include reference="vrd-9Y-ucB"/>
+                                <include reference="06Z-5v-6lo"/>
+                                <include reference="V0V-Oc-qez"/>
+                                <include reference="3iP-dz-UE0"/>
+                                <include reference="xta-YT-b8g"/>
                                 <include reference="PlB-Sb-uuz"/>
                                 <include reference="j7S-Aw-h3s"/>
                                 <include reference="DIZ-lg-JyS"/>
                                 <include reference="JwQ-UO-TKR"/>
+                                <include reference="Of5-o0-5yV"/>
+                                <include reference="Oo8-qA-udl"/>
+                                <include reference="hrc-nO-pX7"/>
+                                <include reference="AMY-DR-ZLg"/>
+                                <include reference="Uk9-94-KMh"/>
+                                <include reference="g5D-47-YFb"/>
                             </mask>
                         </variation>
                     </view>
@@ -1871,7 +1869,8 @@
                                                                                 <exclude reference="VZJ-3h-3Uh"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="121" y="41" width="198" height="29"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="KM6-TX-Sy5"/>
                                                                                 <include reference="VZJ-3h-3Uh"/>
@@ -1896,7 +1895,8 @@
                                                                                 <exclude reference="WMO-s4-dD1"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="136" y="12" width="39" height="21"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="RRe-70-tQv"/>
                                                                                 <include reference="WMO-s4-dD1"/>
@@ -1918,7 +1918,8 @@
                                                                                 <exclude reference="kED-Rj-cAf"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="201" y="12" width="39" height="21"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="ecL-tD-GKY"/>
                                                                                 <include reference="kED-Rj-cAf"/>
@@ -1940,7 +1941,8 @@
                                                                                 <exclude reference="IOX-xO-roN"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="267" y="12" width="39" height="21"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="Hid-ZC-nXJ"/>
                                                                                 <include reference="IOX-xO-roN"/>
@@ -1962,7 +1964,8 @@
                                                                                 <exclude reference="ctk-Nh-bRU"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="17" y="28" width="89" height="21"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="DPc-ie-bZa"/>
                                                                                 <include reference="ctk-Nh-bRU"/>

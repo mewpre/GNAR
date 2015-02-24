@@ -345,6 +345,23 @@
 			name = "Leaderboard Cells";
 			sourceTree = "<group>";
 		};
+		0FC37CA01A9C55E500408336 /* GNAR Objects */ = {
+			isa = PBXGroup;
+			children = (
+				0FEFE8981A8A7B810062123D /* User.h */,
+				0FEFE8991A8A7B810062123D /* User.m */,
+				0FEFE89F1A8A7DB50062123D /* Achievement.h */,
+				0FEFE8A01A8A7DB50062123D /* Achievement.m */,
+				0FEFE8A21A8A7ED20062123D /* Game.h */,
+				0FEFE8A31A8A7ED20062123D /* Game.m */,
+				0FEFE8AA1A8AC7460062123D /* Score.h */,
+				0FEFE8AB1A8AC7460062123D /* Score.m */,
+				0FCD6E8C1A8F3F820074EB1C /* Enum.h */,
+				0FCD6E8D1A8F3F820074EB1C /* Enum.m */,
+			);
+			name = "GNAR Objects";
+			sourceTree = "<group>";
+		};
 		0FCAA4351A8EA386002430F7 /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,16 +431,7 @@
 		0FEFE89B1A8A7B8C0062123D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0FEFE8981A8A7B810062123D /* User.h */,
-				0FEFE8991A8A7B810062123D /* User.m */,
-				0FEFE89F1A8A7DB50062123D /* Achievement.h */,
-				0FEFE8A01A8A7DB50062123D /* Achievement.m */,
-				0FEFE8A21A8A7ED20062123D /* Game.h */,
-				0FEFE8A31A8A7ED20062123D /* Game.m */,
-				0FEFE8AA1A8AC7460062123D /* Score.h */,
-				0FEFE8AB1A8AC7460062123D /* Score.m */,
-				0FCD6E8C1A8F3F820074EB1C /* Enum.h */,
-				0FCD6E8D1A8F3F820074EB1C /* Enum.m */,
+				0FC37CA01A9C55E500408336 /* GNAR Objects */,
 				0FCCB2111A93C0C3004EF2D5 /* GameManager.h */,
 				0FCCB2121A93C0C3004EF2D5 /* GameManager.m */,
 				0FC37C9F1A9C460A00408336 /* Leaderboard Cells */,
