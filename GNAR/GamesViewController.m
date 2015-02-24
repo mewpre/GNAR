@@ -158,7 +158,15 @@
     NSString *playersNames = [self createPlayersStringWithGame:game];
     cell.detailTextLabel.text = playersNames;
     // Set number of detailText lines to fit all the players
-//    cell.detailTextLabel.numberOfLines = game.players.count;
+
+    // Test array
+    NSArray *playersArray = [[NSArray alloc] initWithObjects:[User currentUser], [User currentUser], [User currentUser], nil];
+
+    cell.detailTextLabel.numberOfLines = playersArray.count;
+//    NSString *players
+//    cell.detailTextLabel.text =
+
+//    cell.detailTextLabel.
     return cell;
 }
 
