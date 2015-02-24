@@ -22,6 +22,7 @@
 @property CLLocationManager *locationManager;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentGameLabel;
 @property LoginViewController *loginVC;
 //@property Game *currentGame;
 //@property GameManager *gameManager;
@@ -97,6 +98,7 @@
         }];
     }
     self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [User currentUser].username];
+    self.currentGameLabel.text = [GameManager sharedManager].currentGame.name;
     NSLog(@"GameId from NSDefaults: %@", [self.defaults objectForKey:kGameIdKey]);
 }
 

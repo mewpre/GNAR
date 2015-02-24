@@ -52,6 +52,10 @@
 
     // Get scores of current user
 
+    // Set up dictionary to hold players (and then scores later)
+    self.playersScoresData = [NSMutableDictionary new];
+    self.playersTotalScoresData = [NSMutableDictionary new];
+
     // Get players within current game
     [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *players) {
         self.playersArray = players;
@@ -64,9 +68,6 @@
             // Get scores of USER for GAME
 
             [self getUserScores:user forGame:self.currentGame withCompletion:^(NSArray *userScores) {
-                // Set up dictionary to hold players (and then scores later)
-                self.playersScoresData = [NSMutableDictionary new];
-                self.playersTotalScoresData = [NSMutableDictionary new];
                 // Set fetched scores to local object.scores
                 //TODO: change this to GQL local data storage
                 [self.playersScoresData setObject:userScores forKey:user.username];
@@ -82,9 +83,12 @@
                 [self.activitySpinner stopAnimating];
 
                 // Set My GNAR score at top of VC
-//                self.myUserNameLabel.text = [User currentUser].username;
-//                self.myScoreLabel.text = self.playersTotalScoresData[[User currentUser].username];
-//                self.myRankLabel.text =
+                if ([user.username isEqualToString:[[User currentUser] username]])
+                {
+                    self.myUserNameLabel.text = [User currentUser].username;
+                    self.myScoreLabel.text = [NSString stringWithFormat:@"%li", (long)totalScore]; //self.playersTotalScoresData[[User currentUser].username];
+//                    self.myRankLabel.text =
+                }
             }];
         }
     }];
@@ -131,14 +135,17 @@
 {
     LeaderboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LeaderboardCell"];
 
-    if (self.playersTotalScoresData)
+    NSString *username = self.sortedPlayersArray[indexPath.row];
+    //    User *user = self.playersArray[indexPath.row];
+    cell.userNameLabel.text = username;
+    cell.scoreLabel.text = [NSString stringWithFormat:@"%@", self.playersTotalScoresData[username]];
+    cell.rankLabel.text = [NSString stringWithFormat:@"#%li", (long)indexPath.row + 1];
+    //    cell.scoreRatioLabel =
+
+    if ([username isEqualToString:[User currentUser].username])
     {
-        NSString *username = self.sortedPlayersArray[indexPath.row];
-        //    User *user = self.playersArray[indexPath.row];
-        cell.userNameLabel.text = username;
-        cell.scoreLabel.text = self.playersTotalScoresData[username];
-        //    cell.rankLabel =
-        //    cell.scoreRatioLabel =
+//        self.myRankLabel.text = [NSString stringWithFormat:@"#%li", (long)indexPath.row + 1];
+
     }
 
 //    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.playersTotalScoresData objectForKey:username]];
