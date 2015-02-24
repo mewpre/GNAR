@@ -61,14 +61,10 @@
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
             infoCell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
-            infoCell.funLabel.text = @"Fun Factor: ❄︎❄︎❄︎";
-            infoCell.descriptionLabel.text = @"Description: Super Awesome Saus is one of the best, most super awesome sauses around. Don't be fooled by the extreme awesomeness of the point value.";
-            infoCell.difficultyLabel.text = @"Difficulty: Super Hard";
-            infoCell.heroLabel.text = @"Hero Factor: 💪💪";
-//            infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
-//            infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
-//            infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
-//            infoCell.descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
+            infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
+            infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
+            infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
+            infoCell.descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
 
             return infoCell;
         }
@@ -140,13 +136,12 @@
             //TODO: modify InfoCell to display abbreviation, point values, and description instead of all the stuff LineWorths have
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
-            infoCell.funLabel.text = @"Super FUN AWESOME saws!!!";
             infoCell.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
-//            infoCell.descriptionLabel.text = @"Description: as;df asd;lfj asd;lijasf a;soij fas;lis dfai asof a;odf asdo;f alfoh asodif a;oifjasodifj asodf.";
 
-//            infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
-//            infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
-//            infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
+            // For non-Line Worths, want to display abbreviation and point value instead of fun, difficulty, and hero
+            infoCell.funLabel.text = @"";
+            infoCell.difficultyLabel.text = @"";
+            infoCell.heroLabel.text = [NSString stringWithFormat:@"%@: %@", self.achievement[@"abbreviation"], [self.achievement[@"pointValues"] firstObject]];
             infoCell.descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
             return infoCell;
         }

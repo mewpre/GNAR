@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Game.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "trifoldMap_icon@2x.png"
+      "filename" : "Game@2x.png"
     },
     {
       "idiom" : "universal",

@@ -594,7 +594,8 @@ NSUInteger DeviceSystemMajorVersion()
     PFRelation *playerRelation = [game relationForKey:@"players"];
     [playerRelation addObject:[User currentUser]];
     // Add all selected users to game
-    for (User *user in self.friendsArray) {
+    for (User *user in self.friendsArray)
+    {
         [playerRelation addObject:user];
     }
 
@@ -616,6 +617,30 @@ NSUInteger DeviceSystemMajorVersion()
 
         // Save game to core data singleton
         [GameManager sharedManager].currentGame = game;
+
+        for (User *user in self.friendsArray)
+        {
+//            if (![user isEqual:[User currentUser]])
+//            {
+            PFQuery *userQuery = [User query];
+            [userQuery whereKey:@"objectID" equalTo:user.objectId];
+                // Find devices associated with these users
+                PFQuery *pushQuery = [PFInstallation query];
+                [pushQuery whereKey:(@"user") matchesQuery:userQuery];
+
+                // Send push notification to query
+                PFPush *push = [[PFPush alloc] init];
+                NSDictionary *data = @{
+                                       @"alert" : [NSString stringWithFormat:@"You have been added to a game by %@!", [[User currentUser]username]],
+                                       @"gameID" : game.objectId,
+                                       @"badge" : @"Increment"
+                                       };
+                
+                [push setQuery:pushQuery]; // Set our Installation query
+                [push setData:data];
+                [push sendPushInBackground];
+//            }
+        }
     }];
 }
 
