@@ -17,8 +17,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *skierBoarderSegControl;
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *broChickSegControl;
-@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
@@ -61,11 +61,11 @@
     {
         [self showSignUpErrorAlertController:@"Error: Email missing" withMessage:@"Please enter an email."];
     }
-    else if (![self.skierBoarderSegControl isSelected])
+    else if ([self.skierBoarderSegControl selectedSegmentIndex] != 0 && [self.skierBoarderSegControl selectedSegmentIndex] != 1)
     {
         [self showSignUpErrorAlertController:@"Error: No riding style selected" withMessage:@"Please select whether you're a skier or a boarder."];
     }
-    else if (![self.broChickSegControl isSelected])
+    else if ([self.broChickSegControl selectedSegmentIndex] != 0 && [self.broChickSegControl selectedSegmentIndex] != 1)
     {
         [self showSignUpErrorAlertController:@"Error: No gender selected" withMessage:@"Please select whether you're a bro or a chick."];
     }

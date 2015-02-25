@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[GameManager sharedManager] printCurrentGame];
+    self.title = [[[GameManager sharedManager] currentGame] name];
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
     // since this is not a table view controller, need to programatically create link between VC and refresh control
@@ -78,6 +78,7 @@
                 }
                 NSNumber *totalScore = [NSNumber numberWithInteger:tempScore];
                 [self.playersTotalScoresData setObject:totalScore forKey:user.username];
+
                 [self sortPlayerTotalDictionary];
                 [self.tableView reloadData];
                 [self.activitySpinner stopAnimating];
@@ -121,7 +122,8 @@
 }
 
 
-- (void)refresh:(UIRefreshControl *)refreshControl {
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
     [refreshControl endRefreshing];
 }
 
@@ -129,8 +131,10 @@
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"SortedPlayersArray count: %lu", (unsigned long)self.sortedPlayersArray.count);
     return self.sortedPlayersArray.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LeaderboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LeaderboardCell"];
@@ -144,7 +148,7 @@
 
     if ([username isEqualToString:[User currentUser].username])
     {
-//        self.myRankLabel.text = [NSString stringWithFormat:@"#%li", indexPath.row + 1];
+        self.myRankLabel.text = [NSString stringWithFormat:@"#%li", indexPath.row + 1];
 
     }
 
