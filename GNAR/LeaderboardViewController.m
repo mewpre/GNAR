@@ -57,7 +57,6 @@
             NSLog(@"%@", error);
         }
     }];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -112,9 +111,10 @@
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)refresh:(UIRefreshControl *)refreshControl
 {
-    [super viewDidAppear:animated];
+
+    [refreshControl endRefreshing];
 }
 
 //--------------------------------------    Helper Methods    ---------------------------------------------
@@ -136,12 +136,6 @@
         }
         complete(objects);
     }];
-}
-
-
-- (void)refresh:(UIRefreshControl *)refreshControl
-{
-    [refreshControl endRefreshing];
 }
 
 //----------------------------------------    Table View    ----------------------------------------------------

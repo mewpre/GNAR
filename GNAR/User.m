@@ -71,6 +71,7 @@
 {
     
     PFRelation *relation = [[User currentUser] relationForKey:@"scores"];
+//    [relation.query whereKey:@"games" containedIn:[GameManager sharedManager].currentGame];
     [relation.query includeKey:@"modifiers"];
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
@@ -102,7 +103,7 @@
 {
     PFRelation *relation = [[User currentUser] relationForKey:@"games"];
 //    [relation.query includeKey:@"players"];
-    [relation.query addAscendingOrder:@"createdAt"];
+    [relation.query orderByAscending:@"createdAt"];
     // Apply local cache
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
@@ -111,7 +112,12 @@
         }
         else
         {
-            NSLog(@"Fetched %lu games with no errors", objects.count);
+            NSMutableString *string = [NSMutableString new];
+            for (Game *game in objects)
+            {
+                [string appendString:game.name];
+            }
+            NSLog(@"Fetched %lu games with no errors: %@", objects.count, string);
         }
         complete(objects);
     }];

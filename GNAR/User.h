@@ -12,23 +12,21 @@
 
 @interface User : PFUser <PFSubclassing>
 
-@property (retain) NSString *firstName;
-@property (retain) NSString *lastName;
-@property (retain) PFGeoPoint *lastKnownLocation;
-@property (retain) NSString *type;
-@property (retain) NSString *gender;
-@property (retain) NSDate *birthday;
-@property (retain) NSString *homeMountain;
-@property (retain) NSNumber *ability;
-@property (retain) PFFile *profileImage;
+@property NSString *firstName;
+@property NSString *lastName;
+@property PFGeoPoint *lastKnownLocation;
+@property NSString *type;
+@property NSString *gender;
+@property NSDate *birthday;
+@property NSString *homeMountain;
+@property NSNumber *ability;
+@property PFFile *profileImage;
 
-//@property (retain, nonatomic) PFRelation *friends;
-@property (retain, nonatomic) PFRelation *games;
-@property (retain, nonatomic) PFRelation *scores;
-//@property (retain, nonatomic) PFRelation *createdAchievements;
-@property (retain, nonatomic) PFRelation *createdGames;
-
-
+//@property (nonatomic) PFRelation *friends;
+@property (nonatomic) PFRelation *games;
+@property (nonatomic) PFRelation *scores;
+//@property (nonatomic) PFRelation *createdAchievements;
+@property (nonatomic) PFRelation *createdGames;
 
 //@property NSMutableArray *scores;
 

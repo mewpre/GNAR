@@ -26,40 +26,33 @@
     // Display current User's username in title
     self.title = [NSString stringWithFormat:@"%@", self.currentPlayer.username];
 
-    // Display the scores of the current user
-    [self getUserScoresForPlayer:self.currentPlayer forGame:self.currentGame withCompletion:^(NSArray *scores) {
-//        for (Score *score in scores)
-//        {
-//            <#statements#>
-//        }
-        self.scoresArray = scores;
-        [self.tableView reloadData];
-    }];
-
-    
-//    [self.currentPlayer getUserScoresWithCompletion:^(NSArray *array) {
-//        self.scoresArray = array;
-//        [self.tableView reloadData];
-//    }];
-
     // Do any additional setup after loading the view.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(getUserScores) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // Display the scores of the current user
+    [self getUserScores];
 }
 
 //--------------------------------------    Helper Methods    ---------------------------------------------
 #pragma mark - Helper Methods
 // Retrieves scores for a specified user within a specified game (includes score modifiers with fetch)
-- (void)getUserScoresForPlayer:(User *)player forGame:(Game *)game withCompletion:(void(^)(NSArray *scores))complete
+- (void)getUserScores
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Score"];
     // Player-specific query
-    [query whereKey:@"scorer" equalTo:player];
+    [query whereKey:@"scorer" equalTo:(User *)self.currentPlayer];
     // Game-specific query
-    [query whereKey:@"game" equalTo:game];
+    [query whereKey:@"game" equalTo:self.currentGame];
+    // Order scores by createdAt Date
+    [query orderByAscending:@"createdAt"];
     [query includeKey:@"achievementPointer"];
-//    [query includeKey:@"modifiers"];
+    //    [query includeKey:@"modifiers"];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
@@ -69,13 +62,11 @@
         else
         {
             NSLog(@"Fetched %lu scores for %@", objects.count, self.currentPlayer);
+            self.scoresArray = objects;
+            [self.tableView reloadData];
         }
-        complete(objects);
+        [self.refreshControl endRefreshing];
     }];
-}
-
-- (void)refresh:(UIRefreshControl *)refreshControl {
-    [refreshControl endRefreshing];
 }
 
 
@@ -98,7 +89,7 @@
     cell.textLabel.text = scoreAchievement.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", scoreAchievement.pointValues[score.snowLevel.intValue]];
 
-//    NSArray *modifiersArray = [score objectForKey:@"modifiers"];
+    //    NSArray *modifiersArray = [score objectForKey:@"modifiers"];
     //    Score *modifier = ;
     return cell;
 }
@@ -118,13 +109,13 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
