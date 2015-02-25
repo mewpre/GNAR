@@ -217,7 +217,7 @@ NSUInteger DeviceSystemMajorVersion()
     if (self.datePickerIndexPath != nil)
     {
         UITableViewCell *associatedDatePickerCell = [self.tableView cellForRowAtIndexPath:self.datePickerIndexPath];
-
+        associatedDatePickerCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
         UIDatePicker *targetedDatePicker = (UIDatePicker *)[associatedDatePickerCell viewWithTag:kDatePickerTag];
         if (targetedDatePicker != nil)
         {

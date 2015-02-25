@@ -20,7 +20,7 @@
 @property (retain) NSDate *birthday;
 @property (retain) NSString *homeMountain;
 @property (retain) NSNumber *ability;
-@property (retain) UIImage *profileImage;
+@property (retain) NSData *profileImage;
 
 //@property (retain, nonatomic) PFRelation *friends;
 @property (retain, nonatomic) PFRelation *games;
