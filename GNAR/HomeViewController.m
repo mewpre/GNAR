@@ -93,11 +93,9 @@
 //                // Save players as singletons
 //
 //            }];
-
-
         }];
     }
-    self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [User currentUser].username];
+    self.usernameLabel.text = [NSString stringWithFormat:@"%@", [User currentUser].username];
     self.currentGameLabel.text = [GameManager sharedManager].currentGame.name;
     NSLog(@"GameId from NSDefaults: %@", [self.defaults objectForKey:kGameIdKey]);
 }

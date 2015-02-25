@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *myUserNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *myScoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *myRankLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *currentUserImage;
 
 @property UIRefreshControl *refreshControl;
 @property NSArray *playersArray;
@@ -35,12 +36,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = [[[GameManager sharedManager] currentGame] name];
+    //TODO: setting self.title changes the tab bar icon title too               * * * * *
+    self.title = @"Leaderboard";
+    self.navigationItem.title = [[[GameManager sharedManager] currentGame] name];
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
     // since this is not a table view controller, need to programatically create link between VC and refresh control
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+
+    PFFile *userImageFile = [[User currentUser] objectForKey:@"profileImage"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error)
+        {
+            UIImage *image = [UIImage imageWithData:imageData];
+            self.currentUserImage.image = image;
+        }
+        else
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -144,6 +161,28 @@
     cell.userNameLabel.text = username;
     cell.scoreLabel.text = [NSString stringWithFormat:@"%@", self.playersTotalScoresData[username]];
     cell.rankLabel.text = [NSString stringWithFormat:@"#%li", indexPath.row + 1];
+
+
+    for (User *user in self.playersArray)
+    {
+        if ([username isEqualToString:user.username])
+        {
+            PFFile *userImageFile = [user objectForKey:@"profileImage"];
+            [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error)
+                {
+                    UIImage *image = [UIImage imageWithData:imageData];
+                    cell.userImage.image = image;
+                }
+                else
+                {
+                    NSLog(@"%@", error);
+                }
+            }];
+
+        }
+    }
+
     //    cell.scoreRatioLabel =
 
     if ([username isEqualToString:[User currentUser].username])

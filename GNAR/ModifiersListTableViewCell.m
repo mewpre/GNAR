@@ -42,7 +42,7 @@
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ModifierCell"];
         Score *score = [self.modifiersList objectAtIndex:indexPath.row];
-        cell.textLabel.text = score.achievementPointer.abbreviation;
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", score.achievementPointer.abbreviation, score.achievementPointer.name];
         cell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", score.score];
     }
