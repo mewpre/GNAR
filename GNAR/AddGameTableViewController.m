@@ -618,12 +618,17 @@ NSUInteger DeviceSystemMajorVersion()
         // Save game to core data singleton
         [GameManager sharedManager].currentGame = game;
 
+        // Send push notification game invite to all selected players
         for (User *user in self.friendsArray)
         {
 //            if (![user isEqual:[User currentUser]])
 //            {
-            PFQuery *userQuery = [User query];
-            [userQuery whereKey:@"objectID" equalTo:user.objectId];
+            PFQuery *userQuery = [PFUser query];
+            [userQuery whereKey:@"objectId" equalTo:user.objectId];
+
+            [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                NSLog(@"%@", object);
+            }];
                 // Find devices associated with these users
                 PFQuery *pushQuery = [PFInstallation query];
                 [pushQuery whereKey:(@"user") matchesQuery:userQuery];
