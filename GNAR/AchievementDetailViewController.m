@@ -245,28 +245,31 @@
     }
     for (User *player in playersSet)
     {
-        PFQuery *userQuery = [PFUser query];
-        [userQuery whereKey:@"objectId" equalTo:player.objectId];
+        if (![player isEqual:[User currentUser]])
+        {
+            PFQuery *userQuery = [PFUser query];
+            [userQuery whereKey:@"objectId" equalTo:player.objectId];
 
-        [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-            NSLog(@"%@", object);
-        }];
-        // Find device associated with user
-        PFQuery *pushQuery = [PFInstallation query];
-        [pushQuery whereKey:(@"user") matchesQuery:userQuery];
+            [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                NSLog(@"%@", object);
+            }];
+            // Find device associated with user
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:(@"user") matchesQuery:userQuery];
 
-        // Send push notification to query
-        PFPush *push = [[PFPush alloc] init];
-        NSDictionary *data = @{
-                               @"alert" : [NSString stringWithFormat:@"%@ thinks you got GNAR!!", [[User currentUser] username]],
-                               @"message" : [NSString stringWithFormat:@"New GNAR scores suggested by %@! Please confirm them in the leader", [[User currentUser]username]],
-                               @"badge" : @"Increment",
-                               @"type" : @"scoreAlert"
-                               };
+            // Send push notification to query
+            PFPush *push = [[PFPush alloc] init];
+            NSDictionary *data = @{
+                                   @"alert" : [NSString stringWithFormat:@"%@ thinks you got GNAR!!", [[User currentUser] username]],
+                                   @"message" : [NSString stringWithFormat:@"New GNAR scores suggested by %@! Please confirm them in the leader", [[User currentUser]username]],
+                                   @"badge" : @"Increment",
+                                   @"type" : @"scoreAlert"
+                                   };
 
-        [push setQuery:pushQuery]; // Set our Installation query
-        [push setData:data];
-        [push sendPushInBackground];
+            [push setQuery:pushQuery]; // Set our Installation query
+            [push setData:data];
+            [push sendPushInBackground];
+        }
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
