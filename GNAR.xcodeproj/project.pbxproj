@@ -54,6 +54,7 @@
 		0FEFE8A91A8A9F210062123D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FEFE8A81A8A9F210062123D /* Main.storyboard */; };
 		0FEFE8AC1A8AC7460062123D /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEFE8AB1A8AC7460062123D /* Score.m */; };
 		603025021A9DC41F007DCC55 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 603025011A9DC41F007DCC55 /* Player.m */; };
+		603025051A9E83B6007DCC55 /* UserAchievementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 603025041A9E83B6007DCC55 /* UserAchievementsTableViewCell.m */; };
 		606B716E1A894047004DDAB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B716D1A894047004DDAB1 /* main.m */; };
 		606B71711A894047004DDAB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B71701A894047004DDAB1 /* AppDelegate.m */; };
 		606B71791A894048004DDAB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606B71781A894048004DDAB1 /* Images.xcassets */; };
@@ -156,6 +157,8 @@
 		0FEFE8AB1A8AC7460062123D /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
 		603025001A9DC41F007DCC55 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		603025011A9DC41F007DCC55 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		603025031A9E83B6007DCC55 /* UserAchievementsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAchievementsTableViewCell.h; sourceTree = "<group>"; };
+		603025041A9E83B6007DCC55 /* UserAchievementsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAchievementsTableViewCell.m; sourceTree = "<group>"; };
 		606B71681A894047004DDAB1 /* GNAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GNAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606B716C1A894047004DDAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		606B716D1A894047004DDAB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -322,7 +325,7 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
-		0FA3EDE71A8F059800FDF764 /* Custom Cells */ = {
+		0FA3EDE71A8F059800FDF764 /* Custom SubTable Cells */ = {
 			isa = PBXGroup;
 			children = (
 				0FA3EDE41A8F059200FDF764 /* InfoTableViewCell.h */,
@@ -336,7 +339,7 @@
 				0FA3EDEE1A8F062400FDF764 /* PlayerTableViewCell.h */,
 				0FA3EDEF1A8F062400FDF764 /* PlayerTableViewCell.m */,
 			);
-			name = "Custom Cells";
+			name = "Custom SubTable Cells";
 			sourceTree = "<group>";
 		};
 		0FC37C9F1A9C460A00408336 /* Leaderboard Cells */ = {
@@ -344,6 +347,8 @@
 			children = (
 				0FC37C9C1A9C460200408336 /* LeaderboardTableViewCell.h */,
 				0FC37C9D1A9C460200408336 /* LeaderboardTableViewCell.m */,
+				603025031A9E83B6007DCC55 /* UserAchievementsTableViewCell.h */,
+				603025041A9E83B6007DCC55 /* UserAchievementsTableViewCell.m */,
 			);
 			name = "Leaderboard Cells";
 			sourceTree = "<group>";
@@ -406,7 +411,7 @@
 			children = (
 				0FCF8AE51A8BD2EE006224BB /* SubTableViewCell.h */,
 				0FCF8AE61A8BD2EE006224BB /* SubTableViewCell.m */,
-				0FA3EDE71A8F059800FDF764 /* Custom Cells */,
+				0FA3EDE71A8F059800FDF764 /* Custom SubTable Cells */,
 			);
 			name = ChildCell;
 			sourceTree = "<group>";
@@ -439,8 +444,6 @@
 				0FC37CA01A9C55E500408336 /* GNAR Objects */,
 				0FCCB2111A93C0C3004EF2D5 /* GameManager.h */,
 				0FCCB2121A93C0C3004EF2D5 /* GameManager.m */,
-				0FC37C9F1A9C460A00408336 /* Leaderboard Cells */,
-				0FCF8AE91A8BD313006224BB /* SubTable */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -469,6 +472,8 @@
 			children = (
 				0F61D5401A89434000FF96F0 /* Storyboard */,
 				0F61D57A1A89CB0A00FF96F0 /* Controllers */,
+				0FCF8AE91A8BD313006224BB /* SubTable */,
+				0FC37C9F1A9C460A00408336 /* Leaderboard Cells */,
 				0FEFE89B1A8A7B8C0062123D /* Models */,
 				0F61D5711A89C7F000FF96F0 /* Other */,
 				606B71781A894048004DDAB1 /* Images.xcassets */,
@@ -649,6 +654,7 @@
 				60EA88331A89E66C004B6BF7 /* SignUpViewController.m in Sources */,
 				0FEFE89E1A8A7C460062123D /* AchievementViewController.m in Sources */,
 				0FCCB2131A93C0C3004EF2D5 /* GameManager.m in Sources */,
+				603025051A9E83B6007DCC55 /* UserAchievementsTableViewCell.m in Sources */,
 				0FC37C9E1A9C460200408336 /* LeaderboardTableViewCell.m in Sources */,
 				60E5617E1A8EFA7200D81C48 /* AchievementDetailTableView.m in Sources */,
 				606B716E1A894047004DDAB1 /* main.m in Sources */,

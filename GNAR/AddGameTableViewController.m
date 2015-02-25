@@ -621,30 +621,32 @@ NSUInteger DeviceSystemMajorVersion()
         // Send push notification game invite to all selected players
         for (User *user in self.friendsArray)
         {
-//            if (![user isEqual:[User currentUser]])
-//            {
+            if (![user isEqual:[User currentUser]])
+            {
             PFQuery *userQuery = [PFUser query];
             [userQuery whereKey:@"objectId" equalTo:user.objectId];
 
             [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                 NSLog(@"%@", object);
             }];
-                // Find devices associated with these users
+                // Find device associated with user
                 PFQuery *pushQuery = [PFInstallation query];
                 [pushQuery whereKey:(@"user") matchesQuery:userQuery];
 
                 // Send push notification to query
                 PFPush *push = [[PFPush alloc] init];
                 NSDictionary *data = @{
-                                       @"alert" : [NSString stringWithFormat:@"You have been added to a game by %@!", [[User currentUser]username]],
-                                       @"gameID" : game.objectId//,
-//                                       @"badge" : @"Increment"
+                                       @"alert" : [NSString stringWithFormat:@"Exclusive GNAR Invite from %@!!", [[User currentUser] username]],
+                                       @"message" : [NSString stringWithFormat:@"%@ invited you to their game: \n %@!", [[User currentUser]username], game.name],
+                                       @"gameID" : game.objectId,
+                                       @"badge" : @"Increment",
+                                       @"type" : @"gameAlert"
                                        };
                 
                 [push setQuery:pushQuery]; // Set our Installation query
                 [push setData:data];
                 [push sendPushInBackground];
-//            }
+            }
         }
     }];
 }

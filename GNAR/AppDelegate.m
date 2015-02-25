@@ -71,25 +71,6 @@
 
 //    GameManager *myGameManager = [GameManager sharedManager];
 
-    // Extract the notification data
-    NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
-    if (notificationPayload)
-    {
-        [PFInstallation currentInstallation].badge = 0;
-        // Create a pointer to the game object
-        NSString *gameID = [notificationPayload objectForKey:@"gameID"];
-        PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game" objectId:gameID];
-
-        // Fetch game object
-        [targetGame fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-            // Show photo view controller
-            if (!error && [PFUser currentUser])
-            {
-                NSLog(@"Received notification!");
-                //Do logic to somehow bring up game view controller and an alert asking if you want to join the game??
-            }
-        }];
-    }
     return YES;
 }
 
@@ -147,28 +128,75 @@
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler
 {
     [PFInstallation currentInstallation].badge = 0;
-    [PFPush handlePush:userInfo];
+    //    [PFPush handlePush:userInfo];
 
-    NSString *gameID = [userInfo objectForKey:@"gameID"];
-    PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game"
-                                                            objectId:gameID];
+    if ([[userInfo objectForKey:@"type"] isEqualToString:@"gameAlert"])
+    {
+        NSString *gameID = [userInfo objectForKey:@"gameID"];
+        PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game"
+                                                               objectId:gameID];
+        [targetGame fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (error)
+            {
+                handler(UIBackgroundFetchResultFailed);
+            }
+            else if ([User currentUser])
+            {
+                // Executed if receiving a push notification about being added to a game
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:[userInfo objectForKey:@"aps"][@"alert"] message:[userInfo objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
 
-    [targetGame fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (error)
+                // If accepted, adds game to player's games relation
+                UIAlertAction *accept = [UIAlertAction actionWithTitle:@"Accept" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                         {
+                                             PFRelation *gamesRelation = [[User currentUser] relationForKey:@"games"];
+                                             [gamesRelation addObject:targetGame];
+                                             [[User currentUser] saveInBackground];
+                                             NSLog(@"Received notification!");
+                                         }];
+                // If declined, removes all relationships between the user and the game
+                UIAlertAction *decline = [UIAlertAction actionWithTitle:@"Decline" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                                          {
+                                              PFRelation *playersRelation = [targetGame relationForKey:@"players"];
+                                              [playersRelation removeObject:[User currentUser]];
+                                              [targetGame saveInBackground];
+                                          }];
+
+                [alert addAction:decline];
+                [alert addAction:accept];
+
+                [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+            
+            handler(UIBackgroundFetchResultNewData);
+            }
+            else
+            {
+                //            handler(UIBackgroundModeNoData);
+            }
+        }];
+    }
+    else if ([[userInfo objectForKey:@"type"] isEqualToString:@"scoreAlert"])
+    {
+        if ([User currentUser])
         {
-            handler(UIBackgroundFetchResultFailed);
-        }
-        else if ([PFUser currentUser])
-        {
-            NSLog(@"Received notification!");
-            //Do logic to somehow bring up game view controller and an alert asking if you want to join the game??
+            // Executed if receiving a push notification about being added to a game
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[userInfo objectForKey:@"aps"][@"alert"] message:[userInfo objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+
+            UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                     }];
+
+            [alert addAction:ok];
+
+            [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+
             handler(UIBackgroundFetchResultNewData);
         }
-        else
-        {
-//            handler(UIBackgroundModeNoData);
-        }
-    }];
+    }
+    else
+    {
+        // Do nothing; can extend if we decide to do more types of notifications
+    }
 }
 
 @end
