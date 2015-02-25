@@ -618,29 +618,34 @@ NSUInteger DeviceSystemMajorVersion()
         // Save game to core data singleton
         [GameManager sharedManager].currentGame = game;
 
-//        for (User *user in self.friendsArray)
-//        {
-////            if (![user isEqual:[User currentUser]])
-////            {
-//            PFQuery *userQuery = [User query];
-//            [userQuery whereKey:@"objectID" equalTo:user.objectId];
-//                // Find devices associated with these users
-//                PFQuery *pushQuery = [PFInstallation query];
-//                [pushQuery whereKey:(@"user") matchesQuery:userQuery];
-//
-//                // Send push notification to query
-//                PFPush *push = [[PFPush alloc] init];
-//                NSDictionary *data = @{
-//                                       @"alert" : [NSString stringWithFormat:@"You have been added to a game by %@!", [[User currentUser]username]],
-//                                       @"gameID" : game.objectId//,
-////                                       @"badge" : @"Increment"
-//                                       };
-//                
-//                [push setQuery:pushQuery]; // Set our Installation query
-//                [push setData:data];
-//                [push sendPushInBackground];
-////            }
-//        }
+        // Send push notification game invite to all selected players
+        for (User *user in self.friendsArray)
+        {
+//            if (![user isEqual:[User currentUser]])
+//            {
+            PFQuery *userQuery = [PFUser query];
+            [userQuery whereKey:@"objectId" equalTo:user.objectId];
+
+            [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                NSLog(@"%@", object);
+            }];
+                // Find devices associated with these users
+                PFQuery *pushQuery = [PFInstallation query];
+                [pushQuery whereKey:(@"user") matchesQuery:userQuery];
+
+                // Send push notification to query
+                PFPush *push = [[PFPush alloc] init];
+                NSDictionary *data = @{
+                                       @"alert" : [NSString stringWithFormat:@"You have been added to a game by %@!", [[User currentUser]username]],
+                                       @"gameID" : game.objectId//,
+//                                       @"badge" : @"Increment"
+                                       };
+                
+                [push setQuery:pushQuery]; // Set our Installation query
+                [push setData:data];
+                [push sendPushInBackground];
+//            }
+        }
     }];
 }
 
