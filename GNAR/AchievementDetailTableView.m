@@ -64,7 +64,7 @@
             infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
             infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
             infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
-            infoCell.descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
+            infoCell.descriptionTextView.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
 
             return infoCell;
         }
@@ -142,7 +142,8 @@
             infoCell.funLabel.text = @"";
             infoCell.difficultyLabel.text = @"";
             infoCell.heroLabel.text = [NSString stringWithFormat:@"%@: %@", self.achievement[@"abbreviation"], [self.achievement[@"pointValues"] firstObject]];
-            infoCell.descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
+            infoCell.descriptionTextView.text = [NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]];
+            infoCell.descriptionTextView.textColor = [UIColor whiteColor];
             return infoCell;
         }
         else if (indexPath.section == PlayerCell)
@@ -176,7 +177,7 @@
     if (indexPath.section == 0)
     {
         //TODO: Make height dynamic based on height of description text view
-        return 150.0;
+        return 200.0;
     }
     else if (self.achievement.type == LineWorth)
     {
