@@ -1852,7 +1852,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JMs-LD-7it" id="fpC-EN-iRR">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="228" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ndv-jX-M13">
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="218" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ndv-jX-M13">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1861,7 +1861,7 @@
                                                         </constraint>
                                                     </constraints>
                                                     <prototypes>
-                                                        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="200" id="vDL-2X-W3u" customClass="InfoTableViewCell">
+                                                        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="218" id="vDL-2X-W3u" customClass="InfoTableViewCell">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vDL-2X-W3u" id="7Yp-U1-aJM">
@@ -1882,7 +1882,8 @@
                                                                                 <exclude reference="uD8-M6-rQj"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="8" y="39" width="286" height="21"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="Wso-b9-8ID"/>
                                                                                 <include reference="uD8-M6-rQj"/>
@@ -1904,7 +1905,8 @@
                                                                                 <exclude reference="FSe-Yc-NrA"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="8" y="10" width="286" height="21"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="DIk-cM-5gr"/>
                                                                                 <include reference="FSe-Yc-NrA"/>
@@ -1914,7 +1916,9 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aH-uH-DVK">
                                                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="21" id="LHz-hm-NJd"/>
+                                                                            <constraint firstAttribute="height" constant="21" id="LHz-hm-NJd">
+                                                                                <variation key="heightClass=regular-widthClass=compact" constant="42"/>
+                                                                            </constraint>
                                                                             <constraint firstAttribute="width" constant="384" id="nwk-fy-SQ5"/>
                                                                         </constraints>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1946,7 +1950,8 @@
                                                                                 <exclude reference="NUq-3W-dUL"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="302" y="10" width="90" height="50"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="1WT-TT-MMm"/>
                                                                                 <include reference="NUq-3W-dUL"/>
@@ -1990,7 +1995,7 @@
                                                                         <variation key="heightClass=regular-widthClass=compact" constant="1"/>
                                                                     </constraint>
                                                                     <constraint firstItem="vJR-k5-XQb" firstAttribute="top" secondItem="0aH-uH-DVK" secondAttribute="bottom" constant="8" id="IkC-8x-YK7">
-                                                                        <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                                                        <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                                                                     </constraint>
                                                                     <constraint firstItem="c8R-9r-QmC" firstAttribute="trailing" secondItem="7Yp-U1-aJM" secondAttribute="trailingMargin" id="MM3-Lm-Xch"/>
                                                                     <constraint firstItem="0aH-uH-DVK" firstAttribute="top" secondItem="txN-ca-qVk" secondAttribute="top" constant="30" id="Nwp-Bf-bQd"/>
@@ -2595,7 +2600,8 @@
                                                             <exclude reference="vvB-zi-hvW"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="576"/>
                                                         <mask key="constraints">
                                                             <include reference="vvB-zi-hvW"/>
                                                         </mask>
@@ -2696,7 +2702,7 @@
                     </connections>
                 </tableView>
             </objects>
-            <point key="canvasLocation" x="4999.5" y="1414.5"/>
+            <point key="canvasLocation" x="4999.5" y="1413.75"/>
         </scene>
         <!--Select Players View Controller-->
         <scene sceneID="ifC-iM-gHa">

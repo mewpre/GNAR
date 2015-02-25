@@ -67,6 +67,7 @@
             infoCell.descriptionTextView.text = [NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]];  // [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
             infoCell.descriptionTextView.backgroundColor = infoCell.backgroundColor;
             infoCell.descriptionTextView.textColor = [UIColor whiteColor];
+            infoCell.descriptionTextView.font = [UIFont fontWithName:@"Helvetica Neue" size:17.0];
 
 
             return infoCell;
@@ -181,7 +182,7 @@
     if (indexPath.section == 0)
     {
         //TODO: Make height dynamic based on height of description text view
-        return 200.0;
+        return 220.0;
     }
     else if (self.achievement.type == LineWorth)
     {
