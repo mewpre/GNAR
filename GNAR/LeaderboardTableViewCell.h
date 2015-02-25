@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rankLabel;
-@property (weak, nonatomic) IBOutlet UILabel *scoreRatioLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *scoreRatioLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
 
 @end

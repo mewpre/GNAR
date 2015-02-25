@@ -60,11 +60,15 @@
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
-            infoCell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
+            infoCell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0]; // darker grey
             infoCell.funLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Fun Factor: %@", self.achievement[@"funFactor"]]];
             infoCell.heroLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Hero Factor: %@", self.achievement[@"heroFactor"]]];
             infoCell.difficultyLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Difficulty: %@", self.achievement[@"difficulty"]]];
-            infoCell.descriptionTextView.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
+            infoCell.descriptionTextView.text = [NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]];  // [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]]];
+            infoCell.descriptionTextView.backgroundColor = infoCell.backgroundColor;
+            infoCell.descriptionTextView.textColor = [UIColor whiteColor];
+            infoCell.descriptionTextView.font = [UIFont fontWithName:@"Helvetica Neue" size:17.0];
+
 
             return infoCell;
         }
@@ -72,7 +76,7 @@
         {
             SnowTableViewCell *snowCell = [tableView dequeueReusableCellWithIdentifier:@"SnowCell"];
             snowCell.delegate = self;
-            snowCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0];
+            snowCell.backgroundColor = [UIColor colorWithRed:179/255.0 green:179/255.0 blue:179/255.0 alpha:1.0]; // lighter grey
             NSMutableArray *pointValues = [NSMutableArray new];
             for (int i = 0; i < self.achievement.pointValues.count; i++)
             {
@@ -90,7 +94,7 @@
             }
             snowCell.lowSnowScoreLabel.text = pointValues[0];
             snowCell.medSnowScoreLabel.text = pointValues[1];
-            snowCell.highSnowScoreLabel.text = pointValues[2];
+            snowCell.highSnowScoreLabel.text = [NSString stringWithFormat:@"%@ pts", pointValues[2]];
             if ([self.snowIndexString integerValue] >= 0)
             {
                 snowCell.segmentedControl.selectedSegmentIndex = [self.snowIndexString integerValue];
@@ -141,8 +145,9 @@
             // For non-Line Worths, want to display abbreviation and point value instead of fun, difficulty, and hero
             infoCell.funLabel.text = @"";
             infoCell.difficultyLabel.text = @"";
-            infoCell.heroLabel.text = [NSString stringWithFormat:@"%@: %@", self.achievement[@"abbreviation"], [self.achievement[@"pointValues"] firstObject]];
+            infoCell.heroLabel.text = [NSString stringWithFormat:@"%@: %@ points", self.achievement[@"abbreviation"], [self.achievement[@"pointValues"] firstObject]];
             infoCell.descriptionTextView.text = [NSString stringWithFormat:@"Description: %@", self.achievement[@"descriptionString"]];
+            infoCell.descriptionTextView.backgroundColor = infoCell.backgroundColor;
             infoCell.descriptionTextView.textColor = [UIColor whiteColor];
             return infoCell;
         }
@@ -177,7 +182,7 @@
     if (indexPath.section == 0)
     {
         //TODO: Make height dynamic based on height of description text view
-        return 200.0;
+        return 220.0;
     }
     else if (self.achievement.type == LineWorth)
     {

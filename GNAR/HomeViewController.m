@@ -75,8 +75,8 @@
     else
     {
         // Load current game from user defaults and set to global current game
-//        [Game loadSavedGame];
-//        NSLog(@"Loaded game from defaults: %@", [GameManager sharedManager].currentGame);
+        [Game loadSavedGame];
+        NSLog(@"Loaded game from defaults: %@", [GameManager sharedManager].currentGame);
 
         // Load saved game form Parse using GameId from NSUserDefaults
         [Game loadSavedGameWithCompletion:^(Game *loadedGame) {
@@ -93,11 +93,9 @@
 //                // Save players as singletons
 //
 //            }];
-
-
         }];
     }
-    self.usernameLabel.text = [NSString stringWithFormat:@"Username: %@", [User currentUser].username];
+    self.usernameLabel.text = [NSString stringWithFormat:@"%@", [User currentUser].username];
     self.currentGameLabel.text = [GameManager sharedManager].currentGame.name;
     NSLog(@"GameId from NSDefaults: %@", [self.defaults objectForKey:kGameIdKey]);
 }
