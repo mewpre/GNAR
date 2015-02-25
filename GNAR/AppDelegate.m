@@ -14,6 +14,7 @@
 #import "Achievement.h"
 #import "Game.h"
 #import "Score.h"
+#import "Player.h"
 #import "GameManager.h"
 
 
@@ -50,13 +51,13 @@
     [application registerUserNotificationSettings:settings];
     [application registerForRemoteNotifications];
 
+    // Global UI stuff
     [[UILabel appearanceWhenContainedIn: [UITableViewCell class], nil] setTextColor:[UIColor whiteColor]];
     [[UILabel appearanceWhenContainedIn:[UISegmentedControl class], nil] setTextColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     [[UITabBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
     [[UITableView appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
     [[UITableViewCell appearance] setBackgroundColor:[UIColor colorWithWhite:( 30/255.0) alpha:1.0]];
-
     [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [[UITableView appearance] setSeparatorColor:[UIColor colorWithWhite:0.40 alpha:1.0]];
     [[UITableView appearance] setSeparatorInset:UIEdgeInsetsZero];
@@ -66,6 +67,7 @@
     [Achievement registerSubclass];
     [Game registerSubclass];
     [Score registerSubclass];
+    [Player registerSubclass];
 
 //    GameManager *myGameManager = [GameManager sharedManager];
 
@@ -141,12 +143,11 @@
 }
 
 // Handles push notification when app is running
-- (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler
 {
-    [PFPush handlePush:userInfo];
     [PFInstallation currentInstallation].badge = 0;
+    [PFPush handlePush:userInfo];
 
     NSString *gameID = [userInfo objectForKey:@"gameID"];
     PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game"
