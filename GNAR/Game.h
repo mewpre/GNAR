@@ -21,7 +21,7 @@
 @property (retain, nonatomic) PFRelation *creator;
 
 - (void)saveGame;
-//+ (void)loadSavedGame;
++ (void)loadSavedGame;
 + (void)loadSavedGameWithCompletion:(void(^)(Game *loadedGame))complete;
 
 + (void)getCurrentGameWithCompletion:(void(^)(Game *currentGame))complete;

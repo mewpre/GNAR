@@ -30,21 +30,22 @@
     [GameManager sharedManager].currentGame = self;
 }
 
-//+ (void)loadSavedGame
-//{
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//
-//    // Load game object from defaults
-//    NSData *myEncodedGame = [defaults objectForKey:@"CurrentGame"];
-//    Game *game = (Game *)[NSKeyedUnarchiver unarchiveObjectWithData:myEncodedGame];
-//
-//    // Else: laod game from defaults only (which doesn't have realations connected yet)
-//    //TODO: encode game PFRelations so we can pull relations from nsuserdefaults too
-//    [GameManager sharedManager].currentGame = game;
-////    [GameManager sharedManager].currentPlayers = 
-//
-//    // Update players
-//}
++ (void)loadSavedGame
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    // Load game object from defaults
+    NSData *myEncodedGame = [defaults objectForKey:@"CurrentGame"];
+    Game *game = (Game *)[NSKeyedUnarchiver unarchiveObjectWithData:myEncodedGame];
+
+    // Else: laod game from defaults only (which doesn't have realations connected yet)
+    //TODO: encode game PFRelations so we can pull relations from nsuserdefaults too
+    [GameManager sharedManager].currentGame = game;
+//    [GameManager sharedManager].currentPlayers = 
+
+    // Update players
+    
+}
 
 + (void)loadSavedGameWithCompletion:(void(^)(Game *loadedGame))complete
 {
