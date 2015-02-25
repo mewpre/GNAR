@@ -52,9 +52,9 @@
 {
     [super viewDidAppear:animated];
 
-//    // Associate the device with a user
-//    [PFInstallation currentInstallation][@"user"] = [User currentUser];
-//    [[PFInstallation currentInstallation] saveInBackground];
+    // Associate the device with a user
+    [PFInstallation currentInstallation][@"user"] = [User currentUser];
+    [[PFInstallation currentInstallation] saveInBackground];
 
     // If no current game exists:
     if (![self.defaults objectForKey:kGameIdKey])
