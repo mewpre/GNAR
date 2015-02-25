@@ -73,6 +73,7 @@
     NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
     if (notificationPayload)
     {
+        [PFInstallation currentInstallation].badge = 0;
         // Create a pointer to the game object
         NSString *gameID = [notificationPayload objectForKey:@"gameID"];
         PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game" objectId:gameID];
@@ -145,6 +146,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler
 {
     [PFPush handlePush:userInfo];
+    [PFInstallation currentInstallation].badge = 0;
 
     NSString *gameID = [userInfo objectForKey:@"gameID"];
     PFObject *targetGame = [PFObject objectWithoutDataWithClassName:@"Game"

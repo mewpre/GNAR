@@ -116,10 +116,10 @@
     {
         [self showSignUpErrorAlertController:@"Error: Username Required" withMessage:@"Please enter a username."];
     }
-    else if (![self.skierBoarderSegControl isSelected])
-    {
-        [self showSignUpErrorAlertController:@"Error: No riding style selected" withMessage:@"Please select whether you're a skier or a snowboarder."];
-    }
+//    else if (![self.skierBoarderSegControl isSelected])
+//    {
+//        [self showSignUpErrorAlertController:@"Error: No riding style selected" withMessage:@"Please select whether you're a skier or a snowboarder."];
+//    }
     else
     {
         // Do the signup
@@ -149,7 +149,23 @@
                 {
                     [[User currentUser] setObject:@"snowboarder" forKey:@"type"];
                 }
-                [[User currentUser] saveInBackground];
+                NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=200&height=200", userData[@"id"]]];
+
+                NSURLRequest *urlRequest = [NSURLRequest requestWithURL:pictureURL];
+
+                // Run network request asynchronously
+                [NSURLConnection sendAsynchronousRequest:urlRequest
+                                                   queue:[NSOperationQueue mainQueue]
+                                       completionHandler:
+                 ^(NSURLResponse *response, NSData *data, NSError *connectionError)
+                 {
+                     if (connectionError == nil && data != nil)
+                     {
+                         PFFile *file = [PFFile fileWithName:@"profilePic.jpg" data:data];
+                         [[User currentUser] setObject:file forKey:@"profileImage"];
+                         [[User currentUser] saveInBackground];
+                     }
+                 }];
                 [self dismissViewControllerAnimated:NO completion:nil];
             }
         }];
