@@ -632,8 +632,8 @@ NSUInteger DeviceSystemMajorVersion()
                 PFPush *push = [[PFPush alloc] init];
                 NSDictionary *data = @{
                                        @"alert" : [NSString stringWithFormat:@"You have been added to a game by %@!", [[User currentUser]username]],
-                                       @"gameID" : game.objectId,
-                                       @"badge" : @"Increment"
+                                       @"gameID" : game.objectId//,
+//                                       @"badge" : @"Increment"
                                        };
                 
                 [push setQuery:pushQuery]; // Set our Installation query

@@ -78,10 +78,19 @@
         if ([self.broChickSegControl selectedSegmentIndex] == 0)
         {
             [user setObject:@"male" forKey:@"gender"];
+            UIImage *image = [UIImage imageNamed:@"male"];
+            NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
+            PFFile *file = [PFFile fileWithName:@"maleAvatar.png" data:imageData];
+            [user setObject:file forKey:@"profileImage"];
+
         }
         else
         {
             [user setObject:@"female" forKey:@"gender"];
+            UIImage *image = [UIImage imageNamed:@"female"];
+            NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
+            PFFile *file = [PFFile fileWithName:@"femaleAvatar.png" data:imageData];
+            [user setObject:file forKey:@"profileImage"];
         }
 
         if ([self.skierBoarderSegControl selectedSegmentIndex] == 0)
