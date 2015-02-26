@@ -21,8 +21,6 @@
     [super viewDidLoad];
 
     [self.textView scrollRangeToVisible:NSMakeRange(0, 0)];
-    self.titleLabel.textColor = [UIColor blackColor];
-//    self.titleLabel.font = [UIFont fontWithName:<#(NSString *)#> size:<#(CGFloat)#>]
 }
 - (IBAction)onGotItButtonPressed:(UIButton *)sender
 {

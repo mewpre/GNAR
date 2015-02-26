@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "GameManager.h"
 #import "User.h"
+#import "Score.h"
 #import "AppDelegate.h"
 #define kGameIdKey @"CurrentGameId"
 
@@ -90,6 +91,33 @@
 //                // Save players as singletons
 //
 //            }];
+
+
+            // Temporarily used before implementation of Player class
+            PFQuery *query = [PFQuery queryWithClassName:@"Score"];
+            [query whereKey:@"scorer" equalTo:[User currentUser]];
+            [query whereKey:@"game" equalTo:[GameManager sharedManager].currentGame];
+            [query includeKey:@"Modifiers"];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (error)
+                {
+                    NSLog(@"%@", error);
+                }
+                else
+                {
+                    NSLog(@"Fetched %lu scores for %@", objects.count, self);
+                    NSInteger tempScore = 0;
+
+                    for (Score *score in objects)
+                    {
+                        if ([score.isConfirmed boolValue])
+                        {
+                            tempScore = tempScore + [score.score integerValue];
+                        }
+                    }
+                    self.userScoreLabel.text = [NSString stringWithFormat:@"%li", tempScore];
+                }
+            }];
         }];
     }
     self.usernameLabel.text = [NSString stringWithFormat:@"%@", [User currentUser].username];
