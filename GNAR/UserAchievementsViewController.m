@@ -8,7 +8,7 @@
 
 #import "UserAchievementsViewController.h"
 #import "Achievement.h"
-#import "UserAchievementsTableViewCell.h"
+#import "SuggestedTableViewCell.h"
 
 @interface UserAchievementsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -51,9 +51,7 @@
                 [self.suggestedScoresArray addObject:score];
             }
         }
-
         [self.tableView reloadData];
-
     }];
 }
 
@@ -114,7 +112,7 @@
 {
     if (indexPath.section == 0)
     {
-        UserAchievementsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        SuggestedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SuggestedCell"];
         Score *score = self.suggestedScoresArray[indexPath.row];
 
         Achievement *scoreAchievement = score[@"achievementPointer"];

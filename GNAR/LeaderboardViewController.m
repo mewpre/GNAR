@@ -160,7 +160,6 @@
     cell.scoreLabel.text = [NSString stringWithFormat:@"%@", self.playersTotalScoresData[username]];
     cell.rankLabel.text = [NSString stringWithFormat:@"#%li", indexPath.row + 1];
 
-
     for (User *user in self.playersArray)
     {
         if ([username isEqualToString:user.username])
@@ -177,7 +176,6 @@
                     NSLog(@"%@", error);
                 }
             }];
-
         }
     }
 

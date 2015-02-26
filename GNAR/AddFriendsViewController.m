@@ -37,7 +37,6 @@
     self.displayedUsersArray = [NSArray new];
     self.searchResultsArray = [NSMutableArray new];
 
-
     [User getCurrentUserFriendsWithCompletion:^(NSArray *array) {
         self.myCrewUsersArray = array;
     }];
@@ -160,7 +159,21 @@
     {
         cell.textLabel.text = currentUser.username;
     }
-    
+
+    PFFile *userImageFile = [currentUser objectForKey:@"profileImage"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error)
+        {
+            UIImage *image = [UIImage imageWithData:imageData];
+            cell.imageView.image = image;
+        }
+        else
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+
+
     cell.textLabel.textColor = [UIColor whiteColor];
     // Remove check mark
     cell.accessoryType = UITableViewCellAccessoryNone;

@@ -1,14 +1,14 @@
 //
-//  UserAchievementsTableViewCell.m
+//  SuggestedTableViewCell.m
 //  GNAR
 //
-//  Created by Yi-Chin Sun on 2/25/15.
+//  Created by Chris Giersch on 2/25/15.
 //  Copyright (c) 2015 Yi-Chin Sun. All rights reserved.
 //
 
-#import "UserAchievementsTableViewCell.h"
+#import "SuggestedTableViewCell.h"
 
-@implementation UserAchievementsTableViewCell
+@implementation SuggestedTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
