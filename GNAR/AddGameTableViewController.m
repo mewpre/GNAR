@@ -619,7 +619,7 @@ NSUInteger DeviceSystemMajorVersion()
         // Send push notification game invite to all selected players
         for (User *user in self.friendsArray)
         {
-            if (![user isEqual:[User currentUser]])
+            if (![user.objectId isEqual:[User currentUser].objectId])
             {
             PFQuery *userQuery = [PFUser query];
             [userQuery whereKey:@"objectId" equalTo:user.objectId];

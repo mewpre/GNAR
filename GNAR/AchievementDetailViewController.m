@@ -261,7 +261,7 @@
     }
     for (User *player in playersSet)
     {
-        if (![player isEqual:[User currentUser]])
+        if (![player.objectId isEqual:[User currentUser].objectId])
         {
             PFQuery *userQuery = [PFUser query];
             [userQuery whereKey:@"objectId" equalTo:player.objectId];
