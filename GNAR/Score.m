@@ -12,7 +12,7 @@
 
 @implementation Score
 
-@dynamic snowLevel, score, completedAt;
+@dynamic snowLevel, score, completedAt, isConfirmed;
 @dynamic achievement, achievementPointer;
 
 @synthesize modifiers = _modifiers;

@@ -8,13 +8,15 @@
 
 #import "UserAchievementsViewController.h"
 #import "Achievement.h"
+#import "UserAchievementsTableViewCell.h"
 
 @interface UserAchievementsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property UIRefreshControl *refreshControl;
-@property NSArray *scoresArray;
+@property NSMutableArray *scoresArray;
+@property NSMutableArray *suggestedScoreArray;
 
 @end
 
@@ -25,7 +27,9 @@
     [super viewDidLoad];
     // Display current User's username in title
     self.title = [NSString stringWithFormat:@"%@", self.currentPlayer.username];
-
+    self.scoresArray = [NSMutableArray new];
+    self.suggestedScoreArray = [NSMutableArray new];
+    
     // Do any additional setup after loading the view.
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getUserScores) forControlEvents:UIControlEventValueChanged];
@@ -77,21 +81,34 @@
     return self.scoresArray.count;
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    if (indexPath.section == 0)
+    {
+        UserAchievementsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        return cell;
+    }
+    else
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConfirmedCell"];
+        cell.textLabel.textColor = [UIColor whiteColor];
 
-    Score *score = self.scoresArray[indexPath.row];
+        Score *score = self.scoresArray[indexPath.row];
 
-    Achievement *scoreAchievement = score[@"achievementPointer"];
+        Achievement *scoreAchievement = score[@"achievementPointer"];
 
-    cell.textLabel.text = scoreAchievement.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", scoreAchievement.pointValues[score.snowLevel.intValue]];
+        cell.textLabel.text = scoreAchievement.name;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", scoreAchievement.pointValues[score.snowLevel.intValue]];
 
-    //    NSArray *modifiersArray = [score objectForKey:@"modifiers"];
-    //    Score *modifier = ;
-    return cell;
+        //    NSArray *modifiersArray = [score objectForKey:@"modifiers"];
+        //    Score *modifier = ;
+        return cell;
+    }
 }
 
 
