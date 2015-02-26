@@ -10,7 +10,7 @@
 #import "Achievement.h"
 #import "SuggestedTableViewCell.h"
 
-@interface UserAchievementsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface UserAchievementsViewController () <UITableViewDataSource, UITableViewDelegate, SuggestedTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -41,14 +41,17 @@
         NSLog(@"Fetched %lu scores for %@", scores.count, self.currentPlayer);
         for (Score *score in scores)
         {
-
-            if (score.isConfirmed)
+            if ([score.isConfirmed boolValue])
             {
                 [self.scoresArray addObject:score];
             }
             else
             {
-                [self.suggestedScoresArray addObject:score];
+                // Only show suggested scores for current user, not all users
+                if ([self.currentPlayer.objectId isEqual:[User currentUser].objectId])
+                {
+                    [self.suggestedScoresArray addObject:score];
+                }
             }
         }
         [self.tableView reloadData];
@@ -58,6 +61,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl
@@ -96,7 +100,7 @@
 }
 
 
-//----------------------------------------    Table View    ----------------------------------------------------
+//----------------------------------------    Table View    ------------------------------------------------
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -110,7 +114,7 @@
     }
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
 }
@@ -120,12 +124,13 @@
     if (indexPath.section == 0)
     {
         SuggestedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SuggestedCell"];
+        cell.acceptButton.tag = indexPath.row;
+        cell.declineButton.tag = indexPath.row;
+        cell.delegate = self;
         Score *score = self.suggestedScoresArray[indexPath.row];
-
         Achievement *scoreAchievement = score[@"achievementPointer"];
-
-        cell.textLabel.text = scoreAchievement.name;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", scoreAchievement.pointValues[score.snowLevel.intValue]];
+        cell.scoreNameLabel.text = scoreAchievement.name;
+        cell.scoreDetailLabel.text = [NSString stringWithFormat:@"%@", scoreAchievement.pointValues[score.snowLevel.intValue]];
         return cell;
     }
     else
@@ -146,12 +151,53 @@
     }
 }
 
+- (void)didPressAcceptButton:(UIButton *)sender
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
+    Score *acceptedScore = [self.suggestedScoresArray objectAtIndex:indexPath.row];
 
+    acceptedScore.isConfirmed = [NSNumber numberWithBool:YES];
+    [acceptedScore saveInBackground];
+
+    [self.suggestedScoresArray removeObjectAtIndex:indexPath.row];
+    //TODO: Do we even need the following line? Reloading the data should change the number of cells.
+//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.scoresArray addObject:acceptedScore];
+    [self.tableView reloadData];
+}
+
+- (void)didPressDeclineButton:(UIButton *)sender
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
+    Score *declinedScore = [self.suggestedScoresArray objectAtIndex:indexPath.row];
+
+    [declinedScore deleteInBackground];
+    [self.suggestedScoresArray removeObjectAtIndex:indexPath.row];
+    //TODO: Do we even need the following line? Reloading the data should change the number of cells.
+//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableView reloadData];
+}
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0 && self.suggestedScoresArray.count != 0)
+    {
+        return @"Suggested Scores";
+    }
+    else if (section == 1)
+    {
+        return @"Confirmed Scores";
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 /*

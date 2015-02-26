@@ -42,12 +42,9 @@
     }
     // Add user's location to map
     self.mapView.showsUserLocation = YES;
-
-//    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
-
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 

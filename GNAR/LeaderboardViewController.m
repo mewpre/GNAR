@@ -37,7 +37,6 @@
 {
     [super viewDidLoad];
 
-//    self.title = @"Leaderboard";
     self.navigationItem.title = [[[GameManager sharedManager] currentGame] name];
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -77,7 +76,10 @@
                 NSInteger tempScore = 0;
                 for (Score *score in userScores)
                 {
-                    tempScore = tempScore + [score.score integerValue];
+                    if ([score.isConfirmed boolValue])
+                    {
+                        tempScore = tempScore + [score.score integerValue];
+                    }
                 }
                 NSNumber *totalScore = [NSNumber numberWithInteger:tempScore];
                 [self.playersTotalScoresData setObject:totalScore forKey:user.username];
@@ -183,24 +185,17 @@
         }
     }
 
-    //    cell.scoreRatioLabel =
-
     if ([username isEqualToString:[User currentUser].username])
     {
         self.myRankLabel.text = [NSString stringWithFormat:@"#%li", indexPath.row + 1];
 
     }
-
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self.playersTotalScoresData objectForKey:username]];
-//    cell.textLabel.text = username;
-//    cell.textLabel.textColor = [UIColor whiteColor];
-
     return cell;
 }
 
 
 
-//----------------------------------------    Prepare for Segue    ----------------------------------------------------
+//----------------------------------------    Prepare for Segue    --------------------------------------
 #pragma mark - Prepare for Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -230,7 +225,6 @@
 
 - (void) sortPlayerTotalDictionary
 {
-    //TODO: Should have the cells contain users instead of just the 
     self.sortedPlayersArray = [self.playersTotalScoresData keysSortedByValueUsingComparator: ^(id obj1, id obj2) {
         // Switching the order of the operands reverses the sort direction
         return [obj2 compare:obj1];

@@ -19,9 +19,14 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)onAcceptButtonPressed:(UIButton *)sender {
+
+- (IBAction)onAcceptButtonPressed:(UIButton *)sender
+{
+    [self.delegate didPressAcceptButton:sender];
 }
-- (IBAction)onDeclineButtonPressed:(UIButton *)sender {
+- (IBAction)onDeclineButtonPressed:(UIButton *)sender
+{
+    [self.delegate didPressDeclineButton:sender];
 }
 
 @end

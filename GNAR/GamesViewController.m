@@ -53,12 +53,7 @@
     [super viewWillAppear:animated];
     NSLog(@"Current game: %@", [GameManager sharedManager].currentGame.name);
 
-    // Get current game object from core data singleton
-//    self.currentGame = self.gameManager.currentGame;
-
     [self.segmentedControl setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
-    //    NSLog(@"%@", [User currentUser].username);
-
 
 //    PFQuery *query = [PFQuery queryWithClassName:@"Game"];
 //    [query fromLocalDatastore];
@@ -82,7 +77,6 @@
 //
 //        }];
     }];
-//    [self getCurrentUserGames];
 }
 
 //--------------------------------------    Actions    ---------------------------------------------
@@ -104,7 +98,6 @@
     else if (sender.selectedSegmentIndex == 1)
     {
         // Get all friends
-
         // Display games my friends have created and I'm not in
 
         [self.tableView reloadData];
@@ -136,7 +129,6 @@
     }];
 }
 
-
 //----------------------------------------    Table View    ----------------------------------------------------
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -150,7 +142,6 @@
 
     // Get game object for current cell
     Game *game = self.gamesArray[indexPath.row];
-
 
     // Set cell title to game's mountain
     cell.textLabel.text = [game objectForKey:@"name"];
@@ -175,17 +166,11 @@
     Game *selectedGame = self.gamesArray[[self.tableView indexPathForSelectedRow].row];
     if (![[GameManager sharedManager].currentGame isEqual:selectedGame])
     {
-        //TODO: Add alert to ask if you want to officially change games
-
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Select %@?", selectedGame.name]
                                                                        message:[NSString stringWithFormat: @"Are you sure you want to make %@ your current game?", selectedGame.name]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                              {
-                                 //Save Game to NSUserDefaults
-                                 // Save game to NSUserDefaults
-                                 //    [selectedGame saveGame];
-
                                  // Save game objectID to NSUserDefaults
                                  NSString *gameId = selectedGame.objectId;
                                  [self.defaults setObject:gameId forKey:kGameIdKey];
@@ -215,7 +200,6 @@
 
         [self presentViewController:alert animated:YES completion:nil];
     }
-
 }
 
 
@@ -225,10 +209,10 @@
 - (NSString *)createPlayersStringWithGame:(Game *)game
 {
     NSMutableString *playersString = [NSMutableString new];
-#warning This uses game.playersArray which is local only...find way to use only relation???
+//TODO: This uses game.playersArray which is local only...find way to use only relation???
     for (int i = 0; i < game.playersArray.count; i++)
     {
-#warning This uses game.playersArray which is local only...find way to use only relation???
+//TODO: This uses game.playersArray which is local only...find way to use only relation???
         User *user = game.playersArray[i];
         [playersString appendString:user.username];
 //        [playersString appendString:@"\n"];
@@ -249,7 +233,7 @@
     }
     else
     {
-
+        //TODO: Add segue to edit game
     }
 }
 

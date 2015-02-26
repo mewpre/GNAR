@@ -10,7 +10,7 @@
 
 @protocol SnowTableViewCellDelegate <NSObject>
 
--(void)didChangeSegment:(NSInteger)selectedSegment;
+- (void)didChangeSegment:(NSInteger)selectedSegment;
 
 @end
 
