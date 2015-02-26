@@ -276,8 +276,8 @@
             // Send push notification to query
             PFPush *push = [[PFPush alloc] init];
             NSDictionary *data = @{
-                                   @"alert" : [NSString stringWithFormat:@"%@ thinks you got GNAR!!", [[User currentUser] username]],
-                                   @"message" : [NSString stringWithFormat:@"New GNAR scores suggested by %@! Please confirm them in the leaderboard!", [[User currentUser]username]],
+                                   @"alert" : [NSString stringWithFormat:@"New GNAR points suggested\nfrom %@!", [[User currentUser] username]],
+                                   @"message" : [NSString stringWithFormat:@"Please confirm your scores in the leaderboard!", [[User currentUser]username]],
                                    @"badge" : @"Increment",
                                    @"type" : @"scoreAlert"
                                    };
