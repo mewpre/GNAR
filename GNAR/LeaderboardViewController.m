@@ -149,6 +149,10 @@
     NSLog(@"SortedPlayersArray count: %lu", (unsigned long)self.sortedPlayersArray.count);
     return self.sortedPlayersArray.count;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70.0;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -160,18 +160,19 @@
         cell.textLabel.text = currentUser.username;
     }
 
-    PFFile *userImageFile = [currentUser objectForKey:@"profileImage"];
-    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error)
-        {
-            UIImage *image = [UIImage imageWithData:imageData];
-            cell.imageView.image = image;
-        }
-        else
-        {
-            NSLog(@"%@", error);
-        }
-    }];
+    //TODO: need to make a custom cell class to hold the image view for profile pictures
+//    PFFile *userImageFile = [currentUser objectForKey:@"profileImage"];
+//    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+//        if (!error)
+//        {
+//            UIImage *image = [UIImage imageWithData:imageData];
+//            cell.imageView.image = image;
+//        }
+//        else
+//        {
+//            NSLog(@"%@", error);
+//        }
+//    }];
 
 
     cell.textLabel.textColor = [UIColor whiteColor];

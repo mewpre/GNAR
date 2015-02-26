@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ModifiersListTableViewCell : UITableViewCell
-<UITableViewDataSource, UITableViewDelegate>
+@protocol ModifiersListTableViewCellDelegate <NSObject>
+
+- (void)didRemovePlayerCell:(UITableViewCell *)sender;
+
+@end
+
+@interface ModifiersListTableViewCell : UITableViewCell <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) id <ModifiersListTableViewCellDelegate> delegate;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableViewHeightConstraint;
 @property NSMutableArray *modifiersList;

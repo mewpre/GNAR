@@ -66,8 +66,16 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //TODO: Add logic where if parent cell is removed, all cells are removed.
-    [self.modifiersList removeObjectAtIndex:indexPath.row];
-    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    if (indexPath.section == 0)
+    {
+        // Call delegate in AchievementDetailVC to delete player from "users" array and remove key "selectedPLayer" from modifiersDictionary (using delegation!)
+        [self.delegate didRemovePlayerCell:self];
+    }
+    else
+    {
+        [self.modifiersList removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    }
     [self.tableView reloadData];
     [self adjustHeightOfTableview];
 }
@@ -79,6 +87,7 @@
 
 - (void)adjustHeightOfTableview
 {
+    //TODO: make delegate method to adjust table height of both ModifierListTableView and AchievementDetailTableView
     CGFloat height = self.tableView.contentSize.height;
 
     [UIView animateWithDuration:0.25 animations:^{

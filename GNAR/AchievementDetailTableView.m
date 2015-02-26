@@ -290,6 +290,17 @@
     NSLog(@"Achievement Detail Height: %f", height);
 }
 
+
+
+
+
+
+
+- (void)didRemovePlayerCell:(UITableViewCell *)sender
+{
+    //TODO: impliment logic to remove user and users respective modifiers array from modifiers dictionary
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

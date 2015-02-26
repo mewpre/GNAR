@@ -23,7 +23,7 @@
 @end
 
 @interface AchievementDetailTableView : SubTableView // Actually a cell that contains a table view
-<UITableViewDataSource, UITableViewDelegate, SnowTableViewCellDelegate, InfoTableViewCellDelegate>
+<UITableViewDataSource, UITableViewDelegate, SnowTableViewCellDelegate, InfoTableViewCellDelegate, ModifiersListTableViewCellDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *insideTableView;
 @property Achievement *achievement;
