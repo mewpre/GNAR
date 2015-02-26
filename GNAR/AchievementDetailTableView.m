@@ -267,6 +267,8 @@
     NSLog(@"Add Button pressed in subCell");
     [self.saveKey setString:@"YES"];
     [self.detailDelegate didPressAddButtonAtParentIndex:self.parentIndex];
+
+    
 }
 
 - (void)didChangeSegment:(NSInteger)selectedSegment

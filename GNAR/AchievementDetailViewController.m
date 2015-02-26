@@ -17,7 +17,7 @@
 #import "Enum.h"
 #import "GameManager.h"
 
-@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate>
+@interface AchievementDetailViewController () <SubTableViewDataSource, SubTableViewDelegate, DetailParentTableViewDelegate> //, InfoTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet DetailParentTableView *tableView;
 @property NSMutableArray *achievementsDataArray;
@@ -44,6 +44,9 @@
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(onAddButtonPressed)];
         // Disable Add button (so you can't add modifiers until you select modifier)
         self.navigationItem.rightBarButtonItem = addButton;
+
+        //TODO: Disable right bar button item until user adds first achievement 
+//        self.navigationItem.rightBarButtonItem.enabled = NO;
     }
 
     self.myGameManager = [GameManager sharedManager];
@@ -133,6 +136,7 @@
     return [self.tableView.childHeightString integerValue];
 }
 
+
 //---------------------------------    SUB Table View Delegate    --------------------------------------
 #pragma mark - Sub Table View Delegate
 // @optional
@@ -140,6 +144,17 @@
 {
     NSLog(@"Selected child index at %ld with parent index %ld", childIndex, parentIndex);
 }
+
+////--------------------------------    InfoTableViewCell Delegate    ---------------------------------------------
+//#pragma mark - InfoTableViewCell Delegate Methods
+//- (void)didPressAddButton
+//{
+//    self.navigationItem.rightBarButtonItem.enabled = YES;
+//}
+
+
+//--------------------------------------    Saving Achievements    ---------------------------------------------
+#pragma mark - Saving Achievements
 
 // Helper method to save single achievement into Parse
 - (void)saveScoresFromAchievementData: (NSDictionary *)scoreData
@@ -227,7 +242,6 @@
             [self saveModifiersFromAchievementData:scoreData];
         }
     }
-
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -284,6 +298,8 @@
     achieveVC.modifiersDictionary = [self.achievementsDataArray objectAtIndex:self.activeParentCellIndex][@"modifiersDictionary"];
     [self.navigationController pushViewController:achieveVC animated:YES];
 }
+
+
 
 //----------------------------------    Prepare For Segue    -------------------------------------------------
 #pragma mark - Prepare for Segue
