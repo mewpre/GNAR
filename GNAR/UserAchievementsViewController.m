@@ -28,7 +28,7 @@
 
     // Do any additional setup after loading the view.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(getUserScores) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 
@@ -36,13 +36,22 @@
 {
     [super viewWillAppear:animated];
     // Display the scores of the current user
-    [self getUserScores];
+    [self getUserScoresWithCompletion:^(NSArray *scores) {
+        self.scoresArray = scores;
+    }];
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
+    [self getUserScoresWithCompletion:^(NSArray *scores) {
+        [refreshControl endRefreshing];
+    }];
 }
 
 //--------------------------------------    Helper Methods    ---------------------------------------------
 #pragma mark - Helper Methods
 // Retrieves scores for a specified user within a specified game (includes score modifiers with fetch)
-- (void)getUserScores
+- (void)getUserScoresWithCompletion:(void(^)(NSArray *scores))complete
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Score"];
     // Player-specific query
@@ -65,7 +74,7 @@
             self.scoresArray = objects;
             [self.tableView reloadData];
         }
-        [self.refreshControl endRefreshing];
+        complete(objects);
     }];
 }
 

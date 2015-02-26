@@ -36,8 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //TODO: setting self.title changes the tab bar icon title too               * * * * *
-    self.title = @"Leaderboard";
+
+//    self.title = @"Leaderboard";
     self.navigationItem.title = [[[GameManager sharedManager] currentGame] name];
     // refresh control used for pull-down to refresh functionality
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -76,16 +76,14 @@
     [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *players) {
         self.playersArray = players;
 
-
         [self.playersScoresData setObject:players forKey:@"playersArray"];
 
         for (User *user in self.playersArray)
         {
             // Get scores of USER for GAME
-
             [self getUserScores:user forGame:self.currentGame withCompletion:^(NSArray *userScores) {
                 // Set fetched scores to local object.scores
-                //TODO: change this to GQL local data storage
+                //TODO: change this to SQL local data storage
                 [self.playersScoresData setObject:userScores forKey:user.username];
                 NSInteger tempScore = 0;
                 for (Score *score in userScores)
