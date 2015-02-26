@@ -88,8 +88,6 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 
     for (User *user in usersArray)
     {
-        // Score is confirmed if score is related to current user
-        self.isConfirmed = [user.objectId isEqualToString:[User currentUser].objectId];
         // Get all modifiers for user
         NSArray *modifiers = [scoreData objectForKey:user.username];
 

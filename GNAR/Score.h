@@ -14,7 +14,7 @@
 @property (retain) NSString *snowLevel;
 @property (retain) NSNumber *score;
 @property (retain) NSDate *completedAt;
-@property BOOL isConfirmed;
+@property NSNumber *isConfirmed;
 
 @property Achievement *achievement;
 @property Achievement *achievementPointer;

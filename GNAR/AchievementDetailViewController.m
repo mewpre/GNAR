@@ -148,6 +148,10 @@
     for (User *user in scoreData[@"playersArray"])
     {
         Score *score = [[Score alloc]initScoreWithAchievementData:scoreData];
+        // Set isConfirmed to whether the current user is the scorer of the score
+        // Parse takes in NSNumbers for Boolean values
+        score.isConfirmed = [NSNumber numberWithBool:[user.objectId isEqualToString:[User currentUser].objectId]];
+//        score[@"isConfirmed"] = [NSNumber numberWithBool:[user.objectId isEqualToString:[User currentUser].objectId]];
         [score.scorer addObject:user];
         [score.game addObject:self.currentGame];
 
@@ -190,7 +194,9 @@
     for (User *user in modifierData[@"playersArray"])
     {
         Score *score = [[Score alloc]initScoreWithAchievementData:modifierData];
-        [score.scorer addObject:user];
+        // Set isConfirmed to whether the current user is the scorer of the score
+        // Parse takes in NSNumbers for Boolean values
+        score.isConfirmed = [NSNumber numberWithBool:[user.objectId isEqualToString:[User currentUser].objectId]];        [score.scorer addObject:user];
         [score.game addObject:self.currentGame];
 
         // If userName already exists as key in dictionary:

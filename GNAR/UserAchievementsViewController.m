@@ -121,7 +121,7 @@
 {
     if (indexPath.section == 0)
     {
-        UserAchievementsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        UserAchievementsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SuggestedCell"];
         Score *score = self.suggestedScoresArray[indexPath.row];
 
         Achievement *scoreAchievement = score[@"achievementPointer"];
