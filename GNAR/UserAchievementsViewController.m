@@ -37,7 +37,23 @@
 
     // Display the scores of the current user
     [self getUserScoresWithCompletion:^(NSArray *scores) {
-        self.scoresArray = scores;
+
+        NSLog(@"Fetched %lu scores for %@", scores.count, self.currentPlayer);
+        for (Score *score in scores)
+        {
+
+            if (score.isConfirmed)
+            {
+                [self.scoresArray addObject:score];
+            }
+            else
+            {
+                [self.suggestedScoresArray addObject:score];
+            }
+        }
+
+        [self.tableView reloadData];
+
     }];
 }
 
@@ -68,30 +84,16 @@
     [query includeKey:@"achievementPointer"];
     //    [query includeKey:@"modifiers"];
 
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
         if (error)
         {
             NSLog(@"%@", error);
         }
         else
         {
-            NSLog(@"Fetched %lu scores for %@", objects.count, self.currentPlayer);
-            for (Score *score in objects)
-            {
-
-                if (score.isConfirmed)
-                {
-                    [self.scoresArray addObject:score];
-                }
-                else
-                {
-                    [self.suggestedScoresArray addObject:score];
-                }
-            }
-
-            [self.tableView reloadData];
+            complete(objects);
         }
-        complete(objects);
     }];
 }
 
