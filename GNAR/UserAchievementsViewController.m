@@ -34,15 +34,16 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+
+    // Display the scores of the current user
+    [self getUserScoresWithCompletion:^(NSArray *scores) {
+        self.scoresArray = scores;
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    // Display the scores of the current user
-    [self getUserScoresWithCompletion:^(NSArray *scores) {
-        self.scoresArray = scores;
-    }];
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl

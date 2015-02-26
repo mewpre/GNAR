@@ -59,25 +59,14 @@
     }];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)loadPlayersWithScores
 {
-    [super viewWillAppear:animated];
-
-    // Get current game object from core data singleton
-    self.currentGame = [GameManager sharedManager].currentGame;
-
-    // Get scores of current user
-
-    // Set up dictionary to hold players (and then scores later)
-    self.playersScoresData = [NSMutableDictionary new];
-    self.playersTotalScoresData = [NSMutableDictionary new];
-
     // Get players within current game
     [self.currentGame getPlayersOfGameWithCompletion:^(NSArray *players) {
         self.playersArray = players;
-
+        
         [self.playersScoresData setObject:players forKey:@"playersArray"];
-
+        
         for (User *user in self.playersArray)
         {
             // Get scores of USER for GAME
@@ -92,11 +81,11 @@
                 }
                 NSNumber *totalScore = [NSNumber numberWithInteger:tempScore];
                 [self.playersTotalScoresData setObject:totalScore forKey:user.username];
-
+                
                 [self sortPlayerTotalDictionary];
                 [self.tableView reloadData];
                 [self.activitySpinner stopAnimating];
-
+                
                 // Set My GNAR score at top of VC
                 if ([user.username isEqualToString:[[User currentUser] username]])
                 {
@@ -109,9 +98,26 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    // Get current game object from core data singleton
+    self.currentGame = [GameManager sharedManager].currentGame;
+
+    // Get scores of current user
+
+    // Set up dictionary to hold players (and then scores later)
+    self.playersScoresData = [NSMutableDictionary new];
+    self.playersTotalScoresData = [NSMutableDictionary new];
+
+
+    [self loadPlayersWithScores];
+}
+
 - (void)refresh:(UIRefreshControl *)refreshControl
 {
-
+    [self loadPlayersWithScores];
     [refreshControl endRefreshing];
 }
 
