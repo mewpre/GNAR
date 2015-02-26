@@ -137,7 +137,6 @@
     {
         if (indexPath.section == InfoCell)
         {
-            //TODO: modify InfoCell to display abbreviation, point values, and description instead of all the stuff LineWorths have
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
             infoCell.delegate = self;
             infoCell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
@@ -259,13 +258,12 @@
     [self adjustHeightOfTableview];
 }
 
-//--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
+//--------------------------------------    Custom Cell Delegate Methods   --------------------------------------
 #pragma mark - Custom Cell Delegate Methods
 // Called when "Add" button pressed in Child cell
 - (void)didPressAddButton
 {
     //TODO: enable AddModifiers button when press this AddModifier button
-    //TODO: close drawer when add button pressed
     NSLog(@"Add Button pressed in subCell");
     [self.saveKey setString:@"YES"];
     [self.detailDelegate didPressAddButtonAtParentIndex:self.parentIndex];
@@ -289,12 +287,6 @@
     }];
     NSLog(@"Achievement Detail Height: %f", height);
 }
-
-
-
-
-
-
 
 - (void)didRemovePlayerCell:(UITableViewCell *)sender
 {

@@ -65,18 +65,12 @@ typedef NS_ENUM(NSInteger, AchievementType) {
     Penalty
 };
 
-
-
 - (instancetype)initScoreWithAchievementData: (NSDictionary *)scoreData
 {
     self = [super init];
 
-//    //No longer needed since we're using pointers instead of relationships
-//    PFRelation *achievementRelation = [self relationForKey:@"achievement"];
     // Get achievement (pointer) from scoreData dictionary
     Achievement *achievement = scoreData[@"achievement"];
-//    // Set Score's achievement relation
-//    [achievementRelation addObject:achievement];
 
     // Set Score's Pointer to achievement
     [self setObject:achievement forKey:@"achievementPointer"];
@@ -129,14 +123,8 @@ typedef NS_ENUM(NSInteger, AchievementType) {
 
     }
 
-
-
     return self;
 }
-
-
-
-
 
 + (void)load {
     [self registerSubclass];

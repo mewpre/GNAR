@@ -13,13 +13,6 @@
 //@synthesize currentGame;
 static GameManager *gameManager = nil;
 
-
-
-
-
-
-
-
 + (GameManager *)sharedManager
 {
     if (!gameManager)
@@ -37,17 +30,6 @@ static GameManager *gameManager = nil;
     NSLog(@"Saved singleton game: %@", self.currentGame.name);
     NSLog(@"Saved singleton game player count: %lu", self.currentGame.playersArray.count);
 }
-
-//- (GameManager *)init
-//{
-//    if (self = [super init])
-//    {
-//        currentGame = [Game new];
-//    }
-//    return self;
-//}
-
-
 
 - (void)dealloc {
     // Should never be called, but just here for clarity really.

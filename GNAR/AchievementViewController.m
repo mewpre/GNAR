@@ -102,13 +102,14 @@
     [self.tableView collapseAllRows];
 }
 
-//-----------------------------------    SUB Table View Data Source    ----------------------------------------------------
+//-----------------------------------    SUB Table View Data Source    -------------------------------------
 //                             ----------    Parent Cells    ------------
 #pragma mark - Sub Table View Data Source - Parent
 // @required
 - (NSInteger)numberOfParentCells
 {
-    if (self.modifiersDictionary) // If adding modifiers to score: remove LineWorths so to only add other kind of points
+    // If adding modifiers to score: remove LineWorths so to only add other kinds of points
+    if (self.modifiersDictionary)
     {
         return self.typesArray.count - 1;
     }
@@ -180,7 +181,7 @@
     return @"";
 }
 
-//-----------------------------------    SUB Table View Delegate    ----------------------------------------------------
+//-----------------------------------    SUB Table View Delegate    ----------------------------------------
 #pragma mark - Sub Table View Delegate
 // @optional
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
@@ -208,7 +209,6 @@
             detailVC.group = [self.dataDictionary objectForKey:self.typesArray[parent + 1]][child];
             detailVC.title = [self.dataDictionary objectForKey:self.typesArray[parent + 1]][child];
             detailVC.modifiersDictionary = self.modifiersDictionary;
-            
         }
         else
         {

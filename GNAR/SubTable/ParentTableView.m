@@ -47,8 +47,6 @@
     self.tableFooterView = footer;
 }
 
-
-
 #pragma mark - Configuration
 
 - (id)getDataSourceDelegate {
@@ -67,8 +65,6 @@
         [expansionStates addObject:@"NO"];
     }
 }
-
-
 
 #pragma mark - Table Interaction
 
@@ -110,8 +106,6 @@
         [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:(row + 1) inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
-
-
 
 #pragma mark - Table Information
 
@@ -158,8 +152,6 @@
     return (parentIndex == parentIndex2);
 }
 
-
-
 #pragma mark - UITableViewDataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -195,6 +187,7 @@
     
     return parentCount + expandedParentCount;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *PARENT_IDENTIFIER = @"CellReuseId_Parent";
@@ -245,8 +238,6 @@
         return cell;
     }
 }
-
-
 
 #pragma mark - Table view - Cell Selection
 

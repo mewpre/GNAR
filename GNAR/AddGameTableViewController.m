@@ -542,8 +542,6 @@ NSUInteger DeviceSystemMajorVersion()
             // update data model (update end date)
             NSMutableDictionary *itemData = self.dataArray[targetedCellIndexPath.row + 1];
             [itemData setValue:targetedDatePicker.date forKey:kDateKey];
-
-
         }
     }
 }
@@ -651,8 +649,7 @@ NSUInteger DeviceSystemMajorVersion()
     }];
 }
 
-
-//-------------------------------------    Prepare for Segue    ----------------------------------------------------
+//-------------------------------------    Prepare for Segue    -------------------------------------------
 #pragma mark - Prepare for Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -668,7 +665,7 @@ NSUInteger DeviceSystemMajorVersion()
     }
 }
 
-//-------------------------------------    AddFriends Delegate    ----------------------------------------------------
+//-------------------------------------    AddFriends Delegate    -----------------------------------------
 #pragma mark - AddFriendsViewController Delegate
 - (void)didPressDoneButtonWithSelectedUsers:(NSArray *)selectedUsersArray
 {

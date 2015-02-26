@@ -10,7 +10,6 @@
 #import "AchievementViewController.h"
 #import "SelectPlayersViewController.h"
 #import "DetailParentTableView.h"
-//#import "ParentTableViewCell.h"
 #import "Achievement.h"
 #import "Score.h"
 #import "Game.h"
@@ -134,7 +133,7 @@
     return [self.tableView.childHeightString integerValue];
 }
 
-//---------------------------------    SUB Table View Delegate    ----------------------------------------------------
+//---------------------------------    SUB Table View Delegate    --------------------------------------
 #pragma mark - Sub Table View Delegate
 // @optional
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
@@ -151,7 +150,7 @@
         // Set isConfirmed to whether the current user is the scorer of the score
         // Parse takes in NSNumbers for Boolean values
         score.isConfirmed = [NSNumber numberWithBool:[user.objectId isEqualToString:[User currentUser].objectId]];
-//        score[@"isConfirmed"] = [NSNumber numberWithBool:[user.objectId isEqualToString:[User currentUser].objectId]];
+
         [score.scorer addObject:user];
         [score.game addObject:self.currentGame];
 
@@ -211,9 +210,6 @@
             // Create new array and add score
             NSMutableArray *userScores = [NSMutableArray arrayWithObject:score];
             [self.modifiersDictionary setObject:userScores forKey:user.username];
-//            NSMutableArray *users = [self.modifiersDictionary objectForKey:@"users"];
-//            // Add username to list of users that have had modifiers to add to scores
-//            [users addObject:user.username];
         }
     }
 }
@@ -267,12 +263,12 @@
             PFPush *push = [[PFPush alloc] init];
             NSDictionary *data = @{
                                    @"alert" : [NSString stringWithFormat:@"%@ thinks you got GNAR!!", [[User currentUser] username]],
-                                   @"message" : [NSString stringWithFormat:@"New GNAR scores suggested by %@! Please confirm them in the leader", [[User currentUser]username]],
+                                   @"message" : [NSString stringWithFormat:@"New GNAR scores suggested by %@! Please confirm them in the leaderboard!", [[User currentUser]username]],
                                    @"badge" : @"Increment",
                                    @"type" : @"scoreAlert"
                                    };
-
-            [push setQuery:pushQuery]; // Set our Installation query
+            // Set our Installation query
+            [push setQuery:pushQuery];
             [push setData:data];
             [push sendPushInBackground];
         }

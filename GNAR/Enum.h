@@ -25,9 +25,7 @@ typedef NS_ENUM(NSInteger, LineWorthSectionType)
     LWInfoCell,
     LWSnowCell,
     LWModifierCell,
-    LWAddModifierCell//,
-//    LWPlayerCell,
-//    LWSelectPlayersCell
+    LWAddModifierCell
 };
 
 // Section types for all other point types (for AddAchievementViewController custom table view)

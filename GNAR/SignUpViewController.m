@@ -82,7 +82,6 @@
             NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
             PFFile *file = [PFFile fileWithName:@"maleAvatar.png" data:imageData];
             [user setObject:file forKey:@"profileImage"];
-
         }
         else
         {
@@ -125,10 +124,10 @@
     {
         [self showSignUpErrorAlertController:@"Error: Username Required" withMessage:@"Please enter a username."];
     }
-//    else if (![self.skierBoarderSegControl isSelected])
-//    {
-//        [self showSignUpErrorAlertController:@"Error: No riding style selected" withMessage:@"Please select whether you're a skier or a snowboarder."];
-//    }
+    else if (![self.skierBoarderSegControl isSelected])
+    {
+        [self showSignUpErrorAlertController:@"Error: No riding style selected" withMessage:@"Please select whether you're a skier or a snowboarder."];
+    }
     else
     {
         // Do the signup
