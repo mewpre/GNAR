@@ -19,6 +19,7 @@
 
 @interface HomeViewController ()<LoginViewControllerDelegate, CLLocationManagerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property CLLocationManager *locationManager;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userScoreLabel;
@@ -35,6 +36,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    if ([[User currentUser][@"gender"] isEqualToString:@"female"])
+    {
+        self.userImageView.image = [UIImage imageNamed:@"female"];
+    }
+    else
+    {
+        self.userImageView.image = [UIImage imageNamed:@"male"];
+    }
 
 //    // Create achievements for testing
 //    Achievement *ML = [Achievement new];

@@ -379,6 +379,7 @@
 				0F61D57C1A89CE9700FF96F0 /* UserAchievementsViewController.m */,
 				0FC75F7C1A9EDD5A00C700D8 /* SuggestedTableViewCell.h */,
 				0FC75F7D1A9EDD5A00C700D8 /* SuggestedTableViewCell.m */,
+				0FC37C9F1A9C460A00408336 /* Leaderboard Cells */,
 			);
 			name = Leaderboard;
 			sourceTree = "<group>";
@@ -473,7 +474,6 @@
 				0F61D5401A89434000FF96F0 /* Storyboard */,
 				0F61D57A1A89CB0A00FF96F0 /* Controllers */,
 				0FCF8AE91A8BD313006224BB /* SubTable */,
-				0FC37C9F1A9C460A00408336 /* Leaderboard Cells */,
 				0FEFE89B1A8A7B8C0062123D /* Models */,
 				0F61D5711A89C7F000FF96F0 /* Other */,
 				606B71781A894048004DDAB1 /* Images.xcassets */,
