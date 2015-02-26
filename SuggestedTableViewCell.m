@@ -19,5 +19,9 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)onAcceptButtonPressed:(UIButton *)sender {
+}
+- (IBAction)onDeclineButtonPressed:(UIButton *)sender {
+}
 
 @end
