@@ -37,6 +37,11 @@
 {
     [super viewDidLoad];
 
+    if ([User currentUser])
+    {
+        self.userImageView.image = [UIImage imageNamed:[User currentUser][@"gender"]];
+    }
+
     self.defaults = [NSUserDefaults standardUserDefaults];
 }
 
