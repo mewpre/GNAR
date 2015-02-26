@@ -10,7 +10,7 @@
 #import "Achievement.h"
 #import "SuggestedTableViewCell.h"
 
-@interface UserAchievementsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface UserAchievementsViewController () <UITableViewDataSource, UITableViewDelegate, SuggestedTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -110,7 +110,7 @@
     }
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
 }
@@ -120,10 +120,11 @@
     if (indexPath.section == 0)
     {
         SuggestedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SuggestedCell"];
+        cell.acceptButton.tag = indexPath.row;
+        cell.declineButton.tag = indexPath.row;
+
         Score *score = self.suggestedScoresArray[indexPath.row];
-
         Achievement *scoreAchievement = score[@"achievementPointer"];
-
         cell.textLabel.text = scoreAchievement.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", scoreAchievement.pointValues[score.snowLevel.intValue]];
         return cell;
@@ -146,7 +147,32 @@
     }
 }
 
+- (void)didPressAcceptButton:(UIButton *)sender
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
+    Score *acceptedScore = [self.suggestedScoresArray objectAtIndex:indexPath.row];
 
+    acceptedScore.isConfirmed = [NSNumber numberWithBool:YES];
+    [acceptedScore saveInBackground];
+
+    [self.suggestedScoresArray removeObjectAtIndex:indexPath.row];
+    //TODO: Do we even need the following line? Reloading the data should change the number of cells.
+//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.scoresArray addObject:acceptedScore];
+    [self.tableView reloadData];
+}
+
+- (void)didPressDeclineButton:(UIButton *)sender
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
+    Score *declinedScore = [self.suggestedScoresArray objectAtIndex:indexPath.row];
+
+    [declinedScore deleteInBackground];
+    [self.suggestedScoresArray removeObjectAtIndex:indexPath.row];
+    //TODO: Do we even need the following line? Reloading the data should change the number of cells.
+//    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableView reloadData];
+}
 
 
 - (void)didReceiveMemoryWarning {

@@ -262,7 +262,7 @@
 //--------------------------------------    Custom Cell Delegate Methods   ---------------------------------------------
 #pragma mark - Custom Cell Delegate Methods
 // Called when "Add" button pressed in Child cell
--(void)didPressAddButton
+- (void)didPressAddButton
 {
     //TODO: enable AddModifiers button when press this AddModifier button
     //TODO: close drawer when add button pressed
@@ -271,7 +271,7 @@
     [self.detailDelegate didPressAddButtonAtParentIndex:self.parentIndex];
 }
 
--(void)didChangeSegment:(NSInteger)selectedSegment
+- (void)didChangeSegment:(NSInteger)selectedSegment
 {
     NSLog(@"Change Segment delegate called");
     NSString *tempString = [NSString stringWithFormat:@"%lu", selectedSegment];

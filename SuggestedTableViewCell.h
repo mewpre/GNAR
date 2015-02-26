@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol SuggestedTableViewCell <NSObject>
+@protocol SuggestedTableViewCellDelegate <NSObject>
 
-- (void)didPressAcceptButton;
-- (void)didPressDeclineButton;
+- (void)didPressAcceptButton:(UIButton *)sender;
+- (void)didPressDeclineButton:(UIButton *)sender;
 
 @end
 
@@ -21,6 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreDetailLabel;
 
-@property (weak, nonatomic) id <SuggestedTableViewCell> delegate;
+@property (weak, nonatomic) id <SuggestedTableViewCellDelegate> delegate;
 
 @end

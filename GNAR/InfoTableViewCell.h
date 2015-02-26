@@ -10,7 +10,7 @@
 
 @protocol InfoTableViewCellDelegate <NSObject>
 
--(void)didPressAddButton;
+- (void)didPressAddButton;
 
 @end
 
