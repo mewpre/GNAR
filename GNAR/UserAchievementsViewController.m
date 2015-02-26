@@ -100,7 +100,14 @@
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.scoresArray.count;
+    if (section == 0)
+    {
+        return self.suggestedScoresArray.count;
+    }
+    else
+    {
+        return self.scoresArray.count;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
