@@ -1970,7 +1970,8 @@
                                                                                 <exclude reference="nwk-fy-SQ5"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="8" y="68" width="304" height="42"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="LHz-hm-NJd"/>
                                                                                 <exclude reference="nwk-fy-SQ5"/>
@@ -1990,7 +1991,8 @@
                                                                                 <exclude reference="NUq-3W-dUL"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="222" y="9" width="90" height="50"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="1WT-TT-MMm"/>
                                                                                 <include reference="NUq-3W-dUL"/>
@@ -2016,8 +2018,9 @@
                                                                                 <exclude reference="vd2-Mn-6aI"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                                            <rect key="frame" x="0.0" y="118" width="320" height="100"/>
                                                                             <mask key="constraints">
                                                                                 <exclude reference="fIJ-Nj-EgA"/>
                                                                                 <include reference="vd2-Mn-6aI"/>
@@ -2378,7 +2381,8 @@
                                                                                 <exclude reference="eqE-70-m6X"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
                                                                             <mask key="constraints">
                                                                                 <include reference="eqE-70-m6X"/>
                                                                             </mask>
@@ -2441,7 +2445,8 @@
                                                                                 <exclude reference="MvE-gL-MDP"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="0.0" y="-2" width="160" height="50"/>
                                                                             <mask key="constraints">
                                                                                 <exclude reference="KZX-SH-aCq"/>
                                                                                 <exclude reference="MvE-gL-MDP"/>
@@ -2466,7 +2471,8 @@
                                                                                 <exclude reference="jN5-EK-A9m"/>
                                                                             </mask>
                                                                         </variation>
-                                                                        <variation key="heightClass=regular-widthClass=compact">
+                                                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                                            <rect key="frame" x="160" y="-2" width="160" height="50"/>
                                                                             <mask key="constraints">
                                                                                 <exclude reference="9ut-vk-7Ok"/>
                                                                                 <exclude reference="jN5-EK-A9m"/>
