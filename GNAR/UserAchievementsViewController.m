@@ -16,7 +16,7 @@
 
 @property UIRefreshControl *refreshControl;
 @property NSMutableArray *scoresArray;
-@property NSMutableArray *suggestedScoreArray;
+@property NSMutableArray *suggestedScoresArray;
 
 @end
 
@@ -28,7 +28,7 @@
     // Display current User's username in title
     self.title = [NSString stringWithFormat:@"%@", self.currentPlayer.username];
     self.scoresArray = [NSMutableArray new];
-    self.suggestedScoreArray = [NSMutableArray new];
+    self.suggestedScoresArray = [NSMutableArray new];
     
     // Do any additional setup after loading the view.
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -75,7 +75,19 @@
         else
         {
             NSLog(@"Fetched %lu scores for %@", objects.count, self.currentPlayer);
-            self.scoresArray = objects;
+            for (Score *score in objects)
+            {
+
+                if (score.isConfirmed)
+                {
+                    [self.scoresArray addObject:score];
+                }
+                else
+                {
+                    [self.suggestedScoresArray addObject:score];
+                }
+            }
+
             [self.tableView reloadData];
         }
         complete(objects);
@@ -100,6 +112,12 @@
     if (indexPath.section == 0)
     {
         UserAchievementsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        Score *score = self.suggestedScoresArray[indexPath.row];
+
+        Achievement *scoreAchievement = score[@"achievementPointer"];
+
+        cell.textLabel.text = scoreAchievement.name;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", scoreAchievement.pointValues[score.snowLevel.intValue]];
         return cell;
     }
     else
@@ -119,12 +137,6 @@
         return cell;
     }
 }
-
-
-
-
-
-
 
 
 
