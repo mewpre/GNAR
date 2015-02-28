@@ -138,7 +138,7 @@
         if (indexPath.section == InfoCell)
         {
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
-            infoCell.delegate = self;
+
             infoCell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
 
             // For non-Line Worths, want to display abbreviation and point value instead of fun, difficulty, and hero
