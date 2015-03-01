@@ -634,7 +634,7 @@ NSUInteger DeviceSystemMajorVersion()
                 // Send push notification to query
                 PFPush *push = [[PFPush alloc] init];
                 NSDictionary *data = @{
-                                       @"alert" : [NSString stringWithFormat:@"Are you ready to get GNAR!?", [[User currentUser] username]],
+                                       @"alert" : @"Are you ready to get GNAR!?",
                                        @"message" : [NSString stringWithFormat:@"%@ invited you to their game: \n %@!", [[User currentUser]username], game.name],
                                        @"gameID" : game.objectId,
                                        @"badge" : @"Increment",
