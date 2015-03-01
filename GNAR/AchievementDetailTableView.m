@@ -140,7 +140,7 @@
             InfoTableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
 
             infoCell.backgroundColor = [UIColor colorWithWhite:0.25 alpha:1.0];
-
+            infoCell.delegate = self;
             // For non-Line Worths, want to display abbreviation and point value instead of fun, difficulty, and hero
             infoCell.funLabel.text = @"";
             infoCell.difficultyLabel.text = @"";
