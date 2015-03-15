@@ -151,7 +151,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler
                                              PFRelation *gamesRelation = [[User currentUser] relationForKey:@"games"];
                                              [gamesRelation addObject:targetGame];
                                              [[User currentUser] saveInBackground];
-                                             NSLog(@"Received notification!");
+//                                             NSLog(@"Received notification!");
                                          }];
                 // If declined, removes all relationships between the user and the game
                 UIAlertAction *decline = [UIAlertAction actionWithTitle:@"Decline" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action)

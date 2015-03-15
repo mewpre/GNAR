@@ -58,7 +58,7 @@
     }
     else
     {
-        NSLog(@"Number of modifiers: %lu", (unsigned long)self.modifiersList.count);
+//        NSLog(@"Number of modifiers: %lu", (unsigned long)self.modifiersList.count);
         return self.modifiersList.count;
     }
 }
@@ -95,7 +95,7 @@
         [self layoutIfNeeded];
     }];
 
-    NSLog(@"Modifiers height: %f", height);
+//    NSLog(@"Modifiers height: %f", height);
 }
 
 

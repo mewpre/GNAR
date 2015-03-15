@@ -264,7 +264,7 @@
 - (void)didPressAddButton
 {
     //TODO: enable AddModifiers button when press this AddModifier button
-    NSLog(@"Add Button pressed in subCell");
+//    NSLog(@"Add Button pressed in subCell");
     [self.saveKey setString:@"YES"];
     [self.detailDelegate didPressAddButtonAtParentIndex:self.parentIndex];
 
@@ -273,9 +273,9 @@
 
 - (void)didChangeSegment:(NSInteger)selectedSegment
 {
-    NSLog(@"Change Segment delegate called");
+//    NSLog(@"Change Segment delegate called");
     NSString *tempString = [NSString stringWithFormat:@"%lu", selectedSegment];
-    NSLog(@"%@", tempString);
+//    NSLog(@"%@", tempString);
     [self.snowIndexString setString:tempString];
 }
 
@@ -287,7 +287,7 @@
         NSString *tempString = [NSString stringWithFormat:@"%f", height];
         [self.heightString setString:tempString];
     }];
-    NSLog(@"Achievement Detail Height: %f", height);
+//    NSLog(@"Achievement Detail Height: %f", height);
 }
 
 - (void)didRemovePlayerCell:(UITableViewCell *)sender

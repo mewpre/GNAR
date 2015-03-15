@@ -625,7 +625,7 @@ NSUInteger DeviceSystemMajorVersion()
             [userQuery whereKey:@"objectId" equalTo:user.objectId];
 
             [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                NSLog(@"%@", object);
+//                NSLog(@"%@", object);
             }];
                 // Find device associated with user
                 PFQuery *pushQuery = [PFInstallation query];

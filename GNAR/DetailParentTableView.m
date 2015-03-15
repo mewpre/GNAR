@@ -87,7 +87,7 @@
 
         ParentTableViewCell *pCell = (ParentTableViewCell *)selectedPCell;
         self.selectedRow = [pCell parentIndex];
-        NSLog(@"Parent Index: %lu", [pCell parentIndex]);
+//        NSLog(@"Parent Index: %lu", [pCell parentIndex]);
         [self.parentDelegate didGetIndex: [pCell parentIndex]];
 
         if ([[self.expansionStates objectAtIndex:[pCell parentIndex]] boolValue]) {

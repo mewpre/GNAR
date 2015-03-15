@@ -34,12 +34,12 @@
         if (!error)
         {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu achievements.", objects.count);
+//            NSLog(@"Successfully retrieved %lu achievements.", objects.count);
         }
         else
         {
             // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         complete(objects);
     }];

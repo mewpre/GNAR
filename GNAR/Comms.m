@@ -21,9 +21,9 @@
         // Was login successful ?
         if (!user) {
             if (!error) {
-                NSLog(@"The user cancelled the Facebook login.");
+//                NSLog(@"The user cancelled the Facebook login.");
             } else {
-                NSLog(@"An error occurred: %@", error.localizedDescription);
+//                NSLog(@"An error occurred: %@", error.localizedDescription);
             }
 
             // Callback - login failed
@@ -71,9 +71,9 @@
         // Was signup successful ?
         if (!user) {
             if (!error) {
-                NSLog(@"The user cancelled the Facebook signup.");
+//                NSLog(@"The user cancelled the Facebook signup.");
             } else {
-                NSLog(@"An error occurred: %@", error.localizedDescription);
+//                NSLog(@"An error occurred: %@", error.localizedDescription);
             }
 
             // Callback - signup failed

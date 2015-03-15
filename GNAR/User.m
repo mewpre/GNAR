@@ -82,11 +82,11 @@
 
         if (error)
         {
-            NSLog(@"%@", error);
+//            NSLog(@"%@", error);
         }
         else
         {
-            NSLog(@"Fetched %lu scores", objects.count);
+//            NSLog(@"Fetched %lu scores", objects.count);
 //            NSLog(@"...including %lu modifiers", objects.count);
 //            NSLog(@"...including %lu players", objects.count);
         }
@@ -108,7 +108,7 @@
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
-            NSLog(@"%@", error);
+//            NSLog(@"%@", error);
         }
         else
         {
@@ -117,7 +117,7 @@
             {
                 [string appendString:game.name];
             }
-            NSLog(@"Fetched %lu games with no errors: %@", objects.count, string);
+//            NSLog(@"Fetched %lu games with no errors: %@", objects.count, string);
         }
         complete(objects);
     }];
@@ -131,11 +131,11 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
-            NSLog(@"%@", error);
+//            NSLog(@"%@", error);
         }
         else
         {
-            NSLog(@"Fetched %lu scores for %@", objects.count, self);
+//            NSLog(@"Fetched %lu scores for %@", objects.count, self);
         }
         complete(objects);
     }];
@@ -154,12 +154,12 @@
         if (!error)
         {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu Users.", objects.count);
+//            NSLog(@"Successfully retrieved %lu Users.", objects.count);
         }
         else
         {
             // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         complete(objects);
     }];
@@ -171,7 +171,7 @@
     [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (error)
         {
-            NSLog(@"%@", error);
+//            NSLog(@"%@", error);
         }
         else
         {
@@ -192,7 +192,7 @@
             // findObjects will return a list of PFUsers that are friends
             // with the current user
             [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                NSLog(@"Successfully retrieved %lu Facebook friends.", objects.count);
+//                NSLog(@"Successfully retrieved %lu Facebook friends.", objects.count);
                 complete(objects);
             }];
         }
@@ -209,11 +209,11 @@
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
-            NSLog(@"%@", error);
+//            NSLog(@"%@", error);
         }
         else
         {
-            NSLog(@"Fetched %lu friends with no errors", objects.count);
+//            NSLog(@"Fetched %lu friends with no errors", objects.count);
         }
         complete(objects);
     }];
@@ -229,12 +229,12 @@
         if (!error)
         {
             // The find succeeded.
-            NSLog(@"Successfully retrieved %lu achievements.", objects.count);
+//            NSLog(@"Successfully retrieved %lu achievements.", objects.count);
         }
         else
         {
             // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         complete(objects);
     }];

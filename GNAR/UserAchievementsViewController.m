@@ -38,7 +38,7 @@
     // Display the scores of the current user
     [self getUserScoresWithCompletion:^(NSArray *scores) {
 
-        NSLog(@"Fetched %lu scores for %@", scores.count, self.currentPlayer);
+//        NSLog(@"Fetched %lu scores for %@", scores.count, self.currentPlayer);
         for (Score *score in scores)
         {
             if ([score.isConfirmed boolValue])
@@ -90,7 +90,7 @@
     {
         if (error)
         {
-            NSLog(@"%@", error);
+//            NSLog(@"%@", error);
         }
         else
         {

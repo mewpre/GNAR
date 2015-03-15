@@ -27,8 +27,8 @@ static GameManager *gameManager = nil;
 
 - (void)printCurrentGame
 {
-    NSLog(@"Saved singleton game: %@", self.currentGame.name);
-    NSLog(@"Saved singleton game player count: %lu", self.currentGame.playersArray.count);
+//    NSLog(@"Saved singleton game: %@", self.currentGame.name);
+//    NSLog(@"Saved singleton game player count: %lu", self.currentGame.playersArray.count);
 }
 
 - (void)dealloc {

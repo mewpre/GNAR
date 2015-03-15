@@ -95,17 +95,17 @@
     // Pre-check for authorizations
     if (![CLLocationManager locationServicesEnabled])
     {
-        NSLog(@"location services are disabled");
+//        NSLog(@"location services are disabled");
         return;
     }
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
     {
-        NSLog(@"location services are blocked by the user");
+//        NSLog(@"location services are blocked by the user");
         return;
     }
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
     {
-        NSLog(@"about to show a dialog requesting permission");
+//        NSLog(@"about to show a dialog requesting permission");
     }
 
     // Create LocationManager
@@ -186,7 +186,7 @@
                     if (filtered.count != 0)
                     {
                         // Update player location
-                        NSLog(@"Updating %@'s location", user.username);
+//                        NSLog(@"Updating %@'s location", user.username);
                         [filtered.firstObject setCoordinate:userLocation];
 
 //                        [UIView animateWithDuration:1.0f
@@ -220,11 +220,11 @@
 {
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
     {
-        NSLog(@"User has denied location services");
+//        NSLog(@"User has denied location services");
     }
     else
     {
-        NSLog(@"Location manager did fail with error: %@", error.localizedFailureReason);
+//        NSLog(@"Location manager did fail with error: %@", error.localizedFailureReason);
     }
 }
 

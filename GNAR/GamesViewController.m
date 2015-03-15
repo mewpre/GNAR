@@ -51,7 +51,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"Current game: %@", [GameManager sharedManager].currentGame.name);
+//    NSLog(@"Current game: %@", [GameManager sharedManager].currentGame.name);
 
     [self.segmentedControl setTintColor:[UIColor colorWithRed:138.0/255.0 green:69.0/255.0 blue:138.0/255.0 alpha:1.0]];
 
@@ -182,7 +182,7 @@
                                  // Set current game to selectedGame
                                  [GameManager sharedManager].currentGame = selectedGame;
 
-                                 NSLog(@"%@", [GameManager sharedManager].currentGame.name);
+//                                 NSLog(@"%@", [GameManager sharedManager].currentGame.name);
                                  //    [self.gameManager.currentGame getGameWithCompletion:^(Game *game) {
                                  //        // Save game as singleton in Core Data
                                  //        self.gameManager.currentGame = game;

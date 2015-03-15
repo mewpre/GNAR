@@ -26,7 +26,7 @@
     // Do any additional setup after loading the view.
     if ([User currentUser])
     {
-        NSLog(@"Already logged in as %@", [User currentUser].username);
+//        NSLog(@"Already logged in as %@", [User currentUser].username);
 
     }
 

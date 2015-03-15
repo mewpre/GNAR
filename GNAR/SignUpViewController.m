@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view.
     if ([User currentUser])
     {
-        NSLog(@"Already logged in as %@", [User currentUser].username);
+//        NSLog(@"Already logged in as %@", [User currentUser].username);
     }
 
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
@@ -106,7 +106,7 @@
              if (!error)
              {
                  // Hooray! Let them use the app now.
-                 NSLog(@"Signed up as %@", [User currentUser].username);
+//                 NSLog(@"Signed up as %@", [User currentUser].username);
                  [self dismissViewControllerAnimated:NO completion:nil];
              }
              else
@@ -140,13 +140,13 @@
     // Did we signup successfully ?
     if (signedUp)
     {
-        NSLog(@"Logged in with Facebook!");
+//        NSLog(@"Logged in with Facebook!");
         FBRequest *request = [FBRequest requestForMe];
         [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
             if (!error) {
                 // result is a dictionary with the user's Facebook data
                 NSDictionary *userData = (NSDictionary *)result;
-                NSLog(@"%@", userData);
+//                NSLog(@"%@", userData);
                 [[User currentUser] setEmail:userData[@"email"]];
                 [[User currentUser] setObject:userData[@"gender"] forKey:@"gender"];
                 if ([self.skierBoarderSegControl selectedSegmentIndex] == 0)

@@ -56,7 +56,7 @@
     [Game getGameWithId:gameId withCompletion:^(Game *game) {
         // Save game to NSUserDefaults
         [GameManager sharedManager].currentGame = game;
-        NSLog(@"Loaded game: %@", game);
+//        NSLog(@"Loaded game: %@", game);
         complete(game);
     }];
 
@@ -137,11 +137,11 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
-            NSLog(@"Fetched with error: %@", error);
+//            NSLog(@"Fetched with error: %@", error);
         }
         else
         {
-            NSLog(@"Fetched %lu games.", objects.count);
+//            NSLog(@"Fetched %lu games.", objects.count);
         }
         complete(objects.firstObject);
     }];
@@ -187,11 +187,11 @@
     [relation.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
-            NSLog(@"%@", error);
+//            NSLog(@"%@", error);
         }
         else
         {
-            NSLog(@"Fetched %lu players from game.", objects.count);
+//            NSLog(@"Fetched %lu players from game.", objects.count);
         }
         complete(objects);
     }];

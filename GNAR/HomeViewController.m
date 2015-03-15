@@ -74,11 +74,11 @@
     {
         // Load current game from user defaults and set to global current game
         [Game loadSavedGame];
-        NSLog(@"Loaded game from defaults: %@", [GameManager sharedManager].currentGame);
+//        NSLog(@"Loaded game from defaults: %@", [GameManager sharedManager].currentGame);
 
         // Load saved game form Parse using GameId from NSUserDefaults
         [Game loadSavedGameWithCompletion:^(Game *loadedGame) {
-            NSLog(@"Loaded game from defaults from parse: %@", loadedGame);
+//            NSLog(@"Loaded game from defaults from parse: %@", loadedGame);
 
 //            // Load game's players from Parse
 //            [loadedGame getPlayersOfGameWithCompletion:^(NSArray *players) {
@@ -101,11 +101,11 @@
             [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                 if (error)
                 {
-                    NSLog(@"%@", error);
+//                    NSLog(@"%@", error);
                 }
                 else
                 {
-                    NSLog(@"Fetched %lu scores for %@", objects.count, self);
+//                    NSLog(@"Fetched %lu scores for %@", objects.count, self);
                     NSInteger tempScore = 0;
 
                     for (Score *score in objects)
@@ -129,7 +129,7 @@
 - (IBAction)onLogoutButtonPressed:(id)sender
 {
     [PFUser logOut];
-    NSLog(@"Logged Out");
+//    NSLog(@"Logged Out");
     self.loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     self.loginVC.delegate = self;
     UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:self.loginVC];
@@ -142,7 +142,7 @@
 - (void)didDismissPresentedViewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"logged in as: %@", [User currentUser].username);
+//    NSLog(@"logged in as: %@", [User currentUser].username);
     self.tabBarController.selectedIndex = 1;
 }
 

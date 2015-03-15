@@ -21,7 +21,7 @@
 }
 - (IBAction)onSegmentSelected:(UISegmentedControl *)sender
 {
-    NSLog(@"Changed selection!!");
+//    NSLog(@"Changed selection!!");
     [self.delegate didChangeSegment:sender.selectedSegmentIndex];
 }
 

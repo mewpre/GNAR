@@ -142,7 +142,7 @@
 // @optional
 - (void)tableView:(UITableView *)tableView didSelectCellAtChildIndex:(NSInteger)childIndex withInParentCellIndex:(NSInteger)parentIndex
 {
-    NSLog(@"Selected child index at %ld with parent index %ld", childIndex, parentIndex);
+//    NSLog(@"Selected child index at %ld with parent index %ld", childIndex, parentIndex);
 }
 
 ////--------------------------------    InfoTableViewCell Delegate    ---------------------------------------------
@@ -180,7 +180,7 @@
             for (Score *modifier in modifiers)
             {
                 // Add modifer to Score's modifiers relation
-                NSLog(@"Added Modifier to score");
+//                NSLog(@"Added Modifier to score");
                 [score.modifiers addObject:modifier];
             }
         }
@@ -188,7 +188,7 @@
          {
              [score saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
               {
-                  NSLog(@"Saved score!");
+//                  NSLog(@"Saved score!");
 
                   if ([user isEqual:[User currentUser]])
                   {
@@ -267,7 +267,7 @@
             [userQuery whereKey:@"objectId" equalTo:player.objectId];
 
             [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                NSLog(@"%@", object);
+//                NSLog(@"%@", object);
             }];
             // Find device associated with user
             PFQuery *pushQuery = [PFInstallation query];
@@ -292,7 +292,7 @@
 
 - (IBAction)onAddModifiersButtonPressed:(UIButton *)sender
 {
-    NSLog(@"Modifiers button pressed");
+//    NSLog(@"Modifiers button pressed");
     AchievementViewController *achieveVC = [self.storyboard instantiateViewControllerWithIdentifier:[AchievementViewController description]];
 
     achieveVC.modifiersDictionary = [self.achievementsDataArray objectAtIndex:self.activeParentCellIndex][@"modifiersDictionary"];

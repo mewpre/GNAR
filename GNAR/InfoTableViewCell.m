@@ -17,7 +17,7 @@
 
 - (IBAction)addButtonPressed:(UIButton *)sender
 {
-    NSLog(@"Add Button pressed!!!");
+//    NSLog(@"Add Button pressed!!!");
     [self.delegate didPressAddButton];
 }
 

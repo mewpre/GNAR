@@ -53,7 +53,7 @@
         }
         else
         {
-            NSLog(@"%@", error);
+//            NSLog(@"%@", error);
         }
     }];
 }
@@ -134,11 +134,11 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error)
         {
-            NSLog(@"%@", error);
+//            NSLog(@"%@", error);
         }
         else
         {
-            NSLog(@"Fetched %lu scores for %@", objects.count, self);
+//            NSLog(@"Fetched %lu scores for %@", objects.count, self);
         }
         complete(objects);
     }];
@@ -148,7 +148,7 @@
 #pragma mark - Table View
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"SortedPlayersArray count: %lu", (unsigned long)self.sortedPlayersArray.count);
+//    NSLog(@"SortedPlayersArray count: %lu", (unsigned long)self.sortedPlayersArray.count);
     return self.sortedPlayersArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -179,7 +179,7 @@
                 }
                 else
                 {
-                    NSLog(@"%@", error);
+//                    NSLog(@"%@", error);
                 }
             }];
         }

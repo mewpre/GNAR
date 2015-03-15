@@ -24,7 +24,7 @@
 }
 - (IBAction)onGotItButtonPressed:(UIButton *)sender
 {
-    NSLog(@"Got It button pressed");
+//    NSLog(@"Got It button pressed");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

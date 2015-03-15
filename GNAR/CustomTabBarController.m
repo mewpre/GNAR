@@ -40,7 +40,7 @@
     }
     else
     {
-        NSLog(@"Already logged in");
+//        NSLog(@"Already logged in");
         [self setSelectedIndex:2];
     }
 }
@@ -53,7 +53,7 @@
 - (void)didDismissPresentedViewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"logged in as: %@", [User currentUser].username);
+//    NSLog(@"logged in as: %@", [User currentUser].username);
     [self setSelectedIndex:2];
 
 }
