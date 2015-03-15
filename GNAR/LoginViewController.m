@@ -59,7 +59,7 @@
          {
              if (!error)
              {
-                 NSLog(@"Logged in as %@", [User currentUser].username);
+//                 NSLog(@"Logged in as %@", [User currentUser].username);
                  [self.delegate didDismissPresentedViewController];
                  self.tabBarController.selectedIndex = 2;
                  // Clear all local cached data
@@ -67,7 +67,7 @@
              }
              else
              {
-                 NSString *errorString = [error userInfo][@"error"];
+//                 NSString *errorString = [error userInfo][@"error"];
                  NSLog(@"%@", errorString);
                  [self showLoginErrorAlertController:@"Error" withMessage:errorString];
              }
@@ -86,14 +86,14 @@
     // Did we login successfully ?
     if (loggedIn)
     {
-        NSLog(@"Logged in with Facebook!");
+//        NSLog(@"Logged in with Facebook!");
         FBRequest *request = [FBRequest requestForMe];
         [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
             if (!error) {
                 // result is a dictionary with the user's Facebook data
                 NSDictionary *userData = (NSDictionary *)result;
-                NSLog(@"%@", userData);
-                NSLog(@"%@",[User currentUser].username);
+//                NSLog(@"%@", userData);
+//                NSLog(@"%@",[User currentUser].username);
                 [self.delegate didDismissPresentedViewController];
             }
         }];

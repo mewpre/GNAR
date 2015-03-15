@@ -122,7 +122,7 @@
     }
     self.usernameLabel.text = [NSString stringWithFormat:@"%@", [User currentUser].username];
     self.currentGameLabel.text = [GameManager sharedManager].currentGame.name;
-    NSLog(@"GameId from NSDefaults: %@", [self.defaults objectForKey:kGameIdKey]);
+//    NSLog(@"GameId from NSDefaults: %@", [self.defaults objectForKey:kGameIdKey]);
 }
 
 
