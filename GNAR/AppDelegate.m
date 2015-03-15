@@ -62,7 +62,7 @@
     [[UITableView appearance] setSeparatorColor:[UIColor colorWithWhite:0.40 alpha:1.0]];
     [[UITableView appearance] setSeparatorInset:UIEdgeInsetsZero];
 
-
+    // Registering for local subclassing of Parse objects
     [User registerSubclass];
     [Achievement registerSubclass];
     [Game registerSubclass];

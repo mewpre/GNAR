@@ -2,8 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "gnar_title_main.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
