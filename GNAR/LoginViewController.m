@@ -67,8 +67,8 @@
              }
              else
              {
-//                 NSString *errorString = [error userInfo][@"error"];
-                 NSLog(@"%@", errorString);
+                 NSString *errorString = [error userInfo][@"error"];
+//                 NSLog(@"%@", errorString);
                  [self showLoginErrorAlertController:@"Error" withMessage:errorString];
              }
          }];
