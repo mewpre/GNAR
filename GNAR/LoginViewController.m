@@ -91,7 +91,7 @@
         [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
             if (!error) {
                 // result is a dictionary with the user's Facebook data
-                NSDictionary *userData = (NSDictionary *)result;
+//                NSDictionary *userData = (NSDictionary *)result;
 //                NSLog(@"%@", userData);
 //                NSLog(@"%@",[User currentUser].username);
                 [self.delegate didDismissPresentedViewController];

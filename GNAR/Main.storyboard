@@ -2998,56 +2998,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQy-Av-3Jy">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="an4-oR-Th8"/>
-                                    <constraint firstAttribute="height" constant="30" id="gQL-V0-eck"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="an4-oR-Th8"/>
-                                        <exclude reference="gQL-V0-eck"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="an4-oR-Th8"/>
-                                        <include reference="gQL-V0-eck"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="onLogoutButtonPressed:" destination="EL6-vs-COo" eventType="touchUpInside" id="hfn-jz-sHI"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gnar_title_main" translatesAutoresizingMaskIntoConstraints="NO" id="uob-Xt-aA9">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="8cc-Zd-C4M"/>
-                                    <constraint firstAttribute="height" constant="125" id="f3h-TE-Bwy"/>
-                                    <constraint firstAttribute="height" constant="178" id="wtR-W5-TmL">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="150"/>
-                                    </constraint>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="8cc-Zd-C4M"/>
-                                        <exclude reference="f3h-TE-Bwy"/>
-                                        <exclude reference="wtR-W5-TmL"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <exclude reference="8cc-Zd-C4M"/>
-                                        <exclude reference="f3h-TE-Bwy"/>
-                                        <include reference="wtR-W5-TmL"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eic-im-a60">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -3431,80 +3381,96 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQy-Av-3Jy">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="an4-oR-Th8"/>
+                                    <constraint firstAttribute="height" constant="30" id="gQL-V0-eck"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="an4-oR-Th8"/>
+                                        <exclude reference="gQL-V0-eck"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="an4-oR-Th8"/>
+                                        <include reference="gQL-V0-eck"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onLogoutButtonPressed:" destination="EL6-vs-COo" eventType="touchUpInside" id="hfn-jz-sHI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Eic-im-a60" firstAttribute="leading" secondItem="iaT-El-H0d" secondAttribute="leading" constant="16" id="6LX-OH-9Z0"/>
                             <constraint firstAttribute="centerY" secondItem="ssT-uh-JvX" secondAttribute="centerY" id="8FQ-43-0SA"/>
                             <constraint firstItem="xWW-Ax-7km" firstAttribute="top" secondItem="ssT-uh-JvX" secondAttribute="bottom" constant="100" id="IrS-zd-TnF">
-                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="74"/>
                             </constraint>
                             <constraint firstItem="ssT-uh-JvX" firstAttribute="top" secondItem="Eic-im-a60" secondAttribute="bottom" constant="10" id="NVO-fQ-K0y">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="148"/>
                             </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="uob-Xt-aA9" secondAttribute="trailing" constant="-16" id="OGs-SG-mNO"/>
-                            <constraint firstItem="eQy-Av-3Jy" firstAttribute="top" secondItem="uob-Xt-aA9" secondAttribute="bottom" constant="18" id="QfY-Cl-5Ad"/>
-                            <constraint firstItem="uob-Xt-aA9" firstAttribute="leading" secondItem="iaT-El-H0d" secondAttribute="leadingMargin" constant="-16" id="UYh-Ck-NQF"/>
                             <constraint firstItem="ssT-uh-JvX" firstAttribute="leading" secondItem="iaT-El-H0d" secondAttribute="leadingMargin" constant="10" id="VAm-b1-off"/>
-                            <constraint firstItem="uob-Xt-aA9" firstAttribute="top" secondItem="iaT-El-H0d" secondAttribute="topMargin" id="Vrt-1V-gJz"/>
                             <constraint firstAttribute="centerX" secondItem="eQy-Av-3Jy" secondAttribute="centerX" id="hUX-0W-J6D"/>
+                            <constraint firstItem="eQy-Av-3Jy" firstAttribute="top" secondItem="vfs-Gi-wR7" secondAttribute="bottom" id="iAI-uX-adD"/>
+                            <constraint firstItem="Eic-im-a60" firstAttribute="top" secondItem="vfs-Gi-wR7" secondAttribute="bottom" id="k1P-6W-CEK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ssT-uh-JvX" secondAttribute="trailing" constant="10" id="l8d-BF-RgB">
                                 <variation key="heightClass=regular-widthClass=compact" constant="7"/>
                             </constraint>
                             <constraint firstAttribute="centerY" secondItem="eQy-Av-3Jy" secondAttribute="centerY" id="qil-Db-I73"/>
                             <constraint firstItem="eQy-Av-3Jy" firstAttribute="trailing" secondItem="iaT-El-H0d" secondAttribute="trailingMargin" id="qxZ-Vo-fyl"/>
-                            <constraint firstItem="Eic-im-a60" firstAttribute="top" secondItem="uob-Xt-aA9" secondAttribute="bottom" constant="18" id="z8K-4G-tCJ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="eQy-Av-3Jy"/>
-                                <exclude reference="uob-Xt-aA9"/>
                                 <exclude reference="Eic-im-a60"/>
                                 <exclude reference="ssT-uh-JvX"/>
+                                <exclude reference="eQy-Av-3Jy"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="IrS-zd-TnF"/>
                                 <exclude reference="6LX-OH-9Z0"/>
-                                <exclude reference="z8K-4G-tCJ"/>
-                                <exclude reference="QfY-Cl-5Ad"/>
-                                <exclude reference="hUX-0W-J6D"/>
-                                <exclude reference="qil-Db-I73"/>
-                                <exclude reference="qxZ-Vo-fyl"/>
-                                <exclude reference="OGs-SG-mNO"/>
-                                <exclude reference="UYh-Ck-NQF"/>
-                                <exclude reference="Vrt-1V-gJz"/>
+                                <exclude reference="k1P-6W-CEK"/>
                                 <exclude reference="8FQ-43-0SA"/>
                                 <exclude reference="NVO-fQ-K0y"/>
                                 <exclude reference="VAm-b1-off"/>
                                 <exclude reference="l8d-BF-RgB"/>
+                                <exclude reference="hUX-0W-J6D"/>
+                                <exclude reference="iAI-uX-adD"/>
+                                <exclude reference="qil-Db-I73"/>
+                                <exclude reference="qxZ-Vo-fyl"/>
+                                <exclude reference="IrS-zd-TnF"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="eQy-Av-3Jy"/>
-                                <include reference="uob-Xt-aA9"/>
                                 <include reference="Eic-im-a60"/>
                                 <include reference="ssT-uh-JvX"/>
+                                <include reference="eQy-Av-3Jy"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="IrS-zd-TnF"/>
                                 <include reference="6LX-OH-9Z0"/>
-                                <include reference="z8K-4G-tCJ"/>
-                                <include reference="QfY-Cl-5Ad"/>
-                                <exclude reference="hUX-0W-J6D"/>
-                                <exclude reference="qil-Db-I73"/>
-                                <include reference="qxZ-Vo-fyl"/>
-                                <include reference="OGs-SG-mNO"/>
-                                <include reference="UYh-Ck-NQF"/>
-                                <include reference="Vrt-1V-gJz"/>
+                                <include reference="k1P-6W-CEK"/>
                                 <exclude reference="8FQ-43-0SA"/>
                                 <include reference="NVO-fQ-K0y"/>
                                 <include reference="VAm-b1-off"/>
                                 <include reference="l8d-BF-RgB"/>
+                                <exclude reference="hUX-0W-J6D"/>
+                                <include reference="iAI-uX-adD"/>
+                                <exclude reference="qil-Db-I73"/>
+                                <include reference="qxZ-Vo-fyl"/>
+                                <include reference="IrS-zd-TnF"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="Home" id="1vU-sj-Xxb"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="currentGameLabel" destination="dj2-VJ-ebw" id="U0K-kC-ZYd"/>
                         <outlet property="userImageView" destination="4p9-EV-oYU" id="0OB-5v-e1V"/>
@@ -3697,7 +3663,6 @@
         <image name="Map" width="50" height="50"/>
         <image name="Pencil" width="50" height="50"/>
         <image name="gnar_launch" width="320" height="480"/>
-        <image name="gnar_title_main" width="994" height="443"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8GE-fp-23f"/>
