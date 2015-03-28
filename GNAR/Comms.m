@@ -15,7 +15,7 @@
 + (void) login:(id<CommsDelegate>)delegate
 {
     // Set permissions required from the facebook user account
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    NSArray *permissionsArray = @[ @""];
 
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         // Was login successful ?
@@ -65,7 +65,7 @@
 + (void) signup:(id<CommsDelegate>)delegate withUsername: (NSString *)username
 {
     // Set permissions required from the facebook user account
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location"];
+    NSArray *permissionsArray = @[ @""];
 
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         // Was signup successful ?
