@@ -10,17 +10,33 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4lG-3u-jcn">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The best app on the mountain!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbM-HP-mxS">
+                    <rect key="frame" x="108" y="222" width="264" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="fyE-Yn-MVY"/>
+                        <constraint firstAttribute="width" constant="264" id="zdJ-mP-Ll4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="19"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GNAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brc-ED-aC7">
+                    <rect key="frame" x="154" y="156" width="173" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="58" id="VJ7-EU-Awx"/>
+                        <constraint firstAttribute="width" constant="173" id="vff-hU-WQf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PartyLetPlain" family="Party LET" pointSize="55"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="4lG-3u-jcn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1fM-kw-qoz"/>
-                <constraint firstAttribute="trailing" secondItem="4lG-3u-jcn" secondAttribute="trailing" id="IBm-t0-Vau"/>
-                <constraint firstItem="4lG-3u-jcn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vXA-H8-GQA"/>
-                <constraint firstAttribute="bottom" secondItem="4lG-3u-jcn" secondAttribute="bottom" id="xs5-Tg-qWE"/>
+                <constraint firstAttribute="centerX" secondItem="brc-ED-aC7" secondAttribute="centerX" id="IRL-lT-PrR"/>
+                <constraint firstAttribute="centerY" secondItem="jbM-HP-mxS" secondAttribute="centerY" id="TGC-t8-Xz3"/>
+                <constraint firstAttribute="centerX" secondItem="jbM-HP-mxS" secondAttribute="centerX" id="hjd-1B-vbQ"/>
+                <constraint firstItem="jbM-HP-mxS" firstAttribute="top" secondItem="brc-ED-aC7" secondAttribute="bottom" constant="8" id="wMp-0q-4mh"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
